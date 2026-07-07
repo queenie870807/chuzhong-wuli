@@ -6,6 +6,27 @@
 <title>第六章 光现象 - 初中物理知识手册</title>
 <link rel="stylesheet" href="style.css">
 <style>
+.illus-reflect { position: relative; width: 300px; height: 200px; margin: 16px auto; 
+  background: #F8FCFE; border-radius: 12px; border: 1.5px dashed rgba(91,160,200,0.35); overflow: hidden; }
+.illus-reflect .mirror-line { position: absolute; bottom: 30px; left: 20px; right: 20px; height: 4px; 
+  background: #555; border-radius: 2px; }
+.illus-reflect .mirror-label { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); 
+  font-size: 12px; color: #555; font-weight: 600; }
+.illus-reflect .normal-line { position: absolute; bottom: 30px; left: 120px; width: 1px; height: 150px;
+  background: repeating-linear-gradient(to bottom, #999 0, #999 6px, transparent 6px, transparent 12px); }
+.illus-reflect .normal-label { position: absolute; top: 15px; left: 84px; font-size: 10px; color: #888; }
+.illus-reflect .line-ao { position: absolute; bottom: 30px; left: 120px; width: 2px; height: 160px;
+  background: #C0392B; transform-origin: bottom center; transform: rotate(30deg); box-shadow: 0 0 4px rgba(192,57,43,0.3); }
+.illus-reflect .line-ob { position: absolute; bottom: 30px; left: 120px; width: 2px; height: 160px;
+  background: #2980B9; transform-origin: bottom center; transform: rotate(-30deg); box-shadow: 0 0 4px rgba(41,128,185,0.3); }
+.illus-reflect .label-ao { position: absolute; top: 8px; left: 168px; font-size: 11px; color: #C0392B; font-weight: 700; }
+.illus-reflect .label-ob { position: absolute; top: 8px; left: 40px; font-size: 11px; color: #2980B9; font-weight: 700; }
+.illus-reflect .label-o { position: absolute; bottom: 32px; left: 118px; font-size: 10px; color: #555; font-weight: 700; }
+.illus-reflect .angle-30 { position: absolute; bottom: 80px; left: 165px; font-size: 10px; color: #E08850; font-weight: 600;
+  background: rgba(224,136,80,0.1); padding: 1px 4px; border-radius: 4px; }
+.illus-reflect .angle-60 { position: absolute; bottom: 60px; left: 128px; font-size: 10px; color: #5BA0C8; font-weight: 600;
+  background: rgba(91,160,200,0.12); padding: 1px 4px; border-radius: 4px; }
+
 /* 近视眼远视眼矫正 */
 .illus-eye { position:relative; width:220px; height:200px; }
 .illus-eye .eyeball { position:absolute; top:30px; left:30px; width:80px; height:70px; border:3px solid #6B5A4A; border-radius:50%; background:rgba(255,255,255,0.7); overflow:hidden; }

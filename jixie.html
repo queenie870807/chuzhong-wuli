@@ -6,6 +6,29 @@
 <title>第三章 简单机械和功 - 初中物理知识手册</title>
 <link rel="stylesheet" href="style.css">
 <style>
+.illus-pulley { position: relative; width: 280px; height: 300px; margin: 16px auto;
+  background: #FFFDF8; border-radius: 12px; border: 1.5px dashed rgba(176,144,80,0.35); overflow: hidden; }
+.illus-pulley .ceiling { position: absolute; top: 10px; left: 40px; right: 40px; height: 3px; 
+  background: #777; }
+.illus-pulley .fixed-pulley { position: absolute; top: 18px; left: 110px; width: 54px; height: 54px;
+  border: 4px solid #8B7355; border-radius: 50%; background: #F5F0E8; }
+.illus-pulley .fixed-pulley2 { position: absolute; top: 18px; left: 200px; width: 54px; height: 54px;
+  border: 4px solid #8B7355; border-radius: 50%; background: #F5F0E8; }
+.illus-pulley .movable-pulley { position: absolute; top: 120px; left: 110px; width: 54px; height: 54px;
+  border: 4px solid #C0392B; border-radius: 50%; background: #FFF5F5; }
+.illus-pulley .load-block { position: absolute; top: 182px; left: 107px; width: 60px; height: 34px;
+  background: #E8A0BF; border-radius: 6px; text-align: center; line-height: 34px; font-size: 11px; 
+  color: #fff; font-weight: 700; }
+.illus-pulley .rope { position: absolute; }
+.illus-pulley .rope-seg1 { top: 72px; left: 137px; width: 2px; height: 48px; background: #555; }
+.illus-pulley .rope-seg2 { top: 13px; left: 137px; width: 64px; height: 2px; background: #555; }
+.illus-pulley .rope-seg3 { top: 13px; left: 199px; width: 2px; height: 48px; background: #555; }
+.illus-pulley .rope-seg4 { top: 72px; left: 199px; width: 2px; height: 48px; background: #555; }
+.illus-pulley .rope-seg5 { top: 72px; left: 227px; width: 2px; height: 160px; background: #C0392B; }
+.illus-pulley .rope-seg6 { top: 13px; left: 137px; width: 2px; height: 16px; background: #555; }
+.illus-pulley .force-arrow { position: absolute; top: 232px; left: 232px; font-size: 12px; color: #C0392B; font-weight: 700; }
+.illus-pulley .label-n3 { position: absolute; top: 262px; left: 100px; font-size: 12px; color: #555; font-weight: 600; }
+
 /* 自行车中的简单机械 */
 .illus-bike { position:relative; width:240px; height:200px; }
 .illus-bike .frame { position:absolute; top:80px; left:20px; width:120px; height:10px; background:#707880; border-radius:5px; transform:rotate(-8deg); }
@@ -373,6 +396,21 @@
 
 <div class="exam-problem">
 <div class="prob-header"><div class="prob-num">2</div><div class="prob-meta">2023年上海中考 · 计算题 · 4分 — 滑轮组</div></div>
+<div class="illus-pulley">
+  <div class="ceiling"></div>
+  <div class="fixed-pulley"></div>
+  <div class="fixed-pulley2"></div>
+  <div class="movable-pulley"></div>
+  <div class="load-block">G=900N</div>
+  <div class="rope rope-seg1"></div>
+  <div class="rope rope-seg2"></div>
+  <div class="rope rope-seg3"></div>
+  <div class="rope rope-seg4"></div>
+  <div class="rope rope-seg5"></div>
+  <div class="force-arrow">&#8595; F</div>
+  <div class="label-n3">n=3 (3段绳子承担重物)</div>
+</div>
+
 <div class="prob-question">用如图滑轮组（n=3，即3段绳子承担重物）匀速提升重900N的物体，物体上升2m。不计绳重和摩擦，动滑轮重60N。求：（1）拉力F的大小；（2）绳子自由端移动的距离。</div>
 <div class="prob-analysis">
 <h5>&#128270; 解题思路</h5>

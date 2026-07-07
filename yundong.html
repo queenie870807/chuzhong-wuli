@@ -6,6 +6,9 @@
 <title>第一章 运动和力 - 初中物理知识手册</title>
 <link rel="stylesheet" href="style.css">
 <style>
+.illus-st-graph { position: relative; width: 320px; height: 240px; margin: 16px auto;
+  background: #FFFDF8; border-radius: 12px; border: 1.5px dashed rgba(176,144,80,0.35); }
+
 /* s-t / v-t 图像对比 */
 .illus-st-vt { position:relative; width:240px; height:240px; }
 .illus-st-vt .graph-st { position:absolute; top:10px; left:10px; width:100px; height:90px; border-left:2px solid #888; border-bottom:2px solid #888; }
@@ -457,6 +460,33 @@
 
 <div class="exam-problem">
 <div class="prob-header"><div class="prob-num">3</div><div class="prob-meta">2022年上海中考 · 选择题 · 3分</div></div>
+<div class="illus-st-graph">
+<svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- bg grid -->
+  <defs><pattern id="stgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#eee" stroke-width="0.5"/>
+  </pattern></defs>
+  <rect x="40" y="10" width="260" height="210" fill="url(#stgrid)"/>
+  <!-- axes -->
+  <line x1="40" y1="220" x2="300" y2="220" stroke="#555" stroke-width="1.5" marker-end="url(#arrow-st)"/>
+  <defs><marker id="arrow-st" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 Z" fill="#555"/></marker></defs>
+  <line x1="40" y1="220" x2="40" y2="10" stroke="#555" stroke-width="1.5" marker-end="url(#arrow-st-u)"/>
+  <defs><marker id="arrow-st-u" viewBox="0 0 10 10" refX="5" refY="8" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 10 L 5 0 L 10 10 Z" fill="#555"/></marker></defs>
+  <!-- the s-t line: slope = ~1 (45 degrees) -->
+  <line x1="40" y1="220" x2="280" y2="40" stroke="#C0392B" stroke-width="2.5"/>
+  <!-- O label -->
+  <text x="32" y="235" font-size="10" fill="#555" font-weight="600">O</text>
+  <!-- axis labels -->
+  <text x="155" y="238" font-size="11" fill="#555" font-weight="600">时间 t/s</text>
+  <text x="8" y="120" font-size="11" fill="#555" font-weight="600" transform="rotate(-90,8,120)">路程 s/m</text>
+  <!-- slope indicator -->
+  <text x="150" y="110" font-size="11" fill="#C0392B" font-weight="600">v = k (斜率=速度)</text>
+  <text x="150" y="130" font-size="10" fill="#888">匀速直线运动 (s/t = 常数)</text>
+</svg>
+</div>
+
 <div class="prob-question">如图是某物体运动的 s-t 图像（一条倾斜直线经过原点）。以下说法正确的是（ ）<br>A. 物体做变速运动<br>B. 物体的速度越来越快<br>C. 物体做匀速直线运动，速度为图像的斜率<br>D. 物体静止不动</div>
 <div class="prob-analysis">
 <h5>&#128270; 解题思路</h5>

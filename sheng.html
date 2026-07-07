@@ -6,6 +6,10 @@
 <title>第五章 声现象 - 初中物理知识手册</title>
 <link rel="stylesheet" href="style.css">
 <style>
+.illus-waveform { position: relative; width: 400px; height: 180px; margin: 16px auto;
+  background: #F8F6FC; border-radius: 12px; border: 1.5px dashed rgba(138,107,176,0.3); }
+.illus-waveform svg { display: block; }
+
 /* === 音叉振动发声（波纹扩散） === */
 .illus-tuningfork { position:relative; width:220px; height:200px; }
 .illus-tuningfork .fork {
@@ -544,6 +548,36 @@
 
 <div class="exam-mistake-item">
 <div class="mi-num">易错题 3 — 波形图</div>
+<div class="illus-waveform">
+<svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- axes -->
+  <line x1="30" y1="170" x2="390" y2="170" stroke="#999" stroke-width="1"/>
+  <line x1="30" y1="10" x2="30" y2="170" stroke="#999" stroke-width="1"/>
+  <!-- labels -->
+  <text x="200" y="20" font-size="11" fill="#555" font-weight="600" text-anchor="middle">甲：波形稀疏（低频） — 振幅相同</text>
+  <text x="200" y="100" font-size="11" fill="#555" font-weight="600" text-anchor="middle">乙：波形密集（高频） — 振幅相同</text>
+  <line x1="28" y1="55" x2="390" y2="55" stroke="#ddd" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <!-- wave A: sparse, 3 cycles -->
+  <path d="M 40,55 Q 70,25 100,55 Q 130,85 160,55 Q 190,25 220,55 Q 250,85 280,55 Q 310,25 340,55 Q 370,85 380,55" 
+    fill="none" stroke="#8A6BB0" stroke-width="2.5"/>
+  <!-- wave B: dense, 6 cycles -->
+  <path d="M 40,135 Q 55,105 70,135 Q 85,165 100,135 Q 115,105 130,135 Q 145,165 160,135 Q 175,105 190,135 Q 205,165 220,135 Q 235,105 250,135 Q 265,165 280,135 Q 295,105 310,135 Q 325,165 340,135 Q 355,105 370,135 Q 385,165 380,135" 
+    fill="none" stroke="#C06080" stroke-width="2.5"/>
+  <!-- amplitude brackets -->
+  <line x1="390" y1="25" x2="390" y2="55" stroke="#8A6BB0" stroke-width="1.5"/>
+  <line x1="386" y1="25" x2="394" y2="25" stroke="#8A6BB0" stroke-width="1"/>
+  <line x1="386" y1="55" x2="394" y2="55" stroke="#8A6BB0" stroke-width="1"/>
+  <text x="396" y="43" font-size="9" fill="#8A6BB0">振幅A</text>
+  <line x1="390" y1="105" x2="390" y2="135" stroke="#C06080" stroke-width="1.5"/>
+  <line x1="386" y1="105" x2="394" y2="105" stroke="#C06080" stroke-width="1"/>
+  <line x1="386" y1="135" x2="394" y2="135" stroke="#C06080" stroke-width="1"/>
+  <text x="396" y="123" font-size="9" fill="#C06080">振幅A</text>
+  <!-- freq arrows -->
+  <text x="108" y="72" font-size="9" fill="#8A6BB0" text-anchor="middle">&#8596; 周期大（频率小）</text>
+  <text x="195" y="150" font-size="9" fill="#C06080" text-anchor="middle">&#8596; 周期小（频率大）</text>
+</svg>
+</div>
+
 <div class="mi-question">甲、乙两声音的波形图如图所示（甲波形稀疏、乙波形密集，振幅相同）。下列说法正确的是（ ）</div>
 <div class="mi-options">
 <span class="wrong-opt">A. 甲的响度比乙大</span>

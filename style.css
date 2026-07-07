@@ -1080,4 +1080,7 @@ mark.highlight {
   .exam-header h2 { font-size: 20px; }
   .score-overview { grid-template-columns: repeat(2, 1fr); }
   .q-opt { grid-template-columns: 1fr !important; }
+  table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  .quick-table { font-size: 13px; }
+  .quick-table td, .quick-table th { padding: 8px 10px; }
 }
