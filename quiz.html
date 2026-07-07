@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>趣味挑战测验 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.quiz-intro { text-align:center; margin-bottom:32px; }
+.quiz-intro h3 { font-size:1.4rem; color:var(--primary); margin-bottom:8px; }
+.quiz-intro p { color:var(--text-light); font-size:0.95rem; }
+
+.quiz-form { max-width:720px; margin:0 auto; }
+.quiz-q { background:#FFF; border-radius:18px; padding:20px 24px; margin-bottom:18px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.04); border:1.5px solid #f0e4e8;
+  transition:all 0.2s; }
+.quiz-q:hover { box-shadow:0 4px 20px rgba(0,0,0,0.06); }
+.quiz-q .q-num { display:inline-block; background:var(--primary); color:#fff;
+  width:28px; height:28px; border-radius:50%; text-align:center; line-height:28px;
+  font-weight:700; font-size:14px; margin-right:10px; }
+.quiz-q .q-title { font-size:1.05rem; font-weight:700; color:var(--text-dark);
+  display:inline; line-height:1.6; }
+.quiz-q .q-tag { display:inline-block; margin-left:8px; padding:2px 10px;
+  border-radius:12px; font-size:11px; font-weight:700; vertical-align:middle;
+  background:#FDE8F0; color:#C4708A; }
+.quiz-q .q-desc { color:var(--text-light); font-size:0.88rem; margin:6px 0 10px 38px; }
+.quiz-q .options { margin-left:38px; display:flex; flex-direction:column; gap:6px; }
+.quiz-q .opt { display:flex; align-items:center; gap:8px; padding:8px 14px;
+  border-radius:12px; border:1.5px solid transparent; cursor:pointer;
+  transition:all 0.15s; font-size:0.95rem; background:#FCF4F7; }
+.quiz-q .opt:hover { border-color:var(--primary-light); background:#FDF7FA; }
+.quiz-q .opt input[type=radio] { accent-color:var(--primary); transform:scale(1.1); }
+.quiz-q .opt.selected { border-color:var(--primary); background:#FDE8F0; }
+
+.quiz-actions { text-align:center; margin:32px 0; }
+.btn-submit, .btn-retry {
+  padding:12px 40px; border-radius:30px; border:none; font-size:1.05rem;
+  font-weight:700; cursor:pointer; transition:all 0.2s;
+}
+.btn-submit { background:linear-gradient(135deg, #E8A0BF, #D485A8); color:#fff; }
+.btn-submit:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(212,133,168,0.4); }
+.btn-retry { background:#D6EAF8; color:#4A7A9A; margin-left:12px; display:none; }
+.btn-retry:hover { background:#C4DEF0; }
+
+.result-card { display:none; max-width:600px; margin:24px auto; text-align:center;
+  background:#FFF; border-radius:20px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,0.06); }
+.result-card.show { display:block; }
+.result-card .score-num { font-size:3rem; font-weight:800; }
+.result-card .score-message { font-size:1.15rem; margin-top:8px; font-weight:600; }
+.result-card .detail { margin-top:16px; font-size:0.9rem; color:var(--text-light); }
+.result-card .detail .correct { color:#5B8A6A; }
+.result-card .detail .wrong { color:#C4708A; text-decoration:line-through; }
+
+.correct-mark { color:#5B8A6A; font-weight:700; margin-left:6px; }
+.wrong-mark { color:#C4708A; font-weight:700; margin-left:6px; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">›</span><span>趣味挑战测验</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a>
+    <a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a>
+    <a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a>
+    <a href="re.html">热学</a>
+    <a href="quiz.html" class="active">趣味挑战</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<div class="quiz-intro">
+  <h3>&#127942; 趣味挑战测验</h3>
+  <p>18 道选择题，涵盖力学 · 声 · 光 · 电 · 热八大板块。做完看看你是「物理小学霸」还是「加油复习党」～</p>
+</div>
+
+<div class="quiz-form" id="quizForm">
+
+  <!-- === 力学（1-8） === -->
+  <div class="quiz-q" data-q="1">
+    <span class="q-num">1</span><span class="q-title">以下关于惯性的说法，哪个是正确的？</span><span class="q-tag">运动和力</span>
+    <div class="q-desc">惯性是物体的"懒毛病"</div>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q1" value="A">运动快的物体惯性大</label>
+      <label class="opt"><input type="radio" name="q1" value="B">质量大的物体惯性大</label>
+      <label class="opt"><input type="radio" name="q1" value="C">物体静止时没有惯性</label>
+      <label class="opt"><input type="radio" name="q1" value="D">太空中的物体没有惯性</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="2">
+    <span class="q-num">2</span><span class="q-title">公交车急刹车时，站着的人会向前倾，这是因为？</span><span class="q-tag">运动和力</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q2" value="A">受到向前的推力</label>
+      <label class="opt"><input type="radio" name="q2" value="B">脚停了，上半身由于惯性继续向前</label>
+      <label class="opt"><input type="radio" name="q2" value="C">摩擦力突然消失</label>
+      <label class="opt"><input type="radio" name="q2" value="D">人的重心发生了改变</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="3">
+    <span class="q-num">3</span><span class="q-title">图钉的尖端很容易钉进墙里，主要原因是？</span><span class="q-tag">压强和浮力</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q3" value="A">图钉尖端温度高</label>
+      <label class="opt"><input type="radio" name="q3" value="B">图钉尖端受力面积小、压强大</label>
+      <label class="opt"><input type="radio" name="q3" value="C">图钉的材料比墙硬</label>
+      <label class="opt"><input type="radio" name="q3" value="D">图钉尖端质量小</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="4">
+    <span class="q-num">4</span><span class="q-title">一艘装满货物的轮船从长江驶入大海，它受到的浮力会怎样变化？</span><span class="q-tag">压强和浮力</span>
+    <div class="q-desc">提示：海水密度比江水大</div>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q4" value="A">变大</label>
+      <label class="opt"><input type="radio" name="q4" value="B">变小</label>
+      <label class="opt"><input type="radio" name="q4" value="C">不变（始终等于重力）</label>
+      <label class="opt"><input type="radio" name="q4" value="D">先变大后变小</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="5">
+    <span class="q-num">5</span><span class="q-title">大力士用一根长杠杆撬一块大石头，支点离石头很近。这属于？</span><span class="q-tag">简单机械和功</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q5" value="A">省力杠杆（动力臂 &gt; 阻力臂）</label>
+      <label class="opt"><input type="radio" name="q5" value="B">费力杠杆</label>
+      <label class="opt"><input type="radio" name="q5" value="C">等臂杠杆</label>
+      <label class="opt"><input type="radio" name="q5" value="D">无法判断</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="6">
+    <span class="q-num">6</span><span class="q-title">一个动滑轮和一个定滑轮组成的滑轮组（n=2），不计摩擦和滑轮重，要提起 200N 的重物，需要多大的拉力？</span><span class="q-tag">简单机械和功</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q6" value="A">200N</label>
+      <label class="opt"><input type="radio" name="q6" value="B">100N</label>
+      <label class="opt"><input type="radio" name="q6" value="C">50N</label>
+      <label class="opt"><input type="radio" name="q6" value="D">400N</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="7">
+    <span class="q-num">7</span><span class="q-title">过山车从最高点下滑时，能量是怎么转化的？</span><span class="q-tag">简单机械和功</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q7" value="A">动能 → 重力势能</label>
+      <label class="opt"><input type="radio" name="q7" value="B">重力势能 → 动能</label>
+      <label class="opt"><input type="radio" name="q7" value="C">弹性势能 → 动能</label>
+      <label class="opt"><input type="radio" name="q7" value="D">热能 → 动能</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="8">
+    <span class="q-num">8</span><span class="q-title">1 千克的棉花和 1 千克的铁块放在天平两端，会发生什么？</span><span class="q-tag">密度</span>
+    <div class="q-desc">虽然它们体积完全不同……</div>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q8" value="A">铁块那端下沉</label>
+      <label class="opt"><input type="radio" name="q8" value="B">棉花那端下沉</label>
+      <label class="opt"><input type="radio" name="q8" value="C">天平保持平衡</label>
+      <label class="opt"><input type="radio" name="q8" value="D">取决于棉花是否蓬松</label>
+    </div>
+  </div>
+
+  <!-- === 声现象（9-10） === -->
+  <div class="quiz-q" data-q="9">
+    <span class="q-num">9</span><span class="q-title">宇航员在月球上面对面说话，为什么听不见对方的声音？</span><span class="q-tag">声现象</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q9" value="A">月球引力太小，声音传不远</label>
+      <label class="opt"><input type="radio" name="q9" value="B">月球表面是真空，没有传声介质</label>
+      <label class="opt"><input type="radio" name="q9" value="C">宇航服太厚，挡住了声音</label>
+      <label class="opt"><input type="radio" name="q9" value="D">月球上温度太低，声音被冻住了</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="10">
+    <span class="q-num">10</span><span class="q-title">往水瓶里吹气，水越多音调越___；敲击同一个水瓶，水越多音调越___。</span><span class="q-tag">声现象</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q10" value="A">高 / 高</label>
+      <label class="opt"><input type="radio" name="q10" value="B">低 / 低</label>
+      <label class="opt"><input type="radio" name="q10" value="C">高 / 低</label>
+      <label class="opt"><input type="radio" name="q10" value="D">低 / 高</label>
+    </div>
+  </div>
+
+  <!-- === 光现象（11-13） === -->
+  <div class="quiz-q" data-q="11">
+    <span class="q-num">11</span><span class="q-title">站在平面镜前 2 米处，镜中的像离你多远？</span><span class="q-tag">光现象</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q11" value="A">1 米</label>
+      <label class="opt"><input type="radio" name="q11" value="B">2 米</label>
+      <label class="opt"><input type="radio" name="q11" value="C">4 米</label>
+      <label class="opt"><input type="radio" name="q11" value="D">0 米（像就在镜面上）</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="12">
+    <span class="q-num">12</span><span class="q-title">用凸透镜做放大镜时，物体应该放在什么位置？</span><span class="q-tag">光现象</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q12" value="A">大于 2 倍焦距</label>
+      <label class="opt"><input type="radio" name="q12" value="B">1 倍焦距和 2 倍焦距之间</label>
+      <label class="opt"><input type="radio" name="q12" value="C">1 倍焦距以内</label>
+      <label class="opt"><input type="radio" name="q12" value="D">等于 1 倍焦距</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="13">
+    <span class="q-num">13</span><span class="q-title">筷子斜插入水中看起来"折断"了，这是因为？</span><span class="q-tag">光现象</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q13" value="A">光的反射</label>
+      <label class="opt"><input type="radio" name="q13" value="B">光的折射</label>
+      <label class="opt"><input type="radio" name="q13" value="C">光的直线传播</label>
+      <label class="opt"><input type="radio" name="q13" value="D">光的散射</label>
+    </div>
+  </div>
+
+  <!-- === 电学（14-16） === -->
+  <div class="quiz-q" data-q="14">
+    <span class="q-num">14</span><span class="q-title">欧姆定律的公式是？</span><span class="q-tag">电学</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q14" value="A">P = UI</label>
+      <label class="opt"><input type="radio" name="q14" value="B">I = U / R</label>
+      <label class="opt"><input type="radio" name="q14" value="C">W = UIt</label>
+      <label class="opt"><input type="radio" name="q14" value="D">Q = I²Rt</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="15">
+    <span class="q-num">15</span><span class="q-title">家用电器（冰箱、电视、空调）在电路中的连接方式是？</span><span class="q-tag">电学</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q15" value="A">串联</label>
+      <label class="opt"><input type="radio" name="q15" value="B">并联</label>
+      <label class="opt"><input type="radio" name="q15" value="C">一部分串联、一部分并联</label>
+      <label class="opt"><input type="radio" name="q15" value="D">混联</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="16">
+    <span class="q-num">16</span><span class="q-title">小鸟站在高压线上为什么不会触电？</span><span class="q-tag">电学</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q16" value="A">小鸟的身体不导电</label>
+      <label class="opt"><input type="radio" name="q16" value="B">高压线的电压不够高</label>
+      <label class="opt"><input type="radio" name="q16" value="C">小鸟两脚之间电压差极小</label>
+      <label class="opt"><input type="radio" name="q16" value="D">小鸟的脚有绝缘层</label>
+    </div>
+  </div>
+
+  <!-- === 热学（17-18） === -->
+  <div class="quiz-q" data-q="17">
+    <span class="q-num">17</span><span class="q-title">"下雪不冷化雪冷"的科学解释是？</span><span class="q-tag">热学</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q17" value="A">雪熔化时吸收热量</label>
+      <label class="opt"><input type="radio" name="q17" value="B">雪看起来就冷</label>
+      <label class="opt"><input type="radio" name="q17" value="C">雪凝固时放出热量</label>
+      <label class="opt"><input type="radio" name="q17" value="D">冬天本来就应该冷</label>
+    </div>
+  </div>
+
+  <div class="quiz-q" data-q="18">
+    <span class="q-num">18</span><span class="q-title">沿海地区昼夜温差比内陆小，主要是因为？</span><span class="q-tag">热学</span>
+    <div class="options">
+      <label class="opt"><input type="radio" name="q18" value="A">海边空气流动快</label>
+      <label class="opt"><input type="radio" name="q18" value="B">水的比热容大，能缓冲温度变化</label>
+      <label class="opt"><input type="radio" name="q18" value="C">海风把热量带走了</label>
+      <label class="opt"><input type="radio" name="q18" value="D">海水蒸发吸收了热量</label>
+    </div>
+  </div>
+</div>
+
+<div class="quiz-actions">
+  <button class="btn-submit" onclick="submitQuiz()">&#128220; 交卷看成绩</button>
+  <button class="btn-retry" id="btnRetry" onclick="retryQuiz()" style="display:none;">&#128260; 重新挑战</button>
+</div>
+
+<div class="result-card" id="resultCard">
+  <div class="score-num" id="scoreNum"></div>
+  <div class="score-message" id="scoreMsg"></div>
+  <div class="detail" id="scoreDetail"></div>
+</div>
+
+</div>
+
+<script>
+var answers={
+  'q1':'B','q2':'B','q3':'B','q4':'C','q5':'A','q6':'B','q7':'B','q8':'C',
+  'q9':'B','q10':'C','q11':'C','q12':'C','q13':'B','q14':'B','q15':'B','q16':'C',
+  'q17':'A','q18':'B'
+};
+
+document.querySelectorAll('.quiz-q .opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    var q=this.closest('.quiz-q');
+    q.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});
+    this.classList.add('selected');
+  });
+});
+
+function submitQuiz(){
+  var score=0,total=18,detail=[];
+  for(var i=1;i<=total;i++){
+    var q=document.querySelector('[data-q="'+i+'"]');
+    var selected=q.querySelector('input:checked');
+    var mark='';
+    if(selected&&selected.value===answers['q'+i]){score++;mark='<span class="correct-mark">✓ 正确</span>'}
+    else if(selected){mark='<span class="wrong-mark">✗ 正确答案：'+answers['q'+i]+'</span>'}
+    else{mark='<span class="wrong-mark">✗ 未作答，正确答案：'+answers['q'+i]+'</span>'}
+    detail.push('第'+i+'题 '+mark);
+  }
+
+  var btn=document.querySelector('.btn-submit');
+  btn.style.display='none';
+  document.getElementById('btnRetry').style.display='inline-block';
+
+  var card=document.getElementById('resultCard');
+  card.classList.add('show');
+  document.getElementById('scoreNum').textContent=score+' / 18';
+  document.getElementById('scoreNum').style.color=score>=16?'#5B8A6A':score>=12?'#C4A060':score>=8?'#C4708A':'#C4708A';
+
+  var msg='';
+  if(score===18)msg='&#127775; 满分通关！你就是物理小学霸！';
+  else if(score>=16)msg='&#128079; 太厉害了！差一点就满分啦～';
+  else if(score>=12)msg='&#128170; 不错哦！再巩固一下薄弱点就更棒了！';
+  else if(score>=8)msg='&#128218; 加油！把错题对应的章节再看一遍吧～';
+  else if(score>=4)msg='&#128150; 别灰心！从头看一遍，物理其实很有趣！';
+  else msg='&#127775; 万事开头难，点"重新挑战"再来一次！';
+  document.getElementById('scoreMsg').textContent=msg;
+  document.getElementById('scoreDetail').innerHTML=detail.join('<br>');
+}
+
+function retryQuiz(){
+  document.querySelectorAll('.quiz-q input[type=radio]').forEach(function(r){r.checked=false});
+  document.querySelectorAll('.quiz-q .opt').forEach(function(o){o.classList.remove('selected')});
+  document.querySelector('.btn-submit').style.display='inline-block';
+  document.getElementById('btnRetry').style.display='none';
+  document.getElementById('resultCard').classList.remove('show');
+}
+</script>
+
+</body>
+</html>

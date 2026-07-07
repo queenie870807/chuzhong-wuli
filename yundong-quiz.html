@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第一章 运动和力 · 测验 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.quiz-wrap { max-width: 780px; margin: 0 auto; }
+.quiz-header { text-align: center; margin: 32px 0 24px; }
+.quiz-header h2 { font-size: 24px; color: #C4708A; }
+.quiz-header p { color: #7B758A; font-size: 15px; margin-top: 4px; }
+.q-section { margin: 32px 0 16px; }
+.q-section h3 { font-size: 18px; color: #C4708A; padding-bottom: 8px; border-bottom: 2px dashed rgba(232,160,191,0.3); margin-bottom: 14px; }
+.quiz-q { background: #FFF; border-radius: 18px; padding: 18px 22px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1.5px solid #fde8f0; }
+.quiz-q .q-num { display: inline-block; background: linear-gradient(135deg, #E8A0BF, #D485A8); color: #fff;
+  min-width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px;
+  font-weight: 700; font-size: 13px; margin-right: 8px; }
+.quiz-q .q-title { font-size: 16px; font-weight: 700; color: #4A4458; display: inline; line-height: 1.6; }
+.quiz-q .options { margin: 8px 0 0 36px; display: flex; flex-direction: column; gap: 5px; }
+.quiz-q .opt { display: flex; align-items: center; gap: 8px; padding: 7px 12px;
+  border-radius: 10px; border: 1.5px solid transparent; cursor: pointer;
+  transition: all 0.15s; font-size: 15px; background: #FFF5F8; }
+.quiz-q .opt:hover { border-color: rgba(232,160,191,0.4); background: #FFFDF9; }
+.quiz-q .opt input[type=radio] { accent-color: #C4708A; transform: scale(1.05); }
+.quiz-q .opt.selected { border-color: #E8A0BF; background: #FDE8F0; }
+.quiz-q.correct-q { border-color: #8CC4A0; background: #F4FAF6; }
+.quiz-q.wrong-q { border-color: #E8A0BF; background: #FFF5F8; }
+.feedback { font-size: 13px; margin: 4px 0 0 36px; display: none; }
+.feedback.correct { display: block; color: #5B8A6A; }
+.feedback.wrong { display: block; color: #C4708A; }
+.quiz-actions { text-align: center; margin: 32px 0 16px; }
+.btn-submit, .btn-retry { padding: 12px 40px; border-radius: 30px; border: none; font-size: 17px;
+  font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: var(--font-title); }
+.btn-submit { background: linear-gradient(135deg, #E8A0BF, #D485A8); color: #fff; }
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(212,133,168,0.4); }
+.btn-retry { background: #FDE8F0; color: #C4708A; margin-left: 12px; }
+.btn-retry:hover { background: #FAD3E0; }
+.result-card { display: none; max-width: 600px; margin: 24px auto; text-align: center;
+  background: #FFF; border-radius: 20px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.result-card.show { display: block; }
+.result-card .score-num { font-size: 3rem; font-weight: 800; }
+@media print { .top-nav, .quiz-actions, .page-nav, .result-card { display: none; } .quiz-q { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; } .quiz-q .opt { background: #fff; } }
+@media (max-width: 640px) { .quiz-q { padding: 14px 16px; } .quiz-q .options { margin-left: 0; } .quiz-q .q-title { font-size: 15px; } }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">›</span><a href="yundong.html">第一章 运动和力</a><span class="sep">›</span><span>章节测验</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html" class="active">运动和力</a>
+    <a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a>
+    <a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a>
+    <a href="re.html">热学</a>
+  </div>
+</nav>
+<div class="container"><div class="quiz-wrap">
+<div class="quiz-header"><h2>第一章 运动和力 · 章节测验</h2><p>共 50 题，满分 50 分。</p></div>
+<div id="quizForm">
+
+<div class="q-section"><h3>一、参照物与运动描述（第 1-8 题）</h3></div>
+<div class="quiz-q" data-q="1"><span class="q-num">1</span><span class="q-title">描述一个物体运动时，被选作标准的物体叫做？</span><div class="options">
+<label class="opt"><input type="radio" name="q1" value="A">运动体</label>
+<label class="opt"><input type="radio" name="q1" value="B">参照物</label>
+<label class="opt"><input type="radio" name="q1" value="C">静止体</label>
+<label class="opt"><input type="radio" name="q1" value="D">研究对象</label></div><div class="feedback" id="fb1"></div></div>
+
+<div class="quiz-q" data-q="2"><span class="q-num">2</span><span class="q-title">"两岸青山相对出，孤帆一片日边来"中，以什么为参照物青山是运动的？</span><div class="options">
+<label class="opt"><input type="radio" name="q2" value="A">河岸</label>
+<label class="opt"><input type="radio" name="q2" value="B">行船</label>
+<label class="opt"><input type="radio" name="q2" value="C">太阳</label>
+<label class="opt"><input type="radio" name="q2" value="D">地面</label></div><div class="feedback" id="fb2"></div></div>
+
+<div class="quiz-q" data-q="3"><span class="q-num">3</span><span class="q-title">坐在行驶的公交车上，以路旁的树为参照物，乘客是？</span><div class="options">
+<label class="opt"><input type="radio" name="q3" value="A">静止的</label>
+<label class="opt"><input type="radio" name="q3" value="B">运动的</label>
+<label class="opt"><input type="radio" name="q3" value="C">有时静止有时运动</label>
+<label class="opt"><input type="radio" name="q3" value="D">无法判断</label></div><div class="feedback" id="fb3"></div></div>
+
+<div class="quiz-q" data-q="4"><span class="q-num">4</span><span class="q-title">下列关于运动和静止的说法，正确的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q4" value="A">地球是绝对静止的</label>
+<label class="opt"><input type="radio" name="q4" value="B">运动和静止都是相对的</label>
+<label class="opt"><input type="radio" name="q4" value="C">只有静止的物体才能作参照物</label>
+<label class="opt"><input type="radio" name="q4" value="D">参照物只能选地面</label></div><div class="feedback" id="fb4"></div></div>
+
+<div class="quiz-q" data-q="5"><span class="q-num">5</span><span class="q-title">下列描述中，属于机械运动的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q5" value="A">铁钉生锈</label>
+<label class="opt"><input type="radio" name="q5" value="B">种子发芽</label>
+<label class="opt"><input type="radio" name="q5" value="C">行星绕太阳转动</label>
+<label class="opt"><input type="radio" name="q5" value="D">冰雪融化</label></div><div class="feedback" id="fb5"></div></div>
+
+<div class="quiz-q" data-q="6"><span class="q-num">6</span><span class="q-title">电梯匀速上升时，以电梯为参照物，电梯里的人？</span><div class="options">
+<label class="opt"><input type="radio" name="q6" value="A">向上运动</label>
+<label class="opt"><input type="radio" name="q6" value="B">向下运动</label>
+<label class="opt"><input type="radio" name="q6" value="C">静止</label>
+<label class="opt"><input type="radio" name="q6" value="D">无法判断</label></div><div class="feedback" id="fb6"></div></div>
+
+<div class="quiz-q" data-q="7"><span class="q-num">7</span><span class="q-title">速度的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q7" value="A">km/h</label>
+<label class="opt"><input type="radio" name="q7" value="B">m/s</label>
+<label class="opt"><input type="radio" name="q7" value="C">m/h</label>
+<label class="opt"><input type="radio" name="q7" value="D">cm/s</label></div><div class="feedback" id="fb7"></div></div>
+
+<div class="quiz-q" data-q="8"><span class="q-num">8</span><span class="q-title">36 km/h 等于多少 m/s？</span><div class="options">
+<label class="opt"><input type="radio" name="q8" value="A">5 m/s</label>
+<label class="opt"><input type="radio" name="q8" value="B">10 m/s</label>
+<label class="opt"><input type="radio" name="q8" value="C">20 m/s</label>
+<label class="opt"><input type="radio" name="q8" value="D">36 m/s</label></div><div class="feedback" id="fb8"></div></div>
+
+<div class="q-section"><h3>二、牛顿第一定律与惯性（第 9-17 题）</h3></div>
+<div class="quiz-q" data-q="9"><span class="q-num">9</span><span class="q-title">牛顿第一定律也称为？</span><div class="options">
+<label class="opt"><input type="radio" name="q9" value="A">万有引力定律</label>
+<label class="opt"><input type="radio" name="q9" value="B">惯性定律</label>
+<label class="opt"><input type="radio" name="q9" value="C">能量守恒定律</label>
+<label class="opt"><input type="radio" name="q9" value="D">动量守恒定律</label></div><div class="feedback" id="fb9"></div></div>
+
+<div class="quiz-q" data-q="10"><span class="q-num">10</span><span class="q-title">一切物体在不受外力作用时，总保持什么状态？</span><div class="options">
+<label class="opt"><input type="radio" name="q10" value="A">匀速直线运动状态</label>
+<label class="opt"><input type="radio" name="q10" value="B">静止状态</label>
+<label class="opt"><input type="radio" name="q10" value="C">静止或匀速直线运动状态</label>
+<label class="opt"><input type="radio" name="q10" value="D">加速运动状态</label></div><div class="feedback" id="fb10"></div></div>
+
+<div class="quiz-q" data-q="11"><span class="q-num">11</span><span class="q-title">惯性的大小只与什么因素有关？</span><div class="options">
+<label class="opt"><input type="radio" name="q11" value="A">速度</label>
+<label class="opt"><input type="radio" name="q11" value="B">质量</label>
+<label class="opt"><input type="radio" name="q11" value="C">形状</label>
+<label class="opt"><input type="radio" name="q11" value="D">位置</label></div><div class="feedback" id="fb11"></div></div>
+
+<div class="quiz-q" data-q="12"><span class="q-num">12</span><span class="q-title">汽车急刹车时，乘客身体向前倾，这是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q12" value="A">乘客受到向前的力</label>
+<label class="opt"><input type="radio" name="q12" value="B">汽车有惯性</label>
+<label class="opt"><input type="radio" name="q12" value="C">乘客具有惯性</label>
+<label class="opt"><input type="radio" name="q12" value="D">汽车受到向后的力</label></div><div class="feedback" id="fb12"></div></div>
+
+<div class="quiz-q" data-q="13"><span class="q-num">13</span><span class="q-title">下列现象中不能用惯性解释的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q13" value="A">跑步的人被石头绊倒向前摔</label>
+<label class="opt"><input type="radio" name="q13" value="B">锤头松了，把锤柄在地上撞几下就紧了</label>
+<label class="opt"><input type="radio" name="q13" value="C">用力拉弹簧，弹簧伸长</label>
+<label class="opt"><input type="radio" name="q13" value="D">子弹射出枪口后继续飞行</label></div><div class="feedback" id="fb13"></div></div>
+
+<div class="quiz-q" data-q="14"><span class="q-num">14</span><span class="q-title">子弹从枪膛射出后能继续向前飞行，是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q14" value="A">子弹受到火药的推力</label>
+<label class="opt"><input type="radio" name="q14" value="B">子弹具有惯性</label>
+<label class="opt"><input type="radio" name="q14" value="C">子弹受到空气的推力</label>
+<label class="opt"><input type="radio" name="q14" value="D">子弹的重力作用</label></div><div class="feedback" id="fb14"></div></div>
+
+<div class="quiz-q" data-q="15"><span class="q-num">15</span><span class="q-title">关于惯性，下列说法正确的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q15" value="A">只有运动的物体有惯性</label>
+<label class="opt"><input type="radio" name="q15" value="B">只有静止的物体有惯性</label>
+<label class="opt"><input type="radio" name="q15" value="C">一切物体在任何情况下都有惯性</label>
+<label class="opt"><input type="radio" name="q15" value="D">速度大的物体惯性大</label></div><div class="feedback" id="fb15"></div></div>
+
+<div class="quiz-q" data-q="16"><span class="q-num">16</span><span class="q-title">跳远运动员起跳前先助跑一段距离，目的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q16" value="A">增大惯性</label>
+<label class="opt"><input type="radio" name="q16" value="B">利用惯性提高成绩</label>
+<label class="opt"><input type="radio" name="q16" value="C">减小空气阻力</label>
+<label class="opt"><input type="radio" name="q16" value="D">增大地面摩擦力</label></div><div class="feedback" id="fb16"></div></div>
+
+<div class="quiz-q" data-q="17"><span class="q-num">17</span><span class="q-title">在匀速直线行驶的火车车厢里，竖直向上跳起，会落在？</span><div class="options">
+<label class="opt"><input type="radio" name="q17" value="A">起跳点的前方</label>
+<label class="opt"><input type="radio" name="q17" value="B">起跳点的后方</label>
+<label class="opt"><input type="radio" name="q17" value="C">原地（起跳点）</label>
+<label class="opt"><input type="radio" name="q17" value="D">车厢外面</label></div><div class="feedback" id="fb17"></div></div>
+
+<div class="q-section"><h3>三、二力平衡与力的合成（第 18-25 题）</h3></div>
+<div class="quiz-q" data-q="18"><span class="q-num">18</span><span class="q-title">二力平衡的条件不包括？</span><div class="options">
+<label class="opt"><input type="radio" name="q18" value="A">两个力大小相等</label>
+<label class="opt"><input type="radio" name="q18" value="B">两个力方向相反</label>
+<label class="opt"><input type="radio" name="q18" value="C">两个力作用在同一物体上</label>
+<label class="opt"><input type="radio" name="q18" value="D">两个力的大小可以不相等</label></div><div class="feedback" id="fb18"></div></div>
+
+<div class="quiz-q" data-q="19"><span class="q-num">19</span><span class="q-title">放在水平桌面上的书，受到的重力和桌面对书的支持力是一对？</span><div class="options">
+<label class="opt"><input type="radio" name="q19" value="A">相互作用力</label>
+<label class="opt"><input type="radio" name="q19" value="B">平衡力</label>
+<label class="opt"><input type="radio" name="q19" value="C">都不是</label>
+<label class="opt"><input type="radio" name="q19" value="D">既不是平衡力也不是相互作用力</label></div><div class="feedback" id="fb19"></div></div>
+
+<div class="quiz-q" data-q="20"><span class="q-num">20</span><span class="q-title">同一物体受同一直线上两个力 F₁=8N 向右，F₂=3N 向右，合力为？</span><div class="options">
+<label class="opt"><input type="radio" name="q20" value="A">5N 向左</label>
+<label class="opt"><input type="radio" name="q20" value="B">11N 向右</label>
+<label class="opt"><input type="radio" name="q20" value="C">5N 向右</label>
+<label class="opt"><input type="radio" name="q20" value="D">11N 向左</label></div><div class="feedback" id="fb20"></div></div>
+
+<div class="quiz-q" data-q="21"><span class="q-num">21</span><span class="q-title">同一物体受同一直线上两个力，F₁=10N 向右，F₂=4N 向左，合力为？</span><div class="options">
+<label class="opt"><input type="radio" name="q21" value="A">14N 向右</label>
+<label class="opt"><input type="radio" name="q21" value="B">6N 向右</label>
+<label class="opt"><input type="radio" name="q21" value="C">6N 向左</label>
+<label class="opt"><input type="radio" name="q21" value="D">14N 向左</label></div><div class="feedback" id="fb21"></div></div>
+
+<div class="quiz-q" data-q="22"><span class="q-num">22</span><span class="q-title">起重机吊着重物匀速上升，拉力与重力的关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q22" value="A">拉力大于重力</label>
+<label class="opt"><input type="radio" name="q22" value="B">拉力小于重力</label>
+<label class="opt"><input type="radio" name="q22" value="C">拉力等于重力</label>
+<label class="opt"><input type="radio" name="q22" value="D">无法判断</label></div><div class="feedback" id="fb22"></div></div>
+
+<div class="quiz-q" data-q="23"><span class="q-num">23</span><span class="q-title">在平衡力作用下，物体的运动状态？</span><div class="options">
+<label class="opt"><input type="radio" name="q23" value="A">一定是静止的</label>
+<label class="opt"><input type="radio" name="q23" value="B">一定是匀速直线运动</label>
+<label class="opt"><input type="radio" name="q23" value="C">保持静止或匀速直线运动状态</label>
+<label class="opt"><input type="radio" name="q23" value="D">一定是加速运动</label></div><div class="feedback" id="fb23"></div></div>
+
+<div class="quiz-q" data-q="24"><span class="q-num">24</span><span class="q-title">一对相互作用力与一对平衡力的本质区别是？</span><div class="options">
+<label class="opt"><input type="radio" name="q24" value="A">大小不同</label>
+<label class="opt"><input type="radio" name="q24" value="B">方向不同</label>
+<label class="opt"><input type="radio" name="q24" value="C">相互作用力作用在两个物体上，平衡力作用在同一物体上</label>
+<label class="opt"><input type="radio" name="q24" value="D">没有区别</label></div><div class="feedback" id="fb24"></div></div>
+
+<div class="quiz-q" data-q="25"><span class="q-num">25</span><span class="q-title">用绳子拉一个木块在水平桌面上做匀速直线运动，木块受到的拉力与桌面对它的摩擦力是？</span><div class="options">
+<label class="opt"><input type="radio" name="q25" value="A">一对平衡力</label>
+<label class="opt"><input type="radio" name="q25" value="B">一对相互作用力</label>
+<label class="opt"><input type="radio" name="q25" value="C">既不是平衡力也不是相互作用力</label>
+<label class="opt"><input type="radio" name="q25" value="D">拉力大于摩擦力</label></div><div class="feedback" id="fb25"></div></div>
+
+<div class="q-section"><h3>四、摩擦力（第 26-33 题）</h3></div>
+<div class="quiz-q" data-q="26"><span class="q-num">26</span><span class="q-title">摩擦力产生的条件不包括？</span><div class="options">
+<label class="opt"><input type="radio" name="q26" value="A">两个物体相互接触</label>
+<label class="opt"><input type="radio" name="q26" value="B">接触面粗糙</label>
+<label class="opt"><input type="radio" name="q26" value="C">物体必须运动起来</label>
+<label class="opt"><input type="radio" name="q26" value="D">有相对运动或相对运动趋势</label></div><div class="feedback" id="fb26"></div></div>
+
+<div class="quiz-q" data-q="27"><span class="q-num">27</span><span class="q-title">滑动摩擦力的大小与哪些因素有关？</span><div class="options">
+<label class="opt"><input type="radio" name="q27" value="A">只与压力有关</label>
+<label class="opt"><input type="radio" name="q27" value="B">只与接触面粗糙程度有关</label>
+<label class="opt"><input type="radio" name="q27" value="C">与压力和接触面粗糙程度都有关</label>
+<label class="opt"><input type="radio" name="q27" value="D">与接触面积有关</label></div><div class="feedback" id="fb27"></div></div>
+
+<div class="quiz-q" data-q="28"><span class="q-num">28</span><span class="q-title">轮胎上设计花纹的目的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q28" value="A">增大摩擦力</label>
+<label class="opt"><input type="radio" name="q28" value="B">减小摩擦力</label>
+<label class="opt"><input type="radio" name="q28" value="C">美观</label>
+<label class="opt"><input type="radio" name="q28" value="D">减小压强</label></div><div class="feedback" id="fb28"></div></div>
+
+<div class="quiz-q" data-q="29"><span class="q-num">29</span><span class="q-title">以下属于增大有益摩擦的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q29" value="A">轴承中加润滑油</label>
+<label class="opt"><input type="radio" name="q29" value="B">冰壶比赛中用冰刷擦冰</label>
+<label class="opt"><input type="radio" name="q29" value="C">运动员手上涂镁粉</label>
+<label class="opt"><input type="radio" name="q29" value="D">气垫船底部喷气</label></div><div class="feedback" id="fb29"></div></div>
+
+<div class="quiz-q" data-q="30"><span class="q-num">30</span><span class="q-title">以下属于减小有害摩擦的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q30" value="A">自行车刹车皮增加摩擦</label>
+<label class="opt"><input type="radio" name="q30" value="B">鞋底刻花纹</label>
+<label class="opt"><input type="radio" name="q30" value="C">齿轮间加润滑油</label>
+<label class="opt"><input type="radio" name="q30" value="D">自行车的车闸</label></div><div class="feedback" id="fb30"></div></div>
+
+<div class="quiz-q" data-q="31"><span class="q-num">31</span><span class="q-title">滚动摩擦与滑动摩擦相比？</span><div class="options">
+<label class="opt"><input type="radio" name="q31" value="A">滚动摩擦较大</label>
+<label class="opt"><input type="radio" name="q31" value="B">两者相等</label>
+<label class="opt"><input type="radio" name="q31" value="C">滚动摩擦较小</label>
+<label class="opt"><input type="radio" name="q31" value="D">无法比较</label></div><div class="feedback" id="fb31"></div></div>
+
+<div class="quiz-q" data-q="32"><span class="q-num">32</span><span class="q-title">人走路时，鞋底与地面之间的摩擦属于？</span><div class="options">
+<label class="opt"><input type="radio" name="q32" value="A">滑动摩擦</label>
+<label class="opt"><input type="radio" name="q32" value="B">静摩擦</label>
+<label class="opt"><input type="radio" name="q32" value="C">滚动摩擦</label>
+<label class="opt"><input type="radio" name="q32" value="D">没有摩擦</label></div><div class="feedback" id="fb32"></div></div>
+
+<div class="quiz-q" data-q="33"><span class="q-num">33</span><span class="q-title">在水平面上用弹簧测力计匀速拉动物体，弹簧测力计示数为 5N，则摩擦力为？</span><div class="options">
+<label class="opt"><input type="radio" name="q33" value="A">0N</label>
+<label class="opt"><input type="radio" name="q33" value="B">5N</label>
+<label class="opt"><input type="radio" name="q33" value="C">大于 5N</label>
+<label class="opt"><input type="radio" name="q33" value="D">小于 5N</label></div><div class="feedback" id="fb33"></div></div>
+
+<div class="q-section"><h3>五、弹力、重力与弹簧测力计（第 34-41 题）</h3></div>
+<div class="quiz-q" data-q="34"><span class="q-num">34</span><span class="q-title">重力是由于什么而产生的？</span><div class="options">
+<label class="opt"><input type="radio" name="q34" value="A">物体的质量</label>
+<label class="opt"><input type="radio" name="q34" value="B">地球的吸引</label>
+<label class="opt"><input type="radio" name="q34" value="C">大气的压力</label>
+<label class="opt"><input type="radio" name="q34" value="D">物体的惯性</label></div><div class="feedback" id="fb34"></div></div>
+
+<div class="quiz-q" data-q="35"><span class="q-num">35</span><span class="q-title">重力的方向总是？</span><div class="options">
+<label class="opt"><input type="radio" name="q35" value="A">垂直向下</label>
+<label class="opt"><input type="radio" name="q35" value="B">竖直向下</label>
+<label class="opt"><input type="radio" name="q35" value="C">指向地心</label>
+<label class="opt"><input type="radio" name="q35" value="D">竖直向下（即指向地心）</label></div><div class="feedback" id="fb35"></div></div>
+
+<div class="quiz-q" data-q="36"><span class="q-num">36</span><span class="q-title">公式 G=mg 中，g 的近似值为？</span><div class="options">
+<label class="opt"><input type="radio" name="q36" value="A">9.8 m/s</label>
+<label class="opt"><input type="radio" name="q36" value="B">9.8 N/kg</label>
+<label class="opt"><input type="radio" name="q36" value="C">10 m/s²</label>
+<label class="opt"><input type="radio" name="q36" value="D">98 N/kg</label></div><div class="feedback" id="fb36"></div></div>
+
+<div class="quiz-q" data-q="37"><span class="q-num">37</span><span class="q-title">弹簧测力计的原理是？</span><div class="options">
+<label class="opt"><input type="radio" name="q37" value="A">弹簧受到拉力越大越长，无限制</label>
+<label class="opt"><input type="radio" name="q37" value="B">在弹性限度内，弹簧的伸长量与拉力成正比</label>
+<label class="opt"><input type="radio" name="q37" value="C">弹簧的长度与拉力成正比</label>
+<label class="opt"><input type="radio" name="q37" value="D">弹簧的伸长量与拉力成反比</label></div><div class="feedback" id="fb37"></div></div>
+
+<div class="quiz-q" data-q="38"><span class="q-num">38</span><span class="q-title">一个质量为 5kg 的物体，受到的重力大约是多少？</span><div class="options">
+<label class="opt"><input type="radio" name="q38" value="A">5N</label>
+<label class="opt"><input type="radio" name="q38" value="B">49N</label>
+<label class="opt"><input type="radio" name="q38" value="C">98N</label>
+<label class="opt"><input type="radio" name="q38" value="D">500N</label></div><div class="feedback" id="fb38"></div></div>
+
+<div class="quiz-q" data-q="39"><span class="q-num">39</span><span class="q-title">弹力产生的条件是？</span><div class="options">
+<label class="opt"><input type="radio" name="q39" value="A">两个物体接触</label>
+<label class="opt"><input type="radio" name="q39" value="B">物体发生弹性形变</label>
+<label class="opt"><input type="radio" name="q39" value="C">物体发生形变</label>
+<label class="opt"><input type="radio" name="q39" value="D">物体有质量</label></div><div class="feedback" id="fb39"></div></div>
+
+<div class="quiz-q" data-q="40"><span class="q-num">40</span><span class="q-title">重力的作用点叫做？</span><div class="options">
+<label class="opt"><input type="radio" name="q40" value="A">重心</label>
+<label class="opt"><input type="radio" name="q40" value="B">支点</label>
+<label class="opt"><input type="radio" name="q40" value="C">作用点</label>
+<label class="opt"><input type="radio" name="q40" value="D">接触点</label></div><div class="feedback" id="fb40"></div></div>
+
+<div class="quiz-q" data-q="41"><span class="q-num">41</span><span class="q-title">使用弹簧测力计前，首先要做的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q41" value="A">估算被测力的大小</label>
+<label class="opt"><input type="radio" name="q41" value="B">校零（调零）</label>
+<label class="opt"><input type="radio" name="q41" value="C">检查量程</label>
+<label class="opt"><input type="radio" name="q41" value="D">拉动挂钩几次</label></div><div class="feedback" id="fb41"></div></div>
+
+<div class="q-section"><h3>六、s-t / v-t 图像与综合应用（第 42-50 题）</h3></div>
+<div class="quiz-q" data-q="42"><span class="q-num">42</span><span class="q-title">在 s-t 图像中，一条过原点的倾斜直线表示？</span><div class="options">
+<label class="opt"><input type="radio" name="q42" value="A">物体静止</label>
+<label class="opt"><input type="radio" name="q42" value="B">匀速直线运动</label>
+<label class="opt"><input type="radio" name="q42" value="C">加速运动</label>
+<label class="opt"><input type="radio" name="q42" value="D">减速运动</label></div><div class="feedback" id="fb42"></div></div>
+
+<div class="quiz-q" data-q="43"><span class="q-num">43</span><span class="q-title">在 v-t 图像中，一条平行于时间轴的水平直线表示？</span><div class="options">
+<label class="opt"><input type="radio" name="q43" value="A">物体静止</label>
+<label class="opt"><input type="radio" name="q43" value="B">匀速直线运动</label>
+<label class="opt"><input type="radio" name="q43" value="C">匀加速运动</label>
+<label class="opt"><input type="radio" name="q43" value="D">匀减速运动</label></div><div class="feedback" id="fb43"></div></div>
+
+<div class="quiz-q" data-q="44"><span class="q-num">44</span><span class="q-title">在 s-t 图像中，一条平行于时间轴的水平直线表示？</span><div class="options">
+<label class="opt"><input type="radio" name="q44" value="A">匀速直线运动</label>
+<label class="opt"><input type="radio" name="q44" value="B">变速运动</label>
+<label class="opt"><input type="radio" name="q44" value="C">静止</label>
+<label class="opt"><input type="radio" name="q44" value="D">无法判断</label></div><div class="feedback" id="fb44"></div></div>
+
+<div class="quiz-q" data-q="45"><span class="q-num">45</span><span class="q-title">牛顿第二定律的表达式为？</span><div class="options">
+<label class="opt"><input type="radio" name="q45" value="A">F = mv</label>
+<label class="opt"><input type="radio" name="q45" value="B">F = ma</label>
+<label class="opt"><input type="radio" name="q45" value="C">F = m/v</label>
+<label class="opt"><input type="radio" name="q45" value="D">F = a/m</label></div><div class="feedback" id="fb45"></div></div>
+
+<div class="quiz-q" data-q="46"><span class="q-num">46</span><span class="q-title">物体受到平衡力作用时，运动状态？</span><div class="options">
+<label class="opt"><input type="radio" name="q46" value="A">一定改变</label>
+<label class="opt"><input type="radio" name="q46" value="B">一定不改变</label>
+<label class="opt"><input type="radio" name="q46" value="C">可能改变</label>
+<label class="opt"><input type="radio" name="q46" value="D">无法判断</label></div><div class="feedback" id="fb46"></div></div>
+
+<div class="quiz-q" data-q="47"><span class="q-num">47</span><span class="q-title">力不是维持物体运动的原因，力是？</span><div class="options">
+<label class="opt"><input type="radio" name="q47" value="A">使物体运动的原因</label>
+<label class="opt"><input type="radio" name="q47" value="B">改变物体运动状态的原因</label>
+<label class="opt"><input type="radio" name="q47" value="C">使物体产生惯性的原因</label>
+<label class="opt"><input type="radio" name="q47" value="D">使物体保持静止的原因</label></div><div class="feedback" id="fb47"></div></div>
+
+<div class="quiz-q" data-q="48"><span class="q-num">48</span><span class="q-title">一辆车在 2s 内速度从 0 增加到 20 m/s，加速度大小为？</span><div class="options">
+<label class="opt"><input type="radio" name="q48" value="A">5 m/s²</label>
+<label class="opt"><input type="radio" name="q48" value="B">10 m/s²</label>
+<label class="opt"><input type="radio" name="q48" value="C">20 m/s²</label>
+<label class="opt"><input type="radio" name="q48" value="D">40 m/s²</label></div><div class="feedback" id="fb48"></div></div>
+
+<div class="quiz-q" data-q="49"><span class="q-num">49</span><span class="q-title">用弹簧测力计测量滑动摩擦力，必须让物体在水平面上做？</span><div class="options">
+<label class="opt"><input type="radio" name="q49" value="A">加速运动</label>
+<label class="opt"><input type="radio" name="q49" value="B">减速运动</label>
+<label class="opt"><input type="radio" name="q49" value="C">匀速直线运动</label>
+<label class="opt"><input type="radio" name="q49" value="D">任何运动都可以</label></div><div class="feedback" id="fb49"></div></div>
+
+<div class="quiz-q" data-q="50"><span class="q-num">50</span><span class="q-title">关于运动和力的关系，以下说法正确的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q50" value="A">物体受力就运动，不受力就静止</label>
+<label class="opt"><input type="radio" name="q50" value="B">力是维持物体运动的原因</label>
+<label class="opt"><input type="radio" name="q50" value="C">物体不受力时，一定静止</label>
+<label class="opt"><input type="radio" name="q50" value="D">力是改变物体运动状态的原因，不是维持运动的原因</label></div><div class="feedback" id="fb50"></div></div>
+
+</div>
+<div class="quiz-actions">
+  <button class="btn-submit" onclick="submitQuiz()">交卷看成绩</button>
+  <button class="btn-retry" id="btnRetry" onclick="retryQuiz()" style="display:none;">重新挑战</button>
+</div>
+<div class="result-card" id="resultCard">
+  <div class="score-num" id="scoreNum"></div>
+  <div class="score-message" id="scoreMsg" style="font-size:1.15rem;margin-top:8px;font-weight:600;"></div>
+</div>
+<div class="page-nav">
+  <a href="yundong.html" class="prev">← 第一章 运动和力</a>
+  <a href="yaqiang-quiz.html" class="next">第二章测验 →</a>
+</div>
+</div></div>
+
+<script>
+var answers={"q1":"B","q2":"B","q3":"B","q4":"B","q5":"C","q6":"C","q7":"B","q8":"B","q9":"B","q10":"C","q11":"B","q12":"C","q13":"C","q14":"B","q15":"C","q16":"B","q17":"C","q18":"D","q19":"B","q20":"B","q21":"B","q22":"C","q23":"C","q24":"C","q25":"A","q26":"C","q27":"C","q28":"A","q29":"C","q30":"C","q31":"C","q32":"B","q33":"B","q34":"B","q35":"B","q36":"B","q37":"B","q38":"B","q39":"B","q40":"A","q41":"B","q42":"B","q43":"B","q44":"C","q45":"B","q46":"B","q47":"B","q48":"B","q49":"C","q50":"D"};
+
+document.querySelectorAll('.quiz-q .opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    var q=this.closest('.quiz-q');
+    q.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});
+    this.classList.add('selected');
+  });
+});
+
+function submitQuiz(){
+  var score=0,total=50;
+  for(var i=1;i<=total;i++){
+    var q=document.querySelector('[data-q="'+i+'"]');
+    var selected=q.querySelector('input:checked');
+    var fb=document.getElementById('fb'+i);
+    if(selected && selected.value===answers['q'+i]){
+      score++;
+      fb.textContent='✓ 正确';
+      fb.className='feedback correct';
+      q.classList.add('correct-q');
+    }else if(selected){
+      fb.textContent='✗ 正确答案：'+answers['q'+i];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }else{
+      fb.textContent='✗ 未作答，正确答案：'+answers['q'+i];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }
+  }
+  document.querySelector('.btn-submit').style.display='none';
+  document.getElementById('btnRetry').style.display='inline-block';
+  var card=document.getElementById('resultCard');
+  card.classList.add('show');
+  document.getElementById('scoreNum').textContent=score+' / 50';
+  document.getElementById('scoreNum').style.color=score>=45?'#5B8A6A':score>=35?'#C4A060':score>=25?'#C4708A':'#C4708A';
+  var msg='';
+  if(score===50)msg='满分通关！运动和力达人！';
+  else if(score>=45)msg='非常棒！力和运动的知识很扎实～';
+  else if(score>=35)msg='不错！把错题对应的知识点再复习一下吧～';
+  else if(score>=25)msg='还需加强，建议回头看看第一章重点～';
+  else msg='加油！从头复习一遍，力和运动其实很有趣！';
+  document.getElementById('scoreMsg').textContent=msg;
+}
+
+function retryQuiz(){
+  document.querySelectorAll('.quiz-q input[type=radio]').forEach(function(r){r.checked=false});
+  document.querySelectorAll('.quiz-q .opt').forEach(function(o){o.classList.remove('selected')});
+  document.querySelectorAll('.quiz-q').forEach(function(q){q.classList.remove('correct-q','wrong-q')});
+  document.querySelectorAll('.feedback').forEach(function(f){f.className='feedback';f.textContent=''});
+  document.querySelector('.btn-submit').style.display='inline-block';
+  document.getElementById('btnRetry').style.display='none';
+  document.getElementById('resultCard').classList.remove('show');
+}
+</script>
+</body>
+</html>

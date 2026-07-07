@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第四章 密度 - 初中物理力学知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* === 密度对比天平 === */
+.illus-density { position:relative; width:200px; height:180px; }
+.illus-density .stand {
+  position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
+  width:6px; height:60px; background:#9B82B8; border-radius:3px;
+}
+.illus-density .base {
+  position:absolute; bottom:16px; left:55px;
+  width:90px; height:8px; background:#9B82B8; border-radius:4px;
+}
+.illus-density .beam {
+  position:absolute; bottom:72px; left:30px;
+  width:140px; height:5px; background:#B8A0D4; border-radius:3px;
+}
+.illus-density .cotton {
+  position:absolute; bottom:77px; left:22px;
+}
+.illus-density .cotton .clump {
+  width:50px; height:40px; background:radial-gradient(ellipse, #F8E8EE 40%, #E8D0DC 100%);
+  border-radius:50%; box-shadow:0 0 12px rgba(232,160,191,0.2);
+}
+.illus-density .cotton .clump2 {
+  position:absolute; top:-8px; left:8px;
+  width:34px; height:28px; background:radial-gradient(ellipse, #FFF 40%, #F8E8EE 100%);
+  border-radius:50%;
+}
+.illus-density .cotton-label {
+  position:absolute; bottom:60px; left:25px;
+  font-size:9px; color:#C4708A; font-weight:700; white-space:nowrap;
+  text-align:center;
+}
+.illus-density .iron {
+  position:absolute; bottom:77px; right:25px;
+}
+.illus-density .iron .block {
+  width:24px; height:24px; background:linear-gradient(135deg, #6A6A7A, #4A4A5A);
+  border-radius:4px; box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.illus-density .iron-label {
+  position:absolute; bottom:60px; right:16px;
+  font-size:9px; color:#4A4A5A; font-weight:700; white-space:nowrap;
+  text-align:center;
+}
+.illus-density .equal-sign {
+  position:absolute; bottom:86px; left:50%; transform:translateX(-50%);
+  font-size:16px; font-weight:700; color:#9B82B8;
+}
+.illus-density .mass-note {
+  position:absolute; bottom:2px; left:50%; transform:translateX(-50%);
+  font-size:11px; color:#7B5BAA; font-weight:700; white-space:nowrap;
+}
+
+/* === 测密度实验装置 === */
+.illus-measure { position:relative; width:200px; height:220px; }
+.illus-measure .cylinder {
+  position:absolute; bottom:20px; left:30px;
+  width:50px; height:140px;
+  border:3px solid #8BB8D6; border-radius:8px;
+  background:rgba(139,184,214,0.08);
+}
+.illus-measure .cylinder .water {
+  position:absolute; bottom:0; left:0; width:100%; height:90px;
+  background:rgba(139,184,214,0.3); border-radius:0 0 5px 5px;
+}
+.illus-measure .cylinder .scale1 {
+  position:absolute; top:20px; right:-28px; font-size:10px; font-weight:700; color:#6BA0C0;
+}
+.illus-measure .cylinder .scale2 {
+  position:absolute; top:60px; right:-28px; font-size:10px; font-weight:700; color:#C4708A;
+}
+.illus-measure .cylinder .v1-line {
+  position:absolute; top:30px; left:-20px; width:70px; border-top:2px dashed #6BA0C0;
+}
+.illus-measure .cylinder .v2-line {
+  position:absolute; top:70px; left:-20px; width:70px; border-top:2px dashed #C4708A;
+}
+.illus-measure .cylinder .v1-label { position:absolute; top:24px; left:-60px; font-size:9px; color:#6BA0C0; font-weight:700; }
+.illus-measure .cylinder .v2-label { position:absolute; top:64px; left:-60px; font-size:9px; color:#C4708A; font-weight:700; }
+.illus-measure .rock {
+  position:absolute; bottom:70px; left:40px;
+  width:26px; height:22px; background:linear-gradient(135deg, #8B7A6A, #6B5A4A);
+  border-radius:6px; opacity:0.8;
+}
+.illus-measure .scale-right {
+  position:absolute; bottom:20px; right:30px;
+  width:58px; height:80px;
+}
+.illus-measure .scale-right .pan {
+  position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  width:56px; height:8px; background:#9B82B8; border-radius:4px;
+}
+.illus-measure .scale-right .beam-s {
+  position:absolute; bottom:6px; left:50%; transform:translateX(-50%);
+  width:6px; height:50px; background:#9B82B8; border-radius:3px;
+}
+.illus-measure .scale-right .base-s {
+  position:absolute; bottom:2px; left:50%; transform:translateX(-50%);
+  width:44px; height:6px; background:#B8A0D4; border-radius:3px;
+}
+.illus-measure .label-tl {
+  position:absolute; top:0; left:25px; font-size:10px; font-weight:700; color:#6BA0C0;
+}
+.illus-measure .label-tr {
+  position:absolute; top:0; right:15px; font-size:10px; font-weight:700; color:#9B82B8;
+}
+.illus-measure .arrow-down-s {
+  position:absolute; bottom:86px; left:45px;
+  width:0; height:0;
+  border-left:5px solid transparent; border-right:5px solid transparent;
+  border-top:8px solid #C4708A;
+}
+
+/* === 盐水选种示意 === */
+.illus-seed { position:relative; width:200px; height:180px; }
+.illus-seed .beaker {
+  position:absolute; bottom:10px; left:60px; width:80px; height:90px;
+  border:3px solid #9B82B8; border-radius:0 0 8px 8px; border-top:none;
+  background:rgba(180,160,210,0.12);
+}
+.illus-seed .water-salt {
+  position:absolute; bottom:12px; left:62px; width:76px; height:70px;
+  background:rgba(139,184,214,0.25); border-radius:0 0 5px 5px;
+}
+.illus-seed .seed-good {
+  position:absolute; bottom:40px; left:78px;
+  width:14px; height:10px; background:#C4708A; border-radius:50%;
+}
+.illus-seed .seed-good::after { content:"好种子"; position:absolute; top:-14px; left:50%; transform:translateX(-50%); font-size:8px; color:#5B8A6A; font-weight:700; white-space:nowrap; }
+.illus-seed .seed-bad {
+  position:absolute; top:46px; left:75px;
+  width:12px; height:9px; background:#ccc; border-radius:50%;
+}
+.illus-seed .seed-bad::after { content:"瘪种子"; position:absolute; top:-14px; left:50%; transform:translateX(-50%); font-size:8px; color:#999; font-weight:700; white-space:nowrap; }
+.illus-seed .arrow-float {
+  position:absolute; top:43px; left:92px;
+  width:0; height:0;
+  border-left:6px solid transparent; border-right:6px solid transparent;
+  border-top:14px solid #ccc;
+}
+.illus-seed .arrow-sink {
+  position:absolute; bottom:50px; left:82px;
+  width:0; height:0;
+  border-left:6px solid transparent; border-right:6px solid transparent;
+  border-bottom:14px solid #C4708A;
+}
+.illus-seed .label-salt {
+  position:absolute; bottom:2px; left:50%; transform:translateX(-50%);
+  font-size:10px; color:#7B5BAA; font-weight:700;
+}
+
+/* === 温度计（密度与温度） === */
+.illus-temp-density { position:relative; width:200px; height:200px; }
+.illus-temp-density .thermo {
+  position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+  width:24px; height:160px;
+  background:rgba(139,184,214,0.08); border:3px solid #8BB8D6; border-radius:14px;
+}
+.illus-temp-density .thermo .bulb {
+  position:absolute; bottom:-14px; left:50%; transform:translateX(-50%);
+  width:28px; height:28px; background:#E8A0BF; border-radius:50%;
+  border:3px solid #8BB8D6;
+}
+.illus-temp-density .thermo .liquid {
+  position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+  width:8px; height:90px; background:linear-gradient(0deg, #E89898, #F0B890);
+  border-radius:4px;
+}
+.illus-temp-density .thermo .low-label {
+  position:absolute; bottom:0; left:-36px; font-size:9px; color:#6BA0C0; font-weight:700;
+}
+.illus-temp-density .thermo .high-label {
+  position:absolute; top:0; left:-30px; font-size:9px; color:#C4708A; font-weight:700;
+}
+.illus-temp-density .molecules {
+  position:absolute; top:30px; left:0; width:200px; height:60px;
+}
+.illus-temp-density .mol { width:8px; height:8px; background:#B8A0D4; border-radius:50%; position:absolute; }
+.illus-temp-density .mol.m1 { top:10px; left:40px; } .mol.m2 { top:20px; left:60px; } .mol.m3 { top:5px; left:75px; } .mol.m4 { top:18px; left:90px; } .mol.m5 { top:8px; left:105px; }
+.illus-temp-density .molecules::after { content:"间隔大 → ρ小"; position:absolute; top:35px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#7B5BAA; }
+.illus-temp-density .molecules2 {
+  position:absolute; top:100px; left:0; width:200px; height:60px;
+}
+.illus-temp-density .mol2 { width:8px; height:8px; background:#9B82B8; border-radius:50%; position:absolute; }
+.illus-temp-density .mol2.n1 { top:5px; left:50px; } .mol2.n2 { top:10px; left:62px; } .mol2.n3 { top:5px; left:74px; } .mol2.n4 { top:8px; left:84px; } .mol2.n5 { top:3px; left:92px; } .mol2.n6 { top:12px; left:98px; } .mol2.n7 { top:6px; left:108px; }
+.illus-temp-density .molecules2::after { content:"间隔小 → ρ大"; position:absolute; top:35px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#6A5080; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">&#127968; 首页</a><span class="sep">›</span><span>第四章 密度</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a>
+    <a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a>
+    <a href="midu.html" class="active">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a>
+    <a href="re.html">热学</a>
+    <a href="quiz.html">趣味挑战</a>
+  </div>
+</nav>
+
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="搜索知识点，如「密度」「量筒」「盐水选种」…" oninput="doSearch()">
+  <span class="search-icon">&#128269;</span>
+  <div class="no-result" id="noResult">未找到匹配内容，试试其他关键词吧</div>
+</div>
+
+<div class="container">
+
+<section class="ch4">
+<div class="chapter-title"><span class="ch-num">第四章</span>&#129534; 密度 —— 物质的「紧凑指数」</div>
+
+<div class="mindmap-grid">
+  <div class="mm-card"><h4>&#9878; 质量 m</h4><ul><li>物体所含物质的多少</li><li>单位：kg / g / t</li><li>不随位置、形状改变</li></ul></div>
+  <div class="mm-card"><h4>&#128230; 密度公式</h4><ul><li>ρ = m / V</li><li>1 g/cm³ = 1000 kg/m³</li><li>物质特性，与 m、V 无关</li></ul></div>
+  <div class="mm-card"><h4>&#128300; 测量方法</h4><ul><li>规则固体：天平 + 刻度尺</li><li>不规则固体：天平 + 排水法</li><li>液体：天平 + 量筒</li></ul></div>
+  <div class="mm-card"><h4>&#127777; 密度与温度</h4><ul><li>热胀冷缩 → 密度变化</li><li>水在 4℃ 密度最大</li><li>反常膨胀：冰浮于水</li></ul></div>
+  <div class="mm-card"><h4>&#127793; 密度应用</h4><ul><li>鉴别物质（真假金银）</li><li>盐水选种 / 牛奶检测</li><li>判断空心 / 实心</li></ul></div>
+  <div class="mm-card"><h4>&#127873; 混合物密度</h4><ul><li>合金 = 总质量 ÷ 总体积</li><li>不是简单取平均！</li></ul></div>
+</div>
+
+<div class="section-label">&#128218; 核心概念</div>
+
+<!-- 质量 -->
+<div class="concept-card" id="c4-mass">
+  <div class="card-header">
+    <div class="card-icon">&#9878;</div>
+    <div><h4>质量 —— 「你有多『多』物质」</h4><div class="subtitle">你在月球上变轻了，但质量没变——质量是你的「物质身份证」</div></div>
+  </div>
+  <div class="card-body">
+    <p><b>质量 m</b>：物体所含物质的多少。单位：吨(t) → 千克(kg) → 克(g) → 毫克(mg)，1 t = 1000 kg。</p>
+    <p><b>质量是物体的固有属性</b>：不随位置（地球/月球）、形状（捏扁橡皮泥）、状态（冰/水）改变。</p>
+    <div class="example-tag"><span class="emoji">&#127757;</span>一个 45 kg 的女生，在月球上重力只有地球的 1/6，但质量还是 45 kg——质量不变，变的是重力。</div>
+    <div class="example-tag"><span class="emoji">&#127874;</span>一块巧克力掰成两半，总质量不变。把它融化了再凝固，质量还是不变——物理变化不改变质量。</div>
+    <div class="example-tag"><span class="emoji">&#128230;</span>快递包裹从上海寄到北京，质量不会因为「移动了位置」就改变。质量与地理位置无关！</div>
+  </div>
+</div>
+
+<!-- 密度 + 天平图示 -->
+<div class="tip-card" id="c4-density">
+  <div class="tip-illustration">
+    <div class="illus-density">
+      <div class="stand"></div><div class="base"></div><div class="beam"></div>
+      <div class="cotton"><div class="clump"></div><div class="clump2"></div></div>
+      <div class="cotton-label">1kg 棉花</div>
+      <div class="iron"><div class="block"></div></div>
+      <div class="iron-label">1kg 铁块</div>
+      <div class="equal-sign">=</div>
+      <div class="mass-note">质量相等，体积不同</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <div class="tip-badge">&#128230; Tips 图示</div>
+    <h4>密度 —— 「紧凑程度的身份证」</h4>
+    <p>同样大小的东西，密度大的更重。密度是<b>物质的一种特性</b>——一杯水和一桶水，密度一样大。</p>
+    <div class="formula-spotlight">
+      <div class="formula-main">ρ = m / V</div>
+      <div class="var-list">
+        <span class="var-tag purple">ρ = 密度 (kg/m³)</span>
+        <span class="var-tag purple">m = 质量 (kg)</span>
+        <span class="var-tag purple">V = 体积 (m³)</span>
+      </div>
+    </div>
+    <p>1 kg 棉花和 1 kg 铁块——质量相同，天平平衡。但棉花体积巨大（密度小），铁块一点点（密度大）。<b>单位换算</b>：1 g/cm³ = 1000 kg/m³（高频考点！）。水的密度 ρ<sub>水</sub> = 1.0 × 10³ kg/m³ = 1.0 g/cm³。</p>
+  </div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">为什么冰浮在水面上？</div>
+  <div class="fun-a">冰的密度（0.9 g/cm³）<b>小于</b>水的密度（1.0 g/cm³）——这在自然界非常罕见！大多数物质固态密度大于液态。水在 4℃ 时密度最大，结冰后反而膨胀变轻了，所以冰浮在水面。这也保护了水下的生物——冰层像个「保温盖」，让下面的水不会完全冻住。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">地球内部密度有多大？</div>
+  <div class="fun-a">地壳岩石密度约 2.7 g/cm³，但地球核心（主要由铁和镍组成）密度高达 13 g/cm³——是水的 13 倍！一勺地核物质在地球表面重量可达 130 克。地球平均密度约 5.5 g/cm³，是太阳系中密度最大的行星。</div>
+</div>
+
+<!-- 测密度实验 -->
+<div class="tip-card" id="c4-measure">
+  <div class="tip-illustration">
+    <div class="illus-measure">
+      <div class="cylinder">
+        <div class="water"></div>
+        <div class="scale1">V₁=50mL</div>
+        <div class="scale2">V₂=65mL</div>
+        <div class="v1-line"></div><div class="v2-line"></div>
+        <div class="v1-label">放入前</div><div class="v2-label">放入后</div>
+      </div>
+      <div class="rock"></div>
+      <div class="scale-right"><div class="pan"></div><div class="beam-s"></div><div class="base-s"></div></div>
+      <div class="label-tl">量筒测体积</div>
+      <div class="label-tr">天平测质量</div>
+      <div class="arrow-down-s"></div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <div class="tip-badge">&#128300; Tips 图示</div>
+    <h4>密度测量 —— 天平 + 量筒「黄金搭档」</h4>
+    <p><b>不规则固体</b>（如石头）：</p>
+    <p>① 天平测质量 m → ② 量筒装水读体积 V₁ → ③ 石头浸没，读 V₂ → ④ <b>体积 V = V₂ - V₁</b>（排水法） → ⑤ ρ = m / (V₂-V₁)</p>
+    <p><b>液体</b>（如盐水）：测空烧杯 m₁ → 倒液体测总 m₂ → m液 = m₂ - m₁ → 量筒测 V → ρ = m液 / V</p>
+    <p><b>规则固体</b>：天平测 m → 刻度尺量长宽高算 V → ρ = m/V</p>
+    <div class="example-tag"><span class="emoji">&#128081;</span>阿基米德鉴定王冠：浸入水中测 V<sub>排</sub> → 天平测质量 → 算密度与纯金对比 → 发现掺了银！</div>
+  </div>
+</div>
+
+<!-- 密度与温度 -->
+<div class="tip-card" id="c4-temp-density">
+  <div class="tip-illustration">
+    <div class="illus-temp-density">
+      <div class="thermo"><div class="bulb"></div><div class="liquid"></div><div class="low-label">低温</div><div class="high-label">高温</div></div>
+      <div class="molecules"><div class="mol m1"></div><div class="mol m2"></div><div class="mol m3"></div><div class="mol m4"></div><div class="mol m5"></div></div>
+      <div class="molecules2"><div class="mol2 n1"></div><div class="mol2 n2"></div><div class="mol2 n3"></div><div class="mol2 n4"></div><div class="mol2 n5"></div><div class="mol2 n6"></div><div class="mol2 n7"></div></div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <div class="tip-badge">&#127777; Tips 图示</div>
+    <h4>密度与温度 —— 「热胀冷缩的秘密」</h4>
+    <p>一般物质<b>热胀冷缩</b>：温度升高 → 体积膨胀 → 质量不变 → <b>密度变小</b>。</p>
+    <p>上方分子间隔大 → 高温时密度小。下方分子间隔小 → 低温时密度大。</p>
+    <p><b>水的反常</b>：4℃ 以上热胀冷缩（正常），但 4℃ → 0℃ 反而<b>冷胀热缩</b>！所以 4℃ 的水密度最大，沉在最底下。冬天湖面结冰了，底层还是 4℃ 的水，鱼儿才能活下来。</p>
+    <div class="example-tag"><span class="emoji">&#127754;</span>夏天在游泳池：上层水被太阳晒热，密度小；下层水凉，密度大。所以越往下越冷！</div>
+  </div>
+</div>
+
+<!-- 密度应用 -->
+<div class="concept-card" id="c4-applications">
+  <div class="card-header">
+    <div class="card-icon">&#127793;</div>
+    <div><h4>密度应用 —— 「生活中无处不在」</h4><div class="subtitle">从农田到餐桌，密度一直在「悄悄工作」</div></div>
+  </div>
+  <div class="card-body">
+    <p><b>盐水选种</b>：调好一定密度的盐水 → 饱满种子（密度大）沉底，瘪种子（密度小）浮起 → 轻松分离！农民伯伯自古就用这个办法。</p>
+    <p><b>牛奶检测</b>：纯牛奶密度约 1.03 g/cm³。掺水后密度下降 → 用密度计一测就知道有没有掺水。</p>
+    <p><b>鉴别物质</b>：测出密度后查密度表 → 是金是铜一测便知。纯金密度 19.3 g/cm³，铜只有 8.9 g/cm³。</p>
+    <p><b>判断空心/实心</b>：算出实际密度 < 理论密度 → 空心！比如一个铁球实际密度 5 g/cm³ < 铁的理论密度 7.9 g/cm³ → 空心。</p>
+    <div class="example-tag"><span class="emoji">&#9981;</span>加油站的汽油和柴油密度不同（汽油约 0.7 g/cm³，柴油约 0.85 g/cm³），密度计也是加油站检测油品的重要工具。</div>
+    <div class="example-tag"><span class="emoji">&#127865;</span>鸡尾酒分层：密度大的糖浆在底层，密度中的果汁在中层，密度小的酒精在上层——这是密度分层的艺术！</div>
+  </div>
+</div>
+
+<!-- 混合物密度 -->
+<div class="concept-card" id="c4-mixture">
+  <div class="card-header">
+    <div class="card-icon">&#127873;</div>
+    <div><h4>混合物密度 —— 「不是简单平均」</h4><div class="subtitle">合金的密度要看总质量和总体积</div></div>
+  </div>
+  <div class="card-body">
+    <p><b>混合物的密度</b> = 总质量 ÷ 总体积。千万不能简单取两种密度的算术平均值！</p>
+    <div class="formula-spotlight">
+      <div class="formula-main">ρ<sub>混</sub> = (m₁ + m₂) / (V₁ + V₂)</div>
+      <div class="var-list">
+        <span class="var-tag purple">m₁、m₂ = 各组分质量</span>
+        <span class="var-tag purple">V₁、V₂ = 各组分体积</span>
+      </div>
+    </div>
+    <p><b>例</b>：1 kg 金（ρ=19.3）和 1 kg 银（ρ=10.5）混在一起 → 总体积 = 1/19.3 + 1/10.5 ≈ 0.147 dm³ → ρ<sub>混</sub> = 2 ÷ 0.147 ≈ 13.6 g/cm³，而不是 (19.3+10.5)/2 = 14.9！</p>
+    <div class="example-tag"><span class="emoji">&#128176;</span>古代造假金币：在金里掺银，颜色差别不大但密度变了。用阿基米德的方法一测密度就能识破！</div>
+  </div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">世界上最「轻」的固体有多轻？</div>
+  <div class="fun-a">气凝胶（aerogel）被称为「冻结的烟」，密度仅约 1.9 mg/cm³——只有空气密度的 1.5 倍！一块砖头大小的气凝胶重量不到 2 克，却能承受自身重量几千倍的压力。它被用在航天器上捕获太空尘埃，吉尼斯认证为「密度最小的固体」。</div>
+</div>
+
+<div class="section-label">&#128290; 公式速查</div>
+<table class="quick-table">
+  <tr><th>公式</th><th>含义</th><th>单位说明</th></tr>
+  <tr><td class="f-cell">ρ = m / V</td><td>密度 = 质量 ÷ 体积</td><td>ρ: kg/m³ 或 g/cm³</td></tr>
+  <tr><td class="f-cell">m = ρ · V</td><td>质量 = 密度 × 体积</td><td>知密度和体积求质量</td></tr>
+  <tr><td class="f-cell">V = m / ρ</td><td>体积 = 质量 ÷ 密度</td><td>知质量和密度求体积</td></tr>
+  <tr><td class="f-cell">1 g/cm³ = 1000 kg/m³</td><td>单位换算</td><td>务必统一单位！</td></tr>
+  <tr><td class="f-cell">V<sub>物</sub> = V₂ - V₁</td><td>排水法测体积</td><td>量筒读数差</td></tr>
+  <tr><td class="f-cell">ρ<sub>混</sub> = Σm / ΣV</td><td>混合物密度</td><td>总质量 ÷ 总体积</td></tr>
+</table>
+
+<div class="misconception">
+  <h4>&#9888; 常见误区提醒</h4>
+  <ul>
+    <li><span class="mistake">「密度与质量成正比、与体积成反比。」</span> —— <span class="correct">纠正：密度是物质特性，与 m、V 无关。一杯水和一桶水密度一样大。</span></li>
+    <li><span class="mistake">「物体的质量在月球上会变小。」</span> —— <span class="correct">纠正：质量不变！变的是重力（因为 g 值不同）。质量是固有属性。</span></li>
+    <li><span class="mistake">「冰的密度大于水。」</span> —— <span class="correct">纠正：冰 0.9 < 水 1.0，所以冰浮在水面。水在 4℃ 密度最大。</span></li>
+    <li><span class="mistake">「合金密度 = 各金属密度的平均值。」</span> —— <span class="correct">纠正：合金密度 = 总质量 ÷ 总体积，不同体积比例结果不同。</span></li>
+    <li><span class="mistake">「温度变高，所有物质的密度都变小。」</span> —— <span class="correct">纠正：水在 0~4℃ 是例外——温度升高密度反而增大（反常膨胀）。</span></li>
+    <li><span class="mistake">「量筒可以直接测固体体积。」</span> —— <span class="correct">纠正：只有沉入水中的固体才能用排水法。漂浮的要用「针压法」或「助沉法」。</span></li>
+  </ul>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 生活小实验：彩虹密度塔</h4>
+  <ol class="step-list">
+    <li><b>准备</b>：透明杯子、蜂蜜、洗洁精、水、食用油、食用色素。</li>
+    <li>在水中滴入色素染色（让分层更明显）。</li>
+    <li>沿杯壁缓慢倒入蜂蜜 → 染色洗洁精 → 染色水 → 食用油，每层都要慢慢倒。</li>
+    <li><b>观察</b>：四种液体分层排列，像彩虹塔！</li>
+  </ol>
+  <p style="margin-top:14px;font-style:italic;color:var(--text-light);">原理：不同液体密度不同（蜂蜜 > 洗洁精 > 水 > 油），密度大的沉在下面，密度小的浮在上面。</p>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 生活小实验：自制盐水选种</h4>
+  <ol class="step-list">
+    <li><b>准备</b>：一杯清水、盐、一个鸡蛋。</li>
+    <li>鸡蛋放入清水 → 沉底（鸡蛋密度 > 清水密度）。</li>
+    <li>不断加盐搅拌，直到鸡蛋刚好悬浮在水中。</li>
+    <li><b>此时</b>：盐水密度 = 鸡蛋密度。再多加一点盐 → 鸡蛋浮起！</li>
+  </ol>
+  <p style="margin-top:14px;font-style:italic;color:var(--text-light);">原理：盐水密度随盐浓度增大，当盐水密度超过鸡蛋密度时，鸡蛋上浮。这和盐水选种是同一个道理！</p>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 趣味问答</h4>
+  <div class="fun-fact" style="margin:14px 0;">
+    <div class="fun-q">Q：1 kg 棉花和 1 kg 铁，哪个密度大？哪个质量大？</div>
+    <div class="fun-a">A：质量一样大（都是 1 kg）。但铁的密度大——所以铁的体积小很多。这就是为什么同样 1 kg，棉花占一大袋，铁才一小块。</div>
+  </div>
+  <div class="fun-fact" style="margin:14px 0;">
+    <div class="fun-q">Q：如果把一块木头从地球带到月球，它的质量和密度会变吗？</div>
+    <div class="fun-a">A：质量不变（物质多少没变）。体积也不变（木头没有热胀冷缩）。所以密度 = 质量/体积，也不变！变的只是重力。</div>
+  </div>
+</div>
+
+<div class="parent-tip">
+  <h4>&#128105;&#8203;&#127891; 家长辅导小贴士</h4>
+  <ul>
+    <li>「彩虹密度塔」颜色漂亮，女儿通常会喜欢，还能拍照分享给同学</li>
+    <li>单位换算（g/cm³ ⇄ kg/m³）是常错点，帮孩子记住「1 对 1000」</li>
+    <li>密度与温度的关系用「热气球上升」类比——热空气密度小所以上升</li>
+    <li>混合物密度不是简单平均，给孩子举个栗子：一斤铁粉 + 一斤面粉混合，总质量两斤，总体积比两者单独体积之和大还是小？</li>
+    <li>用阿基米德鉴定王冠的故事引入密度——故事性强的知识更容易记住</li>
+    <li>带孩子做鸡蛋在盐水里浮起来的实验，眼见为实</li>
+  </ul>
+</div>
+</section>
+
+<div class="page-nav">
+  <a class="prev" href="jixie.html">&#11013; 第三章 简单机械和功</a>
+  <a class="next" href="sheng.html">第五章 声现象 &#10132;</a>
+</div>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('backTop').style.display=window.scrollY>600?'flex':'none'});
+function doSearch(){
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  var no=document.getElementById('noResult');
+  document.querySelectorAll('mark.highlight').forEach(function(m){
+    var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
+  });
+  if(!q){no.style.display='none';document.querySelectorAll('.concept-card,.mindmap-grid,.quick-table,.misconception,.experiment,.parent-tip,.fun-fact,.tip-card,.section-label,.chapter-title').forEach(function(e){e.style.display=''});return;}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function hl(n){
+    if(n.nodeType===3){
+      var t=n.textContent,lo=t.toLowerCase(),i=lo.indexOf(q);
+      if(i===-1)return false;
+      var s=document.createElement('span');
+      s.innerHTML=esc(t.substring(0,i))+'<mark class="highlight">'+esc(t.substring(i,i+q.length))+'</mark>'+esc(t.substring(i+q.length));
+      n.parentNode.replaceChild(s,n); return true;
+    }
+    if(n.nodeType===1&&['SCRIPT','STYLE','MARK'].indexOf(n.tagName)===-1){var f=false;for(var j=0;j<n.childNodes.length;j++)if(hl(n.childNodes[j]))f=true;return f}
+    return false;
+  }
+  var fa=false;
+  document.querySelectorAll('.concept-card,.mm-card,.quick-table,.misconception ul li,.experiment,.parent-tip,.fun-fact,.tip-card').forEach(function(e){if(hl(e)){e.style.display='';fa=true}else{e.style.display='none'}});
+  document.querySelectorAll('.chapter-title,.section-label,.mindmap-grid').forEach(function(e){e.style.display=''});
+  no.style.display=fa?'none':'block';
+}
+</script>
+</body>
+</html>

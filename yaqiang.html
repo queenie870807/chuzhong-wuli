@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二章 压强和浮力 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* 托里拆利水银柱实验 */
+.illus-torricelli { position:relative; width:180px; height:220px; }
+.illus-torricelli .pool { position:absolute; bottom:20px; left:30px; width:80px; height:30px; background:rgba(176,176,184,0.6); border:2px solid #A0A0B0; border-radius:8px 8px 4px 4px; }
+.illus-torricelli .pool::after { content:"水银槽"; position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); font-size:9px; color:#888; white-space:nowrap; }
+.illus-torricelli .tube { position:absolute; bottom:40px; left:65px; width:10px; height:140px; border:2px solid #808090; border-radius:5px 5px 0 0; background:rgba(160,160,176,0.15); }
+.illus-torricelli .column { position:absolute; bottom:42px; left:66px; width:8px; height:104px; background:linear-gradient(180deg, #C0C0D0, #A0A0B8); border-radius:3px 3px 0 0; }
+.illus-torricelli .column::after { content:"76cm"; position:absolute; top:40%; right:-36px; font-size:9px; font-weight:700; color:#708090; white-space:nowrap; }
+.illus-torricelli .vacuum { position:absolute; bottom:148px; left:67px; width:6px; height:32px; background:rgba(200,200,220,0.2); border-radius:3px 3px 0 0; }
+.illus-torricelli .vacuum::after { content:"真空"; position:absolute; top:4px; left:50%; transform:translateX(-50%); font-size:8px; color:#B0B0C0; white-space:nowrap; }
+.illus-torricelli .atm-label { position:absolute; top:10px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#6BA0C0; }
+.illus-torricelli .atm-arrows { position:absolute; top:30px; left:50%; transform:translateX(-50%); display:flex; gap:4px; }
+.illus-torricelli .atm-arrow { font-size:12px; color:#6BA0C0; }
+
+/* 飞机机翼升力示意 */
+.illus-wing { position:relative; width:240px; height:180px; }
+.illus-wing .wing { position:absolute; top:60px; left:30px; width:140px; height:60px; background:linear-gradient(180deg,#D8E8F8,#A0C8E8); border:3px solid #70A0C8; border-radius:30px 10px 60px 10px; }
+.illus-wing .wing::after { content:"机翼截面"; position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#5B8AAA; white-space:nowrap; }
+.illus-wing .flow-up { position:absolute; top:30px; left:40px; font-size:10px; font-weight:700; color:#6BA0C0; }
+.illus-wing .flow-dn { position:absolute; top:130px; left:40px; font-size:10px; font-weight:700; color:#A0A0C0; }
+.illus-wing .arrow-up1 { position:absolute; top:36px; left:50px; font-size:10px; color:#6BA0C0; }
+.illus-wing .arrow-up2 { position:absolute; top:38px; left:100px; font-size:10px; color:#6BA0C0; }
+.illus-wing .arrow-up3 { position:absolute; top:38px; left:140px; font-size:10px; color:#6BA0C0; }
+.illus-wing .arrow-dn1 { position:absolute; top:120px; left:50px; font-size:10px; color:#A0A0C0; }
+.illus-wing .arrow-dn2 { position:absolute; top:120px; left:100px; font-size:10px; color:#A0A0C0; }
+.illus-wing .arrow-dn3 { position:absolute; top:120px; left:140px; font-size:10px; color:#A0A0C0; }
+.illus-wing .lift-arrow { position:absolute; top:30px; right:30px; width:3px; height:60px; background:#C87878; }
+.illus-wing .lift-arrow::before { content:""; position:absolute; top:-6px; left:-5px; border-bottom:8px solid #C87878; border-left:6px solid transparent; border-right:6px solid transparent; }
+.illus-wing .lift-arrow::after { content:"升力"; position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#C87878; white-space:nowrap; }
+.illus-wing .label-fast { position:absolute; top:24px; left:50%; transform:translateX(-50%); font-size:9px; font-weight:700; color:#6BA0C0; }
+.illus-wing .label-slow { position:absolute; top:124px; left:50%; transform:translateX(-50%); font-size:9px; font-weight:700; color:#A0A0C0; }
+
+/* 密度计浮沉示意 */
+.illus-densimeter { position:relative; width:180px; height:180px; }
+.illus-densimeter .liquid { position:absolute; bottom:10px; left:20px; width:80px; height:100px; border:2px solid #80B0C0; border-radius:0 0 8px 8px; background:rgba(128,176,192,0.15); }
+.illus-densimeter .liquid::after { content:"液体"; position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); font-size:9px; color:#888; }
+.illus-densimeter .dm { position:absolute; bottom:14px; left:46px; width:24px; height:96px; background:linear-gradient(180deg, #F8E090, #E0C860); border:2px solid #C0A840; border-radius:12px 12px 4px 4px; }
+.illus-densimeter .dm::after { content:"密度计"; position:absolute; top:-16px; left:50%; transform:translateX(-50%); font-size:7px; font-weight:700; color:#A08830; white-space:nowrap; }
+.illus-densimeter .scale-marks { position:absolute; bottom:20px; left:48px; }
+.illus-densimeter .scale-mark { width:20px; border-top:1px solid #C0A840; margin-bottom:10px; }
+.illus-densimeter .dens-high { position:absolute; bottom:120px; right:4px; font-size:9px; font-weight:700; color:#A08830; }
+.illus-densimeter .dens-low { position:absolute; bottom:50px; right:4px; font-size:9px; font-weight:700; color:#D0B860; }
+.illus-densimeter .label-dm { position:absolute; bottom:2px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#708090; }
+.illus-densimeter .dm2 { position:absolute; bottom:14px; right:46px; width:24px; height:84px; background:linear-gradient(180deg, #F8E8A0, #E0D070); border:2px solid #C0A840; border-radius:12px 12px 4px 4px; }
+.illus-densimeter .liquid2 { position:absolute; bottom:10px; right:20px; width:80px; height:80px; border:2px solid #80B0C0; border-radius:0 0 8px 8px; background:rgba(128,176,192,0.25); }
+.illus-densimeter .liquid2::after { content:"更稠液体"; position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); font-size:9px; color:#888; white-space:nowrap; }
+</style>
+</head>
+<body class="ch2">
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><span>第二章 压强和浮力</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a><a href="yaqiang.html" class="active">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a><a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a><a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a><a href="re.html">热学</a>
+  </div>
+</nav>
+
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="搜索知识点，如「压强」「浮力」..." oninput="doSearch()">
+  <span class="search-icon">&#128269;</span>
+  <div class="no-result" id="noResult">未找到匹配内容，试试其他关键词吧</div>
+</div>
+
+<div class="container">
+
+<section class="ch2">
+<div class="chapter-title"><span class="ch-num">第二章</span>&#128230; 压强和浮力</div>
+
+<div class="mindmap-grid">
+  <div class="mm-card"><h4>&#128230; 压强</h4><ul><li>p = F / S</li><li>增大/减小压强的方法</li><li>压强是压力的"集中度"</li></ul></div>
+  <div class="mm-card"><h4>&#127754; 液体压强</h4><ul><li>p = &#961;gh</li><li>与深度和密度有关</li><li>与容器形状无关</li></ul></div>
+  <div class="mm-card"><h4>&#127758; 大气压强</h4><ul><li>马德堡半球实验</li><li>托里拆利实验</li><li>气压与高度/天气</li></ul></div>
+  <div class="mm-card"><h4>&#9992; 流体压强</h4><ul><li>伯努利原理</li><li>流速大压强小</li><li>飞机升力/喷雾器</li></ul></div>
+  <div class="mm-card"><h4>&#127761; 帕斯卡原理</h4><ul><li>密闭液体传递压强</li><li>液压机原理</li><li>F&#8321;/S&#8321; = F&#8322;/S&#8322;</li></ul></div>
+  <div class="mm-card"><h4>&#128051; 浮力</h4><ul><li>F浮 = G排 = &#961;gV排</li><li>阿基米德原理</li><li>浮沉条件</li></ul></div>
+  <div class="mm-card"><h4>&#9973; 浮力应用</h4><ul><li>轮船（空心法）</li><li>潜水艇（改变自重）</li><li>热气球/飞艇</li><li>密度计</li></ul></div>
+</div>
+
+<div class="section-label">&#128218; 核心概念</div>
+
+<!-- 压强 -->
+<div class="concept-card" id="c2-pressure">
+  <div class="card-header">
+    <div class="card-icon">&#128230;</div>
+    <div><h4>压强 —— 「压力有多集中？」</h4><p class="subtitle">同样的力，面积越小压强越大</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">p = F / S</div>
+      <div class="var-list">
+        <span class="var-tag pink">p 压强 (Pa)</span>
+        <span class="var-tag blue">F 压力 (N)</span>
+        <span class="var-tag green">S 受力面积 (m&#178;)</span>
+      </div>
+    </div>
+    <p>1 Pa = 1 N/m&#178;。一张报纸平铺在桌面上产生的压强约为 1 Pa。</p>
+    <p>增大压强：增大压力或减小受力面积（刀刃锋利、针尖细）。减小压强：减小压力或增大受力面积（滑雪板、坦克履带）。</p>
+  </div>
+</div>
+
+<!-- 液体压强 -->
+<div class="concept-card" id="c2-fluid-pressure">
+  <div class="card-header">
+    <div class="card-icon">&#127754;</div>
+    <div><h4>液体压强 —— 「越深越压」</h4><p class="subtitle">只跟深度和液体密度有关</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">p = &#961; g h</div>
+      <div class="var-list">
+        <span class="var-tag pink">p 压强 (Pa)</span>
+        <span class="var-tag blue">&#961; 液体密度 (kg/m&#179;)</span>
+        <span class="var-tag green">h 深度 (m)</span>
+      </div>
+    </div>
+    <p>液体压强与容器形状无关——U形管两侧液面高度差由压强差决定，与管径粗细无关。这就是<strong>连通器原理</strong>。</p>
+  </div>
+</div>
+
+<!-- 帕斯卡原理 -->
+<div class="concept-card" id="c2-pascal">
+  <div class="card-header">
+    <div class="card-icon">&#127761;</div>
+    <div><h4>帕斯卡原理 —— 四两拨千斤</h4><p class="subtitle">加在密闭液体上的压强，能大小不变地向各个方向传递</p></div>
+  </div>
+  <div class="card-body">
+    <p>液压机原理：小活塞上施加较小的力，通过液体压强传递，大活塞上产生巨大的力——<strong>F&#8321;/S&#8321; = F&#8322;/S&#8322;</strong></p>
+    <div class="example-tag"><span class="emoji">&#128736;</span>汽车修理厂的液压千斤顶——一个成年人用手力就能顶起一辆小汽车。小活塞面积是大活塞面积的 1/100，力就放大 100 倍！</div>
+  </div>
+</div>
+
+<!-- 液压机 CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div style="position:relative;width:240px;height:180px;">
+      <div style="position:absolute;bottom:30px;left:20px;width:4px;height:100px;background:#A0B8C8;border-radius:2px;"></div>
+      <div style="position:absolute;bottom:30px;left:60px;width:4px;height:100px;background:#A0B8C8;border-radius:2px;"></div>
+      <div style="position:absolute;bottom:126px;left:6px;width:70px;height:16px;border:2px solid #B8A088;border-radius:4px;background:rgba(200,168,120,0.15);"></div>
+      <div style="position:absolute;bottom:124px;left:20px;width:40px;height:6px;background:#C87878;border-radius:3px;"></div>
+      <div style="position:absolute;top:38px;left:30px;font-size:9px;font-weight:700;color:#C87878;">F&#8321;小</div>
+      <div style="position:absolute;bottom:30px;left:100px;width:100px;height:16px;background:rgba(128,176,192,0.2);border:2px solid #80B0C0;border-radius:4px;"></div>
+      <div style="position:absolute;bottom:126px;left:140px;width:70px;height:16px;border:2px solid #B8A088;border-radius:4px;background:rgba(200,168,120,0.15);"></div>
+      <div style="position:absolute;bottom:124px;left:154px;width:40px;height:6px;background:#6BA0C0;border-radius:3px;"></div>
+      <div style="position:absolute;top:38px;left:164px;font-size:9px;font-weight:700;color:#6BA0C0;">F&#8322;大</div>
+      <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#708090;">P 不变：F&#8321;/S&#8321; = F&#8322;/S&#8322;</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#127761; Tips 图示</span>
+    <h4>帕斯卡原理——液压机</h4>
+    <p>小活塞面积小，施加很小的力 F&#8321; 就能产生足够的压强 P。液体压强大小不变地传到各处——大活塞面积大，P &#215; S&#8322; = 巨大的 F&#8322;。这就是"四两拨千斤"的物理学基础。</p>
+  </div>
+</div>
+
+<!-- 大气压强 -->
+<div class="concept-card" id="c2-atmos">
+  <div class="card-header">
+    <div class="card-icon">&#127758;</div>
+    <div><h4>大气压强 —— 空气的"重量"</h4><p class="subtitle">你身上压着约 10 吨的空气——但你完全感觉不到</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>标准大气压</strong>：1 atm = 1.013 &#215; 10&#8309; Pa &#8776; 760 mmHg = 10.34 m 水柱。</p>
+    <p>马德堡半球实验：两个半球合拢抽空气后，16 匹马都拉不开——大气压强的威力惊人。</p>
+  </div>
+</div>
+
+<!-- ===== 托里拆利实验详解（新增） ===== -->
+<div class="concept-card" id="c2-torricelli-detail">
+  <div class="card-header">
+    <div class="card-icon">&#127758;</div>
+    <div><h4>托里拆利实验 —— 「称出空气的重量」</h4><p class="subtitle">1643年，人类第一次测量了大气压强</p></div>
+  </div>
+  <div class="card-body">
+    <p><b>实验过程</b>：取一根长约 1m、一端封闭的玻璃管，灌满水银。用手指堵住开口端倒插入水银槽中，松开手指——管中水银柱下降到约 <strong>760mm</strong>（76cm）高度后停止下降。</p>
+    <p><b>原理解释</b>：管顶部分形成真空（"托里拆利真空"）。管外水银槽面受到大气压强 P₀，管内水银柱产生的压强 P = ρgh。平衡时：<strong>P₀ = ρgh</strong>——大气压强等于 760mm 水银柱产生的压强。</p>
+    <p><b>为什么用水银不用水？</b>水的密度只有水银的 1/13.6，如果用水做实验，水柱高度将达到 10.34m——需要三层楼高的玻璃管！水银密度大，让实验变得切实可行。</p>
+    <p><b>影响因素</b>：水银柱高度随海拔升高而降低（大气变稀薄）、随天气变化而波动（晴天高压、阴天低压）。这就是<strong>气压计</strong>的原理。管子的粗细、倾斜角度不影响水银柱的<b>竖直高度</b>——只与大气压有关。</p>
+    <div class="example-tag"><span class="emoji">&#9968;</span>在海拔 3000m 的高原上做托里拆利实验，水银柱只有约 53cm——因为那里的大气压只有海平面的约 70%。</div>
+  </div>
+</div>
+
+<!-- ===== 托里拆利实验 CSS图示 ===== -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-torricelli">
+      <div class="pool"></div>
+      <div class="tube"></div>
+      <div class="column"></div>
+      <div class="vacuum"></div>
+      <div class="atm-label">&#8595; 大气压 &#8595;</div>
+      <div class="atm-arrows"><span class="atm-arrow">&#8595;</span><span class="atm-arrow">&#8595;</span><span class="atm-arrow">&#8595;</span></div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#127758; Tips 图示</span>
+    <h4>托里拆利实验——首次测量大气压强</h4>
+    <p>1643年，托里拆利将一端封闭的玻璃管灌满水银，倒插入水银槽。管中水银柱下降到约 <strong>76cm</strong> 高度——这个高度对应的压强就是大气压强。管顶的"真空"（托里拆利真空）是历史上第一个人工真空。水银柱高度随天气和海拔变化——气压计的原理。</p>
+  </div>
+</div>
+
+<!-- ===== 伯努利原理（新增） ===== -->
+<div class="concept-card" id="c2-bernoulli">
+  <div class="card-header">
+    <div class="card-icon">&#9992;</div>
+    <div><h4>流体压强与流速 —— 伯努利原理</h4><p class="subtitle">流速大的地方压强小——飞机为什么能飞？</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>伯努利原理</strong>：在流体（气体或液体）中，流速越大的位置压强越小。</p>
+    <p><strong>飞机升力原理</strong>：机翼上表面弧度大——气流经过上表面的路程比下表面长，在相同时间内上表面气流<strong>速度更快</strong>。根据伯努利原理：<strong>上表面压强小，下表面压强大</strong>——产生向上的升力。</p>
+    <div class="example-tag"><span class="emoji">&#127974;</span>站台黄色安全线——火车高速驶过时，火车与站台之间的空气流速极大，压强极小。如果人站得太近，会被"吸"向火车——非常危险！</div>
+    <div class="example-tag"><span class="emoji">&#128168;</span>喷雾器——快速气流通过细管口时压强变小，瓶内液体被大气压"压"上来，被气流吹成雾状喷出。</div>
+    <div class="example-tag"><span class="emoji">&#9917;</span>香蕉球（足球弧线球）——踢球时让球旋转，一侧气流速度快（压强小）、一侧慢（压强大），足球在空中拐弯——伯努利原理+马格努斯效应。</div>
+  </div>
+</div>
+
+<!-- 飞机机翼CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-wing">
+      <div class="wing"></div>
+      <div class="label-fast">流速快 &#8594; 压强小</div>
+      <div class="label-slow">流速慢 &#8594; 压强大</div>
+      <div class="lift-arrow"></div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#9992; Tips 图示</span>
+    <h4>飞机机翼升力——伯努利原理</h4>
+    <p>机翼上表面弧度大：气流路程长 &#8594; 流速快 &#8594; 压强小。下表面平直：气流路程短 &#8594; 流速慢 &#8594; 压强大。下表面压强 > 上表面压强，产生向上的升力。飞得越快升力越大——这就是飞机需要跑道加速才能起飞的原因。</p>
+  </div>
+</div>
+
+<!-- 浮力 -->
+<div class="concept-card" id="c2-buoyancy">
+  <div class="card-header">
+    <div class="card-icon">&#128051;</div>
+    <div><h4>浮力 —— 阿基米德的"尤里卡"时刻</h4><p class="subtitle">浸在液体中的物体受到向上的浮力</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">F<sub>浮</sub> = G<sub>排</sub> = &#961;<sub>液</sub> g V<sub>排</sub></div>
+    </div>
+    <p><strong>阿基米德原理</strong>：浸在液体中的物体受到的浮力等于它排开的液体受到的重力。注意：浮力只与<strong>液体密度</strong>和<strong>排开液体的体积</strong>有关——与物体本身的密度、形状、浸入深度无关！</p>
+    <div class="fun-fact">
+      <div class="fun-badge">&#10024; 名场面</div>
+      <div class="fun-q">阿基米德在浴缸里发现了浮力原理，激动得光着身子跑上大街喊"Eureka!"（我找到了！）。国王的皇冠是否掺了银——金比银密度大。同等重量，纯金体积更小，放入水中排开的水更少，浮力更小——就是这个思路判断出了掺假。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 浮沉条件对比表 -->
+<div class="concept-card" id="c2-float-sink">
+  <div class="card-header">
+    <div class="card-icon">&#9973;</div>
+    <div><h4>浮沉条件 —— 四种状态详细对比</h4><p class="subtitle">物体是上浮、下沉、悬浮还是漂浮？</p></div>
+  </div>
+  <div class="card-body">
+    <table class="quick-table">
+      <tr><th>状态</th><th>F浮 vs G物</th><th>&#961;液 vs &#961;物</th><th>V排 vs V物</th><th>例子</th></tr>
+      <tr><td><strong>下沉</strong></td><td>F浮 &lt; G物</td><td>&#961;液 &lt; &#961;物</td><td>V排 = V物</td><td>石头沉入水底</td></tr>
+      <tr><td><strong>悬浮</strong></td><td>F浮 = G物</td><td>&#961;液 = &#961;物</td><td>V排 = V物</td><td>潜水艇悬停</td></tr>
+      <tr><td><strong>上浮</strong></td><td>F浮 &gt; G物</td><td>&#961;液 &gt; &#961;物</td><td>V排 = V物（过程）</td><td>木块从水底浮出</td></tr>
+      <tr><td><strong>漂浮</strong></td><td>F浮 = G物</td><td>&#961;液 &gt; &#961;物</td><td>V排 &lt; V物</td><td>轮船浮在水面</td></tr>
+    </table>
+    <div class="example-tag"><span class="emoji">&#127755;</span>死海——含盐量极高，&#961;液非常大。人躺在上面不会下沉——因为人体密度小于死海水密度，浮力等于体重时 V排 很小，人浮在水面上。</div>
+  </div>
+</div>
+
+<!-- ===== 密度计原理（新增） ===== -->
+<div class="concept-card" id="c2-densimeter">
+  <div class="card-header">
+    <div class="card-icon">&#127777;</div>
+    <div><h4>密度计原理 —— 「越稠浮得越高」</h4><p class="subtitle">同一个密度计在不同液体中漂浮——液面位置揭示了密度</p></div>
+  </div>
+  <div class="card-body">
+    <p>密度计始终<strong>漂浮</strong>在液面上——F浮 = G计（重力不变，浮力也不变）。根据 F浮 = &#961;液 g V排，浮力不变时：&#961;液越大 &#8594; V排 越小 &#8594; 密度计露出液面越高。</p>
+    <p>所以说：密度计在密度大的液体中浮得高！刻度是"上小下大"——越往下刻度值越大。</p>
+    <div class="example-tag"><span class="emoji">&#127863;</span>酿酒厂用密度计测酒精浓度——发酵液中糖越多密度越大，酒精越多密度越小。密度计浮得低说明酒精度高！</div>
+    <div class="example-tag"><span class="emoji">&#128664;</span>汽车防冻液检测——用密度计测冷却液的密度判断防冻能力，密度越大冰点越低。</div>
+  </div>
+</div>
+
+<!-- 密度计CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-densimeter">
+      <div class="liquid"></div>
+      <div class="dm"></div>
+      <div class="liquid2"></div>
+      <div class="dm2"></div>
+      <div class="dens-high">&#961;小 &#8594;<br>沉得低</div>
+      <div class="dens-low">&#961;大 &#8594;<br>浮得高</div>
+      <div class="label-dm">密度计：上小下大刻度</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#127777; Tips 图示</span>
+    <h4>密度计——漂浮法测液体密度</h4>
+    <p>左边稀液体密度小：V排大，密度计沉得深。右边稠液体密度大：V排小，密度计浮得高。刻度"上小下大"。物理本质：F浮不变，&#961;液与V排成反比。</p>
+  </div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">马德堡半球——16匹马都拉不开两个半球</div>
+  <div class="fun-a">1654年，德国马德堡市长奥托·冯·居里克把两个铜制半球合拢，抽掉里面的空气——大气压强让两个半球紧紧贴在一起。16匹马（每边8匹）都拉不开。这不是因为半球本身有多牢固——是看不见摸不着的大气压强在做功：约 100000 N/m&#178; &#215; 半球截面 &#8776; 数万牛顿的力！</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">潜水艇如何自由沉浮？</div>
+  <div class="fun-a">潜艇有压载水舱。进水 &#8594; 自重增加 &#8594; G > F浮 &#8594; 下沉。用压缩空气排出水 &#8594; 自重减小 &#8594; G < F浮 &#8594; 上浮。精确控制进水量可悬停在任何深度。注意：改变的是<strong>自重</strong>而不是浮力——与密度计原理完全不同。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">一头大象站在一根针上，哪个压强大？</div>
+  <div class="fun-a">针尖对地面的压强大得多！大象虽重（4000kg &#8776; 40000N），但四脚面积很大（约 1m&#178;），压强仅约 40000 Pa。针尖面积约 0.0000001 m&#178;——即使只用 0.1N 的力，压强也高达 10&#8310; Pa——是大象的 25000 倍！这就是为什么针能轻易刺穿东西。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">为什么高山上煮不熟饭？</div>
+  <div class="fun-a">海拔越高气压越低，水的沸点也越低。在海拔 5000m 的高原上，水 85°C 就沸腾了——但 85°C 不足以煮熟米饭和肉类。这就是为什么登山者必须带高压锅：高压锅增大内部气压 → 提高沸点到 120°C 以上 → 食物才能煮熟。气压、沸点、烹饪——三者紧密相连。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">船为什么能浮在水面上？——铁船的秘密</div>
+  <div class="fun-a">一块实心铁会沉入水底，但万吨巨轮也是铁做的却能浮着。关键在于轮船是"空心"的——巨大的船体排开了巨量海水。根据阿基米德原理，只要排开的海水重量 ≥ 船的总重，船就能漂浮。现代最大的货轮排水量超过 40 万吨——它排开的海水体积相当于 16 个奥运会游泳池。阿基米德如果看到今天的巨轮，一定会再喊一声"Eureka！"</div>
+</div>
+
+<div class="misconception">
+  <h4>&#9888; 常见误区提醒</h4>
+  <ul>
+    <li><span class="mistake">&#10060; "浮力与深度有关"</span> &#8594; <span class="correct">&#9989; 阿基米德原理中 F浮 = &#961;gV排，与深度无关。物体完全浸没后，再深也不会增大浮力。</span></li>
+    <li><span class="mistake">&#10060; "飞机升力是因为伯努利原理——气流上下表面路程长的说法有争议"</span> &#8594; <span class="correct">&#9989; 确实！学术界对"等时到达"说存有争议。更准确地说，机翼使气流向下偏转（牛顿第三定律的反作用力）也是升力的重要贡献。两种解释都对，共同起作用。</span></li>
+    <li><span class="mistake">&#10060; "铁块沉水是因为铁太重了"</span> &#8594; <span class="correct">&#9989; 铁沉水是因为铁的密度 > 水的密度。轮船也是铁做的但浮在水上——因为轮船是空心的，排开大量水，F浮 = &#961;水 g V排 巨大。</span></li>
+    <li><span class="mistake">&#10060; "大气压强是因为空气有重量"</span> &#8594; <span class="correct">&#9989; 对了一半。大气压强本质上是空气分子无规则热运动对物体表面的持续撞击（类似气体压强）。高度越高空气越稀薄，撞击越少，气压越低。</span></li>
+    <li><span class="mistake">&#10060; "高压锅是增大压强来煮熟食物"</span> &#8594; <span class="correct">&#9989; 对——增大气压 &#8594; 提高水的沸点 &#8594; 温度更高 &#8594; 食物更快熟。</span></li>
+  </ul>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：马德堡半球简易版</h4>
+  <ol class="step-list">
+    <li>准备两个一样的吸盘挂钩（超市有卖），对在一起用力压紧挤出空气。</li>
+    <li>尝试拉开——两个小吸盘产生的力就非常大，拉不开！</li>
+    <li>稍微掀开一角让空气进入——瞬间就分开了。这就是大气压强的力量。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：流体压强体验</h4>
+  <ol class="step-list">
+    <li>拿两张纸，面对面靠近（间距约3-5cm）。</li>
+    <li>往两张纸之间吹气——纸不是被吹开，而是<strong>靠近</strong>了！</li>
+    <li>原理：吹气使纸间空气流速增大 &#8594; 压强减小 &#8594; 外侧大气压把纸压在一起。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：自制密度计</h4>
+  <ol class="step-list">
+    <li>准备：一根吸管、一些橡皮泥（或黏土）、一杯清水、一杯浓盐水。</li>
+    <li>吸管底部用橡皮泥封口加重，让它能竖直漂浮。</li>
+    <li>分别放入清水和盐水中——在盐水中吸管露出更多！</li>
+    <li>原理：盐水密度更大，同样的浮力只需要排开更少的体积。</li>
+  </ol>
+</div>
+
+<div class="parent-tip">
+  <h4>&#128105;&#8203;&#127891; 家长辅导小贴士</h4>
+  <ul>
+    <li>托里拆利实验可以在网上找动画视频——水银有毒没法在家做，但动画可以直观展示</li>
+    <li>伯努利原理的家庭演示：两张纸中间吹气（纸靠拢）、用吸管对乒乓球上方吹气（球悬浮）</li>
+    <li>浮力实验：准备一个弹簧秤，测石块在空气和水中的"重量差"——差值就是浮力</li>
+    <li>浮沉条件：用一个水瓶装半瓶水——密封后放进水盆里，它浮着。灌满水——它沉了。直观感受 G 变化导致的浮沉</li>
+    <li>自制密度计（吸管+橡皮泥）是绝佳的家庭实验——材料简单，效果直观</li>
+  </ul>
+</div>
+</section>
+
+<div class="page-nav">
+  <a href="yundong.html" class="prev">&#8592; 第一章 运动和力</a>
+  <a href="jixie.html" class="next">第三章 简单机械和功 &#8594;</a>
+</div>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('backTop').style.display=window.scrollY>600?'flex':'none'});
+function doSearch(){
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  var no=document.getElementById('noResult');
+  document.querySelectorAll('mark.highlight').forEach(function(m){
+    var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
+  });
+  if(!q){no.style.display='none';document.querySelectorAll('.concept-card,.mindmap-grid,.quick-table,.misconception,.experiment,.parent-tip,.fun-fact,.tip-card,.section-label,.chapter-title').forEach(function(e){e.style.display=''});return;}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function hl(n){
+    if(n.nodeType===3){
+      var t=n.textContent,lo=t.toLowerCase(),i=lo.indexOf(q);
+      if(i===-1)return false;
+      var s=document.createElement('span');
+      s.innerHTML=esc(t.substring(0,i))+'<mark class="highlight">'+esc(t.substring(i,i+q.length))+'</mark>'+esc(t.substring(i+q.length));
+      n.parentNode.replaceChild(s,n); return true;
+    }
+    if(n.nodeType===1&&['SCRIPT','STYLE','MARK'].indexOf(n.tagName)===-1){var f=false;for(var j=0;j<n.childNodes.length;j++)if(hl(n.childNodes[j]))f=true;return f}
+    return false;
+  }
+  var fa=false;
+  document.querySelectorAll('.concept-card,.mm-card,.quick-table,.misconception ul li,.experiment,.parent-tip,.fun-fact,.tip-card').forEach(function(e){if(hl(e)){e.style.display='';fa=true}else{e.style.display='none'}});
+  document.querySelectorAll('.chapter-title,.section-label,.mindmap-grid').forEach(function(e){e.style.display=''});
+  no.style.display=fa?'none':'block';
+}
+</script>
+</body>
+</html>

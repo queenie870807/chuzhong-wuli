@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第六章 光现象 · 测验 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.quiz-wrap { max-width: 780px; margin: 0 auto; }
+.quiz-header { text-align: center; margin: 32px 0 24px; }
+.quiz-header h2 { font-size: 24px; color: #5BA0C8; }
+.quiz-header p { color: #7B758A; font-size: 15px; margin-top: 4px; }
+.q-section { margin: 32px 0 16px; }
+.q-section h3 { font-size: 18px; color: #5BA0C8; padding-bottom: 8px; border-bottom: 2px dashed rgba(91,160,200,0.3); margin-bottom: 14px; }
+.quiz-q { background: #FFF; border-radius: 18px; padding: 18px 22px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1.5px solid rgba(91,160,200,0.18); }
+.quiz-q .q-num { display: inline-block; background: linear-gradient(135deg, #5BA0C8, #5BA0C8); color: #fff;
+  min-width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px;
+  font-weight: 700; font-size: 13px; margin-right: 8px; }
+.quiz-q .q-title { font-size: 16px; font-weight: 700; color: #4A4458; display: inline; line-height: 1.6; }
+.quiz-q .options { margin: 8px 0 0 36px; display: flex; flex-direction: column; gap: 5px; }
+.quiz-q .opt { display: flex; align-items: center; gap: 8px; padding: 7px 12px;
+  border-radius: 10px; border: 1.5px solid transparent; cursor: pointer;
+  transition: all 0.15s; font-size: 15px; background: rgba(91,160,200,0.08); }
+.quiz-q .opt:hover { border-color: rgba(91,160,200,0.4); background: rgba(91,160,200,0.04); }
+.quiz-q .opt input[type=radio] { accent-color: #5BA0C8; transform: scale(1.05); }
+.quiz-q .opt.selected { border-color: #5BA0C8; background: rgba(91,160,200,0.18); }
+.quiz-q.correct-q { border-color: #8CC4A0; background: #F4FAF6; }
+.quiz-q.wrong-q { border-color: #E8A0BF; background: #FFF5F8; }
+.feedback { font-size: 13px; margin: 4px 0 0 36px; display: none; }
+.feedback.correct { display: block; color: #5B8A6A; }
+.feedback.wrong { display: block; color: #C4708A; }
+.quiz-actions { text-align: center; margin: 32px 0 16px; }
+.btn-submit, .btn-retry { padding: 12px 40px; border-radius: 30px; border: none; font-size: 17px;
+  font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: var(--font-title); }
+.btn-submit { background: linear-gradient(135deg, #5BA0C8, #5BA0C8); color: #fff; }
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(91,160,200,0.4); }
+.btn-retry { background: rgba(91,160,200,0.2); color: #5BA0C8; margin-left: 12px; }
+.btn-retry:hover { background: rgba(91,160,200,0.3); }
+.result-card { display: none; max-width: 600px; margin: 24px auto; text-align: center;
+  background: #FFF; border-radius: 20px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.result-card.show { display: block; }
+.result-card .score-num { font-size: 3rem; font-weight: 800; }
+@media print { .top-nav, .quiz-actions, .page-nav, .result-card { display: none; } .quiz-q { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; } .quiz-q .opt { background: #fff; } }
+@media (max-width: 640px) { .quiz-q { padding: 14px 16px; } .quiz-q .options { margin-left: 0; } .quiz-q .q-title { font-size: 15px; } }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><a href="guang光现象.html">第六章 光现象</a><span class="sep">&#8250;</span><span>章节测验</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a>
+    <a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a>
+    <a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html" class="active">光现象</a>
+    <a href="dian.html">电学</a>
+    <a href="re.html">热学</a>
+  </div>
+</nav>
+<div class="container"><div class="quiz-wrap">
+<div class="quiz-header"><h2>第六章 光现象 &#183; 章节测验</h2><p>共 50 题，满分 50 分。</p></div>
+<div id="quizForm">
+
+<div class="q-section"><h3>一、光源与光的直线传播（第 1-10 题）</h3></div>
+<div class="quiz-q" data-q="1"><span class="q-num">1</span><span class="q-title">以下属于光源的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q1" value="A">月球</label>
+<label class="opt"><input type="radio" name="q1" value="B">正在发光的萤火虫</label>
+<label class="opt"><input type="radio" name="q1" value="C">电影屏幕</label>
+<label class="opt"><input type="radio" name="q1" value="D">镜子</label></div><div class="feedback" id="fb1"></div></div>
+<div class="quiz-q" data-q="2"><span class="q-num">2</span><span class="q-title">下列物体中，不属于光源的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q2" value="A">太阳</label>
+<label class="opt"><input type="radio" name="q2" value="B">点燃的蜡烛</label>
+<label class="opt"><input type="radio" name="q2" value="C">月球</label>
+<label class="opt"><input type="radio" name="q2" value="D">萤火虫</label></div><div class="feedback" id="fb2"></div></div>
+<div class="quiz-q" data-q="3"><span class="q-num">3</span><span class="q-title">小孔成像可以用什么原理来解释？</span><div class="options">
+<label class="opt"><input type="radio" name="q3" value="A">光的反射</label>
+<label class="opt"><input type="radio" name="q3" value="B">光的折射</label>
+<label class="opt"><input type="radio" name="q3" value="C">光的直线传播</label>
+<label class="opt"><input type="radio" name="q3" value="D">光的色散</label></div><div class="feedback" id="fb3"></div></div>
+<div class="quiz-q" data-q="4"><span class="q-num">4</span><span class="q-title">日食和月食的形成，是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q4" value="A">光的反射</label>
+<label class="opt"><input type="radio" name="q4" value="B">光的折射</label>
+<label class="opt"><input type="radio" name="q4" value="C">光的直线传播</label>
+<label class="opt"><input type="radio" name="q4" value="D">光的散射</label></div><div class="feedback" id="fb4"></div></div>
+<div class="quiz-q" data-q="5"><span class="q-num">5</span><span class="q-title">影子的形成是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q5" value="A">光沿直线传播，光被不透明物体挡住</label>
+<label class="opt"><input type="radio" name="q5" value="B">光的折射</label>
+<label class="opt"><input type="radio" name="q5" value="C">光的反射</label>
+<label class="opt"><input type="radio" name="q5" value="D">物体本身是黑色的</label></div><div class="feedback" id="fb5"></div></div>
+<div class="quiz-q" data-q="6"><span class="q-num">6</span><span class="q-title">光在什么条件下沿直线传播？</span><div class="options">
+<label class="opt"><input type="radio" name="q6" value="A">在任何条件下</label>
+<label class="opt"><input type="radio" name="q6" value="B">在同一种均匀介质中</label>
+<label class="opt"><input type="radio" name="q6" value="C">只在真空中</label>
+<label class="opt"><input type="radio" name="q6" value="D">只在空气中</label></div><div class="feedback" id="fb6"></div></div>
+<div class="quiz-q" data-q="7"><span class="q-num">7</span><span class="q-title">小孔成像所成的像是？</span><div class="options">
+<label class="opt"><input type="radio" name="q7" value="A">正立的虚像</label>
+<label class="opt"><input type="radio" name="q7" value="B">倒立的虚像</label>
+<label class="opt"><input type="radio" name="q7" value="C">倒立的实像</label>
+<label class="opt"><input type="radio" name="q7" value="D">正立的实像</label></div><div class="feedback" id="fb7"></div></div>
+<div class="quiz-q" data-q="8"><span class="q-num">8</span><span class="q-title">下列现象中，属于光沿直线传播的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q8" value="A">水中倒影</label>
+<label class="opt"><input type="radio" name="q8" value="B">彩虹</label>
+<label class="opt"><input type="radio" name="q8" value="C">日食</label>
+<label class="opt"><input type="radio" name="q8" value="D">海市蜃楼</label></div><div class="feedback" id="fb8"></div></div>
+<div class="quiz-q" data-q="9"><span class="q-num">9</span><span class="q-title">月食发生时，太阳、地球、月球三者的位置关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q9" value="A">太阳在中间</label>
+<label class="opt"><input type="radio" name="q9" value="B">地球在太阳和月球之间</label>
+<label class="opt"><input type="radio" name="q9" value="C">月球在太阳和地球之间</label>
+<label class="opt"><input type="radio" name="q9" value="D">三者共线但月球在中间</label></div><div class="feedback" id="fb9"></div></div>
+<div class="quiz-q" data-q="10"><span class="q-num">10</span><span class="q-title">太阳光下，人在地面上的影子早晚长、中午短，其原因是？</span><div class="options">
+<label class="opt"><input type="radio" name="q10" value="A">太阳大小的变化</label>
+<label class="opt"><input type="radio" name="q10" value="B">太阳高度的变化导致光线角度变化</label>
+<label class="opt"><input type="radio" name="q10" value="C">人体温度的变化</label>
+<label class="opt"><input type="radio" name="q10" value="D">地球自转速度变化</label></div><div class="feedback" id="fb10"></div></div>
+
+<div class="q-section"><h3>二、光速、反射定律与平面镜成像（第 11-20 题）</h3></div>
+<div class="quiz-q" data-q="11"><span class="q-num">11</span><span class="q-title">光在真空中的传播速度约为？</span><div class="options">
+<label class="opt"><input type="radio" name="q11" value="A">340 m/s</label>
+<label class="opt"><input type="radio" name="q11" value="B">3×10⁸ km/s</label>
+<label class="opt"><input type="radio" name="q11" value="C">3×10⁸ m/s</label>
+<label class="opt"><input type="radio" name="q11" value="D">3×10⁵ m/s</label></div><div class="feedback" id="fb11"></div></div>
+<div class="quiz-q" data-q="12"><span class="q-num">12</span><span class="q-title">太阳光从太阳传到地球大约需要多长时间？</span><div class="options">
+<label class="opt"><input type="radio" name="q12" value="A">立刻到达</label>
+<label class="opt"><input type="radio" name="q12" value="B">约 8 分钟</label>
+<label class="opt"><input type="radio" name="q12" value="C">约 8 秒</label>
+<label class="opt"><input type="radio" name="q12" value="D">约 1 小时</label></div><div class="feedback" id="fb12"></div></div>
+<div class="quiz-q" data-q="13"><span class="q-num">13</span><span class="q-title">光的反射定律中，入射角等于？</span><div class="options">
+<label class="opt"><input type="radio" name="q13" value="A">入射角大于反射角</label>
+<label class="opt"><input type="radio" name="q13" value="B">反射角</label>
+<label class="opt"><input type="radio" name="q13" value="C">折射角</label>
+<label class="opt"><input type="radio" name="q13" value="D">入射角的 2 倍</label></div><div class="feedback" id="fb13"></div></div>
+<div class="quiz-q" data-q="14"><span class="q-num">14</span><span class="q-title">入射角为 30° 时，反射角为？</span><div class="options">
+<label class="opt"><input type="radio" name="q14" value="A">15°</label>
+<label class="opt"><input type="radio" name="q14" value="B">30°</label>
+<label class="opt"><input type="radio" name="q14" value="C">60°</label>
+<label class="opt"><input type="radio" name="q14" value="D">90°</label></div><div class="feedback" id="fb14"></div></div>
+<div class="quiz-q" data-q="15"><span class="q-num">15</span><span class="q-title">入射光线与镜面夹角为 50°，则入射角为？</span><div class="options">
+<label class="opt"><input type="radio" name="q15" value="A">50°</label>
+<label class="opt"><input type="radio" name="q15" value="B">40°</label>
+<label class="opt"><input type="radio" name="q15" value="C">30°</label>
+<label class="opt"><input type="radio" name="q15" value="D">90°</label></div><div class="feedback" id="fb15"></div></div>
+<div class="quiz-q" data-q="16"><span class="q-num">16</span><span class="q-title">镜面反射和漫反射的共同点是？</span><div class="options">
+<label class="opt"><input type="radio" name="q16" value="A">都发生镜面现象</label>
+<label class="opt"><input type="radio" name="q16" value="B">都遵循反射定律</label>
+<label class="opt"><input type="radio" name="q16" value="C">都不遵守反射定律</label>
+<label class="opt"><input type="radio" name="q16" value="D">都能形成清晰的像</label></div><div class="feedback" id="fb16"></div></div>
+<div class="quiz-q" data-q="17"><span class="q-num">17</span><span class="q-title">平面镜成像的特点是？</span><div class="options">
+<label class="opt"><input type="radio" name="q17" value="A">实像、等大、倒立</label>
+<label class="opt"><input type="radio" name="q17" value="B">虚像、等大、正立、物像对称</label>
+<label class="opt"><input type="radio" name="q17" value="C">实像、放大、倒立</label>
+<label class="opt"><input type="radio" name="q17" value="D">虚像、缩小、倒立</label></div><div class="feedback" id="fb17"></div></div>
+<div class="quiz-q" data-q="18"><span class="q-num">18</span><span class="q-title">人站在平面镜前 1.5 m 处，像到镜面的距离为？</span><div class="options">
+<label class="opt"><input type="radio" name="q18" value="A">3 m</label>
+<label class="opt"><input type="radio" name="q18" value="B">1.5 m</label>
+<label class="opt"><input type="radio" name="q18" value="C">0.75 m</label>
+<label class="opt"><input type="radio" name="q18" value="D">0 m</label></div><div class="feedback" id="fb18"></div></div>
+<div class="quiz-q" data-q="19"><span class="q-num">19</span><span class="q-title">人向平面镜靠近时，像的大小会？</span><div class="options">
+<label class="opt"><input type="radio" name="q19" value="A">变大</label>
+<label class="opt"><input type="radio" name="q19" value="B">变小</label>
+<label class="opt"><input type="radio" name="q19" value="C">不变</label>
+<label class="opt"><input type="radio" name="q19" value="D">先变大再变小</label></div><div class="feedback" id="fb19"></div></div>
+<div class="quiz-q" data-q="20"><span class="q-num">20</span><span class="q-title">平面镜成像中，“像”与“物”关于镜面？</span><div class="options">
+<label class="opt"><input type="radio" name="q20" value="A">对称</label>
+<label class="opt"><input type="radio" name="q20" value="B">重合</label>
+<label class="opt"><input type="radio" name="q20" value="C">无关</label>
+<label class="opt"><input type="radio" name="q20" value="D">非线性</label></div><div class="feedback" id="fb20"></div></div>
+
+<div class="q-section"><h3>三、光的折射与色散（第 21-30 题）</h3></div>
+<div class="quiz-q" data-q="21"><span class="q-num">21</span><span class="q-title">光从空气斜射入水中时，折射光线会？</span><div class="options">
+<label class="opt"><input type="radio" name="q21" value="A">远离法线</label>
+<label class="opt"><input type="radio" name="q21" value="B">靠近法线</label>
+<label class="opt"><input type="radio" name="q21" value="C">沿直线传播</label>
+<label class="opt"><input type="radio" name="q21" value="D">与法线重合</label></div><div class="feedback" id="fb21"></div></div>
+<div class="quiz-q" data-q="22"><span class="q-num">22</span><span class="q-title">筷子在水中看起来“折断”了，这是光的什么现象？</span><div class="options">
+<label class="opt"><input type="radio" name="q22" value="A">反射</label>
+<label class="opt"><input type="radio" name="q22" value="B">折射</label>
+<label class="opt"><input type="radio" name="q22" value="C">直线传播</label>
+<label class="opt"><input type="radio" name="q22" value="D">散射</label></div><div class="feedback" id="fb22"></div></div>
+<div class="quiz-q" data-q="23"><span class="q-num">23</span><span class="q-title">光从水中斜射入空气中，折射角？</span><div class="options">
+<label class="opt"><input type="radio" name="q23" value="A">小于入射角</label>
+<label class="opt"><input type="radio" name="q23" value="B">大于入射角</label>
+<label class="opt"><input type="radio" name="q23" value="C">等于入射角</label>
+<label class="opt"><input type="radio" name="q23" value="D">一定等于 0°</label></div><div class="feedback" id="fb23"></div></div>
+<div class="quiz-q" data-q="24"><span class="q-num">24</span><span class="q-title">海市蜃楼是由于？</span><div class="options">
+<label class="opt"><input type="radio" name="q24" value="A">光的反射</label>
+<label class="opt"><input type="radio" name="q24" value="B">光的直线传播</label>
+<label class="opt"><input type="radio" name="q24" value="C">光的折射（不同高度空气密度不同）</label>
+<label class="opt"><input type="radio" name="q24" value="D">平面镜成像</label></div><div class="feedback" id="fb24"></div></div>
+<div class="quiz-q" data-q="25"><span class="q-num">25</span><span class="q-title">当光垂直射入水面时，折射角为？</span><div class="options">
+<label class="opt"><input type="radio" name="q25" value="A">90°</label>
+<label class="opt"><input type="radio" name="q25" value="B">0°</label>
+<label class="opt"><input type="radio" name="q25" value="C">45°</label>
+<label class="opt"><input type="radio" name="q25" value="D">大于入射角</label></div><div class="feedback" id="fb25"></div></div>
+<div class="quiz-q" data-q="26"><span class="q-num">26</span><span class="q-title">池水看起来比实际浅，是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q26" value="A">光的反射</label>
+<label class="opt"><input type="radio" name="q26" value="B">光的折射（从水中射出的光线远离法线）</label>
+<label class="opt"><input type="radio" name="q26" value="C">池水太少</label>
+<label class="opt"><input type="radio" name="q26" value="D">视觉错觉与光无关</label></div><div class="feedback" id="fb26"></div></div>
+<div class="quiz-q" data-q="27"><span class="q-num">27</span><span class="q-title">彩虹的形成属于光的什么现象？</span><div class="options">
+<label class="opt"><input type="radio" name="q27" value="A">反射</label>
+<label class="opt"><input type="radio" name="q27" value="B">折射 + 色散</label>
+<label class="opt"><input type="radio" name="q27" value="C">直线传播</label>
+<label class="opt"><input type="radio" name="q27" value="D">衍射</label></div><div class="feedback" id="fb27"></div></div>
+<div class="quiz-q" data-q="28"><span class="q-num">28</span><span class="q-title">白光经过三棱镜后分解成七种颜色的光，这种现象叫？</span><div class="options">
+<label class="opt"><input type="radio" name="q28" value="A">反射</label>
+<label class="opt"><input type="radio" name="q28" value="B">折射</label>
+<label class="opt"><input type="radio" name="q28" value="C">色散</label>
+<label class="opt"><input type="radio" name="q28" value="D">干涉</label></div><div class="feedback" id="fb28"></div></div>
+<div class="quiz-q" data-q="29"><span class="q-num">29</span><span class="q-title">太阳光（白光）是复色光还是单色光？</span><div class="options">
+<label class="opt"><input type="radio" name="q29" value="A">单色光</label>
+<label class="opt"><input type="radio" name="q29" value="B">复色光，由多种色光组成</label>
+<label class="opt"><input type="radio" name="q29" value="C">只有红光和蓝光</label>
+<label class="opt"><input type="radio" name="q29" value="D">没有颜色</label></div><div class="feedback" id="fb29"></div></div>
+<div class="quiz-q" data-q="30"><span class="q-num">30</span><span class="q-title">光的三原色是？</span><div class="options">
+<label class="opt"><input type="radio" name="q30" value="A">红、黄、蓝</label>
+<label class="opt"><input type="radio" name="q30" value="B">红、绿、蓝</label>
+<label class="opt"><input type="radio" name="q30" value="C">青、品红、黄</label>
+<label class="opt"><input type="radio" name="q30" value="D">红、橙、黄</label></div><div class="feedback" id="fb30"></div></div>
+
+<div class="q-section"><h3>四、凸透镜成像、凹透镜与视力矫正（第 31-40 题）</h3></div>
+<div class="quiz-q" data-q="31"><span class="q-num">31</span><span class="q-title">当物体在凸透镜的 2 倍焦距之外（u>2f）时，成的像是？</span><div class="options">
+<label class="opt"><input type="radio" name="q31" value="A">正立放大的虚像</label>
+<label class="opt"><input type="radio" name="q31" value="B">倒立缩小的实像</label>
+<label class="opt"><input type="radio" name="q31" value="C">倒立等大的实像</label>
+<label class="opt"><input type="radio" name="q31" value="D">正立缩小的虚像</label></div><div class="feedback" id="fb31"></div></div>
+<div class="quiz-q" data-q="32"><span class="q-num">32</span><span class="q-title">当物体在凸透镜的焦点以内（u<f）时，成的像是？</span><div class="options">
+<label class="opt"><input type="radio" name="q32" value="A">倒立放大的实像</label>
+<label class="opt"><input type="radio" name="q32" value="B">正立放大的虚像（放大镜原理）</label>
+<label class="opt"><input type="radio" name="q32" value="C">倒立缩小的实像</label>
+<label class="opt"><input type="radio" name="q32" value="D">倒立等大的实像</label></div><div class="feedback" id="fb32"></div></div>
+<div class="quiz-q" data-q="33"><span class="q-num">33</span><span class="q-title">当 u=2f 时，凸透镜成像的特点是？</span><div class="options">
+<label class="opt"><input type="radio" name="q33" value="A">倒立等大的实像（v=2f）</label>
+<label class="opt"><input type="radio" name="q33" value="B">倒立放大的实像</label>
+<label class="opt"><input type="radio" name="q33" value="C">正立放大的虚像</label>
+<label class="opt"><input type="radio" name="q33" value="D">不成像</label></div><div class="feedback" id="fb33"></div></div>
+<div class="quiz-q" data-q="34"><span class="q-num">34</span><span class="q-title">当 u=f 时，凸透镜成像情况是？</span><div class="options">
+<label class="opt"><input type="radio" name="q34" value="A">倒立等大实像</label>
+<label class="opt"><input type="radio" name="q34" value="B">正立放大虚像</label>
+<label class="opt"><input type="radio" name="q34" value="C">不成像（折射光线平行射出）</label>
+<label class="opt"><input type="radio" name="q34" value="D">倒立缩小实像</label></div><div class="feedback" id="fb34"></div></div>
+<div class="quiz-q" data-q="35"><span class="q-num">35</span><span class="q-title">照相机利用的是凸透镜的什么成像规律？</span><div class="options">
+<label class="opt"><input type="radio" name="q35" value="A">u>2f，倒立缩小实像</label>
+<label class="opt"><input type="radio" name="q35" value="B">u<f，正立放大虚像</label>
+<label class="opt"><input type="radio" name="q35" value="C">f<u<2f，倒立放大实像</label>
+<label class="opt"><input type="radio" name="q35" value="D">u=2f，倒立等大实像</label></div><div class="feedback" id="fb35"></div></div>
+<div class="quiz-q" data-q="36"><span class="q-num">36</span><span class="q-title">投影仪利用的是凸透镜的什么成像规律？</span><div class="options">
+<label class="opt"><input type="radio" name="q36" value="A">u>2f，倒立缩小实像</label>
+<label class="opt"><input type="radio" name="q36" value="B">f<u<2f，倒立放大实像</label>
+<label class="opt"><input type="radio" name="q36" value="C">u<f，正立放大虚像</label>
+<label class="opt"><input type="radio" name="q36" value="D">u=2f，倒立等大实像</label></div><div class="feedback" id="fb36"></div></div>
+<div class="quiz-q" data-q="37"><span class="q-num">37</span><span class="q-title">凹透镜对光线有？</span><div class="options">
+<label class="opt"><input type="radio" name="q37" value="A">会聚作用</label>
+<label class="opt"><input type="radio" name="q37" value="B">发散作用</label>
+<label class="opt"><input type="radio" name="q37" value="C">既不会聚也不发散</label>
+<label class="opt"><input type="radio" name="q37" value="D">反射作用</label></div><div class="feedback" id="fb37"></div></div>
+<div class="quiz-q" data-q="38"><span class="q-num">38</span><span class="q-title">近视眼戴什么透镜矫正？</span><div class="options">
+<label class="opt"><input type="radio" name="q38" value="A">凸透镜（会聚）</label>
+<label class="opt"><input type="radio" name="q38" value="B">凹透镜（发散）</label>
+<label class="opt"><input type="radio" name="q38" value="C">平面镜</label>
+<label class="opt"><input type="radio" name="q38" value="D">三棱镜</label></div><div class="feedback" id="fb38"></div></div>
+<div class="quiz-q" data-q="39"><span class="q-num">39</span><span class="q-title">远视眼（老花眼）配戴什么透镜矫正？</span><div class="options">
+<label class="opt"><input type="radio" name="q39" value="A">平面镜</label>
+<label class="opt"><input type="radio" name="q39" value="B">凹透镜</label>
+<label class="opt"><input type="radio" name="q39" value="C">凸透镜</label>
+<label class="opt"><input type="radio" name="q39" value="D">三棱镜</label></div><div class="feedback" id="fb39"></div></div>
+<div class="quiz-q" data-q="40"><span class="q-num">40</span><span class="q-title">透镜焦距为 10 cm，物体距离透镜 15 cm 时，成像性质是？</span><div class="options">
+<label class="opt"><input type="radio" name="q40" value="A">倒立缩小实像</label>
+<label class="opt"><input type="radio" name="q40" value="B">倒立放大实像</label>
+<label class="opt"><input type="radio" name="q40" value="C">正立放大虚像</label>
+<label class="opt"><input type="radio" name="q40" value="D">不成像</label></div><div class="feedback" id="fb40"></div></div>
+
+<div class="q-section"><h3>五、红外线紫外线与综合辨析（第 41-50 题）</h3></div>
+<div class="quiz-q" data-q="41"><span class="q-num">41</span><span class="q-title">红外线的特点是？</span><div class="options">
+<label class="opt"><input type="radio" name="q41" value="A">可被肉眼看到</label>
+<label class="opt"><input type="radio" name="q41" value="B">热效应显著</label>
+<label class="opt"><input type="radio" name="q41" value="C">能使荧光物质发光</label>
+<label class="opt"><input type="radio" name="q41" value="D">频率高于可见光</label></div><div class="feedback" id="fb41"></div></div>
+<div class="quiz-q" data-q="42"><span class="q-num">42</span><span class="q-title">紫外线的应用是？</span><div class="options">
+<label class="opt"><input type="radio" name="q42" value="A">遥控器</label>
+<label class="opt"><input type="radio" name="q42" value="B">夜视仪</label>
+<label class="opt"><input type="radio" name="q42" value="C">杀菌消毒、验钞</label>
+<label class="opt"><input type="radio" name="q42" value="D">测温</label></div><div class="feedback" id="fb42"></div></div>
+<div class="quiz-q" data-q="43"><span class="q-num">43</span><span class="q-title">红外线和紫外线的共同点是？</span><div class="options">
+<label class="opt"><input type="radio" name="q43" value="A">都可以被肉眼看到</label>
+<label class="opt"><input type="radio" name="q43" value="B">都属于不可见光</label>
+<label class="opt"><input type="radio" name="q43" value="C">都用于电视遥控器</label>
+<label class="opt"><input type="radio" name="q43" value="D">都用于验钞</label></div><div class="feedback" id="fb43"></div></div>
+<div class="quiz-q" data-q="44"><span class="q-num">44</span><span class="q-title">近视眼形成的原因是？</span><div class="options">
+<label class="opt"><input type="radio" name="q44" value="A">晶状体太薄，折光能力太弱</label>
+<label class="opt"><input type="radio" name="q44" value="B">晶状体太厚，折光能力太强（成像在视网膜前）</label>
+<label class="opt"><input type="radio" name="q44" value="C">眼球前后径太短</label>
+<label class="opt"><input type="radio" name="q44" value="D">视网膜损坏</label></div><div class="feedback" id="fb44"></div></div>
+<div class="quiz-q" data-q="45"><span class="q-num">45</span><span class="q-title">下列不是凸透镜应用的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q45" value="A">放大镜</label>
+<label class="opt"><input type="radio" name="q45" value="B">近视眼镜</label>
+<label class="opt"><input type="radio" name="q45" value="C">投影仪</label>
+<label class="opt"><input type="radio" name="q45" value="D">照相机</label></div><div class="feedback" id="fb45"></div></div>
+<div class="quiz-q" data-q="46"><span class="q-num">46</span><span class="q-title">下列光现象中，属于光的反射的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q46" value="A">小孔成像</label>
+<label class="opt"><input type="radio" name="q46" value="B">水中倒影</label>
+<label class="opt"><input type="radio" name="q46" value="C">海市蜃楼</label>
+<label class="opt"><input type="radio" name="q46" value="D">筷子弯折</label></div><div class="feedback" id="fb46"></div></div>
+<div class="quiz-q" data-q="47"><span class="q-num">47</span><span class="q-title">以下成像中，属于实像的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q47" value="A">平面镜中的像</label>
+<label class="opt"><input type="radio" name="q47" value="B">放大镜看到的像</label>
+<label class="opt"><input type="radio" name="q47" value="C">小孔成像</label>
+<label class="opt"><input type="radio" name="q47" value="D">池水中的倒影</label></div><div class="feedback" id="fb47"></div></div>
+<div class="quiz-q" data-q="48"><span class="q-num">48</span><span class="q-title">光的三原色红、绿、蓝等比例混合得到什么光？</span><div class="options">
+<label class="opt"><input type="radio" name="q48" value="A">黑色</label>
+<label class="opt"><input type="radio" name="q48" value="B">紫色</label>
+<label class="opt"><input type="radio" name="q48" value="C">白光</label>
+<label class="opt"><input type="radio" name="q48" value="D">褐色</label></div><div class="feedback" id="fb48"></div></div>
+<div class="quiz-q" data-q="49"><span class="q-num">49</span><span class="q-title">黑板“反光”看不清字，这是因为光在黑板上发生了？</span><div class="options">
+<label class="opt"><input type="radio" name="q49" value="A">漫反射</label>
+<label class="opt"><input type="radio" name="q49" value="B">镜面反射</label>
+<label class="opt"><input type="radio" name="q49" value="C">折射</label>
+<label class="opt"><input type="radio" name="q49" value="D">散射</label></div><div class="feedback" id="fb49"></div></div>
+<div class="quiz-q" data-q="50"><span class="q-num">50</span><span class="q-title">一束与水平面成 40° 角的太阳光射向平面镜，要使反射光沿水平方向射出，平面镜与水平面的夹角可以是？</span><div class="options">
+<label class="opt"><input type="radio" name="q50" value="A">20° 或 70°</label>
+<label class="opt"><input type="radio" name="q50" value="B">40° 或 80°</label>
+<label class="opt"><input type="radio" name="q50" value="C">30° 或 60°</label>
+<label class="opt"><input type="radio" name="q50" value="D">10° 或 50°</label></div><div class="feedback" id="fb50"></div></div>
+
+</div>
+<div class="quiz-actions">
+  <button class="btn-submit" onclick="submitQuiz()">交卷看成绩</button>
+  <button class="btn-retry" id="btnRetry" onclick="retryQuiz()" style="display:none;">重新挑战</button>
+</div>
+<div class="result-card" id="resultCard">
+  <div class="score-num" id="scoreNum"></div>
+  <div class="score-message" id="scoreMsg" style="font-size:1.15rem;margin-top:8px;font-weight:600;"></div>
+</div>
+<div class="page-nav">
+  <a href="sheng-quiz.html" class="prev">&#8592; sheng测验</a>
+  <a href="dian-quiz.html" class="next">dian测验 &#8594;</a>
+</div>
+</div></div>
+
+<script>
+var answers={"q1":"B","q2":"C","q3":"C","q4":"C","q5":"A","q6":"B","q7":"C","q8":"C","q9":"B","q10":"B","q11":"C","q12":"B","q13":"B","q14":"B","q15":"B","q16":"B","q17":"B","q18":"B","q19":"C","q20":"A","q21":"B","q22":"B","q23":"B","q24":"C","q25":"B","q26":"B","q27":"B","q28":"C","q29":"B","q30":"B","q31":"B","q32":"B","q33":"A","q34":"C","q35":"A","q36":"B","q37":"B","q38":"B","q39":"C","q40":"B","q41":"B","q42":"C","q43":"B","q44":"B","q45":"B","q46":"B","q47":"C","q48":"C","q49":"B","q50":"A"};
+
+document.querySelectorAll('.quiz-q .opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    var q=this.closest('.quiz-q');
+    q.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});
+    this.classList.add('selected');
+  });
+});
+
+function submitQuiz(){
+  var score=0,total=50;
+  for(var i=1;i<=total;i++){
+    var q=document.querySelector('[data-q="'+i+'"]');
+    var selected=q.querySelector('input:checked');
+    var fb=document.getElementById('fb'+i);
+    if(selected && selected.value===answers['q'+i]){
+      score++;
+      fb.textContent='✓ 正确';
+      fb.className='feedback correct';
+      q.classList.add('correct-q');
+    }else if(selected){
+      fb.textContent='✗ 正确答案：'+answers['q'+i'];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }else{
+      fb.textContent='✗ 未作答，正确答案：'+answers['q'+i'];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }
+  }
+  document.querySelector('.btn-submit').style.display='none';
+  document.getElementById('btnRetry').style.display='inline-block';
+  var card=document.getElementById('resultCard');
+  card.classList.add('show');
+  document.getElementById('scoreNum').textContent=score+' / 50';
+  document.getElementById('scoreNum').style.color=score>=45?'#5B8A6A':score>=35?'#C4A060':score>=25?'#C4708A':'#C4708A';
+  var msg='';
+  if(score===50)msg='满分通关！光学大师！';
+  else if(score>=45)msg='非常棒！光的规律掌握得很好～';
+  else if(score>=35)msg='不错！重点复习凸透镜成像规律～';
+  else if(score>=25)msg='还需加强，建议对照光路图多画多练～';
+  else msg='加油！光现象与生活紧密，从头再复习一遍吧！';
+  document.getElementById('scoreMsg').textContent=msg;
+}
+
+function retryQuiz(){
+  document.querySelectorAll('.quiz-q input[type=radio]').forEach(function(r){r.checked=false});
+  document.querySelectorAll('.quiz-q .opt').forEach(function(o){o.classList.remove('selected')});
+  document.querySelectorAll('.quiz-q').forEach(function(q){q.classList.remove('correct-q','wrong-q')});
+  document.querySelectorAll('.feedback').forEach(function(f){f.className='feedback';f.textContent=''});
+  document.querySelector('.btn-submit').style.display='inline-block';
+  document.getElementById('btnRetry').style.display='none';
+  document.getElementById('resultCard').classList.remove('show');
+}
+</script>
+</body>
+</html>

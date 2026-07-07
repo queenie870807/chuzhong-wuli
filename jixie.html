@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第三章 简单机械和功 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* 自行车中的简单机械 */
+.illus-bike { position:relative; width:240px; height:200px; }
+.illus-bike .frame { position:absolute; top:80px; left:20px; width:120px; height:10px; background:#707880; border-radius:5px; transform:rotate(-8deg); }
+.illus-bike .frame2 { position:absolute; top:40px; left:80px; width:10px; height:50px; background:#707880; border-radius:5px; }
+.illus-bike .frame3 { position:absolute; top:40px; left:20px; width:10px; height:50px; background:#707880; border-radius:5px; }
+.illus-bike .wheel1 { position:absolute; top:100px; left:10px; width:60px; height:60px; border:4px solid #909090; border-radius:50%; }
+.illus-bike .wheel2 { position:absolute; top:100px; left:140px; width:60px; height:60px; border:4px solid #909090; border-radius:50%; }
+.illus-bike .gear1 { position:absolute; top:82px; left:100px; width:24px; height:24px; background:#D0A060; border:3px solid #B09040; border-radius:50%; }
+.illus-bike .gear2 { position:absolute; top:100px; left:120px; width:18px; height:18px; background:#C8A050; border:3px solid #A08030; border-radius:50%; }
+.illus-bike .gear1::after { content:"脚踏齿轮"; position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:7px; font-weight:700; color:#A08050; white-space:nowrap; }
+.illus-bike .gear2::after { content:"飞轮"; position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); font-size:7px; font-weight:700; color:#A08050; white-space:nowrap; }
+.illus-bike .pedal { position:absolute; top:94px; left:102px; width:30px; height:6px; background:#A08060; border-radius:3px; }
+.illus-bike .seat { position:absolute; top:38px; left:50px; width:12px; height:30px; background:#C8A090; border-radius:6px 6px 3px 3px; }
+.illus-bike .handle { position:absolute; top:32px; left:82px; width:20px; height:6px; background:#A08060; border-radius:3px; }
+.illus-bike .label-zhigan { position:absolute; top:2px; left:80px; font-size:7px; font-weight:700; color:#707880; }
+.illus-bike .label-zhou { position:absolute; top:2px; right:30px; font-size:7px; font-weight:700; color:#C87878; }
+.illus-bike .label-lunzhou { position:absolute; top:10px; right:20px; font-size:7px; font-weight:700; color:#6BA0C0; }
+.illus-bike .label-bike { position:absolute; bottom:4px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#708090; }
+
+/* 机械效率实验 */
+.illus-efficiency { position:relative; width:240px; height:200px; }
+.illus-efficiency .board { position:absolute; top:40px; left:20px; width:180px; height:10px; background:#D8C8A8; border-radius:5px; transform:rotate(15deg); }
+.illus-efficiency .board::after { content:"斜面"; position:absolute; top:-16px; left:50%; transform:translateX(-50%); font-size:9px; color:#A09070; }
+.illus-efficiency .block { position:absolute; top:64px; left:100px; width:30px; height:24px; background:#C87878; border:2px solid #A05858; border-radius:4px; transform:rotate(15deg); }
+.illus-efficiency .rope { position:absolute; top:76px; left:130px; width:40px; height:2px; background:#888; transform:rotate(15deg); }
+.illus-efficiency .spring { position:absolute; top:74px; left:170px; }
+.illus-efficiency .spring .spring-coil { width:4px; height:4px; border:1px solid #60A060; margin-bottom:2px; }
+.illus-efficiency .spring .spring-coil:nth-child(1) { border-top:none; }
+.illus-efficiency .pull-label { position:absolute; top:58px; left:176px; font-size:10px; font-weight:700; color:#60A060; }
+.illus-efficiency .label-eff { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); font-size:11px; font-weight:700; color:#408078; }
+</style>
+</head>
+<body class="ch3">
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><span>第三章 简单机械和功</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a><a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html" class="active">简单机械和功</a><a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a><a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a><a href="re.html">热学</a>
+  </div>
+</nav>
+
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="搜索知识点，如「杠杆」「功」..." oninput="doSearch()">
+  <span class="search-icon">&#128269;</span>
+  <div class="no-result" id="noResult">未找到匹配内容，试试其他关键词吧</div>
+</div>
+
+<div class="container">
+
+<section class="ch3">
+<div class="chapter-title"><span class="ch-num">第三章</span>&#9881; 简单机械和功</div>
+
+<div class="mindmap-grid">
+  <div class="mm-card"><h4>&#128220; 杠杆</h4><ul><li>支点/动力臂/阻力臂</li><li>F&#8321;L&#8321; = F&#8322;L&#8322;</li><li>三类杠杆对比</li></ul></div>
+  <div class="mm-card"><h4>&#128295; 滑轮与滑轮组</h4><ul><li>定滑轮（改方向）</li><li>动滑轮（省一半力）</li><li>滑轮组费距离省力</li></ul></div>
+  <div class="mm-card"><h4>&#128274; 轮轴与斜面</h4><ul><li>轮轴 = 变形的杠杆</li><li>斜面省力——盘山公路</li><li>螺旋——变形的斜面</li></ul></div>
+  <div class="mm-card"><h4>&#9889; 功与功的原理</h4><ul><li>W = Fs</li><li>功的原理——任何机械都不省功</li><li>有用功/额外功/总功</li></ul></div>
+  <div class="mm-card"><h4>&#9201; 功率</h4><ul><li>P = W / t</li><li>单位：瓦特 (W)</li><li>做功的快慢</li></ul></div>
+  <div class="mm-card"><h4>&#127919; 机械效率</h4><ul><li>&#951; = W有用/W总 &#215; 100%</li><li>永远小于 100%</li><li>提高效率的方法</li></ul></div>
+  <div class="mm-card"><h4>&#128260; 机械能</h4><ul><li>动能 + 势能</li><li>机械能守恒</li><li>动能和势能相互转化</li></ul></div>
+</div>
+
+<div class="section-label">&#128218; 核心概念</div>
+
+<!-- 杠杆 -->
+<div class="concept-card" id="c3-lever">
+  <div class="card-header">
+    <div class="card-icon">&#128220;</div>
+    <div><h4>杠杆 —— 「给我一个支点，我能撬动地球」</h4><p class="subtitle">阿基米德没有吹牛——理论上真的可以</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">F&#8321; L&#8321; = F&#8322; L&#8322;</div>
+      <div class="var-list">
+        <span class="var-tag pink">F&#8321; 动力 (N)</span><span class="var-tag blue">L&#8321; 动力臂 (m)</span>
+        <span class="var-tag green">F&#8322; 阻力 (N)</span><span class="var-tag pink">L&#8322; 阻力臂 (m)</span>
+      </div>
+    </div>
+    <p>杠杆平衡条件：<strong>动力 &#215; 动力臂 = 阻力 &#215; 阻力臂</strong>。力臂越大力越省——这就是"四两拨千斤"。</p>
+  </div>
+</div>
+
+<!-- 三类杠杆对比 -->
+<div class="concept-card" id="c3-lever-types">
+  <div class="card-header">
+    <div class="card-icon">&#128295;</div>
+    <div><h4>三类杠杆 —— 哪些帮你省力？哪些帮你"省距离"？</h4><p class="subtitle">不是所有杠杆都省力——有的甚至更费力！</p></div>
+  </div>
+  <div class="card-body">
+    <table class="quick-table">
+      <tr><th>类型</th><th>力臂关系</th><th>特点</th><th>典型例子</th></tr>
+      <tr><td><strong>省力杠杆</strong></td><td>L&#8321; > L&#8322;（动力臂 > 阻力臂）</td><td><strong>省力</strong>，但费距离</td><td>撬棍、扳手、铡刀、开瓶器</td></tr>
+      <tr><td><strong>费力杠杆</strong></td><td>L&#8321; < L&#8322;（动力臂 < 阻力臂）</td><td><strong>费力</strong>，但省距离</td><td>镊子、钓鱼竿、筷子、理发剪刀</td></tr>
+      <tr><td><strong>等臂杠杆</strong></td><td>L&#8321; = L&#8322;（动力臂 = 阻力臂）</td><td><strong>不省力也不费力</strong></td><td>天平、跷跷板（平衡时）</td></tr>
+    </table>
+    <div class="example-tag"><span class="emoji">&#127860;</span>筷子是费力杠杆？对！支点在手指与筷子的接触点，阻力臂（筷尖到支点）> 动力臂（手指施力点到支点）——费力但获得了精准控制（省距离）。</div>
+  </div>
+</div>
+
+<!-- 三类杠杆 CSS图示 -->
+<div class="section-label">&#127912; 三类杠杆对比</div>
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div style="position:relative;width:240px;height:180px;">
+      <!-- 省力杠杆 -->
+      <div style="position:absolute;top:10px;left:10px;">
+        <div style="width:80px;height:6px;background:#6BA0C0;border-radius:3px;position:relative;">
+          <div style="position:absolute;top:-4px;left:-4px;width:10px;height:14px;background:#D0A060;border-radius:50%;"></div>
+          <div style="position:absolute;top:10px;left:0;font-size:7px;color:#D0A060;">支点</div>
+          <div style="position:absolute;top:-2px;left:10px;width:6px;height:10px;background:#C87878;border-radius:0 3px 3px 0;display:flex;flex-direction:column;align-items:flex-end;">
+            <div style="width:4px;height:16px;background:#C87878;border-radius:2px;position:absolute;top:-12px;left:1px;"></div>
+          </div>
+          <div style="position:absolute;top:16px;left:40px;font-size:8px;font-weight:700;color:#C87878;">省力杠杆</div>
+        </div>
+      </div>
+      <!-- 费力杠杆 -->
+      <div style="position:absolute;top:65px;left:10px;">
+        <div style="width:80px;height:6px;background:#D8C8A8;border-radius:3px;position:relative;">
+          <div style="position:absolute;top:-4px;right:-4px;width:10px;height:14px;background:#D0A060;border-radius:50%;"></div>
+          <div style="position:absolute;top:10px;right:0;font-size:7px;color:#D0A060;">支点</div>
+          <div style="position:absolute;top:16px;left:20px;font-size:8px;font-weight:700;color:#A09070;">费力杠杆</div>
+        </div>
+      </div>
+      <!-- 等臂杠杆 -->
+      <div style="position:absolute;top:120px;left:10px;">
+        <div style="width:80px;height:6px;background:#A8D0A8;border-radius:3px;position:relative;">
+          <div style="position:absolute;top:-4px;left:35px;width:10px;height:14px;background:#D0A060;border-radius:50%;"></div>
+          <div style="position:absolute;top:10px;left:32px;font-size:7px;color:#D0A060;">支点</div>
+          <div style="position:absolute;top:16px;left:22px;font-size:8px;font-weight:700;color:#70A070;">等臂杠杆</div>
+        </div>
+      </div>
+      <!-- 标注 -->
+      <div style="position:absolute;top:0;right:10px;text-align:left;font-size:9px;color:#888;line-height:1.8;">
+        L&#8321;>L&#8322; 省力<br>L&#8321;<L&#8322; 费力<br>L&#8321;=L&#8322; 等臂
+      </div>
+      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-size:10px;color:#708090;font-weight:700;">横杠 = 杠杆 &#183; 圆点 = 支点</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128220; Tips 图示</span>
+    <h4>三种杠杆——以支点位置区分</h4>
+    <p>支点靠近阻力端：动力臂长 &#8594; 省力。支点靠近动力端：阻力臂长 &#8594; 费力但省距离。支点在中间：等臂 &#8594; 不省不费（天平）。</p>
+  </div>
+</div>
+
+<!-- 轮轴与斜面 -->
+<div class="concept-card" id="c3-wheel">
+  <div class="card-header">
+    <div class="card-icon">&#128274;</div>
+    <div><h4>轮轴与斜面 —— 变形的简单机械</h4><p class="subtitle">轮轴的轮子越大越省力 —— 方向盘为什么大？</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>轮轴</strong>：本质是连续旋转的杠杆。轮半径 R（动力臂）大于轴半径 r（阻力臂）——省力。方向盘、门把手、扳手都是轮轴。</p>
+    <p><strong>斜面</strong>：使用斜面可以省力——斜面越长越省力（盘山公路就是用距离换省力）。理想情况下：F = Gh / L，斜面长 L 越大，所需的力越小。</p>
+    <div class="example-tag"><span class="emoji">&#128692;</span>盘山公路——为什么不直接修垂直电梯上去？因为重力太大爬不上去！盤山路把高度差分散到很长的距离上——用"路程"换"省力"——这就是斜面原理。</div>
+  </div>
+</div>
+
+<!-- 斜面省力CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div style="position:relative;width:240px;height:160px;">
+      <div style="position:absolute;bottom:20px;left:20px;width:180px;height:8px;background:#D8C8A8;border-radius:4px;transform:rotate(12deg);transform-origin:bottom left;"></div>
+      <div style="position:absolute;bottom:20px;left:20px;width:2px;height:60px;background:#A0B0C0;border-radius:2px;transform:rotate(-78deg);transform-origin:bottom left;"></div>
+      <div style="position:absolute;top:30px;left:18px;font-size:9px;font-weight:700;color:#A0B0C0;">h</div>
+      <div style="position:absolute;bottom:6px;left:100px;font-size:9px;font-weight:700;color:#D0B880;">L（斜面长）</div>
+      <div style="position:absolute;top:60px;left:100px;width:30px;height:22px;background:#C87878;border:2px solid #A05858;border-radius:4px;transform:rotate(12deg);"></div>
+      <div style="position:absolute;top:52px;left:84px;font-size:9px;font-weight:700;color:#C87878;">F = Gh/L</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#9968; Tips 图示</span>
+    <h4>斜面——用距离换省力</h4>
+    <p>直接提高物体要克服全部重力 G。沿斜面推物体，需要的力 F = Gh/L——斜面越长 L 越大，F 越小（越省力），但推的距离也更长。</p>
+  </div>
+</div>
+
+<!-- 滑轮组 -->
+<div class="concept-card" id="c3-pulley">
+  <div class="card-header">
+    <div class="card-icon">&#128295;</div>
+    <div><h4>滑轮与滑轮组 —— 省力就要费距离</h4><p class="subtitle">动滑轮省一半力——但要多拉一倍距离</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>定滑轮</strong>：不省力（F = G），只改变力的方向。</p>
+    <p><strong>动滑轮</strong>：省一半力（F = G/2），但费一倍距离（绳子自由端移动距离 s = 2h）。</p>
+    <p><strong>滑轮组</strong>：兼顾省力和改变方向。<strong>s = n h</strong>（n 为承担重物的绳子段数）。拉力 F = (G+G动) / n。</p>
+    <p><b>核心关系</b>：省力就费距离——没有免费的午餐（不省功）。</p>
+    <table class="quick-table" style="margin-top:12px;">
+      <tr><th>滑轮组类型</th><th>绳子段数 n</th><th>拉力 F</th><th>绳子移动 s</th><th>说明</th></tr>
+      <tr><td>单动滑轮</td><td>n = 2</td><td>F = G/2</td><td>s = 2h</td><td>省一半力，费一倍距离</td></tr>
+      <tr><td>一动一定滑轮组</td><td>n = 2 或 3</td><td>F = G/n</td><td>s = nh</td><td>n=2时从定滑轮绕出，n=3时从动滑轮绕出</td></tr>
+      <tr><td>两动两定滑轮组</td><td>n = 4 或 5</td><td>F = G/n</td><td>s = nh</td><td>n=4省力到1/4，但绳子要拉4倍距离</td></tr>
+    </table>
+    <p><b>数 n 的口诀</b>：看动滑轮被几段绳子"兜着"——绳子末端如果从<b>动滑轮</b>绕出，这一段也算；从<b>定滑轮</b>绕出则不算。遇到滑轮组先圈出动滑轮，再数连在动滑轮上的绳子段数。</p>
+    <p><b>省力费距离定量</b>：如果 n=5，F=G/5（省力到1/5），但 s=5h（绳子拉5倍距离）。功不变：W = Fs = (G/5)×5h = Gh——滑轮组不省功，只"转移"力的负担。</p>
+    <div class="example-tag"><span class="emoji">&#127959;</span>建筑工地的起重机——用滑轮组把重物吊高 h=10m，如果滑轮组有 n=4 段绳承担重物，工人要拉 s = 4 &#215; 10 = 40m 绳子！但拉力只有重物的 1/4。</div>
+  </div>
+</div>
+
+<!-- 功与功率 -->
+<div class="concept-card" id="c3-work">
+  <div class="card-header">
+    <div class="card-icon">&#9889;</div>
+    <div><h4>功与功率 —— 「做功 ≠ 劳动」</h4><p class="subtitle">物理学中的"功"有严格定义</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">W = F s &emsp; P = W / t</div>
+      <div class="var-list">
+        <span class="var-tag pink">W 功 (J)</span><span class="var-tag blue">F 力 (N)</span>
+        <span class="var-tag green">s 力的方向上移动距离 (m)</span>
+      </div>
+    </div>
+    <p>做功的两个必要条件：&#9312; 有力作用在物体上；&#9313; 物体在<strong>力的方向上</strong>移动了距离。扛着箱子水平走——肩膀的力向上，移动方向水平——<strong>不做功</strong>！</p>
+    <p><strong>功的原理</strong>：任何机械都不省功——省力就费距离，省距离就费力。</p>
+    <p><strong>功率 P</strong>：做功的快慢。1 W = 1 J/s。成年人爬楼梯的功率约 100-200W。</p>
+  </div>
+</div>
+
+<!-- 机械效率 -->
+<div class="concept-card" id="c3-efficiency">
+  <div class="card-header">
+    <div class="card-icon">&#127919;</div>
+    <div><h4>机械效率 —— 「有用功占总功的百分之几？」</h4><p class="subtitle">永远小于 100%——因为摩擦和自重永远存在</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">&#951; = W<sub>有用</sub> / W<sub>总</sub> &#215; 100%</div>
+    </div>
+    <p>W总 = W有用 + W额外。额外功来自：摩擦力、动滑轮自重、机械部件之间的摩擦和自重。</p>
+    <p><b>提高机械效率的方法</b>：减轻机械自重、加润滑油减小摩擦、增大有用功占比。</p>
+    <p><b>斜面的机械效率</b>：&#951; = Gh / FL。G 为物重，h 为斜面高度，F 为拉力，L 为斜面长度。</p>
+    <div class="example-tag"><span class="emoji">&#129514;</span>测量斜面机械效率：用弹簧测力计拉着木块沿斜面匀速上拉，读出拉力 F。分别计算有用功 Gh 和总功 FL——&#951; = Gh/FL。</div>
+  </div>
+</div>
+
+<!-- 机械效率实验CSS图示 -->
+<div class="section-label">&#127912; 斜面机械效率测量</div>
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-efficiency">
+      <div class="board"></div>
+      <div class="block"></div>
+      <div class="rope"></div>
+      <div class="spring"><div class="spring-coil"></div><div class="spring-coil"></div><div class="spring-coil"></div><div class="spring-coil"></div></div>
+      <div class="pull-label">F</div>
+      <div class="label-eff">&#951; = Gh / FL</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#129514; Tips 图示</span>
+    <h4>实验：测量斜面的机械效率</h4>
+    <p>弹簧测力计沿斜面方向匀速拉动木块——读出拉力 F。测量斜面高度 h 和长度 L。有用功 = Gh，总功 = FL。改变斜面倾角重复实验——倾角越大效率越高（但越费力）。</p>
+  </div>
+</div>
+
+<!-- 自行车中的简单机械（新增） -->
+<div class="concept-card" id="c3-bike">
+  <div class="card-header">
+    <div class="card-icon">&#128690;</div>
+    <div><h4>自行车中的简单机械 —— 一部移动的"物理实验室"</h4><p class="subtitle">你骑的自行车上至少有五种简单机械</p></div>
+  </div>
+  <div class="card-body">
+    <p>&#9312; <strong>杠杆</strong>：刹车把手——支点在转轴，动力臂 > 阻力臂（省力杠杆）。脚踏板——轮轴 + 杠杆复合。</p>
+    <p>&#9313; <strong>轮轴</strong>：车把（方向盘式轮轴）、脚踏板与大齿轮（轮轴）、后轮轴。</p>
+    <p>&#9314; <strong>斜面</strong>：螺栓、螺母上的螺纹——螺旋是缠绕在圆柱上的斜面。</p>
+    <p>&#9315; <strong>滑轮</strong>：链条和齿轮——不是典型的滑轮但作用是"传递旋转运动"。</p>
+    <p>&#9316; <strong>滚动摩擦</strong>：整个车轮——用滚动代替滑动，大幅减小阻力。</p>
+    <div class="example-tag"><span class="emoji">&#128692;</span>变速自行车——前面大齿轮（牙盘）越大，后面小飞轮越小，每踩一圈后轮转的圈数越多（速度快），但需要的力也越大（更费力）。本质就是齿轮传动比在改变"省力 vs 省距离"的平衡。</div>
+  </div>
+</div>
+
+<!-- 自行车CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-bike">
+      <div class="frame"></div><div class="frame2"></div><div class="frame3"></div>
+      <div class="wheel1"></div><div class="wheel2"></div>
+      <div class="gear1"></div><div class="gear2"></div>
+      <div class="pedal"></div>
+      <div class="seat"></div><div class="handle"></div>
+      <div class="label-zhigan">&#8593; 车把转向<br>（杠杆+轮轴）</div>
+      <div class="label-zhou">&#8593; 刹车把手<br>（杠杆）</div>
+      <div class="label-lunzhou">&#8593; 脚踏+大齿轮<br>（轮轴）</div>
+      <div class="label-bike">自行车 = 简单机械的集大成者</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128690; Tips 图示</span>
+    <h4>自行车中的简单机械标注</h4>
+    <p>刹车把手（杠杆）、车把转向（杠杆+轮轴）、脚踏大齿轮（轮轴）、后轮飞轮（轮轴）、螺栓螺纹（斜面/螺旋）。一辆自行车集成至少五种简单机械——是一部移动的"物理实验室"。</p>
+  </div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">阿基米德真的能用杠杆撬动地球吗？</div>
+  <div class="fun-a">理论上：F&#8321;L&#8321; = F&#8322;L&#8322;。如果 L&#8321; 足够长（动力臂够大），F&#8321; 可以无穷小——理论上一个手指头就能撬动地球。但实际计算：地球质量约 6&#215;10&#178;&#8308; kg。假设动力臂是阻力臂的 10&#178;&#178; 倍（1 后面 22 个零），你施加 100N 的力能把地球撬动 1cm——但你需要把杠杆这一端移动 10&#178;&#8304; 米——比可观测宇宙的直径还大得多！所以杠杆平衡条件在数学上成立，但物理上不可行。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">为什么螺丝钉是斜面？</div>
+  <div class="fun-a">把一张直角三角形纸卷在铅笔上——斜边变成了螺旋线。螺丝钉的螺纹就是这样一个"缠绕的斜面"。旋转螺丝钉一圈（沿螺旋面推进），螺钉前进一个螺距——用圆周路程换轴向推力——非常省力。这就是为什么小小的螺丝刀能产生巨大的紧固力。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">人类能发出的最大功率是多少？</div>
+  <div class="fun-a">普通人持续输出功率约 100W（骑自行车通勤）。顶级自行车运动员在冲刺时能短暂输出 2000W。而一匹马持续输出约 745W——这就是"马力"的由来：詹姆斯·瓦特定义 1 马力 = 一匹健马持续工作的功率。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">金字塔是怎么建成的？——斜面的力量</div>
+  <div class="fun-a">古埃及人建造金字塔时，没有起重机——他们在金字塔周围堆起巨大的土坡（斜面），把数吨重的石块沿斜面拖上去。胡夫金字塔高约 146m，如果用垂直提拉需要克服整块石头的重量。沿斜面拖：假设斜面长度是高度的 10 倍，理论上只需要 1/10 的力。斜面是人类最古老也最实用的简单机械之一——它比轮子更早被大规模应用。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">为什么拔钉子比钉钉子更费力？</div>
+  <div class="fun-a">钉钉子时锤子直接施加冲击力，而拔钉子用的是羊角锤——一个杠杆。羊角锤的支点在锤头和木板的接触点，阻力臂（钉子到支点）很短，动力臂（手柄长度）很长——典型的省力杠杆。但即便如此拔钉子仍然费力，因为钉子与木头的摩擦力极大。这也解释了为什么拔钉子用杠杆而不用手直接拔——摩擦力可能高达几百牛顿，手根本做不到。</div>
+</div>
+
+<div class="misconception">
+  <h4>&#9888; 常见误区提醒</h4>
+  <ul>
+    <li><span class="mistake">&#10060; "省力杠杆一定更好用"</span> &#8594; <span class="correct">&#9989; 不一定！筷子是费力杠杆但我们天天用——费力但"省距离"（手腕小幅动作就能夹起远处的菜），提供精准控制。</span></li>
+    <li><span class="mistake">&#10060; "机械效率可以等于 100%"</span> &#8594; <span class="correct">&#9989; 不能！任何真实机械都有摩擦和自重——&#951; 永远小于 100%。只有理想机械（无摩擦无自重）才能达到 100%。</span></li>
+    <li><span class="mistake">&#10060; "动滑轮省一半力，所以省一半功"</span> &#8594; <span class="correct">&#9989; 不！F = G/2 但 s = 2h——W = Fs = G/2 &#215; 2h = Gh——和直接提起做功完全一样。不省功。</span></li>
+    <li><span class="mistake">&#10060; "滑轮组绳子段数 n 数错了"</span> &#8594; <span class="correct">&#9989; 数绳段要看<strong>与动滑轮相连</strong>的绳子段数（动滑轮+重物由几段绳吊着），不是所有绳子。</span></li>
+    <li><span class="mistake">&#10060; "功率大就是做功多"</span> &#8594; <span class="correct">&#9989; 功率是做功的<strong>快慢</strong>（P=W/t），不是做功的总量。跑车功率大（快），但一趟运的货少；卡车功率小（慢），但一趟运的货多。</span></li>
+  </ul>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：自制杠杆——筷子撬书</h4>
+  <ol class="step-list">
+    <li>准备：一根筷子（或长尺子）、一叠书、一个小的支撑物（橡皮或笔）。</li>
+    <li>把支撑物靠近书（阻力臂短），用筷子在远端下压——轻松撬起书。</li>
+    <li>把支撑物远离书（阻力臂长），再撬——费力多了。</li>
+    <li>这就是杠杆平衡条件：动力臂越长越省力。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：斜面实验</h4>
+  <ol class="step-list">
+    <li>用一块木板（或一本硬皮书）搭成斜坡。</li>
+    <li>用弹簧秤（或手感）测直接提起一本厚书需要的力。</li>
+    <li>沿斜面上拉同一本书——感觉轻多了。</li>
+    <li>改变斜面角度：越平缓越省力（L 越大 F 越小），但路程越长。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：找出自行车上的简单机械</h4>
+  <ol class="step-list">
+    <li>和孩子一起观察自行车——刹车把手（杠杆）、车把（轮轴）、脚踏板+大齿轮（轮轴）。</li>
+    <li>转脚踏板一圈，数后轮转几圈——计算齿轮传动比。</li>
+    <li>链条上的每个环节——感受"链传动"如何传递运动。</li>
+    <li>讨论：为什么自行车有变速器？不同齿比代表不同的"省力 vs 速度"权衡。</li>
+  </ol>
+</div>
+
+<div class="parent-tip">
+  <h4>&#128105;&#8203;&#127891; 家长辅导小贴士</h4>
+  <ul>
+    <li>杠杆是最好讲的——用筷子、剪刀、开瓶器、门把手——生活中的杠杆无处不在</li>
+    <li>带孩子去游乐场玩跷跷板——不同体重的人坐在不同位置才能平衡，直观感受 F&#8321;L&#8321; = F&#8322;L&#8322;</li>
+    <li>滑轮组可以用乐高积木或简单绳索搭建——让孩子亲手体验"省力但多拉"的关系</li>
+    <li>自行车是最好的综合教材——一次观察覆盖杠杆、轮轴、链条传动、滚动摩擦</li>
+    <li>"功的原理"可以这样讲：世界上没有免费的午餐，机械也一样——省力就得多走路，轻松就得走远路</li>
+    <li>机械效率：可以和孩子一起用简易斜面测不同倾角的效率——真实的实验数据最有说服力</li>
+  </ul>
+</div>
+</section>
+
+<div class="page-nav">
+  <a href="yaqiang.html" class="prev">&#8592; 第二章 压强和浮力</a>
+  <a href="midu.html" class="next">第四章 密度 &#8594;</a>
+</div>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('backTop').style.display=window.scrollY>600?'flex':'none'});
+function doSearch(){
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  var no=document.getElementById('noResult');
+  document.querySelectorAll('mark.highlight').forEach(function(m){
+    var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
+  });
+  if(!q){no.style.display='none';document.querySelectorAll('.concept-card,.mindmap-grid,.quick-table,.misconception,.experiment,.parent-tip,.fun-fact,.tip-card,.section-label,.chapter-title').forEach(function(e){e.style.display=''});return;}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function hl(n){
+    if(n.nodeType===3){
+      var t=n.textContent,lo=t.toLowerCase(),i=lo.indexOf(q);
+      if(i===-1)return false;
+      var s=document.createElement('span');
+      s.innerHTML=esc(t.substring(0,i))+'<mark class="highlight">'+esc(t.substring(i,i+q.length))+'</mark>'+esc(t.substring(i+q.length));
+      n.parentNode.replaceChild(s,n); return true;
+    }
+    if(n.nodeType===1&&['SCRIPT','STYLE','MARK'].indexOf(n.tagName)===-1){var f=false;for(var j=0;j<n.childNodes.length;j++)if(hl(n.childNodes[j]))f=true;return f}
+    return false;
+  }
+  var fa=false;
+  document.querySelectorAll('.concept-card,.mm-card,.quick-table,.misconception ul li,.experiment,.parent-tip,.fun-fact,.tip-card').forEach(function(e){if(hl(e)){e.style.display='';fa=true}else{e.style.display='none'}});
+  document.querySelectorAll('.chapter-title,.section-label,.mindmap-grid').forEach(function(e){e.style.display=''});
+  no.style.display=fa?'none':'block';
+}
+</script>
+</body>
+</html>

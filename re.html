@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第八章 热学 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* 热传递三种方式对比 */
+.illus-heat-trans { position:relative; width:240px; height:200px; }
+.illus-heat-trans .conduction { position:absolute; top:10px; left:10px; width:60px; height:70px; border:3px solid #C87878; border-radius:6px; background:linear-gradient(180deg, #F8D0C0, #F0B0A0); text-align:center; padding-top:28px; font-size:10px; font-weight:700; color:#A04030; }
+.illus-heat-trans .conduction::after { content:"传导"; position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); font-size:10px; color:#C87878; }
+.illus-heat-trans .hot-end { position:absolute; top:18px; left:8px; width:6px; height:50px; background:linear-gradient(180deg, red, orange); border-radius:3px; }
+.illus-heat-trans .hot-label { position:absolute; top:2px; left:4px; font-size:8px; color:red; font-weight:700; }
+.illus-heat-trans .convection { position:absolute; top:100px; left:10px; width:60px; height:60px; border:3px solid #E0C870; border-radius:50%; background:rgba(240,216,112,0.2); }
+.illus-heat-trans .convection::after { content:"对流"; position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); font-size:10px; color:#B09838; font-weight:700; }
+.illus-heat-trans .conv-arrow-up { position:absolute; top:108px; left:36px; font-size:16px; color:#C87878; }
+.illus-heat-trans .conv-arrow-dn { position:absolute; top:130px; left:36px; font-size:16px; color:#6BA0C0; }
+.illus-heat-trans .radiation { position:absolute; top:10px; right:10px; width:60px; height:70px; border:3px solid #F0B040; border-radius:50%; background:radial-gradient(circle, #F8D060 10%, transparent 70%); }
+.illus-heat-trans .radiation::after { content:"辐射"; position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); font-size:10px; color:#D09020; font-weight:700; }
+.illus-heat-trans .rad-waves { position:absolute; top:28px; right:-14px; }
+.illus-heat-trans .rad-waves .w { width:14px; height:14px; border:1px dashed rgba(240,176,64,0.5); border-radius:50%; margin-bottom:4px; }
+.illus-heat-trans .rad-waves .w:nth-child(1) { width:16px; height:16px; opacity:0.7; }
+.illus-heat-trans .rad-waves .w:nth-child(2) { width:22px; height:22px; opacity:0.5; }
+.illus-heat-trans .rad-waves .w:nth-child(3) { width:28px; height:28px; opacity:0.3; }
+
+/* 汽油机四冲程 */
+.illus-engine { position:relative; width:240px; height:200px; }
+.illus-engine .cylinder { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:50px; height:100px; border:3px solid #708090; border-radius:6px; background:rgba(192,192,192,0.2); }
+.illus-engine .piston { position:absolute; left:50%; transform:translateX(-50%); width:46px; height:20px; background:#707880; border-radius:3px; }
+.illus-engine .piston.p1 { top:22px; }
+.illus-engine .piston.p2 { top:50px; }
+.illus-engine .piston.p3 { top:84px; }
+.illus-engine .piston.p4 { top:22px; }
+.illus-engine .stroke1 { position:absolute; top:2px; left:74px; font-size:10px; font-weight:700; color:#C87878; }
+.illus-engine .stroke2 { position:absolute; top:38px; left:74px; font-size:10px; font-weight:700; color:#D09020; }
+.illus-engine .stroke3 { position:absolute; top:72px; left:74px; font-size:10px; font-weight:700; color:#C87878; }
+.illus-engine .stroke4 { position:absolute; top:108px; left:74px; font-size:10px; font-weight:700; color:#6BA0C0; }
+.illus-engine .arrow-up1 { position:absolute; top:18px; left:102px; font-size:14px; }
+.illus-engine .arrow-dn2 { position:absolute; top:46px; left:102px; font-size:14px; transform:rotate(180deg); }
+.illus-engine .arrow-up3 { position:absolute; top:80px; left:102px; font-size:14px; }
+.illus-engine .arrow-dn4 { position:absolute; top:14px; left:102px; font-size:14px; transform:rotate(180deg); }
+.illus-engine .spark { position:absolute; top:68px; left:64px; font-size:12px; color:#F0B040; }
+.illus-engine .valve-in { position:absolute; top:12px; left:55px; width:4px; height:16px; background:#A0B0C0; border-radius:2px; }
+.illus-engine .valve-ex { position:absolute; top:12px; left:72px; width:4px; height:16px; background:#A0B0C0; border-radius:2px; }
+.illus-engine .label-engine { position:absolute; bottom:6px; left:50%; transform:translateX(-50%); font-size:11px; font-weight:700; color:#708090; }
+
+/* 水的沸腾曲线 */
+.illus-boiling { position:relative; width:240px; height:180px; }
+.illus-boiling .grid { position:absolute; top:20px; left:40px; width:160px; height:120px; border-left:2px solid #888; border-bottom:2px solid #888; }
+.illus-boiling .xlabel { position:absolute; bottom:2px; left:120px; font-size:9px; color:#888; }
+.illus-boiling .ylabel { position:absolute; top:40px; left:2px; font-size:9px; color:#888; transform:rotate(-90deg); }
+.illus-boiling .curve { position:absolute; top:140px; left:42px; }
+.illus-boiling .curve rect { fill:#E09888; opacity:0.5; }
+.illus-boiling .curve-seg1 { position:absolute; top:100px; left:42px; width:2px; height:40px; background:#C87878; }
+.illus-boiling .curve-seg2 { position:absolute; top:100px; left:42px; width:60px; height:2px; background:#C87878; }
+.illus-boiling .curve-seg3 { position:absolute; top:100px; left:100px; width:2px; height:40px; background:#C87878; }
+.illus-boiling .curve-seg4 { position:absolute; top:100px; left:100px; width:60px; height:2px; background:#6BA0C0; }
+.illus-boiling .bp-label { position:absolute; top:76px; left:170px; font-size:10px; font-weight:700; color:#6BA0C0; }
+.illus-boiling .heat-label { position:absolute; top:130px; left:60px; font-size:9px; color:#C87878; }
+.illus-boiling .boil-label { position:absolute; top:110px; left:118px; font-size:9px; color:#6BA0C0; }
+.illus-boiling .bubbles { position:absolute; top:88px; left:120px; font-size:10px; color:#6BA0C0; }
+</style>
+</head>
+<body class="ch8">
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><span>第八章 热学</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a><a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a><a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a><a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a><a href="re.html" class="active">热学</a>
+  </div>
+</nav>
+
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="搜索知识点，如「热机」「沸腾」..." oninput="doSearch()">
+  <span class="search-icon">&#128269;</span>
+  <div class="no-result" id="noResult">未找到匹配内容，试试其他关键词吧</div>
+</div>
+
+<div class="container">
+
+<section class="ch8">
+<div class="chapter-title"><span class="ch-num">第八章</span>&#128293; 热学</div>
+
+<div class="mindmap-grid">
+  <div class="mm-card"><h4>&#127777; 温度与温度计</h4><ul><li>摄氏温度&#176;C</li><li>温度计原理（热胀冷缩）</li><li>体温计特殊设计</li></ul></div>
+  <div class="mm-card"><h4>&#129514; 物态变化</h4><ul><li>六种变化：熔化/凝固/汽化/液化/升华/凝华</li><li>晶体有固定熔点</li><li>蒸发 vs 沸腾</li></ul></div>
+  <div class="mm-card"><h4>&#127757; 分子动理论</h4><ul><li>分子在不停做无规则运动</li><li>扩散现象</li><li>分子间有引力和斥力</li></ul></div>
+  <div class="mm-card"><h4>&#128293; 内能与热传递</h4><ul><li>改变内能方式：做功+热传递</li><li>传导/对流/辐射</li><li>热平衡方程</li></ul></div>
+  <div class="mm-card"><h4>&#127761; 比热容与热值</h4><ul><li>Q = cm&#916;t</li><li>水的比热容最大</li><li>燃料热值 q</li></ul></div>
+  <div class="mm-card"><h4>&#9889; 热机与能量守恒</h4><ul><li>汽油机四冲程</li><li>柴油机</li><li>能量守恒定律</li></ul></div>
+  <div class="mm-card"><h4>&#127758; 环境热现象</h4><ul><li>温室效应</li><li>热岛效应</li><li>人工降雨原理</li></ul></div>
+</div>
+
+<div class="section-label">&#128218; 核心概念</div>
+
+<!-- 温度 -->
+<div class="concept-card" id="c8-temp">
+  <div class="card-header">
+    <div class="card-icon">&#127777;</div>
+    <div><h4>温度与温度计</h4><p class="subtitle">我们怎么知道有多热？</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>摄氏温度 t（&#176;C）</strong>：一个标准大气压下冰水混合物为 0&#176;C，沸水为 100&#176;C，之间均分 100 等份。</p>
+    <p><strong>温度计原理</strong>：液体热胀冷缩。体温计测完不会自动回落（缩口设计），使用前要<strong>甩一甩</strong>。</p>
+  </div>
+</div>
+
+<!-- 物态变化 -->
+<div class="concept-card" id="c8-phase">
+  <div class="card-header">
+    <div class="card-icon">&#129514;</div>
+    <div><h4>物态变化 —— 六种变身</h4><p class="subtitle">物质在固/液/气之间来回转换</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>吸热过程：</strong>熔化（固&#8594;液）、汽化（液&#8594;气）、升华（固&#8594;气，如干冰/樟脑丸）</p>
+    <p><strong>放热过程：</strong>凝固（液&#8594;固）、液化（气&#8594;液）、凝华（气&#8594;固，如霜/雪）</p>
+    <p><strong>晶体有固定熔点</strong>（如冰 0&#176;C），<strong>非晶体没有</strong>（如玻璃、沥青——加热慢慢变软）。</p>
+  </div>
+</div>
+
+<!-- 蒸发 vs 沸腾 -->
+<div class="concept-card" id="c8-eb">
+  <div class="card-header">
+    <div class="card-icon">&#128167;</div>
+    <div><h4>蒸发 vs 沸腾 —— 都是汽化，但不一样</h4><p class="subtitle">一个偷偷摸摸，一个轰轰烈烈</p></div>
+  </div>
+  <div class="card-body">
+    <table class="quick-table">
+      <tr><th>对比</th><th>蒸发</th><th>沸腾</th></tr>
+      <tr><td><strong>温度条件</strong></td><td>任何温度下都能发生</td><td>达到沸点（100&#176;C 标准大气压）</td></tr>
+      <tr><td><strong>发生部位</strong></td><td>只发生在液体表面</td><td>液体表面和内部同时发生</td></tr>
+      <tr><td><strong>剧烈程度</strong></td><td>缓慢</td><td>剧烈（大量气泡上升）</td></tr>
+      <tr><td><strong>影响因素</strong></td><td>温度/表面积/空气流速</td><td>气压（气压高沸点高）</td></tr>
+    </table>
+    <div class="example-tag"><span class="emoji">&#127983;</span>高原上煮饭煮不熟——气压低 &#8594; 沸点低（可能 80&#176;C 水就沸腾了）&#8594; 温度不够高，饭煮不熟。需要<strong>高压锅</strong>提高内部气压来提升沸点。</div>
+  </div>
+</div>
+
+<!-- ===== 热传递三种方式详解（新增） ===== -->
+<div class="concept-card" id="c8-transfer">
+  <div class="card-header">
+    <div class="card-icon">&#128293;</div>
+    <div><h4>热传递的三种方式 —— 热是怎么"跑"的？</h4><p class="subtitle">传导需要接触，对流需要流体，辐射什么都不需要</p></div>
+  </div>
+  <div class="card-body">
+    <table class="quick-table">
+      <tr><th>方式</th><th>传热媒介</th><th>发生条件</th><th>核心机制</th><th>典型例子</th></tr>
+      <tr><td><strong>热传导</strong></td><td>物体直接接触</td><td>有温度差+接触</td><td>热量从高温端传到低温端</td><td>勺子放入热汤，勺柄变烫；暖气片</td></tr>
+      <tr><td><strong>热对流</strong></td><td>液体和气体</td><td>流体温度不均匀</td><td>热流体上升、冷流体下沉——循环</td><td>烧水时水在锅中翻腾；空调冷风下沉</td></tr>
+      <tr><td><strong>热辐射</strong></td><td><strong>不需要介质</strong></td><td>任何有温度的物体</td><td>以电磁波（红外线）形式传热</td><td>太阳照到地球；篝火烤暖身体</td></tr>
+    </table>
+    <div class="example-tag"><span class="emoji">&#9728;</span>太阳的热量是<strong>辐射</strong>传过来的——太阳和地球之间是真空！不是传导（真空不能传热），也不是对流（真空中没有流体）。这就是为什么宇航员在太空中可以同时面向太阳的一侧极热、背对太阳的一侧极冷。</div>
+    <div class="example-tag"><span class="emoji">&#127983;</span>保温瓶（热水瓶）遏制了所有三种热传递方式——双层玻璃抽真空（阻断传导和对流）、内壁镀银反射热辐射（阻断辐射）。</div>
+  </div>
+</div>
+
+<!-- 热传递CSS图示 -->
+<div class="section-label">&#127912; 热传递三种方式对比</div>
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-heat-trans">
+      <div class="conduction">金属棒</div>
+      <div class="hot-end"></div>
+      <div class="hot-label">热</div>
+      <div class="convection"></div>
+      <div class="conv-arrow-up">&#8593;</div>
+      <div class="conv-arrow-dn">&#8595;</div>
+      <div class="radiation"></div>
+      <div class="rad-waves"><div class="w"></div><div class="w"></div><div class="w"></div></div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128293; Tips 图示</span>
+    <h4>传导（左）· 对流（中）· 辐射（右）</h4>
+    <p><b>传导</b>：热从金属棒高温端"走"到低温端；<b>对流</b>：热水上升、冷水下沉形成循环；<b>辐射</b>：热量以红外线电磁波向外发出（无需介质）。</p>
+  </div>
+</div>
+
+<!-- ===== 热平衡方程（新增） ===== -->
+<div class="concept-card" id="c8-balance">
+  <div class="card-header">
+    <div class="card-icon">&#127761;</div>
+    <div><h4>热平衡方程 —— 「热水+冷水，最终温度是多少？」</h4><p class="subtitle">没有热量损失时：放出的热量 = 吸收的热量</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">Q<sub>吸</sub> = Q<sub>放</sub></div>
+      <div class="var-list">
+        <span class="var-tag pink">即：c&#8321;m&#8321;(t - t&#8321;) = c&#8322;m&#8322;(t&#8322; - t)</span>
+      </div>
+    </div>
+    <p>在没有热量损失（绝热条件）下，<strong>高温物体放出的热量等于低温物体吸收的热量</strong>，两者最终达到相同的温度 t。</p>
+    <div class="example-tag"><span class="emoji">&#9749;</span>100g 80&#176;C 的水 + 200g 20&#176;C 的水混合——最终 t = (100&#215;80 + 200&#215;20) / (100+200) = 40&#176;C。</div>
+    <div class="example-tag"><span class="emoji">&#127860;</span>金属块投入水中测比热容——测出金属初温、水初温、最终平衡温度，用 Q吸=Q放 算出金属的比热容。</div>
+  </div>
+</div>
+
+<!-- 比热容 -->
+<div class="concept-card" id="c8-heat">
+  <div class="card-header">
+    <div class="card-icon">&#127754;</div>
+    <div><h4>比热容 c —— 「为什么水是地球的空调？」</h4><p class="subtitle">水的比热容最大——最"难热"也最"难凉"</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">Q = c m &#916;t</div>
+      <div class="var-list">
+        <span class="var-tag pink">Q 热量 (J)</span>
+        <span class="var-tag blue">c 比热容 J/(kg&#183;&#176;C)</span>
+        <span class="var-tag green">m 质量 (kg)</span>
+        <span class="var-tag pink">&#916;t 温度变化 (&#176;C)</span>
+      </div>
+    </div>
+    <p>水的比热容：<strong>c水 = 4.2 &#215; 10&#179; J/(kg&#183;&#176;C)</strong></p>
+    <p><b>含义</b>：1kg 水温度升高（或降低）1&#176;C，需要吸收（或放出）4200 J 的热量。</p>
+    <div class="example-tag"><span class="emoji">&#127754;</span>沿海城市冬暖夏凉——海水比热容大，夏天吸热多升温慢（凉爽），冬天放热多降温慢（温暖）。内陆地区正好相反。</div>
+  </div>
+</div>
+
+<!-- ===== 热机四冲程（新增） ===== -->
+<div class="concept-card" id="c8-engine">
+  <div class="card-header">
+    <div class="card-icon">&#128663;</div>
+    <div><h4>热机 —— 汽油机/柴油机四冲程</h4><p class="subtitle">把燃料的热能变成机械能——汽车的心脏</p></div>
+  </div>
+  <div class="card-body">
+    <p>热机是把<strong>内能转化为机械能</strong>的装置。一个完整的工作循环包含四个冲程：</p>
+    <table class="quick-table">
+      <tr><th>冲程</th><th>活塞运动</th><th>进气门</th><th>排气门</th><th>能量转换</th></tr>
+      <tr><td><strong>吸气冲程</strong></td><td>向下</td><td>开</td><td>关</td><td>吸入汽油+空气混合气</td></tr>
+      <tr><td><strong>压缩冲程</strong></td><td>向上</td><td>关</td><td>关</td><td>机械能 &#8594; 内能（混合气温度升高）</td></tr>
+      <tr><td><strong>做功冲程</strong></td><td>向下</td><td>关</td><td>关</td><td>内能 &#8594; 机械能（点燃爆发）</td></tr>
+      <tr><td><strong>排气冲程</strong></td><td>向上</td><td>关</td><td>开</td><td>排出废气</td></tr>
+    </table>
+    <p style="margin-top:12px;"><b>记忆口诀</b>："吸压做排"——四个冲程中，<strong>只有做功冲程</strong>是发动机对外做功的，另外三个冲程靠飞轮的<strong>惯性</strong>完成。</p>
+    <p><strong>汽油机 vs 柴油机</strong>：汽油机用<strong>火花塞点火</strong>（点燃式），柴油机用<strong>压燃式</strong>（压缩空气到高温，喷入柴油自燃）。柴油机效率更高、扭矩更大，但更笨重。</p>
+    <div class="example-tag"><span class="emoji">&#128663;</span>汽车转速表 2000 rpm = 每分钟 2000 转 = 每分钟 1000 个做功冲程（每两转一个做功冲程）。</div>
+  </div>
+</div>
+
+<!-- 汽油机CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-engine">
+      <div class="cylinder"></div>
+      <div class="piston p1"></div><div class="piston p2"></div><div class="piston p3"></div><div class="piston p4"></div>
+      <div class="stroke1">&#9312;吸气</div><div class="stroke2">&#9313;压缩</div><div class="stroke3">&#9314;做功</div><div class="stroke4">&#9315;排气</div>
+      <div class="arrow-up1">&#8593;</div><div class="arrow-dn2">&#8593;</div><div class="arrow-up3">&#8593;</div><div class="arrow-dn4">&#8593;</div>
+      <div class="spark">&#9889;</div>
+      <div class="valve-in"></div><div class="valve-ex"></div>
+      <div class="label-engine">吸&#8594;压&#8594;做&#8594;排 循环</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128663; Tips 图示</span>
+    <h4>汽油机四冲程示意</h4>
+    <p>&#9312;吸气（活塞下行，进气门开）&#8594; &#9313;压缩（活塞上行，两门关，机械能转内能）&#8594; &#9314;做功（火花塞点燃，活塞被推下——<b>唯一对外做功的冲程</b>）&#8594; &#9315;排气（活塞上行，排气门开）。四冲程中曲轴转两圈完成一个循环。</p>
+  </div>
+</div>
+
+<!-- 水的沸腾曲线CSS图示 -->
+<div class="section-label">&#127912; 水的沸腾曲线</div>
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-boiling">
+      <div class="grid"></div>
+      <div class="xlabel">时间/加热量 &#8594;</div>
+      <div class="ylabel">温度 &#8593;</div>
+      <div class="curve-seg1"></div><div class="curve-seg2"></div><div class="curve-seg3"></div><div class="curve-seg4"></div>
+      <div class="bp-label">100&#176;C 沸点</div>
+      <div class="heat-label">升温段</div>
+      <div class="boil-label">沸腾段<br>（恒温）</div>
+      <div class="bubbles">&#128166;</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128166; Tips 图示</span>
+    <h4>水的沸腾曲线：达到沸点后温度不再升高！</h4>
+    <p>加热过程中水温持续上升（升温段）。到达 100&#176;C 后，继续加热水温<strong>不再升高</strong>（沸腾段保持恒温）——热量全部用于水从液态变为气态（汽化潜热）。</p>
+  </div>
+</div>
+
+<!-- ===== 能量守恒定律（新增） ===== -->
+<div class="concept-card" id="c8-conservation">
+  <div class="card-header">
+    <div class="card-icon">&#9889;</div>
+    <div><h4>能量守恒定律 —— 「宇宙的会计法则」</h4><p class="subtitle">能量不会凭空产生，也不会凭空消灭</p></div>
+  </div>
+  <div class="card-body">
+    <p>能量守恒定律：能量既不会凭空<strong>产生</strong>，也不会凭空<strong>消失</strong>，它只会从一种形式<strong>转化</strong>为另一种形式，或者从一个物体<strong>转移</strong>到另一个物体，而在转化和转移的过程中，能量的<strong>总量保持不变</strong>。</p>
+    <p>这是自然界最普遍、最重要的基本定律之一——大到宇宙演化，小到原子核反应，无一例外。</p>
+    <div class="example-tag"><span class="emoji">&#127754;</span>水力发电：水的重力势能 &#8594; 动能（冲下）&#8594; 涡轮机械能 &#8594; 发电机电磁能 &#8594; 电能。每一步都有能量损失（变成热能），但总能量不变。</div>
+  </div>
+</div>
+
+<!-- ===== 温室效应与热岛效应（新增） ===== -->
+<div class="concept-card" id="c8-greenhouse">
+  <div class="card-header">
+    <div class="card-icon">&#127758;</div>
+    <div><h4>温室效应与热岛效应</h4><p class="subtitle">地球发烧了——物理学怎么解释？</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>温室效应：</strong>太阳辐射（短波）穿过大气层照到地面，地面升温后向外发射红外线（长波辐射）。大气中的 CO&#8322;、甲烷等<strong>温室气体</strong>吸收长波辐射，把热量"锁"在大气层中——就像温室的玻璃一样。温室效应本身是地球保持温暖的前提（没有它，地球表面平均温度将是 -18&#176;C），但人类活动导致温室气体超标，温室效应<strong>过度增强</strong>——全球变暖。</p>
+    <p><strong>热岛效应：</strong>城市中心温度明显高于郊区。原因：&#9312;混凝土和沥青吸热多（比热容小，升温快）；&#9313;空调和汽车排热；&#9314;高楼阻挡空气流通；&#9315;绿化少。城市热岛效应使夏季空调能耗增加 10-20%。</p>
+    <div class="example-tag"><span class="emoji">&#127795;</span>多种树可以缓解热岛效应——树叶遮挡阳光（减少辐射）、蒸腾作用带走热量（蒸发吸热）。城市绿化不仅是"好看"，更是物理降温手段！</div>
+  </div>
+</div>
+
+<!-- ===== 人工降雨原理（新增） ===== -->
+<div class="concept-card" id="c8-rain">
+  <div class="card-header">
+    <div class="card-icon">&#127783;</div>
+    <div><h4>人工降雨原理 —— 「催云下雨的物理学」</h4><p class="subtitle">不是"造雨"——而是"催雨"</p></div>
+  </div>
+  <div class="card-body">
+    <p>云中的水滴太小太轻，不会下落。人工降雨就是向云中撒播<strong>凝结核</strong>（如碘化银、干冰），让微小水滴有核心可以凝聚变大——大到足够重时，就下雨了。</p>
+    <p><strong>两种方式：</strong></p>
+    <p>&#9312; <strong>冷云催化</strong>：撒干冰（固态 CO&#8322;，-78.5&#176;C）或碘化银——干冰升华急剧降温，使过冷水滴凝华为冰晶，冰晶长大下落融化变成雨。</p>
+    <p>&#9313; <strong>暖云催化</strong>：撒盐粉、尿素——作为吸湿性凝结核，让水滴聚集变大。</p>
+    <div class="example-tag"><span class="emoji">&#127882;</span>2008 年北京奥运会开幕式——为确保天气晴朗，气象部门在周边地区提前实施人工消雨（在雨云到达北京前就让它提前下掉）。</div>
+  </div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">人类能承受的最高温度是多少？</div>
+  <div class="fun-a">人体核心温度超过 42&#176;C 时，蛋白质开始变性（就像煮鸡蛋一样）——危及生命。但 1755 年一位英国医生记录：一位女性在持续高烧中体温达到 46.5&#176;C，竟然奇迹般存活！而桑拿房里 100&#176;C 你能待几分钟——因为干燥空气导热慢，且汗液蒸发带走大量热。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">水在 0&#176;C 结冰——为什么深海里的鱼不会冻住？</div>
+  <div class="fun-a">深海水温虽然接近 0&#176;C，但<strong>高压使水的凝固点降低</strong>（就像高压锅让沸点升高一样）。加上海水含盐（盐水冰点低于 0&#176;C），还有鱼体内有<strong>抗冻蛋白</strong>阻止冰晶形成——自然界真奇妙！</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">摩擦能生热——两只手搓热了知道。但两只手搓一搓能烧开水吗？</div>
+  <div class="fun-a">理论上可以！焦耳在 1843 年用实验证明：让重物下落带动桨叶搅拌水，水温上升——确定了<strong>热功当量</strong>：1 cal = 4.18 J。他花了数小时搅拌才让水温升高一点点。你要搓手烧开水……大概需要连续搓几百年。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">为什么冰的表面很滑？</div>
+  <div class="fun-a">传统解释是"压力使冰融化形成水膜"——但现代研究发现，冰表面本身就有一层纳米级厚度的"准液态水层"，即使零下几十度也存在。这层超薄水膜才是冰滑的<strong>真正原因</strong>——压力融化理论无法解释为什么零下 20&#176;C 的冰仍然很滑。</div>
+</div>
+
+<div class="misconception">
+  <h4>&#9888; 常见误区提醒</h4>
+  <ul>
+    <li><span class="mistake">&#10060; "0&#176;C 的冰和 0&#176;C 的水温度相同，所以手感一样冷"</span> &#8594; <span class="correct">&#9989; 0&#176;C 的冰更冷！因为冰熔化需要吸收大量熔化热，从你的手吸热——你把手伸进 0&#176;C 的水里比摸着 0&#176;C 的冰暖和一些。</span></li>
+    <li><span class="mistake">&#10060; "沸腾时水温继续升高"</span> &#8594; <span class="correct">&#9989; 达到沸点后继续加热，水温不再升高——热量全部用于汽化（水变水蒸气）。</span></li>
+    <li><span class="mistake">&#10060; "晒太阳是热传导"</span> &#8594; <span class="correct">&#9989; 太阳和地球之间是真空——热量通过<strong>热辐射</strong>传来，不需要介质。</span></li>
+    <li><span class="mistake">&#10060; "对流只发生在液体中"</span> &#8594; <span class="correct">&#9989; 气体中也发生对流——空调冷风下沉、热气球上升都是空气对流。</span></li>
+    <li><span class="mistake">&#10060; "温室效应是坏事"</span> &#8594; <span class="correct">&#9989; 温室效应本身让地球保持温暖宜居——是<strong>过度增强</strong>的温室效应（全球变暖）才是问题。</span></li>
+  </ul>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：自制温度计</h4>
+  <ol class="step-list">
+    <li>准备：小玻璃瓶（口服液瓶）、吸管、橡皮泥、色素水。</li>
+    <li>瓶里装满红色色素水，插入吸管，用橡皮泥封住瓶口。</li>
+    <li>手握瓶子——吸管中的水柱缓缓上升！放手后水柱下降。</li>
+    <li>原理：手握加温 &#8594; 瓶内空气热胀 &#8594; 推动液柱上升——这就是温度计的基本原理。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：蒸发吸热体验</h4>
+  <ol class="step-list">
+    <li>左手蘸水，右手保持干燥。</li>
+    <li>同时对着两只手吹气——左手明显更凉！</li>
+    <li>原理：水蒸发吸收手上的热量（汽化吸热）。</li>
+    <li>拓展：夏天往地面洒水降温也是这个原理。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：观察热对流</h4>
+  <ol class="step-list">
+    <li>找一个透明玻璃杯，倒满水。滴入几滴酱油或色素。</li>
+    <li>用酒精灯或蜡烛加热杯子底部一侧（请大人操作）。</li>
+    <li>观察——可以看到有色水流上升、无色水流下沉的流动路径！</li>
+    <li>这就是热对流——热水上升、冷水下降的循环。</li>
+  </ol>
+</div>
+
+<div class="parent-tip">
+  <h4>&#128105;&#8203;&#127891; 家长辅导小贴士</h4>
+  <ul>
+    <li>热传递三方式可用煮饺子来讲解：手碰锅边（传导）、锅里的水翻腾（对流）、站远点也能感到热（辐射）——三合一</li>
+    <li>带孩子用温度计测一测冰箱冷藏和冷冻的温度、刚烧开的水的温度——建立温度的量感</li>
+    <li>汽油机四冲程可以在网上找动画视频——比静态图容易理解得多</li>
+    <li>热岛效应：选一个夏天的晚上，带孩子从郊区开车到市中心——感受温差，然后解释原因</li>
+    <li>热平衡方程：和孩子一起做"不同温度的水混合"实验，用温度计验证计算结果</li>
+    <li>保温瓶拆解：找一个废旧保温瓶（热水瓶），砸开看看双层结构和银色内壁——直观理解三种热传递方式的阻断</li>
+  </ul>
+</div>
+</section>
+
+<div class="page-nav">
+  <a href="dian.html" class="prev">&#8592; 第七章 电学</a>
+  <a href="index.html" class="next">返回首页 &#8594;</a>
+</div>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('backTop').style.display=window.scrollY>600?'flex':'none'});
+function doSearch(){
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  var no=document.getElementById('noResult');
+  document.querySelectorAll('mark.highlight').forEach(function(m){
+    var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
+  });
+  if(!q){no.style.display='none';document.querySelectorAll('.concept-card,.mindmap-grid,.quick-table,.misconception,.experiment,.parent-tip,.fun-fact,.tip-card,.section-label,.chapter-title').forEach(function(e){e.style.display=''});return;}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function hl(n){
+    if(n.nodeType===3){
+      var t=n.textContent,lo=t.toLowerCase(),i=lo.indexOf(q);
+      if(i===-1)return false;
+      var s=document.createElement('span');
+      s.innerHTML=esc(t.substring(0,i))+'<mark class="highlight">'+esc(t.substring(i,i+q.length))+'</mark>'+esc(t.substring(i+q.length));
+      n.parentNode.replaceChild(s,n); return true;
+    }
+    if(n.nodeType===1&&['SCRIPT','STYLE','MARK'].indexOf(n.tagName)===-1){var f=false;for(var j=0;j<n.childNodes.length;j++)if(hl(n.childNodes[j]))f=true;return f}
+    return false;
+  }
+  var fa=false;
+  document.querySelectorAll('.concept-card,.mm-card,.quick-table,.misconception ul li,.experiment,.parent-tip,.fun-fact,.tip-card').forEach(function(e){if(hl(e)){e.style.display='';fa=true}else{e.style.display='none'}});
+  document.querySelectorAll('.chapter-title,.section-label,.mindmap-grid').forEach(function(e){e.style.display=''});
+  no.style.display=fa?'none':'block';
+}
+</script>
+</body>
+</html>

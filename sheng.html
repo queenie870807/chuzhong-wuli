@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第五章 声现象 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* === 音叉振动发声（波纹扩散） === */
+.illus-tuningfork { position:relative; width:220px; height:200px; }
+.illus-tuningfork .fork {
+  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  width:10px; height:70px; background:linear-gradient(180deg, #D89870, #A06840);
+  border-radius:5px;
+}
+.illus-tuningfork .fork::before {
+  content:""; position:absolute; top:-40px; left:-12px;
+  width:14px; height:45px; background:linear-gradient(180deg, #C07850, #905030);
+  border-radius:7px 7px 0 0;
+}
+.illus-tuningfork .fork::after {
+  content:""; position:absolute; top:-40px; left:8px;
+  width:14px; height:45px; background:linear-gradient(180deg, #C07850, #905030);
+  border-radius:7px 7px 0 0;
+}
+.illus-tuningfork .wave {
+  position:absolute; border:2px dashed rgba(240,184,144,0.7); border-radius:50%;
+  animation:wave-out 2s ease-out infinite;
+}
+.illus-tuningfork .wave:nth-child(2) { top:20px; left:50%; width:40px; height:40px; transform:translate(-50%,-50%); animation-delay:0s; }
+.illus-tuningfork .wave:nth-child(3) { top:20px; left:50%; width:70px; height:70px; transform:translate(-50%,-50%); animation-delay:0.4s; }
+.illus-tuningfork .wave:nth-child(4) { top:20px; left:50%; width:100px; height:100px; transform:translate(-50%,-50%); animation-delay:0.8s; }
+.illus-tuningfork .wave:nth-child(5) { top:20px; left:50%; width:130px; height:130px; transform:translate(-50%,-50%); animation-delay:1.2s; }
+@keyframes wave-out { 0%{opacity:0.8;transform:translate(-50%,-50%) scale(0.5)} 100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)} }
+.illus-tuningfork .label-fork {
+  position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+  font-size:11px; color:#C07850; font-weight:700; white-space:nowrap;
+}
+
+/* === 水瓶音调对比 === */
+.illus-bottle { position:relative; width:220px; height:200px; }
+.illus-bottle .bottle {
+  position:absolute; bottom:20px; width:50px; border-radius:10px 10px 0 0;
+  background:linear-gradient(180deg, rgba(240,184,144,0.25), rgba(240,184,144,0.55));
+  border:2px solid rgba(240,184,144,0.6);
+}
+.illus-bottle .bottle.low { left:30px; height:70px; }
+.illus-bottle .bottle.high { right:30px; height:40px; }
+.illus-bottle .bottle::before {
+  content:""; position:absolute; top:6px; left:50%; transform:translateX(-50%);
+  width:20px; height:4px; background:rgba(240,184,144,0.5); border-radius:2px;
+}
+.illus-bottle .bottle .water {
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(180deg, #8BB8D6, #6BA0C0); border-radius:0 0 8px 8px;
+}
+.illus-bottle .bottle.low .water { height:55px; }
+.illus-bottle .bottle.high .water { height:28px; }
+.illus-bottle .bottle .air-label {
+  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  font-size:9px; color:#C07850; font-weight:700; white-space:nowrap;
+}
+.illus-bottle .bottle.low .air-label { top:6px; }
+.illus-bottle .label-note {
+  position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  font-size:12px; font-weight:700; white-space:nowrap;
+}
+.illus-bottle .label-note.low { left:55px; color:#6BA0C0; }
+.illus-bottle .label-note.high { left:145px; color:#C07850; }
+
+/* === 回声示意 === */
+.illus-echo { position:relative; width:240px; height:200px; }
+.illus-echo .mountain { position:absolute; top:30px; right:10px; width:80px; height:140px; background:linear-gradient(135deg, #B8A090, #908070); clip-path:polygon(50% 0%, 100% 30%, 100% 100%, 0% 100%, 0% 50%); border-radius:4px; }
+.illus-echo .person-echo { position:absolute; bottom:30px; left:20px; }
+.illus-echo .p-head { width:16px; height:16px; background:#F8C4A0; border-radius:50%; margin:0 auto 2px; }
+.illus-echo .p-body { width:7px; height:20px; background:#E8A0BF; border-radius:4px; margin:0 auto; }
+.illus-echo .sound-wave-out { position:absolute; bottom:54px; left:40px; }
+.illus-echo .sound-wave-out .sw { position:absolute; border:2px solid rgba(240,184,144,0.7); border-radius:50%; top:0; left:0; }
+.illus-echo .sound-wave-out .sw:nth-child(1) { width:24px; height:24px; transform:translate(-12px,-12px); }
+.illus-echo .sound-wave-out .sw:nth-child(2) { width:40px; height:40px; transform:translate(-20px,-20px); }
+.illus-echo .sound-wave-out .sw:nth-child(3) { width:56px; height:56px; transform:translate(-28px,-28px); }
+.illus-echo .sound-wave-back { position:absolute; bottom:54px; left:40px; }
+.illus-echo .sound-wave-back .sw { position:absolute; border:2px dashed rgba(200,120,80,0.5); border-radius:50%; top:0; left:0; }
+.illus-echo .sound-wave-back .sw:nth-child(1) { width:60px; height:60px; transform:translate(-30px,-30px); }
+.illus-echo .sound-wave-back .sw:nth-child(2) { width:80px; height:80px; transform:translate(-40px,-40px); }
+.illus-echo .echo-arrow { position:absolute; bottom:50px; left:65px; font-size:20px; }
+.illus-echo .echo-arrow-back { position:absolute; bottom:50px; left:95px; font-size:20px; transform:scaleX(-1); }
+.illus-echo .label-echo { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#C07850; }
+
+/* === 多普勒效应 === */
+.illus-doppler { position:relative; width:240px; height:200px; }
+.illus-doppler .ambulance { position:absolute; top:30px; left:80px; width:60px; height:36px; background:#fff; border:3px solid #E89898; border-radius:8px; }
+.illus-doppler .ambulance::before { content:"+"; position:absolute; top:4px; left:50%; transform:translateX(-50%); font-size:16px; font-weight:700; color:#C87878; }
+.illus-doppler .ambulance::after { content:"--"; position:absolute; bottom:2px; left:50%; transform:translateX(-50%); font-size:10px; color:#C87878; font-weight:700; }
+.illus-doppler .wheel1, .illus-doppler .wheel2 { position:absolute; bottom:-6px; width:12px; height:12px; background:#4A6070; border-radius:50%; }
+.illus-doppler .wheel1 { left:6px; } .illus-doppler .wheel2 { right:6px; }
+.illus-doppler .w approaching-arrow { position:absolute; top:44px; left:40px; width:40px; height:3px; background:#C87878; border-radius:2px; }
+.illus-doppler .approaching-arrow::after { content:""; position:absolute; right:-6px; top:-3px; border-left:8px solid #C87878; border-top:5px solid transparent; border-bottom:5px solid transparent; }
+.illus-doppler .receding-arrow { position:absolute; top:44px; right:40px; width:40px; height:3px; background:#6BA0C0; border-radius:2px; }
+.illus-doppler .receding-arrow::after { content:""; position:absolute; left:-6px; top:-3px; border-right:8px solid #6BA0C0; border-top:5px solid transparent; border-bottom:5px solid transparent; }
+.illus-doppler .freq-waves-near { position:absolute; top:80px; left:30px; width:40px; height:70px; background:repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(240,184,144,0.5) 8px, rgba(240,184,144,0.5) 10px); }
+.illus-doppler .freq-waves-far { position:absolute; top:80px; right:30px; width:40px; height:70px; background:repeating-linear-gradient(0deg, transparent, transparent 16px, rgba(107,160,192,0.5) 16px, rgba(107,160,192,0.5) 18px); }
+.illus-doppler .label-near { position:absolute; bottom:8px; left:30px; font-size:10px; font-weight:700; color:#C87878; }
+.illus-doppler .label-far { position:absolute; bottom:8px; right:26px; font-size:10px; font-weight:700; color:#6BA0C0; }
+.illus-doppler .ear-left { position:absolute; top:130px; left:16px; font-size:18px; }
+.illus-doppler .ear-right { position:absolute; top:130px; right:16px; font-size:18px; }
+</style>
+</head>
+<body class="ch5">
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><span>第五章 声现象</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a><a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a><a href="midu.html">密度</a>
+    <a href="sheng.html" class="active">声现象</a>
+    <a href="guang.html">光现象</a><a href="dian.html">电学</a><a href="re.html">热学</a>
+  </div>
+</nav>
+
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="搜索知识点，如「回声」「多普勒」..." oninput="doSearch()">
+  <span class="search-icon">&#128269;</span>
+  <div class="no-result" id="noResult">未找到匹配内容，试试其他关键词吧</div>
+</div>
+
+<div class="container">
+
+<section class="ch5">
+<div class="chapter-title"><span class="ch-num">第五章</span>&#128266; 声现象</div>
+
+<div class="mindmap-grid">
+  <div class="mm-card"><h4>&#128276; 声音的产生与传播</h4><ul><li>振动产生声音</li><li>介质传播（固/液/气）</li><li>真空不能传声</li></ul></div>
+  <div class="mm-card"><h4>&#9889; 声速</h4><ul><li>空气中约 340 m/s</li><li>v固 > v液 > v气</li><li>温度越高声速越大</li></ul></div>
+  <div class="mm-card"><h4>&#127926; 声音三要素</h4><ul><li>响度 — 振幅</li><li>音调 — 频率</li><li>音色 — 波形</li></ul></div>
+  <div class="mm-card"><h4>&#128263; 噪声与超声波</h4><ul><li>噪声控制三环节</li><li>超声波 >20000Hz</li><li>次声波 <20Hz</li></ul></div>
+  <div class="mm-card"><h4>&#128266; 回声计算</h4><ul><li>s = vt / 2</li><li>听到回声需 >0.1s</li><li>测距原理</li></ul></div>
+  <div class="mm-card"><h4>&#128665; 多普勒效应</h4><ul><li>靠近：频率变高</li><li>远离：频率变低</li><li>雷达测速原理</li></ul></div>
+  <div class="mm-card"><h4>&#127929; 共振</h4><ul><li>固有频率</li><li>振幅最大</li><li>士兵过桥故事</li></ul></div>
+</div>
+
+<!-- ===== 声音的产生与传播 ===== -->
+<div class="section-label">&#128218; 核心概念</div>
+
+<div class="concept-card" id="c5-production">
+  <div class="card-header">
+    <div class="card-icon">&#128276;</div>
+    <div><h4>声音的产生与传播</h4><p class="subtitle">一切发声的物体都在振动，振动停止发声也停止</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>产生：</strong>声音是由物体的<strong>振动</strong>产生的。说话时声带振动、敲鼓时鼓面振动、弹琴时琴弦振动——振动是声音的"妈妈"！</p>
+    <p><strong>传播：</strong>声音需要<strong>介质</strong>来传播。固体、液体、气体都可以传声，但<strong>真空不能传声</strong>。月球上宇航员即使面对面也要靠无线电交流，就是这个道理。</p>
+    <p>传播形式：声音以<strong>声波</strong>（纵波）的形式向四面八方传播，就像往水里扔石子激起的水波一样扩散开来。</p>
+  </div>
+</div>
+
+<!-- Tips：音叉振动 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-tuningfork">
+      <div class="fork"></div>
+      <div class="wave"></div><div class="wave"></div><div class="wave"></div><div class="wave"></div>
+      <div class="label-fork">音叉振动 &#8594; 声波扩散</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128161; 生活举例</span>
+    <h4>敲击音叉，把它放入水中——水花四溅！</h4>
+    <p>这说明发声的音叉在剧烈振动。把振动着的音叉靠近悬挂的乒乓球，乒乓球会被弹开，直观地"看到"声音来自振动。</p>
+  </div>
+</div>
+
+<!-- ===== 声速 ===== -->
+<div class="concept-card" id="c5-speed">
+  <div class="card-header">
+    <div class="card-icon">&#9889;</div>
+    <div><h4>声速</h4><p class="subtitle">声音跑得有多快？</p></div>
+  </div>
+  <div class="card-body">
+    <p>在 <strong>15&#176;C 的空气中</strong>，声速约为 <strong>340 m/s</strong>。温度越高，声速越快。</p>
+    <p><strong>速度排名：</strong>v<sub>固体</sub> &gt; v<sub>液体</sub> &gt; v<sub>气体</sub>。趴在铁轨上能比站着更早听到火车来的声音，因为铁轨（固体）传声比空气快得多。</p>
+  </div>
+</div>
+
+<div class="formula-spotlight">
+  <div class="formula-main">v = s / t</div>
+  <div class="var-list">
+    <span class="var-tag pink">v 声速 (m/s)</span>
+    <span class="var-tag blue">s 距离 (m)</span>
+    <span class="var-tag green">t 时间 (s)</span>
+  </div>
+</div>
+
+<div class="example-tag"><span class="emoji">&#127785;</span> 先看到闪电，后听到雷声——因为光速（3&#215;10&#8304; m/s）远大于声速（340 m/s）。数一数闪电到雷声的秒数 &#215; 340，就能估算雷暴离你有多远！</div>
+
+<!-- ===== 回声计算（新增） ===== -->
+<div class="concept-card" id="c5-echo">
+  <div class="card-header">
+    <div class="card-icon">&#128266;</div>
+    <div><h4>回声计算 —— 「喊一声，几秒后听到自己？」</h4><p class="subtitle">声音跑了个来回，路程翻倍了</p></div>
+  </div>
+  <div class="card-body">
+    <p>回声是声波遇到障碍物被<strong>反射</strong>回来的现象。人耳能区分原声和回声的最短间隔是 <strong>0.1 秒</strong>。</p>
+    <div class="formula-spotlight">
+      <div class="formula-main">s = v &#183; t / 2</div>
+      <div class="var-list">
+        <span class="var-tag pink">s = 人到障碍物的距离 (m)</span>
+        <span class="var-tag blue">v = 声速 (340 m/s)</span>
+        <span class="var-tag green">t = 从发声到听到回声的时间 (s)</span>
+      </div>
+    </div>
+    <p><b>为什么除以 2？</b>声音从人到障碍物再反射回来，走了一个来回——路程是两倍距离！所以听到回声的最短距离 = 340 &#215; 0.1 / 2 = <b>17 米</b>。</p>
+    <div class="example-tag"><span class="emoji">&#127956;</span>在空旷的山谷里喊一声，3 秒后听到回声。人到山壁的距离 s = 340 &#215; 3 / 2 = 510 米。</div>
+    <div class="example-tag"><span class="emoji">&#127908;</span>音乐厅墙壁做成凹凸不平——不是为了好看，是为了<strong>减弱回声</strong>，让声音更清晰。如果平面墙壁产生强烈回声，会干扰演奏效果。</div>
+    <div class="example-tag"><span class="emoji">&#128640;</span>声呐（SONAR）就是利用回声原理：船底发射超声波&#8594;遇到鱼群/海底反射回来&#8594;根据时间算出距离。潜艇探测、海洋测绘都靠它。</div>
+  </div>
+</div>
+
+<!-- 回声CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-echo">
+      <div class="mountain"></div>
+      <div class="person-echo"><div class="p-head"></div><div class="p-body"></div></div>
+      <div class="sound-wave-out"><div class="sw"></div><div class="sw"></div><div class="sw"></div></div>
+      <div class="sound-wave-back"><div class="sw"></div><div class="sw"></div></div>
+      <div class="echo-arrow">&#10132;</div>
+      <div class="echo-arrow-back">&#10132;</div>
+      <div class="label-echo">山壁 &#8594; 反射回声</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128266; Tips 图示</span>
+    <h4>回声：声波遇到山壁反弹回来</h4>
+    <p>声波从人传到山壁（实线弧），再反射回来（虚线弧）。走了一个来回，总路程 = 2s，所以 s = vt/2。你家墙壁如果距离超过 17 米，就能听到回声！</p>
+  </div>
+</div>
+
+<!-- ===== 声音三要素完整版 ===== -->
+<div class="concept-card" id="c5-elements">
+  <div class="card-header">
+    <div class="card-icon">&#127925;</div>
+    <div><h4>声音的三要素 —— 完整对比</h4><p class="subtitle">同样一句话，为什么每个人的声音都不一样？</p></div>
+  </div>
+  <div class="card-body">
+    <table class="quick-table">
+      <tr><th>要素</th><th>定义</th><th>决定因素</th><th>改变方法</th><th>波形特征</th><th>典型举例</th></tr>
+      <tr><td><strong>响度</strong></td><td>声音的大小/强弱</td><td><strong>振幅</strong>（振幅越大响度越大）</td><td>用力程度、距声源远近</td><td>波峰越高</td><td>用力敲鼓声音大、调大音量</td></tr>
+      <tr><td><strong>音调</strong></td><td>声音的高低</td><td><strong>频率</strong>（频率越高音调越高，单位 Hz）</td><td>改变振动物体的长短/粗细/松紧</td><td>波形越密</td><td>女高音、蚊子嗡嗡（高频）；男低音、牛叫（低频）</td></tr>
+      <tr><td><strong>音色</strong></td><td>声音的特色/品质</td><td><strong>波形（振动物体本身）</strong></td><td>更换发声体（不同材质/结构）</td><td>波形形状不同</td><td>"闻其声知其人"、区分钢琴和吉他</td></tr>
+    </table>
+    <p style="margin-top:12px;"><b>音调与频率的定量关系</b>：频率翻倍，音调升高一个八度。钢琴的中央 C 频率为 261.6 Hz，高八度的 C 频率为 523.2 Hz——刚好翻倍。</p>
+    <div class="example-tag"><span class="emoji">&#127929;</span>吉他手按不同品位弹同一根弦——弦振动长度变短 &#8594; 频率变高 &#8594; 音调升高。这就是音乐的基本原理。</div>
+    <div class="example-tag"><span class="emoji">&#128131;</span>人的听觉范围 20 Hz ~ 20000 Hz。蝙蝠能发出 100000 Hz 的超声波用于回声定位——它们"看"世界靠的不是眼睛，而是声音！</div>
+  </div>
+</div>
+
+<!-- Tips：水瓶音调 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-bottle">
+      <div class="bottle low"><div class="water"></div><div class="air-label">空气柱长</div></div>
+      <div class="bottle high"><div class="water"></div><div class="air-label">空气柱短</div></div>
+      <div class="label-note low">音调低 &#128264;</div>
+      <div class="label-note high">音调高 &#127926;</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128161; 趣味实验</span>
+    <h4>往水瓶里吹气——水越多音调越高！</h4>
+    <p>往瓶口吹气时，<strong>空气柱</strong>振动发声。水越多 &#8594; 空气柱越短 &#8594; 振动频率越高 &#8594; 音调越高。同理，敲击瓶子时则相反：水越多音调越低（水柱振动）。</p>
+  </div>
+</div>
+
+<!-- ===== 多普勒效应（新增） ===== -->
+<div class="concept-card" id="c5-doppler">
+  <div class="card-header">
+    <div class="card-icon">&#128665;</div>
+    <div><h4>多普勒效应 —— 「救护车从远到近，声音变高了」</h4><p class="subtitle">声源在运动，听到的频率就会变</p></div>
+  </div>
+  <div class="card-body">
+    <p>当声源与观察者<strong>相对运动</strong>时，观察者听到的声音频率会发生变化——这就是<strong>多普勒效应</strong>。1842 年由奥地利物理学家多普勒发现。</p>
+    <p><b>靠近时</b>：声波被"压缩"，频率变高，音调听起来变高。</p>
+    <p><b>远离时</b>：声波被"拉长"，频率变低，音调听起来变低。</p>
+    <div class="example-tag"><span class="emoji">&#128657;</span>救护车从你身边呼啸而过——靠近时警笛声音越来越高（尖锐），经过你之后声音越来越低（低沉）。最经典的多普勒效应体验！</div>
+    <div class="example-tag"><span class="emoji">&#128640;</span>交警的雷达测速仪就是利用多普勒效应——发射微波照射车辆，根据反射波频率的变化算出车速。超速就靠它抓。</div>
+    <div class="example-tag"><span class="emoji">&#127756;</span>天文学家利用多普勒效应发现：大多数星系的光谱向红色端偏移（"红移"）——说明它们正在远离我们——从而得出<b>宇宙在膨胀</b>的惊天结论！</div>
+  </div>
+</div>
+
+<!-- 多普勒效应CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-doppler">
+      <div class="ambulance"><div class="wheel1"></div><div class="wheel2"></div></div>
+      <div class="approaching-arrow"></div>
+      <div class="receding-arrow"></div>
+      <div class="freq-waves-near"></div>
+      <div class="freq-waves-far"></div>
+      <div class="ear-left">&#128066;</div>
+      <div class="ear-right">&#128066;</div>
+      <div class="label-near">靠近：频率高&#8593;</div>
+      <div class="label-far">远离：频率低&#8595;</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128665; Tips 图示</span>
+    <h4>多普勒效应：靠近音调高，远离音调低</h4>
+    <p>救护车靠近左侧观察者时，声波被压缩（密集条纹），听到的音调变高。远离右侧观察者时，声波被拉伸（稀疏条纹），听到的音调变低。声源本身的频率并没有改变——变的是你听到的频率！</p>
+  </div>
+</div>
+
+<!-- ===== 共振（新增） ===== -->
+<div class="concept-card" id="c5-resonance">
+  <div class="card-header">
+    <div class="card-icon">&#127929;</div>
+    <div><h4>共振 —— 「被声音震垮的桥」</h4><p class="subtitle">当外力的频率碰巧等于物体的固有频率时……</p></div>
+  </div>
+  <div class="card-body">
+    <p>每个物体都有自己的<strong>固有频率</strong>。当外界周期性驱动力的频率恰好等于物体固有频率时，物体振动的<strong>振幅达到最大</strong>——这就是<strong>共振</strong>。</p>
+    <p><b>士兵过桥的故事</b>：19 世纪，一队法国士兵列队齐步走过一座吊桥。整齐的步伐频率恰好与桥的固有频率吻合——桥开始剧烈晃动，最终坍塌！226 名士兵落水。此后，所有军队过桥都改为"便步走"（不齐步）。</p>
+    <div class="example-tag"><span class="emoji">&#127934;</span>秋千——你在最高点轻轻推一把，秋千越荡越高。因为你推的频率恰好等于秋千摆动的固有频率——共振原理。如果乱推一气，秋千反而荡不起来。</div>
+    <div class="example-tag"><span class="emoji">&#128250;</span>微波炉加热食物——微波的频率恰好与食物中水分子的固有振动频率接近，产生共振，水分子剧烈振动摩擦生热，从内到外加热食物。</div>
+    <div class="example-tag"><span class="emoji">&#127926;</span>女高音歌手能把玻璃杯唱碎——她的高音频率恰好等于玻璃杯固有频率，杯子振幅不断增大直到碎裂。这需要极大的声音能量和精准的频率匹配。</div>
+  </div>
+</div>
+
+<!-- ===== 噪声等级标准表（新增） ===== -->
+<div class="concept-card" id="c5-noise">
+  <div class="card-header">
+    <div class="card-icon">&#128263;</div>
+    <div><h4>噪声的危害与控制</h4><p class="subtitle">怎样让世界安静一点？</p></div>
+  </div>
+  <div class="card-body">
+    <p>从物理学角度，<strong>无规则振动</strong>发出的声音就是噪声。从环保角度，<strong>影响学习、工作和休息</strong>的声音都算噪声。</p>
+    <p><strong>控制噪声的三个环节：</strong></p>
+    <p>&#9312; <strong>声源处减弱</strong>——装消音器、禁止鸣笛<br>
+    &#9313; <strong>传播途中减弱</strong>——隔音墙、植树造林<br>
+    &#9314; <strong>人耳处减弱</strong>——戴耳塞、防噪声耳罩</p>
+    <table class="quick-table" style="margin-top:16px;">
+      <tr><th>分贝等级 (dB)</th><th>声音来源/环境</th><th>对人影响</th></tr>
+      <tr><td>0 dB</td><td>人耳能听到的最微弱声音</td><td>安静</td></tr>
+      <tr><td>20-30 dB</td><td>轻声细语、安静的图书馆</td><td>非常安静，适合休息</td></tr>
+      <tr><td>40-50 dB</td><td>正常交谈、安静的办公室</td><td>舒适，适合工作学习</td></tr>
+      <tr><td>60-70 dB</td><td>大声说话、繁忙街道</td><td>较吵闹，长时间可能烦躁</td></tr>
+      <tr><td>80-90 dB</td><td>繁华马路、地铁车厢</td><td>很吵闹，长期暴露损害听力</td></tr>
+      <tr><td>100-110 dB</td><td>电锯、摇滚音乐会</td><td>难以忍受，短时间即损伤听力</td></tr>
+      <tr><td>120 dB 以上</td><td>喷气式飞机起飞（近距离）</td><td>感到疼痛，鼓膜可能破裂！</td></tr>
+    </table>
+    <p style="margin-top:12px;"><b>听力保护标准</b>：长期在 85 dB 以上的环境工作，必须佩戴护耳器。夜间住宅区噪声不应超过 45 dB。</p>
+  </div>
+</div>
+
+<!-- ===== 超声波与次声波 ===== -->
+<div class="concept-card" id="c5-ultrasound">
+  <div class="card-header">
+    <div class="card-icon">&#128225;</div>
+    <div><h4>超声波与次声波</h4><p class="subtitle">人耳听不见的"声音"</p></div>
+  </div>
+  <div class="card-body">
+    <p>人耳能听到的频率范围：<strong>20 Hz ~ 20000 Hz</strong></p>
+    <p><strong>超声波（&gt;20000Hz）</strong>：蝙蝠回声定位、B 超检查、声呐探测、清洗精密零件、超声波加湿器。</p>
+    <p><strong>次声波（&lt;20Hz）</strong>：地震、火山喷发、核爆炸会产生次声波。次声波传播距离极远，且可能与人体器官发生共振造成伤害。</p>
+  </div>
+</div>
+
+<!-- 趣味问答 -->
+<div class="fun-fact">
+  <span class="fun-badge">&#129300; 趣味问答</span>
+  <div class="fun-q">问：宇航员在月球上面对面说话，为什么听不见？</div>
+  <div class="fun-a">答：月球表面是真空，没有传声介质。声音无法在真空中传播，所以必须靠无线电！</div>
+</div>
+
+<div class="fun-fact">
+  <span class="fun-badge">&#10024; 趣味冷知识</span>
+  <div class="fun-q">地球上曾经最响的声音有多响？</div>
+  <div class="fun-a">1883 年印尼喀拉喀托火山爆发，发出的声音是人类有史以来记录到的最响声音——在 4800 公里外的毛里求斯都能听到！声波绕地球传播了三圈。据估计音量达到 310 分贝，足以瞬间震破方圆 64 公里内所有人的耳膜。</div>
+</div>
+
+<div class="fun-fact">
+  <span class="fun-badge">&#10024; 趣味冷知识</span>
+  <div class="fun-q">为什么录音里的自己声音怪怪的？</div>
+  <div class="fun-a">你平时听到的自己声音，一部分通过<b>空气传导</b>（别人听到的路由），另一部分通过<b>骨传导</b>（头骨直接传到内耳）。骨传导让低频声音更丰富。录音只录到了空气传导的部分，所以听起来"不像自己"——但这恰恰是别人听到的你的真实声音！</div>
+</div>
+
+<div class="fun-fact">
+  <span class="fun-badge">&#10024; 趣味冷知识</span>
+  <div class="fun-q">蚊子嗡嗡叫是因为翅膀在振动——频率多少？</div>
+  <div class="fun-a">蚊子翅膀每秒振动约 600 次（600 Hz）——这正是人耳对声音最敏感的频率范围。而蝴蝶翅膀每秒只振动约 5 次，我们完全听不到——所以蝴蝶飞行是"无声"的。</div>
+</div>
+
+<!-- 误区提醒 -->
+<div class="misconception">
+  <h4>&#9888; 常见误区提醒</h4>
+  <ul>
+    <li><span class="mistake">&#10060; "响度大就是音调高"</span> &#8594; <span class="correct">&#9989; 响度是声音大小，音调是声音高低——男低音也可以唱得很大声！决定因素完全不同：振幅 vs 频率。</span></li>
+    <li><span class="mistake">&#10060; "振动停止声音立刻消失"</span> &#8594; <span class="correct">&#9989; 振动停止后，已发出的声波还会继续传播一段时间（就像关掉水龙头，水管里还有水流出）。</span></li>
+    <li><span class="mistake">&#10060; "0dB 就是没有声音"</span> &#8594; <span class="correct">&#9989; 0dB 是人耳刚好能听到的最微弱声音，不是"无声"。</span></li>
+    <li><span class="mistake">&#10060; "声音在不同介质中速度一样"</span> &#8594; <span class="correct">&#9989; v固 > v液 > v气！趴在铁轨上听火车比站着听快得多。</span></li>
+    <li><span class="mistake">&#10060; "回声在任何地方都能听到"</span> &#8594; <span class="correct">&#9989; 障碍物距离 > 17m 才能听到回声；小于 17m 回声和原声混在一起，反而加强原声。</span></li>
+  </ul>
+</div>
+
+<!-- 生活实验 -->
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：制作"土电话"</h4>
+  <ol class="step-list">
+    <li>找两个一次性纸杯，底部各扎一个小孔。</li>
+    <li>用一根长棉线穿过两个杯底小孔，在杯内打结固定。</li>
+    <li>一人对着纸杯说话，另一人把纸杯扣在耳朵上听——即使隔很远也能听清！</li>
+    <li>思考：声音通过什么传播的？（棉线——固体传声！）</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：水瓶乐器</h4>
+  <ol class="step-list">
+    <li><b>准备</b>：8 个相同玻璃瓶，用水调出不同水位。</li>
+    <li>从少水（音调低）到多水（音调高）排列，吹瓶口。</li>
+    <li>用筷子敲击瓶子边缘——这时水越多音调越低（水柱振动）。</li>
+    <li><b>挑战</b>：调出一排 Do Re Mi Fa Sol La Ti Do，演奏《小星星》！</li>
+  </ol>
+  <p style="margin-top:14px;font-style:italic;color:var(--text-light);">原理：吹气是空气柱振动（空气柱越短音调越高），敲击是玻璃+水振动（水越多振动体越重音调越低）。两种方式频率-音调规律恰好相反！</p>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：体验"看"声音</h4>
+  <ol class="step-list">
+    <li><b>准备</b>：一个碗、保鲜膜、少许盐粒。</li>
+    <li>碗口蒙上保鲜膜拉紧，上面撒几粒盐。</li>
+    <li>对着碗大声喊或唱歌——观察盐粒！</li>
+    <li><b>发现</b>：声音越大，盐粒跳动越厉害——声波使保鲜膜振动，盐粒被弹起来了。声音的威力看得见！</li>
+  </ol>
+</div>
+
+<!-- 家长贴士 -->
+<div class="parent-tip">
+  <h4>&#128105;&#8203;&#127891; 家长辅导小贴士</h4>
+  <ul>
+    <li>带孩子去空旷地方喊一声，引导他听回声并思考：为什么有的地方有回声，有的地方没有？</li>
+    <li>用吉他或尤克里里演示音调和弦长/松紧的关系——比看课本直观一万倍</li>
+    <li>多普勒效应：在路上等红灯时，让孩子听一听经过的汽车或救护车的声音变化</li>
+    <li>共振：荡秋千就是最直观的共振实验——让孩子感受"推的频率对了，秋千越荡越高"</li>
+    <li>"土电话"是亲子合作好项目——做完后还可以问孩子"如果把棉线换成铁丝会怎样？"</li>
+    <li>噪声：用手机下载分贝计 App，带孩子在家里、街上、图书馆测一测不同环境的分贝值</li>
+  </ul>
+</div>
+</section>
+
+<div class="page-nav">
+  <a href="midu.html" class="prev">&#8592; 第四章 密度</a>
+  <a href="guang.html" class="next">第六章 光现象 &#8594;</a>
+</div>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('backTop').style.display=window.scrollY>600?'flex':'none'});
+function doSearch(){
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  var no=document.getElementById('noResult');
+  document.querySelectorAll('mark.highlight').forEach(function(m){
+    var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
+  });
+  if(!q){no.style.display='none';document.querySelectorAll('.concept-card,.mindmap-grid,.quick-table,.misconception,.experiment,.parent-tip,.fun-fact,.tip-card,.section-label,.chapter-title').forEach(function(e){e.style.display=''});return;}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function hl(n){
+    if(n.nodeType===3){
+      var t=n.textContent,lo=t.toLowerCase(),i=lo.indexOf(q);
+      if(i===-1)return false;
+      var s=document.createElement('span');
+      s.innerHTML=esc(t.substring(0,i))+'<mark class="highlight">'+esc(t.substring(i,i+q.length))+'</mark>'+esc(t.substring(i+q.length));
+      n.parentNode.replaceChild(s,n); return true;
+    }
+    if(n.nodeType===1&&['SCRIPT','STYLE','MARK'].indexOf(n.tagName)===-1){var f=false;for(var j=0;j<n.childNodes.length;j++)if(hl(n.childNodes[j]))f=true;return f}
+    return false;
+  }
+  var fa=false;
+  document.querySelectorAll('.concept-card,.mm-card,.quick-table,.misconception ul li,.experiment,.parent-tip,.fun-fact,.tip-card').forEach(function(e){if(hl(e)){e.style.display='';fa=true}else{e.style.display='none'}});
+  document.querySelectorAll('.chapter-title,.section-label,.mindmap-grid').forEach(function(e){e.style.display=''});
+  no.style.display=fa?'none':'block';
+}
+</script>
+</body>
+</html>

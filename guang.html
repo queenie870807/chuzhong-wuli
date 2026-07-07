@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第六章 光现象 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* 近视眼远视眼矫正 */
+.illus-eye { position:relative; width:220px; height:200px; }
+.illus-eye .eyeball { position:absolute; top:30px; left:30px; width:80px; height:70px; border:3px solid #6B5A4A; border-radius:50%; background:rgba(255,255,255,0.7); overflow:hidden; }
+.illus-eye .lens { position:absolute; top:40px; left:20px; width:18px; height:50px; border-radius:50%; border:3px solid #E0C870; background:rgba(224,200,112,0.3); }
+.illus-eye .retina { position:absolute; top:40px; right:32px; width:6px; height:50px; background:rgba(200,120,80,0.4); border-radius:3px; }
+.illus-eye .light-ray-top { position:absolute; top:48px; left:10px; width:28px; height:1px; background:#E0C870; transform:rotate(-8deg); }
+.illus-eye .light-ray-bot { position:absolute; top:72px; left:10px; width:28px; height:1px; background:#E0C870; transform:rotate(8deg); }
+.illus-eye .focus-spot { position:absolute; top:58px; left:44px; width:4px; height:4px; background:red; border-radius:50%; }
+.illus-eye .label-eye { position:absolute; bottom:14px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#A08830; }
+.illus-eye .glasses { position:absolute; top:38px; left:6px; width:26px; height:54px; border-radius:50%; border:3px solid #8BB8D6; background:rgba(139,184,214,0.2); }
+.illus-eye .glasses::after { content:""; position:absolute; top:50%; right:-12px; width:12px; height:3px; background:#8BB8D6; }
+.illus-eye .focus-fixed { position:absolute; top:58px; right:52px; width:4px; height:4px; background:green; border-radius:50%; }
+.illus-eye .label-glasses { position:absolute; bottom:0; left:10px; font-size:9px; color:#5B8AAA; font-weight:700; }
+
+/* 镜面反射 vs 漫反射 */
+.illus-reflect { position:relative; width:240px; height:180px; }
+.illus-reflect .mirror { position:absolute; bottom:20px; left:20px; width:80px; height:8px; background:linear-gradient(180deg, #E0E0E0, #B0B0B0, #E0E0E0); border-radius:2px; }
+.illus-reflect .mirror::after { content:"镜面"; position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); font-size:9px; color:#888; font-weight:700; }
+.illus-reflect .rough { position:absolute; bottom:20px; right:20px; width:80px; height:8px; background:#C0B098; border-radius:2px; }
+.illus-reflect .rough::before { content:""; position:absolute; top:-3px; left:0; width:80px; height:8px; background:repeating-linear-gradient(90deg, #C0B098 0px, #D0C0A8 2px, #C0B098 4px, #B0A088 6px); border-radius:2px; }
+.illus-reflect .rough::after { content:"粗糙"; position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); font-size:9px; color:#888; font-weight:700; }
+.illus-reflect .in-rays-m { position:absolute; bottom:28px; left:40px; }
+.illus-reflect .in-rays-m .r { width:30px; height:2px; background:#E0C870; margin-bottom:6px; transform-origin:0 50%; }
+.illus-reflect .in-rays-m .r:nth-child(1) { transform:rotate(-15deg); }
+.illus-reflect .in-rays-m .r:nth-child(2) { transform:none; }
+.illus-reflect .in-rays-m .r:nth-child(3) { transform:rotate(15deg); }
+.illus-reflect .out-rays-m { position:absolute; bottom:28px; left:90px; }
+.illus-reflect .out-rays-m .r { width:30px; height:2px; background:rgba(224,200,112,0.7); margin-bottom:6px; transform-origin:100% 50%; }
+.illus-reflect .out-rays-m .r:nth-child(1) { transform:rotate(-165deg); }
+.illus-reflect .out-rays-m .r:nth-child(2) { transform:rotate(180deg); }
+.illus-reflect .out-rays-m .r:nth-child(3) { transform:rotate(165deg); }
+.illus-reflect .in-rays-r { position:absolute; bottom:28px; right:80px; }
+.illus-reflect .in-rays-r .r { width:30px; height:2px; background:#E0C870; margin-bottom:6px; transform-origin:0 50%; }
+.illus-reflect .in-rays-r .r:nth-child(1) { transform:rotate(-15deg); }
+.illus-reflect .in-rays-r .r:nth-child(2) { transform:none; }
+.illus-reflect .in-rays-r .r:nth-child(3) { transform:rotate(15deg); }
+.illus-reflect .out-rays-r { position:absolute; bottom:28px; right:10px; display:flex; flex-direction:column; gap:4px; }
+.illus-reflect .out-rays-r .r { width:30px; height:2px; background:rgba(224,200,112,0.6); }
+.illus-reflect .out-rays-r .r:nth-child(1) { transform:rotate(-160deg); }
+.illus-reflect .out-rays-r .r:nth-child(2) { transform:rotate(-170deg); }
+.illus-reflect .out-rays-r .r:nth-child(3) { transform:rotate(170deg); }
+.illus-reflect .out-rays-r .r:nth-child(4) { transform:rotate(160deg); }
+
+/* 三棱镜色散 */
+.illus-prism { position:relative; width:220px; height:200px; }
+.illus-prism .triangle { position:absolute; top:40px; left:30px; width:0; height:0; border-left:30px solid transparent; border-right:30px solid transparent; border-bottom:70px solid rgba(200,200,200,0.3); }
+.illus-prism .triangle2 { position:absolute; top:40px; left:30px; width:0; height:0; border-left:30px solid transparent; border-right:30px solid transparent; border-top:70px solid rgba(220,220,220,0.5); }
+.illus-prism .white-in { position:absolute; top:46px; left:6px; width:30px; height:3px; background:#fff; box-shadow:0 0 6px rgba(255,255,255,0.6); }
+.illus-prism .rainbow { position:absolute; top:38px; left:78px; display:flex; flex-direction:column; gap:1px; }
+.illus-prism .rainbow .rb { width:90px; height:4px; }
+.illus-prism .rainbow .rb:nth-child(1) { background:#E83838; transform:rotate(4deg); }
+.illus-prism .rainbow .rb:nth-child(2) { background:#F09020; transform:rotate(6deg); }
+.illus-prism .rainbow .rb:nth-child(3) { background:#F0D838; transform:rotate(8deg); }
+.illus-prism .rainbow .rb:nth-child(4) { background:#40B840; transform:rotate(10deg); }
+.illus-prism .rainbow .rb:nth-child(5) { background:#4078E8; transform:rotate(12deg); }
+.illus-prism .rainbow .rb:nth-child(6) { background:#6838D0; transform:rotate(14deg); }
+.illus-prism .rainbow .rb:nth-child(7) { background:#B040D0; transform:rotate(16deg); }
+.illus-prism .label-prism { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); font-size:10px; color:#A08830; font-weight:700; }
+</style>
+</head>
+<body class="ch6">
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><span>第六章 光现象</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a><a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a><a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html" class="active">光现象</a>
+    <a href="dian.html">电学</a><a href="re.html">热学</a>
+  </div>
+</nav>
+
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="搜索知识点，如「凸透镜」「漫反射」..." oninput="doSearch()">
+  <span class="search-icon">&#128269;</span>
+  <div class="no-result" id="noResult">未找到匹配内容，试试其他关键词吧</div>
+</div>
+
+<div class="container">
+
+<section class="ch6">
+<div class="chapter-title"><span class="ch-num">第六章</span>&#127752; 光现象</div>
+
+<div class="mindmap-grid">
+  <div class="mm-card"><h4>&#128161; 光源与直线传播</h4><ul><li>光沿直线传播</li><li>小孔成像</li><li>光速 3&#215;10&#8304; m/s</li></ul></div>
+  <div class="mm-card"><h4>&#128266; 光的反射</h4><ul><li>反射定律</li><li>镜面反射 vs 漫反射</li><li>光路可逆</li></ul></div>
+  <div class="mm-card"><h4>&#127752; 光的折射</h4><ul><li>折射规律</li><li>水中筷子"变弯"</li><li>海市蜃楼原理</li></ul></div>
+  <div class="mm-card"><h4>&#128301; 凸透镜成像</h4><ul><li>5 种成像情况</li><li>照相机/投影仪/放大镜</li><li>实像 vs 虚像</li></ul></div>
+  <div class="mm-card"><h4>&#128083; 眼睛与视力</h4><ul><li>近视眼矫正（凹透镜）</li><li>远视眼矫正（凸透镜）</li><li>晶状体 = 可变焦凸透镜</li></ul></div>
+  <div class="mm-card"><h4>&#9728; 色散与看不见的光</h4><ul><li>三棱镜色散</li><li>红外线（热效应）</li><li>紫外线（杀菌/荧光）</li></ul></div>
+</div>
+
+<div class="section-label">&#128218; 核心概念</div>
+
+<!-- ===== 光的直线传播 ===== -->
+<div class="concept-card" id="c6-straight">
+  <div class="card-header">
+    <div class="card-icon">&#128161;</div>
+    <div><h4>光的直线传播</h4><p class="subtitle">光在同种均匀介质中沿直线传播</p></div>
+  </div>
+  <div class="card-body">
+    <p>光在<strong>同一种均匀介质</strong>中沿<strong>直线</strong>传播。影子的形成、日食月食、小孔成像都是光的直线传播的应用。</p>
+    <p>光在真空中速度：<strong>c = 3 &#215; 10&#8312; m/s</strong>——宇宙中最快的速度！光在空气中的速度略小于真空但相差不大。</p>
+  </div>
+</div>
+
+<!-- ===== 光的反射 ===== -->
+<div class="concept-card" id="c6-reflection">
+  <div class="card-header">
+    <div class="card-icon">&#128266;</div>
+    <div><h4>光的反射定律</h4><p class="subtitle">三线共面、两线分居、两角相等</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>反射定律：</strong>反射光线、入射光线和法线<strong>在同一平面内</strong>；反射光线和入射光线分居法线<strong>两侧</strong>；反射角<strong>等于</strong>入射角。</p>
+    <p><strong>光路可逆性：</strong>如果光线逆着反射光线的方向射入，它会逆着入射光线的方向射出。你从镜子看到别人，别人也能从镜子看到你——就是这个原理。</p>
+  </div>
+</div>
+
+<!-- ===== 镜面反射 vs 漫反射（新增） ===== -->
+<div class="concept-card" id="c6-types">
+  <div class="card-header">
+    <div class="card-icon">&#128300;</div>
+    <div><h4>镜面反射 vs 漫反射</h4><p class="subtitle">为什么黑板会"反光"？</p></div>
+  </div>
+  <div class="card-body">
+    <table class="quick-table">
+      <tr><th>类型</th><th>表面特征</th><th>反射特点</th><th>现象</th></tr>
+      <tr><td><strong>镜面反射</strong></td><td>光滑表面（镜子、平静水面）</td><td>平行入射 &#8594; 平行反射</td><td>特定角度看到耀眼反光，其他角度看不见</td></tr>
+      <tr><td><strong>漫反射</strong></td><td>粗糙表面（纸、墙壁、黑板）</td><td>平行入射 &#8594; 向各个方向反射</td><td>从任何角度都能看到物体</td></tr>
+    </table>
+    <p style="margin-top:12px;"><b>关键理解：</b>漫反射中<strong>每一条光线仍然遵守反射定律</strong>！只是表面微观凹凸不平，导致法线方向各不相同，反射光就四面八散了。没有漫反射，世界将一片漆黑——因为你只能看到恰好把光反射到你眼睛里的那个方向。</p>
+    <div class="example-tag"><span class="emoji">&#128213;</span>黑板"反光"——光滑黑板的镜面反射使坐在特定角度的同学看不清字。解决方法：用粗糙的黑板（漫反射）或调整坐的位置。</div>
+  </div>
+</div>
+
+<!-- 镜面反射 vs 漫反射 CSS 图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-reflect">
+      <div class="mirror"></div>
+      <div class="rough"></div>
+      <div class="in-rays-m"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+      <div class="out-rays-m"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+      <div class="in-rays-r"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+      <div class="out-rays-r"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128300; Tips 图示</span>
+    <h4>镜面反射（左）vs 漫反射（右）</h4>
+    <p>三束平行光照到镜面（左）——反射光仍然平行，只在特定方向看到。照到粗糙表面（右）——反射光四散开来，无论站在哪个角度都能看到物体。记住：漫反射依然遵守反射定律！</p>
+  </div>
+</div>
+
+<!-- ===== 光的折射 ===== -->
+<div class="concept-card" id="c6-refraction">
+  <div class="card-header">
+    <div class="card-icon">&#127752;</div>
+    <div><h4>光的折射规律</h4><p class="subtitle">光从一种介质斜射入另一种介质时，传播方向发生偏折</p></div>
+  </div>
+  <div class="card-body">
+    <p>光从空气斜射入水中或其他介质中时，折射光线向<strong>法线方向偏折</strong>（折射角 < 入射角）。反之，从水中射向空气时，折射光线<strong>远离法线</strong>。</p>
+    <div class="example-tag"><span class="emoji">&#127754;</span>筷子放入水中看起来"弯折"——筷子反射的光从水中进入空气时发生折射，眼睛逆着光线看去，筷子就变"弯"了。</div>
+    <div class="example-tag"><span class="emoji">&#127965;</span>海市蜃楼——热空气和冷空气密度不同，光在其中不断折射，远处的景物被投射到空中，形成"空中楼阁"的幻象。</div>
+  </div>
+</div>
+
+<!-- ===== 凸透镜成像完整规律表（新增） ===== -->
+<div class="concept-card" id="c6-convex">
+  <div class="card-header">
+    <div class="card-icon">&#128301;</div>
+    <div><h4>凸透镜成像 —— 完整规律表</h4><p class="subtitle">物距 u 决定了一切</p></div>
+  </div>
+  <div class="card-body">
+    <table class="quick-table">
+      <tr><th>物距(u)</th><th>像的性质</th><th>像距(v)</th><th>应用</th><th>记忆口诀</th></tr>
+      <tr><td><strong>u &gt; 2f</strong></td><td>倒立、缩小、实像</td><td>f &lt; v &lt; 2f</td><td>照相机</td><td>"远照小"</td></tr>
+      <tr><td><strong>u = 2f</strong></td><td>倒立、等大、实像</td><td>v = 2f</td><td>测焦距</td><td>"二倍等"</td></tr>
+      <tr><td><strong>f &lt; u &lt; 2f</strong></td><td>倒立、放大、实像</td><td>v &gt; 2f</td><td>投影仪</td><td>"近放大"</td></tr>
+      <tr><td><strong>u = f</strong></td><td>不成像</td><td>—</td><td>平行光源</td><td>"焦点无"</td></tr>
+      <tr><td><strong>u &lt; f</strong></td><td>正立、放大、虚像</td><td>|v| &gt; u</td><td>放大镜</td><td>"近镜虚"</td></tr>
+    </table>
+    <p style="margin-top:16px;"><b>成像规律的两个分界点：</b></p>
+    <p>&#183; <b>焦点 F（u = f）</b>——实像与虚像的分界点（u &gt; f 成实像，u &lt; f 成虚像）</p>
+    <p>&#183; <b>二倍焦距 2f（u = 2f）</b>——放大与缩小的分界点（u &gt; 2f 缩小，u &lt; 2f 放大）</p>
+    <p><b>实像 vs 虚像</b>：实像——实际光线汇聚而成，能用光屏承接（照相机、投影仪）；虚像——光线的反向延长线汇聚而成，不能用光屏承接（放大镜）。</p>
+  </div>
+</div>
+
+<!-- ===== 近视眼远视眼矫正（新增） ===== -->
+<div class="concept-card" id="c6-eye">
+  <div class="card-header">
+    <div class="card-icon">&#128083;</div>
+    <div><h4>眼睛与视力矫正</h4><p class="subtitle">你的眼睛就是一个自带变焦的凸透镜</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>正常眼睛：</strong>晶状体（凸透镜）将远处物体成像在视网膜上。睫状肌调节晶状体曲率来"变焦"——看远处时晶状体变薄，看近处时变厚。</p>
+    <table class="quick-table">
+      <tr><th>类型</th><th>成因</th><th>成像位置</th><th>矫正镜片</th><th>矫正原理</th></tr>
+      <tr><td><strong>近视眼</strong></td><td>晶状体太厚/眼球太长</td><td>像落在视网膜<strong>前</strong></td><td><strong>凹透镜</strong></td><td>凹透镜使光发散，像后移到视网膜</td></tr>
+      <tr><td><strong>远视眼</strong></td><td>晶状体太薄/眼球太短</td><td>像落在视网膜<strong>后</strong></td><td><strong>凸透镜</strong></td><td>凸透镜使光会聚，像前移到视网膜</td></tr>
+    </table>
+    <div class="example-tag"><span class="emoji">&#128083;</span>近视眼看远处模糊——为什么？远处物体在近视眼中成像在视网膜前方，光到了视网膜上已经发散开。戴凹透镜发散光线，把像后推到视网膜上。</div>
+  </div>
+</div>
+
+<!-- 近视眼远视眼CSS图示 -->
+<div class="section-label">&#127912; 近视眼与远视眼矫正光路</div>
+<div style="display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;">
+  <div style="text-align:center;">
+    <div class="illus-eye" style="width:240px;">
+      <div class="eyeball" style="left:50px;"><div class="lens" style="border-width:4px;border-color:#C87878;background:rgba(200,120,120,0.3);"></div><div class="retina" style="right:30px;"></div><div class="focus-spot" style="left:78px;background:red;"></div></div>
+      <div class="light-ray-top" style="top:48px;left:30px;width:50px;transform:rotate(-3deg);"></div>
+      <div class="light-ray-bot" style="top:72px;left:30px;width:50px;transform:rotate(3deg);"></div>
+      <div class="label-eye" style="bottom:4px;">近视：成像在视网膜前</div>
+    </div>
+    <div style="font-size:13px;color:#C87878;font-weight:700;margin-top:4px;">&#8594; 凹透镜矫正</div>
+  </div>
+  <div style="text-align:center;">
+    <div class="illus-eye" style="width:240px;">
+      <div class="eyeball" style="left:50px;top:8px;"><div class="lens" style="border-width:2px;top:38px;height:46px;border-color:#A08830;background:rgba(224,200,112,0.2);"></div><div class="retina" style="right:30px;top:38px;"></div><div class="focus-spot" style="left:94px;top:56px;background:green;"></div></div>
+      <div class="light-ray-top" style="top:44px;left:30px;width:60px;"></div>
+      <div class="light-ray-bot" style="top:68px;left:30px;width:60px;"></div>
+      <div class="label-eye" style="bottom:18px;">远视：成像在视网膜后</div>
+    </div>
+    <div style="font-size:13px;color:#A08830;font-weight:700;margin-top:4px;">&#8594; 凸透镜矫正</div>
+  </div>
+</div>
+
+<!-- ===== 红外线与紫外线（新增） ===== -->
+<div class="concept-card" id="c6-ir-uv">
+  <div class="card-header">
+    <div class="card-icon">&#9728;</div>
+    <div><h4>看不见的光 —— 红外线与紫外线</h4><p class="subtitle">光谱两端还有两个不为人知的"隐形推手"</p></div>
+  </div>
+  <div class="card-body">
+    <p>1800 年，英国天文学家<strong>赫歇尔</strong>用温度计测量光谱各处的温度，发现在红光外侧温度更高——发现了红外线。1801 年，<strong>里特</strong>发现紫光外侧的化学物质变黑更快——发现了紫外线。</p>
+    <table class="quick-table">
+      <tr><th>特性</th><th>红外线</th><th>紫外线</th></tr>
+      <tr><td><strong>频率范围</strong></td><td>低于红光（不可见）</td><td>高于紫光（不可见）</td></tr>
+      <tr><td><strong>显著效应</strong></td><td><strong>热效应</strong>（任何有温度的物体都在发射红外线）</td><td><strong>化学效应</strong>（使荧光物质发光、杀菌）</td></tr>
+      <tr><td><strong>主要应用</strong></td><td>红外遥控、夜视仪、红外测温、热成像</td><td>杀菌消毒、验钞（荧光）、促进维生素D合成</td></tr>
+      <tr><td><strong>危害</strong></td><td>过量红外辐射可灼伤皮肤</td><td>过量暴晒导致皮肤癌、白内障</td></tr>
+    </table>
+    <div class="example-tag"><span class="emoji">&#128247;</span>手机遥控器——前端那个小灯泡发出的是红外线，肉眼看不见但手机摄像头能拍到（红外线可以穿过手机相机的红外滤光片被传感器捕捉到）。试试用手机摄像头拍遥控器前端！</div>
+    <div class="example-tag"><span class="emoji">&#127973;</span>医院用紫外线灯消毒——紫外线能破坏细菌和病毒的 DNA，高效杀菌。但紫外线灯开启时人必须离开，否则会灼伤眼睛和皮肤。</div>
+  </div>
+</div>
+
+<!-- 三棱镜色散 CSS 图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-prism">
+      <div class="triangle"></div><div class="triangle2"></div>
+      <div class="white-in"></div>
+      <div class="rainbow"><div class="rb"></div><div class="rb"></div><div class="rb"></div><div class="rb"></div><div class="rb"></div><div class="rb"></div><div class="rb"></div></div>
+      <div class="label-prism">白光 &#8594; 七色光谱</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#127752; Tips 图示</span>
+    <h4>三棱镜色散：白光 = 七色光的混合</h4>
+    <p>一束白光（左侧）穿过三棱镜后，不同颜色的光折射角度不同——红光折射最小，紫光折射最大——白光被分解成红、橙、黄、绿、蓝、靛、紫七色光带。彩虹就是大自然的三棱镜实验。</p>
+  </div>
+</div>
+
+<!-- 趣味问答 -->
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">天空为什么是蓝色的？</div>
+  <div class="fun-a">太阳光穿过大气层时，蓝色光波长短，最容易被空气中的微小粒子散射（瑞利散射）。所以我们抬头看到的天空，是各个方向散射过来的蓝光。傍晚太阳接近地平线时光线穿过更厚大气层，蓝光被散射殆尽，红光占主导——所以夕阳是红色的。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">彩虹为什么是弧形的？</div>
+  <div class="fun-a">彩虹是太阳光在水滴中折射-反射-折射后形成的。每个水滴像一个微型三棱镜，把白光分解成七色。所有满足特定角度的水滴排列成一个圆形光环——我们在地面只能看到半圆（地平线以下被挡住了）。坐飞机时能看到完整的圆形彩虹！</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">猫的眼睛为什么在黑暗中发光？</div>
+  <div class="fun-a">猫眼视网膜后面有一层叫"照膜"（tapetum lucidum）的反射层，能把穿过视网膜的光再反射回来，让感光细胞"二次利用"光线，极大的增强了夜视能力。你看到的"发光"其实是照膜反射回来的光——和反射定律有关！</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">变色龙变色是伪装吗？</div>
+  <div class="fun-a">变色龙的皮肤里有特殊的纳米晶体，通过调整晶格间距来反射不同波长的光——本质上是利用光的干涉和反射。但变色主要不是为了伪装——而是为了<strong>调节体温</strong>和<strong>社交沟通</strong>！</div>
+</div>
+
+<!-- 误区提醒 -->
+<div class="misconception">
+  <h4>&#9888; 常见误区提醒</h4>
+  <ul>
+    <li><span class="mistake">&#10060; "漫反射不遵守反射定律"</span> &#8594; <span class="correct">&#9989; 漫反射中每一条光线仍然遵守反射定律！只是表面微观法线方向不同。这是考试高频陷阱。</span></li>
+    <li><span class="mistake">&#10060; "实像可以用眼睛直接看到，虚像不行"</span> &#8594; <span class="correct">&#9989; 虚像也能用眼睛看到！镜子里的虚像你难道看不见吗？区别在于实像能用<strong>光屏</strong>承接，虚像不能。</span></li>
+    <li><span class="mistake">&#10060; "凸透镜一定成放大的像"</span> &#8594; <span class="correct">&#9989; 不一定！u &gt; 2f 时成缩小的像（照相机原理）。只有 u &lt; f 时才成放大虚像。</span></li>
+    <li><span class="mistake">&#10060; "光从空气进入水中速度不变"</span> &#8594; <span class="correct">&#9989; 光在不同介质中速度不同。水中光速约为真空中 3/4，玻璃中约为 2/3。正因为速度变了才发生折射。</span></li>
+    <li><span class="mistake">&#10060; "近视眼戴凸透镜"</span> &#8594; <span class="correct">&#9989; 大错特错！近视眼看远处模糊是因为像在视网膜<strong>前</strong>，需要用<strong>凹透镜</strong>发散光线把像后移。</span></li>
+  </ul>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：小孔成像</h4>
+  <ol class="step-list">
+    <li>找一个纸杯，底部扎一个小针孔。杯口蒙上薄纸（描图纸/蜡纸）。</li>
+    <li>在暗房间里，杯底对着窗外明亮景物（或蜡烛）。</li>
+    <li>观察杯口薄纸上的影像——倒立的！</li>
+    <li>思考：为什么是倒立的？（光的直线传播——上方光线穿过小孔打在下方）</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：自制放大镜</h4>
+  <ol class="step-list">
+    <li>在透明塑料袋中装少许水，扎紧袋口形成一个球状水珠。</li>
+    <li>透过水珠看报纸上的小字——字被放大了！</li>
+    <li>这就是凸透镜原理——水珠相当于一个简易凸透镜。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：在家里造彩虹</h4>
+  <ol class="step-list">
+    <li>晴天下午，在窗边放一盆水。</li>
+    <li>拿一面镜子斜放入水中，让阳光照在镜子上。</li>
+    <li>调整镜子角度，在天花板或墙上寻找彩虹！</li>
+  </ol>
+  <p style="margin-top:14px;font-style:italic;color:var(--text-light);">原理：阳光穿过水面产生折射，被镜子反射回来——相当于大自然的三棱镜色散实验。</p>
+</div>
+
+<div class="parent-tip">
+  <h4>&#128105;&#8203;&#127891; 家长辅导小贴士</h4>
+  <ul>
+    <li>凸透镜成像 5 种情况是初中物理最大的记忆难点之一——建议画一张"物距轴线图"贴在墙上，孩子每天看一遍自然记住</li>
+    <li>近视远视矫正：用孩子的眼镜（近视）和爷爷奶奶的老花镜（远视）来对比观察——透过不同镜片看字</li>
+    <li>镜面反射 vs 漫反射：在阳光下用镜子（镜面反射）和白纸（漫反射）给孩子对比</li>
+    <li>小孔成像实验亲子一起做，烛光或窗外景色都可以，效果非常直观</li>
+    <li>雨后带孩子看彩虹并解释：你看到的是水滴把太阳光分解成了七彩——顺便告诉孩子为什么是弧形</li>
+  </ul>
+</div>
+</section>
+
+<div class="page-nav">
+  <a href="sheng.html" class="prev">&#8592; 第五章 声现象</a>
+  <a href="dian.html" class="next">第七章 电学 &#8594;</a>
+</div>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('backTop').style.display=window.scrollY>600?'flex':'none'});
+function doSearch(){
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  var no=document.getElementById('noResult');
+  document.querySelectorAll('mark.highlight').forEach(function(m){
+    var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
+  });
+  if(!q){no.style.display='none';document.querySelectorAll('.concept-card,.mindmap-grid,.quick-table,.misconception,.experiment,.parent-tip,.fun-fact,.tip-card,.section-label,.chapter-title').forEach(function(e){e.style.display=''});return;}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function hl(n){
+    if(n.nodeType===3){
+      var t=n.textContent,lo=t.toLowerCase(),i=lo.indexOf(q);
+      if(i===-1)return false;
+      var s=document.createElement('span');
+      s.innerHTML=esc(t.substring(0,i))+'<mark class="highlight">'+esc(t.substring(i,i+q.length))+'</mark>'+esc(t.substring(i+q.length));
+      n.parentNode.replaceChild(s,n); return true;
+    }
+    if(n.nodeType===1&&['SCRIPT','STYLE','MARK'].indexOf(n.tagName)===-1){var f=false;for(var j=0;j<n.childNodes.length;j++)if(hl(n.childNodes[j]))f=true;return f}
+    return false;
+  }
+  var fa=false;
+  document.querySelectorAll('.concept-card,.mm-card,.quick-table,.misconception ul li,.experiment,.parent-tip,.fun-fact,.tip-card').forEach(function(e){if(hl(e)){e.style.display='';fa=true}else{e.style.display='none'}});
+  document.querySelectorAll('.chapter-title,.section-label,.mindmap-grid').forEach(function(e){e.style.display=''});
+  no.style.display=fa?'none':'block';
+}
+</script>
+</body>
+</html>

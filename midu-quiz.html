@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第四章 密度 · 测验 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.quiz-wrap { max-width: 780px; margin: 0 auto; }
+.quiz-header { text-align: center; margin: 32px 0 24px; }
+.quiz-header h2 { font-size: 24px; color: #E08850; }
+.quiz-header p { color: #7B758A; font-size: 15px; margin-top: 4px; }
+.q-section { margin: 32px 0 16px; }
+.q-section h3 { font-size: 18px; color: #E08850; padding-bottom: 8px; border-bottom: 2px dashed rgba(224,136,80,0.3); margin-bottom: 14px; }
+.quiz-q { background: #FFF; border-radius: 18px; padding: 18px 22px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1.5px solid #fae8d8; }
+.quiz-q .q-num { display: inline-block; background: linear-gradient(135deg, #F0A870, #E08850); color: #fff;
+  min-width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px;
+  font-weight: 700; font-size: 13px; margin-right: 8px; }
+.quiz-q .q-title { font-size: 16px; font-weight: 700; color: #4A4458; display: inline; line-height: 1.6; }
+.quiz-q .options { margin: 8px 0 0 36px; display: flex; flex-direction: column; gap: 5px; }
+.quiz-q .opt { display: flex; align-items: center; gap: 8px; padding: 7px 12px;
+  border-radius: 10px; border: 1.5px solid transparent; cursor: pointer;
+  transition: all 0.15s; font-size: 15px; background: #FEF6F0; }
+.quiz-q .opt:hover { border-color: rgba(240,168,112,0.4); background: #FFFCF8; }
+.quiz-q .opt input[type=radio] { accent-color: #E08850; transform: scale(1.05); }
+.quiz-q .opt.selected { border-color: #F0A870; background: #FAE8D8; }
+.quiz-q.correct-q { border-color: #8CC4A0; background: #F4FAF6; }
+.quiz-q.wrong-q { border-color: #E8A0BF; background: #FFF5F8; }
+.feedback { font-size: 13px; margin: 4px 0 0 36px; display: none; }
+.feedback.correct { display: block; color: #5B8A6A; }
+.feedback.wrong { display: block; color: #C4708A; }
+.quiz-actions { text-align: center; margin: 32px 0 16px; }
+.btn-submit, .btn-retry { padding: 12px 40px; border-radius: 30px; border: none; font-size: 17px;
+  font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: var(--font-title); }
+.btn-submit { background: linear-gradient(135deg, #F0A870, #E08850); color: #fff; }
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(224,136,80,0.4); }
+.btn-retry { background: #FAE8D8; color: #E08850; margin-left: 12px; }
+.btn-retry:hover { background: #F4D8C0; }
+.result-card { display: none; max-width: 600px; margin: 24px auto; text-align: center;
+  background: #FFF; border-radius: 20px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.result-card.show { display: block; }
+.result-card .score-num { font-size: 3rem; font-weight: 800; }
+@media print { .top-nav, .quiz-actions, .page-nav, .result-card { display: none; } .quiz-q { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; } .quiz-q .opt { background: #fff; } }
+@media (max-width: 640px) { .quiz-q { padding: 14px 16px; } .quiz-q .options { margin-left: 0; } .quiz-q .q-title { font-size: 15px; } }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">›</span><a href="midu.html">第四章 密度</a><span class="sep">›</span><span>章节测验</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a>
+    <a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a>
+    <a href="midu.html" class="active">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a>
+    <a href="re.html">热学</a>
+  </div>
+</nav>
+<div class="container"><div class="quiz-wrap">
+<div class="quiz-header"><h2>第四章 密度 · 章节测验</h2><p>共 50 题，满分 50 分。</p></div>
+<div id="quizForm">
+
+<div class="q-section"><h3>一、密度概念与公式 ρ=m/V（第 1-10 题）</h3></div>
+<div class="quiz-q" data-q="1"><span class="q-num">1</span><span class="q-title">密度的定义是？</span><div class="options">
+<label class="opt"><input type="radio" name="q1" value="A">单位体积内所含物质的质量</label>
+<label class="opt"><input type="radio" name="q1" value="B">单位质量所占的体积</label>
+<label class="opt"><input type="radio" name="q1" value="C">物体的总质量</label>
+<label class="opt"><input type="radio" name="q1" value="D">物体的总重量</label></div><div class="feedback" id="fb1"></div></div>
+
+<div class="quiz-q" data-q="2"><span class="q-num">2</span><span class="q-title">密度的公式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q2" value="A">ρ = m·V</label>
+<label class="opt"><input type="radio" name="q2" value="B">ρ = m/V</label>
+<label class="opt"><input type="radio" name="q2" value="C">ρ = V/m</label>
+<label class="opt"><input type="radio" name="q2" value="D">ρ = m+V</label></div><div class="feedback" id="fb2"></div></div>
+
+<div class="quiz-q" data-q="3"><span class="q-num">3</span><span class="q-title">密度的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q3" value="A">g/cm³</label>
+<label class="opt"><input type="radio" name="q3" value="B">kg/m³</label>
+<label class="opt"><input type="radio" name="q3" value="C">N/m³</label>
+<label class="opt"><input type="radio" name="q3" value="D">g/mL</label></div><div class="feedback" id="fb3"></div></div>
+
+<div class="quiz-q" data-q="4"><span class="q-num">4</span><span class="q-title">下列关于密度的说法正确的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q4" value="A">密度与物体的质量成正比</label>
+<label class="opt"><input type="radio" name="q4" value="B">密度与物体的体积成反比</label>
+<label class="opt"><input type="radio" name="q4" value="C">密度是物质的一种特性，与质量和体积无关</label>
+<label class="opt"><input type="radio" name="q4" value="D">密度大的物体质量一定大</label></div><div class="feedback" id="fb4"></div></div>
+
+<div class="quiz-q" data-q="5"><span class="q-num">5</span><span class="q-title">一块铁块的质量为 79g，体积为 10cm³，它的密度是？</span><div class="options">
+<label class="opt"><input type="radio" name="q5" value="A">7.9 g/cm³</label>
+<label class="opt"><input type="radio" name="q5" value="B">0.79 g/cm³</label>
+<label class="opt"><input type="radio" name="q5" value="C">79 g/cm³</label>
+<label class="opt"><input type="radio" name="q5" value="D">790 g/cm³</label></div><div class="feedback" id="fb5"></div></div>
+
+<div class="quiz-q" data-q="6"><span class="q-num">6</span><span class="q-title">已知某液体密度为 0.8g/cm³，体积为 50cm³，其质量为？</span><div class="options">
+<label class="opt"><input type="radio" name="q6" value="A">40 g</label>
+<label class="opt"><input type="radio" name="q6" value="B">62.5 g</label>
+<label class="opt"><input type="radio" name="q6" value="C">50 g</label>
+<label class="opt"><input type="radio" name="q6" value="D">0.016 g</label></div><div class="feedback" id="fb6"></div></div>
+
+<div class="quiz-q" data-q="7"><span class="q-num">7</span><span class="q-title">一块质量为 54g 的铝块（ρ=2.7g/cm³），其体积为？</span><div class="options">
+<label class="opt"><input type="radio" name="q7" value="A">10 cm³</label>
+<label class="opt"><input type="radio" name="q7" value="B">20 cm³</label>
+<label class="opt"><input type="radio" name="q7" value="C">30 cm³</label>
+<label class="opt"><input type="radio" name="q7" value="D">54 cm³</label></div><div class="feedback" id="fb7"></div></div>
+
+<div class="quiz-q" data-q="8"><span class="q-num">8</span><span class="q-title">"铁比棉花重"的正确理解是？</span><div class="options">
+<label class="opt"><input type="radio" name="q8" value="A">铁的质量总是比棉花大</label>
+<label class="opt"><input type="radio" name="q8" value="B">相同体积的铁比棉花质量大（铁的密度大）</label>
+<label class="opt"><input type="radio" name="q8" value="C">铁的体积总是比棉花小</label>
+<label class="opt"><input type="radio" name="q8" value="D">铁的重量始终大于棉花</label></div><div class="feedback" id="fb8"></div></div>
+
+<div class="quiz-q" data-q="9"><span class="q-num">9</span><span class="q-title">一瓶氧气用掉一半后，瓶内氧气的密度？</span><div class="options">
+<label class="opt"><input type="radio" name="q9" value="A">不变</label>
+<label class="opt"><input type="radio" name="q9" value="B">变为原来的一半</label>
+<label class="opt"><input type="radio" name="q9" value="C">变为原来的两倍</label>
+<label class="opt"><input type="radio" name="q9" value="D">变为原来的四分之一</label></div><div class="feedback" id="fb9"></div></div>
+
+<div class="quiz-q" data-q="10"><span class="q-num">10</span><span class="q-title">一块砖切成体积比为 2:1 的两块，则这两块的密度之比为？</span><div class="options">
+<label class="opt"><input type="radio" name="q10" value="A">2:1</label>
+<label class="opt"><input type="radio" name="q10" value="B">1:2</label>
+<label class="opt"><input type="radio" name="q10" value="C">1:1</label>
+<label class="opt"><input type="radio" name="q10" value="D">4:1</label></div><div class="feedback" id="fb10"></div></div>
+
+<div class="q-section"><h3>二、密度单位换算 g/cm³ 与 kg/m³（第 11-20 题）</h3></div>
+<div class="quiz-q" data-q="11"><span class="q-num">11</span><span class="q-title">1 g/cm³ 等于多少 kg/m³？</span><div class="options">
+<label class="opt"><input type="radio" name="q11" value="A">10 kg/m³</label>
+<label class="opt"><input type="radio" name="q11" value="B">100 kg/m³</label>
+<label class="opt"><input type="radio" name="q11" value="C">1000 kg/m³</label>
+<label class="opt"><input type="radio" name="q11" value="D">10000 kg/m³</label></div><div class="feedback" id="fb11"></div></div>
+
+<div class="quiz-q" data-q="12"><span class="q-num">12</span><span class="q-title">水的密度 1.0×10³ kg/m³ 换算为 g/cm³ 是？</span><div class="options">
+<label class="opt"><input type="radio" name="q12" value="A">0.1 g/cm³</label>
+<label class="opt"><input type="radio" name="q12" value="B">1.0 g/cm³</label>
+<label class="opt"><input type="radio" name="q12" value="C">10 g/cm³</label>
+<label class="opt"><input type="radio" name="q12" value="D">100 g/cm³</label></div><div class="feedback" id="fb12"></div></div>
+
+<div class="quiz-q" data-q="13"><span class="q-num">13</span><span class="q-title">铁的密度约为 7.9×10³ kg/m³，换算为 g/cm³ 约为？</span><div class="options">
+<label class="opt"><input type="radio" name="q13" value="A">0.079 g/cm³</label>
+<label class="opt"><input type="radio" name="q13" value="B">0.79 g/cm³</label>
+<label class="opt"><input type="radio" name="q13" value="C">7.9 g/cm³</label>
+<label class="opt"><input type="radio" name="q13" value="D">79 g/cm³</label></div><div class="feedback" id="fb13"></div></div>
+
+<div class="quiz-q" data-q="14"><span class="q-num">14</span><span class="q-title">0.8 g/cm³ 等于多少 kg/m³？</span><div class="options">
+<label class="opt"><input type="radio" name="q14" value="A">8 kg/m³</label>
+<label class="opt"><input type="radio" name="q14" value="B">80 kg/m³</label>
+<label class="opt"><input type="radio" name="q14" value="C">800 kg/m³</label>
+<label class="opt"><input type="radio" name="q14" value="D">8000 kg/m³</label></div><div class="feedback" id="fb14"></div></div>
+
+<div class="quiz-q" data-q="15"><span class="q-num">15</span><span class="q-title">13.6 g/cm³ 等于多少 kg/m³？</span><div class="options">
+<label class="opt"><input type="radio" name="q15" value="A">1.36×10³ kg/m³</label>
+<label class="opt"><input type="radio" name="q15" value="B">1.36×10⁴ kg/m³</label>
+<label class="opt"><input type="radio" name="q15" value="C">13.6×10³ kg/m³</label>
+<label class="opt"><input type="radio" name="q15" value="D">136 kg/m³</label></div><div class="feedback" id="fb15"></div></div>
+
+<div class="quiz-q" data-q="16"><span class="q-num">16</span><span class="q-title">2.5×10³ kg/m³ 等于多少 g/cm³？</span><div class="options">
+<label class="opt"><input type="radio" name="q16" value="A">0.25 g/cm³</label>
+<label class="opt"><input type="radio" name="q16" value="B">2.5 g/cm³</label>
+<label class="opt"><input type="radio" name="q16" value="C">25 g/cm³</label>
+<label class="opt"><input type="radio" name="q16" value="D">250 g/cm³</label></div><div class="feedback" id="fb16"></div></div>
+
+<div class="quiz-q" data-q="17"><span class="q-num">17</span><span class="q-title">空气的密度约为 1.29 kg/m³，换算为 g/cm³ 约为？</span><div class="options">
+<label class="opt"><input type="radio" name="q17" value="A">1.29 g/cm³</label>
+<label class="opt"><input type="radio" name="q17" value="B">0.129 g/cm³</label>
+<label class="opt"><input type="radio" name="q17" value="C">1.29×10⁻³ g/cm³</label>
+<label class="opt"><input type="radio" name="q17" value="D">1.29×10³ g/cm³</label></div><div class="feedback" id="fb17"></div></div>
+
+<div class="quiz-q" data-q="18"><span class="q-num">18</span><span class="q-title">kg/m³ 与 g/cm³ 的换算关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q18" value="A">1 kg/m³ = 10⁻³ g/cm³</label>
+<label class="opt"><input type="radio" name="q18" value="B">1 kg/m³ = 10³ g/cm³</label>
+<label class="opt"><input type="radio" name="q18" value="C">1 kg/m³ = 1 g/cm³</label>
+<label class="opt"><input type="radio" name="q18" value="D">1 kg/m³ = 10 g/cm³</label></div><div class="feedback" id="fb18"></div></div>
+
+<div class="quiz-q" data-q="19"><span class="q-num">19</span><span class="q-title">冰的密度为 0.9 g/cm³，换算为 kg/m³ 是？</span><div class="options">
+<label class="opt"><input type="radio" name="q19" value="A">9 kg/m³</label>
+<label class="opt"><input type="radio" name="q19" value="B">90 kg/m³</label>
+<label class="opt"><input type="radio" name="q19" value="C">0.9×10³ kg/m³</label>
+<label class="opt"><input type="radio" name="q19" value="D">9×10³ kg/m³</label></div><div class="feedback" id="fb19"></div></div>
+
+<div class="quiz-q" data-q="20"><span class="q-num">20</span><span class="q-title">以下哪个密度值最大？</span><div class="options">
+<label class="opt"><input type="radio" name="q20" value="A">1.2×10³ kg/m³</label>
+<label class="opt"><input type="radio" name="q20" value="B">2 g/cm³</label>
+<label class="opt"><input type="radio" name="q20" value="C">0.5×10³ kg/m³</label>
+<label class="opt"><input type="radio" name="q20" value="D">5000 kg/m³</label></div><div class="feedback" id="fb20"></div></div>
+
+<div class="q-section"><h3>三、量筒与天平测量密度（第 21-30 题）</h3></div>
+<div class="quiz-q" data-q="21"><span class="q-num">21</span><span class="q-title">用量筒和水测量不规则固体体积的方法是？</span><div class="options">
+<label class="opt"><input type="radio" name="q21" value="A">直接读数法</label>
+<label class="opt"><input type="radio" name="q21" value="B">排水法（V=V₂-V₁）</label>
+<label class="opt"><input type="radio" name="q21" value="C">公式计算法</label>
+<label class="opt"><input type="radio" name="q21" value="D">天平称量法</label></div><div class="feedback" id="fb21"></div></div>
+
+<div class="quiz-q" data-q="22"><span class="q-num">22</span><span class="q-title">测量固体密度的步骤顺序是？</span><div class="options">
+<label class="opt"><input type="radio" name="q22" value="A">先测体积，再测质量</label>
+<label class="opt"><input type="radio" name="q22" value="B">先测质量（天平），再测体积（排水法）</label>
+<label class="opt"><input type="radio" name="q22" value="C">随意测量</label>
+<label class="opt"><input type="radio" name="q22" value="D">只需测质量</label></div><div class="feedback" id="fb22"></div></div>
+
+<div class="quiz-q" data-q="23"><span class="q-num">23</span><span class="q-title">量筒中原来有水 50mL，放入石块后液面升至 80mL，石块体积为？</span><div class="options">
+<label class="opt"><input type="radio" name="q23" value="A">50 cm³</label>
+<label class="opt"><input type="radio" name="q23" value="B">80 cm³</label>
+<label class="opt"><input type="radio" name="q23" value="C">30 cm³</label>
+<label class="opt"><input type="radio" name="q23" value="D">130 cm³</label></div><div class="feedback" id="fb23"></div></div>
+
+<div class="quiz-q" data-q="24"><span class="q-num">24</span><span class="q-title">测量液体密度时，以下操作合理的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q24" value="A">先测空烧杯质量，倒入液体后再测总质量</label>
+<label class="opt"><input type="radio" name="q24" value="B">先测烧杯和液体总质量，倒入量筒一部分后测剩余质量（差值法）</label>
+<label class="opt"><input type="radio" name="q24" value="C">直接用天平称液体的质量</label>
+<label class="opt"><input type="radio" name="q24" value="D">只用量筒测量</label></div><div class="feedback" id="fb24"></div></div>
+
+<div class="quiz-q" data-q="25"><span class="q-num">25</span><span class="q-title">天平使用前，发现指针偏左，应将平衡螺母向哪边调？</span><div class="options">
+<label class="opt"><input type="radio" name="q25" value="A">向左</label>
+<label class="opt"><input type="radio" name="q25" value="B">向右</label>
+<label class="opt"><input type="radio" name="q25" value="C">不调</label>
+<label class="opt"><input type="radio" name="q25" value="D">随意</label></div><div class="feedback" id="fb25"></div></div>
+
+<div class="quiz-q" data-q="26"><span class="q-num">26</span><span class="q-title">量筒读数时视线应？</span><div class="options">
+<label class="opt"><input type="radio" name="q26" value="A">俯视液面</label>
+<label class="opt"><input type="radio" name="q26" value="B">仰视液面</label>
+<label class="opt"><input type="radio" name="q26" value="C">与液面凹面最低处或凸面最高处保持水平</label>
+<label class="opt"><input type="radio" name="q26" value="D">任意角度</label></div><div class="feedback" id="fb26"></div></div>
+
+<div class="quiz-q" data-q="27"><span class="q-num">27</span><span class="q-title">测某金属块：质量 156g，放入量筒后水面从 50mL 升到 70mL，该金属密度为？</span><div class="options">
+<label class="opt"><input type="radio" name="q27" value="A">2.23 g/cm³</label>
+<label class="opt"><input type="radio" name="q27" value="B">7.8 g/cm³</label>
+<label class="opt"><input type="radio" name="q27" value="C">3.12 g/cm³</label>
+<label class="opt"><input type="radio" name="q27" value="D">1.56 g/cm³</label></div><div class="feedback" id="fb27"></div></div>
+
+<div class="quiz-q" data-q="28"><span class="q-num">28</span><span class="q-title">量筒中液体 30mL，倒出一部分后剩余 18mL，倒出部分质量为 9.6g，液体密度为？</span><div class="options">
+<label class="opt"><input type="radio" name="q28" value="A">0.32 g/cm³</label>
+<label class="opt"><input type="radio" name="q28" value="B">0.8 g/cm³</label>
+<label class="opt"><input type="radio" name="q28" value="C">0.53 g/cm³</label>
+<label class="opt"><input type="radio" name="q28" value="D">1.2 g/cm³</label></div><div class="feedback" id="fb28"></div></div>
+
+<div class="quiz-q" data-q="29"><span class="q-num">29</span><span class="q-title">测木块密度时（木块密度小于水），需要用到的辅助方法是？</span><div class="options">
+<label class="opt"><input type="radio" name="q29" value="A">直接排水法</label>
+<label class="opt"><input type="radio" name="q29" value="B">针压法或坠沉法（助沉法）</label>
+<label class="opt"><input type="radio" name="q29" value="C">加热法</label>
+<label class="opt"><input type="radio" name="q29" value="D">天平直接测体积</label></div><div class="feedback" id="fb29"></div></div>
+
+<div class="quiz-q" data-q="30"><span class="q-num">30</span><span class="q-title">三次测量同一金属块密度，结果分别为 7.8、7.9、7.7 g/cm³，应记录为？</span><div class="options">
+<label class="opt"><input type="radio" name="q30" value="A">7.9 g/cm³</label>
+<label class="opt"><input type="radio" name="q30" value="B">7.8 g/cm³（取平均值）</label>
+<label class="opt"><input type="radio" name="q30" value="C">7.7 g/cm³</label>
+<label class="opt"><input type="radio" name="q30" value="D">任选一个</label></div><div class="feedback" id="fb30"></div></div>
+
+<div class="q-section"><h3>四、密度与温度（热胀冷缩）（第 31-40 题）</h3></div>
+<div class="quiz-q" data-q="31"><span class="q-num">31</span><span class="q-title">水在哪个温度时密度最大？</span><div class="options">
+<label class="opt"><input type="radio" name="q31" value="A">0℃</label>
+<label class="opt"><input type="radio" name="q31" value="B">4℃</label>
+<label class="opt"><input type="radio" name="q31" value="C">10℃</label>
+<label class="opt"><input type="radio" name="q31" value="D">100℃</label></div><div class="feedback" id="fb31"></div></div>
+
+<div class="quiz-q" data-q="32"><span class="q-num">32</span><span class="q-title">一般物质温度升高时，密度如何变化？</span><div class="options">
+<label class="opt"><input type="radio" name="q32" value="A">密度增大</label>
+<label class="opt"><input type="radio" name="q32" value="B">密度减小（热胀冷缩，质量不变体积增大）</label>
+<label class="opt"><input type="radio" name="q32" value="C">密度不变</label>
+<label class="opt"><input type="radio" name="q32" value="D">密度先增后减</label></div><div class="feedback" id="fb32"></div></div>
+
+<div class="quiz-q" data-q="33"><span class="q-num">33</span><span class="q-title">水结冰后密度变化是？</span><div class="options">
+<label class="opt"><input type="radio" name="q33" value="A">密度变大</label>
+<label class="opt"><input type="radio" name="q33" value="B">密度变小（体积膨胀）</label>
+<label class="opt"><input type="radio" name="q33" value="C">密度不变</label>
+<label class="opt"><input type="radio" name="q33" value="D">密度变为零</label></div><div class="feedback" id="fb33"></div></div>
+
+<div class="quiz-q" data-q="34"><span class="q-num">34</span><span class="q-title">水的反常膨胀是指？</span><div class="options">
+<label class="opt"><input type="radio" name="q34" value="A">水在任何温度下都膨胀</label>
+<label class="opt"><input type="radio" name="q34" value="B">水在 0℃~4℃ 之间温度升高体积反而缩小（密度增大）</label>
+<label class="opt"><input type="radio" name="q34" value="C">水在 4℃ 以上不膨胀</label>
+<label class="opt"><input type="radio" name="q34" value="D">水从不膨胀</label></div><div class="feedback" id="fb34"></div></div>
+
+<div class="quiz-q" data-q="35"><span class="q-num">35</span><span class="q-title">冬天湖水结冰，湖底的水温约多少度？</span><div class="options">
+<label class="opt"><input type="radio" name="q35" value="A">0℃</label>
+<label class="opt"><input type="radio" name="q35" value="B">4℃</label>
+<label class="opt"><input type="radio" name="q35" value="C">-4℃</label>
+<label class="opt"><input type="radio" name="q35" value="D">10℃</label></div><div class="feedback" id="fb35"></div></div>
+
+<div class="quiz-q" data-q="36"><span class="q-num">36</span><span class="q-title">一定质量的气体，温度升高时若体积可自由变化，其密度？</span><div class="options">
+<label class="opt"><input type="radio" name="q36" value="A">增大</label>
+<label class="opt"><input type="radio" name="q36" value="B">减小</label>
+<label class="opt"><input type="radio" name="q36" value="C">不变</label>
+<label class="opt"><input type="radio" name="q36" value="D">无法判断</label></div><div class="feedback" id="fb36"></div></div>
+
+<div class="quiz-q" data-q="37"><span class="q-num">37</span><span class="q-title">北方冬天的自来水管冻裂是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q37" value="A">水管质量太差</label>
+<label class="opt"><input type="radio" name="q37" value="B">水结冰时体积膨胀</label>
+<label class="opt"><input type="radio" name="q37" value="C">水压太大</label>
+<label class="opt"><input type="radio" name="q37" value="D">水蒸发</label></div><div class="feedback" id="fb37"></div></div>
+
+<div class="quiz-q" data-q="38"><span class="q-num">38</span><span class="q-title">风力发电利用了空气的什么性质？</span><div class="options">
+<label class="opt"><input type="radio" name="q38" value="A">空气密度差异导致的热空气上升、冷空气下降形成风</label>
+<label class="opt"><input type="radio" name="q38" value="B">空气的导电性</label>
+<label class="opt"><input type="radio" name="q38" value="C">空气的透明度</label>
+<label class="opt"><input type="radio" name="q38" value="D">空气的化学性质</label></div><div class="feedback" id="fb38"></div></div>
+
+<div class="quiz-q" data-q="39"><span class="q-num">39</span><span class="q-title">一定质量的水从 4℃ 升温到 10℃，其密度和体积如何变化？</span><div class="options">
+<label class="opt"><input type="radio" name="q39" value="A">密度减小，体积增大</label>
+<label class="opt"><input type="radio" name="q39" value="B">密度增大，体积减小</label>
+<label class="opt"><input type="radio" name="q39" value="C">密度不变，体积不变</label>
+<label class="opt"><input type="radio" name="q39" value="D">密度增大，体积增大</label></div><div class="feedback" id="fb39"></div></div>
+
+<div class="quiz-q" data-q="40"><span class="q-num">40</span><span class="q-title">气球升空利用了空气密度与什么的关系？</span><div class="options">
+<label class="opt"><input type="radio" name="q40" value="A">高度越高空气密度越大</label>
+<label class="opt"><input type="radio" name="q40" value="B">加热使球内空气密度小于外部空气密度，产生浮力</label>
+<label class="opt"><input type="radio" name="q40" value="C">空气密度处处相同</label>
+<label class="opt"><input type="radio" name="q40" value="D">气球材料本身很轻</label></div><div class="feedback" id="fb40"></div></div>
+
+<div class="q-section"><h3>五、密度应用：选种、鉴定、空心实心与混合（第 41-50 题）</h3></div>
+<div class="quiz-q" data-q="41"><span class="q-num">41</span><span class="q-title">盐水选种的原理是？</span><div class="options">
+<label class="opt"><input type="radio" name="q41" value="A">利用重力不同</label>
+<label class="opt"><input type="radio" name="q41" value="B">饱满种子密度大于盐水密度下沉，瘪种子密度小上浮</label>
+<label class="opt"><input type="radio" name="q41" value="C">利用磁性</label>
+<label class="opt"><input type="radio" name="q41" value="D">利用颜色筛选</label></div><div class="feedback" id="fb41"></div></div>
+
+<div class="quiz-q" data-q="42"><span class="q-num">42</span><span class="q-title">鉴别牛奶是否掺水，可利用两者的什么差异？</span><div class="options">
+<label class="opt"><input type="radio" name="q42" value="A">颜色差异</label>
+<label class="opt"><input type="radio" name="q42" value="B">密度差异（纯牛奶密度大于掺水牛奶）</label>
+<label class="opt"><input type="radio" name="q42" value="C">气味差异</label>
+<label class="opt"><input type="radio" name="q42" value="D">温度差异</label></div><div class="feedback" id="fb42"></div></div>
+
+<div class="quiz-q" data-q="43"><span class="q-num">43</span><span class="q-title">一铁球质量 158g，体积 25cm³（ρ铁=7.9g/cm³），该球是？</span><div class="options">
+<label class="opt"><input type="radio" name="q43" value="A">实心的</label>
+<label class="opt"><input type="radio" name="q43" value="B">空心的</label>
+<label class="opt"><input type="radio" name="q43" value="C">无法判断</label>
+<label class="opt"><input type="radio" name="q43" value="D">半实半空</label></div><div class="feedback" id="fb43"></div></div>
+
+<div class="quiz-q" data-q="44"><span class="q-num">44</span><span class="q-title">判断空心实心的方法不包含？</span><div class="options">
+<label class="opt"><input type="radio" name="q44" value="A">比较密度：ρ实<ρ表则为空心</label>
+<label class="opt"><input type="radio" name="q44" value="B">比较体积：V实<V总则为空心</label>
+<label class="opt"><input type="radio" name="q44" value="C">比较质量：m实>m表则为空心</label>
+<label class="opt"><input type="radio" name="q44" value="D">敲击听声音</label></div><div class="feedback" id="fb44"></div></div>
+
+<div class="quiz-q" data-q="45"><span class="q-num">45</span><span class="q-title">一铝球体积 20cm³，质量 27g（ρ铝=2.7g/cm³），空心部分体积为？</span><div class="options">
+<label class="opt"><input type="radio" name="q45" value="A">0 cm³（实心）</label>
+<label class="opt"><input type="radio" name="q45" value="B">10 cm³</label>
+<label class="opt"><input type="radio" name="q45" value="C">15 cm³</label>
+<label class="opt"><input type="radio" name="q45" value="D">5 cm³</label></div><div class="feedback" id="fb45"></div></div>
+
+<div class="quiz-q" data-q="46"><span class="q-num">46</span><span class="q-title">两种液体等体积混合（ρ₁、ρ₂），混合后密度约为（假设体积不变）？</span><div class="options">
+<label class="opt"><input type="radio" name="q46" value="A">(ρ₁+ρ₂)/2</label>
+<label class="opt"><input type="radio" name="q46" value="B">√(ρ₁·ρ₂)</label>
+<label class="opt"><input type="radio" name="q46" value="C">2ρ₁ρ₂/(ρ₁+ρ₂)</label>
+<label class="opt"><input type="radio" name="q46" value="D">ρ₁·ρ₂</label></div><div class="feedback" id="fb46"></div></div>
+
+<div class="quiz-q" data-q="47"><span class="q-num">47</span><span class="q-title">两种液体等质量混合（ρ₁、ρ₂），混合后密度约为？</span><div class="options">
+<label class="opt"><input type="radio" name="q47" value="A">(ρ₁+ρ₂)/2</label>
+<label class="opt"><input type="radio" name="q47" value="B">2ρ₁ρ₂/(ρ₁+ρ₂)</label>
+<label class="opt"><input type="radio" name="q47" value="C">ρ₁+ρ₂</label>
+<label class="opt"><input type="radio" name="q47" value="D">√(ρ₁·ρ₂)</label></div><div class="feedback" id="fb47"></div></div>
+
+<div class="quiz-q" data-q="48"><span class="q-num">48</span><span class="q-title">ρ₁=0.8g/cm³ 和 ρ₂=1.2g/cm³ 的液体等体积混合（体积不变），混合密度为？</span><div class="options">
+<label class="opt"><input type="radio" name="q48" value="A">0.96 g/cm³</label>
+<label class="opt"><input type="radio" name="q48" value="B">1.0 g/cm³</label>
+<label class="opt"><input type="radio" name="q48" value="C">1.04 g/cm³</label>
+<label class="opt"><input type="radio" name="q48" value="D">2.0 g/cm³</label></div><div class="feedback" id="fb48"></div></div>
+
+<div class="quiz-q" data-q="49"><span class="q-num">49</span><span class="q-title">用密度知识鉴别物质纯度，以下说法正确的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q49" value="A">只要密度相同就是同一种物质</label>
+<label class="opt"><input type="radio" name="q49" value="B">测出密度与标准值对比，可初步判断物质种类或纯度</label>
+<label class="opt"><input type="radio" name="q49" value="C">密度无法用于鉴别物质</label>
+<label class="opt"><input type="radio" name="q49" value="D">密度相同的物质颜色一定相同</label></div><div class="feedback" id="fb49"></div></div>
+
+<div class="quiz-q" data-q="50"><span class="q-num">50</span><span class="q-title">在印度洋海水密度较大的海区航行与淡水河相比，轮船的吃水深度会？</span><div class="options">
+<label class="opt"><input type="radio" name="q50" value="A">变深</label>
+<label class="opt"><input type="radio" name="q50" value="B">变浅</label>
+<label class="opt"><input type="radio" name="q50" value="C">不变</label>
+<label class="opt"><input type="radio" name="q50" value="D">无法判断</label></div><div class="feedback" id="fb50"></div></div>
+
+</div>
+<div class="quiz-actions">
+  <button class="btn-submit" onclick="submitQuiz()">交卷看成绩</button>
+  <button class="btn-retry" id="btnRetry" onclick="retryQuiz()" style="display:none;">重新挑战</button>
+</div>
+<div class="result-card" id="resultCard">
+  <div class="score-num" id="scoreNum"></div>
+  <div class="score-message" id="scoreMsg" style="font-size:1.15rem;margin-top:8px;font-weight:600;"></div>
+</div>
+<div class="page-nav">
+  <a href="jixie-quiz.html" class="prev">← 第三章测验</a>
+  <a href="sheng-quiz.html" class="next">第五章测验 →</a>
+</div>
+</div></div>
+
+<script>
+var answers={"q1":"A","q2":"B","q3":"B","q4":"C","q5":"A","q6":"A","q7":"B","q8":"B","q9":"B","q10":"C","q11":"C","q12":"B","q13":"C","q14":"C","q15":"C","q16":"B","q17":"C","q18":"A","q19":"C","q20":"B","q21":"B","q22":"B","q23":"C","q24":"B","q25":"B","q26":"C","q27":"B","q28":"B","q29":"B","q30":"B","q31":"B","q32":"B","q33":"B","q34":"B","q35":"B","q36":"B","q37":"B","q38":"A","q39":"A","q40":"B","q41":"B","q42":"B","q43":"B","q44":"D","q45":"B","q46":"A","q47":"B","q48":"B","q49":"B","q50":"B"};
+
+document.querySelectorAll('.quiz-q .opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    var q=this.closest('.quiz-q');
+    q.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});
+    this.classList.add('selected');
+  });
+});
+
+function submitQuiz(){
+  var score=0,total=50;
+  for(var i=1;i<=total;i++){
+    var q=document.querySelector('[data-q="'+i+'"]');
+    var selected=q.querySelector('input:checked');
+    var fb=document.getElementById('fb'+i);
+    if(selected && selected.value===answers['q'+i]){
+      score++;
+      fb.textContent='✓ 正确';
+      fb.className='feedback correct';
+      q.classList.add('correct-q');
+    }else if(selected){
+      fb.textContent='✗ 正确答案：'+answers['q'+i'];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }else{
+      fb.textContent='✗ 未作答，正确答案：'+answers['q'+i'];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }
+  }
+  document.querySelector('.btn-submit').style.display='none';
+  document.getElementById('btnRetry').style.display='inline-block';
+  var card=document.getElementById('resultCard');
+  card.classList.add('show');
+  document.getElementById('scoreNum').textContent=score+' / 50';
+  document.getElementById('scoreNum').style.color=score>=45?'#5B8A6A':score>=35?'#C4A060':score>=25?'#C4708A':'#C4708A';
+  var msg='';
+  if(score===50)msg='满分通关！密度之王！';
+  else if(score>=45)msg='非常棒！密度概念和计算都很扎实～';
+  else if(score>=35)msg='不错！重点复习排水法测密度和单位换算～';
+  else if(score>=25)msg='还需加强，建议回顾 ρ=m/V 公式和热胀冷缩～';
+  else msg='加油！密度是力学的基础，理解后再来挑战！';
+  document.getElementById('scoreMsg').textContent=msg;
+}
+
+function retryQuiz(){
+  document.querySelectorAll('.quiz-q input[type=radio]').forEach(function(r){r.checked=false});
+  document.querySelectorAll('.quiz-q .opt').forEach(function(o){o.classList.remove('selected')});
+  document.querySelectorAll('.quiz-q').forEach(function(q){q.classList.remove('correct-q','wrong-q')});
+  document.querySelectorAll('.feedback').forEach(function(f){f.className='feedback';f.textContent=''});
+  document.querySelector('.btn-submit').style.display='inline-block';
+  document.getElementById('btnRetry').style.display='none';
+  document.getElementById('resultCard').classList.remove('show');
+}
+</script>
+</body>
+</html>

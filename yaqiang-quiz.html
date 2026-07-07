@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二章 压强和浮力 · 测验 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.quiz-wrap { max-width: 780px; margin: 0 auto; }
+.quiz-header { text-align: center; margin: 32px 0 24px; }
+.quiz-header h2 { font-size: 24px; color: #5B8AAA; }
+.quiz-header p { color: #7B758A; font-size: 15px; margin-top: 4px; }
+.q-section { margin: 32px 0 16px; }
+.q-section h3 { font-size: 18px; color: #5B8AAA; padding-bottom: 8px; border-bottom: 2px dashed rgba(139,184,214,0.3); margin-bottom: 14px; }
+.quiz-q { background: #FFF; border-radius: 18px; padding: 18px 22px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1.5px solid #e4f0f8; }
+.quiz-q .q-num { display: inline-block; background: linear-gradient(135deg, #8BB8D6, #6BA0C0); color: #fff;
+  min-width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px;
+  font-weight: 700; font-size: 13px; margin-right: 8px; }
+.quiz-q .q-title { font-size: 16px; font-weight: 700; color: #4A4458; display: inline; line-height: 1.6; }
+.quiz-q .options { margin: 8px 0 0 36px; display: flex; flex-direction: column; gap: 5px; }
+.quiz-q .opt { display: flex; align-items: center; gap: 8px; padding: 7px 12px;
+  border-radius: 10px; border: 1.5px solid transparent; cursor: pointer;
+  transition: all 0.15s; font-size: 15px; background: #F4F9FC; }
+.quiz-q .opt:hover { border-color: rgba(139,184,214,0.4); background: #FDFDFE; }
+.quiz-q .opt input[type=radio] { accent-color: #5B8AAA; transform: scale(1.05); }
+.quiz-q .opt.selected { border-color: #8BB8D6; background: #E4F0F8; }
+.quiz-q.correct-q { border-color: #8CC4A0; background: #F4FAF6; }
+.quiz-q.wrong-q { border-color: #E8A0BF; background: #FFF5F8; }
+.feedback { font-size: 13px; margin: 4px 0 0 36px; display: none; }
+.feedback.correct { display: block; color: #5B8A6A; }
+.feedback.wrong { display: block; color: #C4708A; }
+.quiz-actions { text-align: center; margin: 32px 0 16px; }
+.btn-submit, .btn-retry { padding: 12px 40px; border-radius: 30px; border: none; font-size: 17px;
+  font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: var(--font-title); }
+.btn-submit { background: linear-gradient(135deg, #8BB8D6, #6BA0C0); color: #fff; }
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(107,160,192,0.4); }
+.btn-retry { background: #E4F0F8; color: #5B8AAA; margin-left: 12px; }
+.btn-retry:hover { background: #D0E4F2; }
+.result-card { display: none; max-width: 600px; margin: 24px auto; text-align: center;
+  background: #FFF; border-radius: 20px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.result-card.show { display: block; }
+.result-card .score-num { font-size: 3rem; font-weight: 800; }
+@media print { .top-nav, .quiz-actions, .page-nav, .result-card { display: none; } .quiz-q { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; } .quiz-q .opt { background: #fff; } }
+@media (max-width: 640px) { .quiz-q { padding: 14px 16px; } .quiz-q .options { margin-left: 0; } .quiz-q .q-title { font-size: 15px; } }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">›</span><a href="yaqiang.html">第二章 压强和浮力</a><span class="sep">›</span><span>章节测验</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a>
+    <a href="yaqiang.html" class="active">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a>
+    <a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a>
+    <a href="re.html">热学</a>
+  </div>
+</nav>
+<div class="container"><div class="quiz-wrap">
+<div class="quiz-header"><h2>第二章 压强和浮力 · 章节测验</h2><p>共 50 题，满分 50 分。</p></div>
+<div id="quizForm">
+
+<div class="q-section"><h3>一、压强 P=F/S（第 1-8 题）</h3></div>
+<div class="quiz-q" data-q="1"><span class="q-num">1</span><span class="q-title">压强的公式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q1" value="A">P = FS</label>
+<label class="opt"><input type="radio" name="q1" value="B">P = F/S</label>
+<label class="opt"><input type="radio" name="q1" value="C">P = S/F</label>
+<label class="opt"><input type="radio" name="q1" value="D">P = F + S</label></div><div class="feedback" id="fb1"></div></div>
+
+<div class="quiz-q" data-q="2"><span class="q-num">2</span><span class="q-title">压强的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q2" value="A">牛顿（N）</label>
+<label class="opt"><input type="radio" name="q2" value="B">焦耳（J）</label>
+<label class="opt"><input type="radio" name="q2" value="C">帕斯卡（Pa）</label>
+<label class="opt"><input type="radio" name="q2" value="D">瓦特（W）</label></div><div class="feedback" id="fb2"></div></div>
+
+<div class="quiz-q" data-q="3"><span class="q-num">3</span><span class="q-title">1 Pa 等于？</span><div class="options">
+<label class="opt"><input type="radio" name="q3" value="A">1 N/m</label>
+<label class="opt"><input type="radio" name="q3" value="B">1 N/m²</label>
+<label class="opt"><input type="radio" name="q3" value="C">1 N·m</label>
+<label class="opt"><input type="radio" name="q3" value="D">1 kg/m²</label></div><div class="feedback" id="fb3"></div></div>
+
+<div class="quiz-q" data-q="4"><span class="q-num">4</span><span class="q-title">增大压强的方法是？</span><div class="options">
+<label class="opt"><input type="radio" name="q4" value="A">减小压力或增大受力面积</label>
+<label class="opt"><input type="radio" name="q4" value="B">增大压力或减小受力面积</label>
+<label class="opt"><input type="radio" name="q4" value="C">只减小压力</label>
+<label class="opt"><input type="radio" name="q4" value="D">只增大受力面积</label></div><div class="feedback" id="fb4"></div></div>
+
+<div class="quiz-q" data-q="5"><span class="q-num">5</span><span class="q-title">图钉的针尖做得很尖，目的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q5" value="A">减小压力</label>
+<label class="opt"><input type="radio" name="q5" value="B">增大压强</label>
+<label class="opt"><input type="radio" name="q5" value="C">减小压强</label>
+<label class="opt"><input type="radio" name="q5" value="D">增大摩擦力</label></div><div class="feedback" id="fb5"></div></div>
+
+<div class="quiz-q" data-q="6"><span class="q-num">6</span><span class="q-title">书包带做得很宽，目的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q6" value="A">增大压强，背着更轻松</label>
+<label class="opt"><input type="radio" name="q6" value="B">减小压强，背着更舒适</label>
+<label class="opt"><input type="radio" name="q6" value="C">增大摩擦力</label>
+<label class="opt"><input type="radio" name="q6" value="D">美观</label></div><div class="feedback" id="fb6"></div></div>
+
+<div class="quiz-q" data-q="7"><span class="q-num">7</span><span class="q-title">一个重 600N 的人双脚站立时与地面接触面积约 0.04m²，他对地面的压强约为？</span><div class="options">
+<label class="opt"><input type="radio" name="q7" value="A">150 Pa</label>
+<label class="opt"><input type="radio" name="q7" value="B">1500 Pa</label>
+<label class="opt"><input type="radio" name="q7" value="C">1.5×10⁴ Pa</label>
+<label class="opt"><input type="radio" name="q7" value="D">2.4×10⁴ Pa</label></div><div class="feedback" id="fb7"></div></div>
+
+<div class="quiz-q" data-q="8"><span class="q-num">8</span><span class="q-title">下列哪个不是压强的单位？</span><div class="options">
+<label class="opt"><input type="radio" name="q8" value="A">帕斯卡（Pa）</label>
+<label class="opt"><input type="radio" name="q8" value="B">N/m²</label>
+<label class="opt"><input type="radio" name="q8" value="C">牛顿（N）</label>
+<label class="opt"><input type="radio" name="q8" value="D">百帕（hPa）</label></div><div class="feedback" id="fb8"></div></div>
+
+<div class="q-section"><h3>二、液体压强（第 9-17 题）</h3></div>
+<div class="quiz-q" data-q="9"><span class="q-num">9</span><span class="q-title">液体内部压强的公式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q9" value="A">P = ρgh</label>
+<label class="opt"><input type="radio" name="q9" value="B">P = ρg/h</label>
+<label class="opt"><input type="radio" name="q9" value="C">P = F/S</label>
+<label class="opt"><input type="radio" name="q9" value="D">P = mg/S</label></div><div class="feedback" id="fb9"></div></div>
+
+<div class="quiz-q" data-q="10"><span class="q-num">10</span><span class="q-title">液体压强与下列哪些因素有关？</span><div class="options">
+<label class="opt"><input type="radio" name="q10" value="A">只与液体密度有关</label>
+<label class="opt"><input type="radio" name="q10" value="B">只与深度有关</label>
+<label class="opt"><input type="radio" name="q10" value="C">与液体密度和深度都有关</label>
+<label class="opt"><input type="radio" name="q10" value="D">与容器形状有关</label></div><div class="feedback" id="fb10"></div></div>
+
+<div class="quiz-q" data-q="11"><span class="q-num">11</span><span class="q-title">连通器中装有同种液体且静止时，各容器中的液面？</span><div class="options">
+<label class="opt"><input type="radio" name="q11" value="A">形状相同</label>
+<label class="opt"><input type="radio" name="q11" value="B">高度相同（相平）</label>
+<label class="opt"><input type="radio" name="q11" value="C">粗细相同</label>
+<label class="opt"><input type="radio" name="q11" value="D">重量相同</label></div><div class="feedback" id="fb11"></div></div>
+
+<div class="quiz-q" data-q="12"><span class="q-num">12</span><span class="q-title">拦河坝设计成上窄下宽的形状，是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q12" value="A">美观</label>
+<label class="opt"><input type="radio" name="q12" value="B">节省材料</label>
+<label class="opt"><input type="radio" name="q12" value="C">液体压强随深度增加而增大</label>
+<label class="opt"><input type="radio" name="q12" value="D">流速越大压强越小</label></div><div class="feedback" id="fb12"></div></div>
+
+<div class="quiz-q" data-q="13"><span class="q-num">13</span><span class="q-title">在同一深度，液体向各个方向的压强？</span><div class="options">
+<label class="opt"><input type="radio" name="q13" value="A">向上最大</label>
+<label class="opt"><input type="radio" name="q13" value="B">向下最大</label>
+<label class="opt"><input type="radio" name="q13" value="C">左右方向最大</label>
+<label class="opt"><input type="radio" name="q13" value="D">相等</label></div><div class="feedback" id="fb13"></div></div>
+
+<div class="quiz-q" data-q="14"><span class="q-num">14</span><span class="q-title">帕斯卡原理的内容是？</span><div class="options">
+<label class="opt"><input type="radio" name="q14" value="A">液体压强随深度增大</label>
+<label class="opt"><input type="radio" name="q14" value="B">加在密闭液体上的压强能大小不变地向各个方向传递</label>
+<label class="opt"><input type="radio" name="q14" value="C">连通器原理</label>
+<label class="opt"><input type="radio" name="q14" value="D">阿基米德原理</label></div><div class="feedback" id="fb14"></div></div>
+
+<div class="quiz-q" data-q="15"><span class="q-num">15</span><span class="q-title">液压千斤顶（液压机）利用了什么原理？</span><div class="options">
+<label class="opt"><input type="radio" name="q15" value="A">杠杆原理</label>
+<label class="opt"><input type="radio" name="q15" value="B">帕斯卡原理</label>
+<label class="opt"><input type="radio" name="q15" value="C">阿基米德原理</label>
+<label class="opt"><input type="radio" name="q15" value="D">伯努利原理</label></div><div class="feedback" id="fb15"></div></div>
+
+<div class="quiz-q" data-q="16"><span class="q-num">16</span><span class="q-title">深海鱼被打捞上来后会死亡，是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q16" value="A">体内压强远大于外部压强</label>
+<label class="opt"><input type="radio" name="q16" value="B">外部压强太大压扁了鱼</label>
+<label class="opt"><input type="radio" name="q16" value="C">水温变化</label>
+<label class="opt"><input type="radio" name="q16" value="D">缺氧</label></div><div class="feedback" id="fb16"></div></div>
+
+<div class="quiz-q" data-q="17"><span class="q-num">17</span><span class="q-title">在深 10m 的水中（ρ水=1×10³kg/m³, g=10N/kg），水的压强约为？</span><div class="options">
+<label class="opt"><input type="radio" name="q17" value="A">1×10³ Pa</label>
+<label class="opt"><input type="radio" name="q17" value="B">1×10⁴ Pa</label>
+<label class="opt"><input type="radio" name="q17" value="C">1×10⁵ Pa</label>
+<label class="opt"><input type="radio" name="q17" value="D">1×10⁶ Pa</label></div><div class="feedback" id="fb17"></div></div>
+
+<div class="q-section"><h3>三、大气压强与流体压强（第 18-26 题）</h3></div>
+<div class="quiz-q" data-q="18"><span class="q-num">18</span><span class="q-title">最早准确测出大气压值的实验是？</span><div class="options">
+<label class="opt"><input type="radio" name="q18" value="A">马德堡半球实验</label>
+<label class="opt"><input type="radio" name="q18" value="B">托里拆利实验</label>
+<label class="opt"><input type="radio" name="q18" value="C">帕斯卡裂桶实验</label>
+<label class="opt"><input type="radio" name="q18" value="D">伽利略斜面实验</label></div><div class="feedback" id="fb18"></div></div>
+
+<div class="quiz-q" data-q="19"><span class="q-num">19</span><span class="q-title">1 标准大气压的值约为？</span><div class="options">
+<label class="opt"><input type="radio" name="q19" value="A">1.01×10³ Pa</label>
+<label class="opt"><input type="radio" name="q19" value="B">1.01×10⁵ Pa（760 mmHg）</label>
+<label class="opt"><input type="radio" name="q19" value="C">1.01×10⁷ Pa</label>
+<label class="opt"><input type="radio" name="q19" value="D">10⁵ N</label></div><div class="feedback" id="fb19"></div></div>
+
+<div class="quiz-q" data-q="20"><span class="q-num">20</span><span class="q-title">海拔越高，大气压强？</span><div class="options">
+<label class="opt"><input type="radio" name="q20" value="A">越大</label>
+<label class="opt"><input type="radio" name="q20" value="B">不变</label>
+<label class="opt"><input type="radio" name="q20" value="C">越小</label>
+<label class="opt"><input type="radio" name="q20" value="D">先大后小</label></div><div class="feedback" id="fb20"></div></div>
+
+<div class="quiz-q" data-q="21"><span class="q-num">21</span><span class="q-title">用吸管喝饮料，饮料进入口中利用的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q21" value="A">嘴的吸力</label>
+<label class="opt"><input type="radio" name="q21" value="B">大气压强</label>
+<label class="opt"><input type="radio" name="q21" value="C">液体压强</label>
+<label class="opt"><input type="radio" name="q21" value="D">惯性</label></div><div class="feedback" id="fb21"></div></div>
+
+<div class="quiz-q" data-q="22"><span class="q-num">22</span><span class="q-title">伯努利原理指出：流体流速越大的地方，压强？</span><div class="options">
+<label class="opt"><input type="radio" name="q22" value="A">越大</label>
+<label class="opt"><input type="radio" name="q22" value="B">不变</label>
+<label class="opt"><input type="radio" name="q22" value="C">越小</label>
+<label class="opt"><input type="radio" name="q22" value="D">先大后小</label></div><div class="feedback" id="fb22"></div></div>
+
+<div class="quiz-q" data-q="23"><span class="q-num">23</span><span class="q-title">飞机机翼产生升力是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q23" value="A">发动机直接向上推</label>
+<label class="opt"><input type="radio" name="q23" value="B">机翼上方流速大压强小，下方流速小压强大</label>
+<label class="opt"><input type="radio" name="q23" value="C">机翼下方流速大压强小</label>
+<label class="opt"><input type="radio" name="q23" value="D">热空气上升</label></div><div class="feedback" id="fb23"></div></div>
+
+<div class="quiz-q" data-q="24"><span class="q-num">24</span><span class="q-title">火车进站时，人要站在安全黄线以外，原因是？</span><div class="options">
+<label class="opt"><input type="radio" name="q24" value="A">防止触电</label>
+<label class="opt"><input type="radio" name="q24" value="B">防止被火车撞到</label>
+<label class="opt"><input type="radio" name="q24" value="C">火车附近空气流速大压强小，人会被"吸"过去</label>
+<label class="opt"><input type="radio" name="q24" value="D">防止行李掉落</label></div><div class="feedback" id="fb24"></div></div>
+
+<div class="quiz-q" data-q="25"><span class="q-num">25</span><span class="q-title">高压锅能快速煮熟食物的原理是？</span><div class="options">
+<label class="opt"><input type="radio" name="q25" value="A">增大火力</label>
+<label class="opt"><input type="radio" name="q25" value="B">增大锅内气压，提高水的沸点</label>
+<label class="opt"><input type="radio" name="q25" value="C">减小锅内气压</label>
+<label class="opt"><input type="radio" name="q25" value="D">增加食材量</label></div><div class="feedback" id="fb25"></div></div>
+
+<div class="quiz-q" data-q="26"><span class="q-num">26</span><span class="q-title">马德堡半球实验证明了？</span><div class="options">
+<label class="opt"><input type="radio" name="q26" value="A">大气压强的存在且很大</label>
+<label class="opt"><input type="radio" name="q26" value="B">液体压强的存在</label>
+<label class="opt"><input type="radio" name="q26" value="C">大气压可以精确测量</label>
+<label class="opt"><input type="radio" name="q26" value="D">真空不能传声</label></div><div class="feedback" id="fb26"></div></div>
+
+<div class="q-section"><h3>四、浮力与阿基米德原理（第 27-35 题）</h3></div>
+<div class="quiz-q" data-q="27"><span class="q-num">27</span><span class="q-title">浮力的方向总是？</span><div class="options">
+<label class="opt"><input type="radio" name="q27" value="A">竖直向下</label>
+<label class="opt"><input type="radio" name="q27" value="B">竖直向上</label>
+<label class="opt"><input type="radio" name="q27" value="C">水平方向</label>
+<label class="opt"><input type="radio" name="q27" value="D">与运动方向相同</label></div><div class="feedback" id="fb27"></div></div>
+
+<div class="quiz-q" data-q="28"><span class="q-num">28</span><span class="q-title">阿基米德原理的表达式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q28" value="A">F浮 = m物g</label>
+<label class="opt"><input type="radio" name="q28" value="B">F浮 = ρ液gV排</label>
+<label class="opt"><input type="radio" name="q28" value="C">F浮 = ρ物gV物</label>
+<label class="opt"><input type="radio" name="q28" value="D">F浮 = G物</label></div><div class="feedback" id="fb28"></div></div>
+
+<div class="quiz-q" data-q="29"><span class="q-num">29</span><span class="q-title">浸在液体中的物体所受浮力的大小等于？</span><div class="options">
+<label class="opt"><input type="radio" name="q29" value="A">物体的重力</label>
+<label class="opt"><input type="radio" name="q29" value="B">物体排开液体的重力</label>
+<label class="opt"><input type="radio" name="q29" value="C">液体的总重力</label>
+<label class="opt"><input type="radio" name="q29" value="D">物体的质量</label></div><div class="feedback" id="fb29"></div></div>
+
+<div class="quiz-q" data-q="30"><span class="q-num">30</span><span class="q-title">物体完全浸没在液体中后，继续下沉，浮力？</span><div class="options">
+<label class="opt"><input type="radio" name="q30" value="A">越来越大</label>
+<label class="opt"><input type="radio" name="q30" value="B">越来越小</label>
+<label class="opt"><input type="radio" name="q30" value="C">不变（与深度无关）</label>
+<label class="opt"><input type="radio" name="q30" value="D">先变大后变小</label></div><div class="feedback" id="fb30"></div></div>
+
+<div class="quiz-q" data-q="31"><span class="q-num">31</span><span class="q-title">铁块在水中下沉，它受不受浮力？</span><div class="options">
+<label class="opt"><input type="radio" name="q31" value="A">不受浮力</label>
+<label class="opt"><input type="radio" name="q31" value="B">受浮力，但浮力小于重力</label>
+<label class="opt"><input type="radio" name="q31" value="C">受浮力，浮力等于重力</label>
+<label class="opt"><input type="radio" name="q31" value="D">只在水面时受浮力</label></div><div class="feedback" id="fb31"></div></div>
+
+<div class="quiz-q" data-q="32"><span class="q-num">32</span><span class="q-title">一个物体排开水的重力为 10N，它受到的浮力为？</span><div class="options">
+<label class="opt"><input type="radio" name="q32" value="A">0N</label>
+<label class="opt"><input type="radio" name="q32" value="B">5N</label>
+<label class="opt"><input type="radio" name="q32" value="C">10N</label>
+<label class="opt"><input type="radio" name="q32" value="D">取决于物体重力</label></div><div class="feedback" id="fb32"></div></div>
+
+<div class="quiz-q" data-q="33"><span class="q-num">33</span><span class="q-title">"曹冲称象"利用了什么原理？</span><div class="options">
+<label class="opt"><input type="radio" name="q33" value="A">帕斯卡原理</label>
+<label class="opt"><input type="radio" name="q33" value="B">阿基米德原理（等效替代法）</label>
+<label class="opt"><input type="radio" name="q33" value="C">杠杆原理</label>
+<label class="opt"><input type="radio" name="q33" value="D">伯努利原理</label></div><div class="feedback" id="fb33"></div></div>
+
+<div class="quiz-q" data-q="34"><span class="q-num">34</span><span class="q-title">物体在空气中受浮力吗？</span><div class="options">
+<label class="opt"><input type="radio" name="q34" value="A">不受，阿基米德原理只适用于液体</label>
+<label class="opt"><input type="radio" name="q34" value="B">受浮力，阿基米德原理也适用于气体</label>
+<label class="opt"><input type="radio" name="q34" value="C">只有气球受浮力</label>
+<label class="opt"><input type="radio" name="q34" value="D">只有飞机受浮力</label></div><div class="feedback" id="fb34"></div></div>
+
+<div class="quiz-q" data-q="35"><span class="q-num">35</span><span class="q-title">浮力产生的原因是？</span><div class="options">
+<label class="opt"><input type="radio" name="q35" value="A">液体的重力</label>
+<label class="opt"><input type="radio" name="q35" value="B">液体对物体上下表面的压力差</label>
+<label class="opt"><input type="radio" name="q35" value="C">物体的重力</label>
+<label class="opt"><input type="radio" name="q35" value="D">大气压强</label></div><div class="feedback" id="fb35"></div></div>
+
+<div class="q-section"><h3>五、浮沉条件与应用（第 36-44 题）</h3></div>
+<div class="quiz-q" data-q="36"><span class="q-num">36</span><span class="q-title">当 F浮 > G物 时，物体在液体中会？</span><div class="options">
+<label class="opt"><input type="radio" name="q36" value="A">下沉</label>
+<label class="opt"><input type="radio" name="q36" value="B">悬浮</label>
+<label class="opt"><input type="radio" name="q36" value="C">上浮</label>
+<label class="opt"><input type="radio" name="q36" value="D">沉底</label></div><div class="feedback" id="fb36"></div></div>
+
+<div class="quiz-q" data-q="37"><span class="q-num">37</span><span class="q-title">轮船从河里开到海里，所受浮力？</span><div class="options">
+<label class="opt"><input type="radio" name="q37" value="A">变大</label>
+<label class="opt"><input type="radio" name="q37" value="B">变小</label>
+<label class="opt"><input type="radio" name="q37" value="C">不变（始终等于轮船重力）</label>
+<label class="opt"><input type="radio" name="q37" value="D">无法判断</label></div><div class="feedback" id="fb37"></div></div>
+
+<div class="quiz-q" data-q="38"><span class="q-num">38</span><span class="q-title">潜水艇是通过什么方式实现上浮和下潜的？</span><div class="options">
+<label class="opt"><input type="radio" name="q38" value="A">改变自身体积</label>
+<label class="opt"><input type="radio" name="q38" value="B">改变自身重力（水舱注水和排水）</label>
+<label class="opt"><input type="radio" name="q38" value="C">改变形状</label>
+<label class="opt"><input type="radio" name="q38" value="D">改变速度</label></div><div class="feedback" id="fb38"></div></div>
+
+<div class="quiz-q" data-q="39"><span class="q-num">39</span><span class="q-title">密度计在不同液体中漂浮时，所受浮力？</span><div class="options">
+<label class="opt"><input type="radio" name="q39" value="A">密度大的液体中浮力大</label>
+<label class="opt"><input type="radio" name="q39" value="B">始终相等（等于自身重力）</label>
+<label class="opt"><input type="radio" name="q39" value="C">密度小的液体中浮力大</label>
+<label class="opt"><input type="radio" name="q39" value="D">时大时小</label></div><div class="feedback" id="fb39"></div></div>
+
+<div class="quiz-q" data-q="40"><span class="q-num">40</span><span class="q-title">密度计刻度值的分布特点是？</span><div class="options">
+<label class="opt"><input type="radio" name="q40" value="A">上大下小</label>
+<label class="opt"><input type="radio" name="q40" value="B">上小下大</label>
+<label class="opt"><input type="radio" name="q40" value="C">均匀分布</label>
+<label class="opt"><input type="radio" name="q40" value="D">没有规律</label></div><div class="feedback" id="fb40"></div></div>
+
+<div class="quiz-q" data-q="41"><span class="q-num">41</span><span class="q-title">同一个鸡蛋在清水中下沉，在浓盐水中上浮，这说明？</span><div class="options">
+<label class="opt"><input type="radio" name="q41" value="A">鸡蛋在盐水中重力变小了</label>
+<label class="opt"><input type="radio" name="q41" value="B">盐水密度大于清水，浮力更大</label>
+<label class="opt"><input type="radio" name="q41" value="C">鸡蛋在盐水中体积变小了</label>
+<label class="opt"><input type="radio" name="q41" value="D">盐水温度更高</label></div><div class="feedback" id="fb41"></div></div>
+
+<div class="quiz-q" data-q="42"><span class="q-num">42</span><span class="q-title">热气球升空的原理是？</span><div class="options">
+<label class="opt"><input type="radio" name="q42" value="A">热空气密度大于外界空气</label>
+<label class="opt"><input type="radio" name="q42" value="B">内部空气受热膨胀，密度小于外部，产生浮力差</label>
+<label class="opt"><input type="radio" name="q42" value="C">内部空气受热膨胀，密度大于外部</label>
+<label class="opt"><input type="radio" name="q42" value="D">气球本身密度很小</label></div><div class="feedback" id="fb42"></div></div>
+
+<div class="quiz-q" data-q="43"><span class="q-num">43</span><span class="q-title">当 ρ物 = ρ液 时，物体在液体中将？</span><div class="options">
+<label class="opt"><input type="radio" name="q43" value="A">上浮</label>
+<label class="opt"><input type="radio" name="q43" value="B">下沉</label>
+<label class="opt"><input type="radio" name="q43" value="C">悬浮</label>
+<label class="opt"><input type="radio" name="q43" value="D">先上浮后下沉</label></div><div class="feedback" id="fb43"></div></div>
+
+<div class="quiz-q" data-q="44"><span class="q-num">44</span><span class="q-title">鱼通过鱼鳔实现上浮和下潜，原理是？</span><div class="options">
+<label class="opt"><input type="radio" name="q44" value="A">改变自身重力</label>
+<label class="opt"><input type="radio" name="q44" value="B">改变自身体积，从而改变浮力</label>
+<label class="opt"><input type="radio" name="q44" value="C">改变水的密度</label>
+<label class="opt"><input type="radio" name="q44" value="D">改变游泳速度</label></div><div class="feedback" id="fb44"></div></div>
+
+<div class="q-section"><h3>六、综合应用（第 45-50 题）</h3></div>
+<div class="quiz-q" data-q="45"><span class="q-num">45</span><span class="q-title">两块相同的砖，一块平放一块竖放在水平地面上，它们对地面的？</span><div class="options">
+<label class="opt"><input type="radio" name="q45" value="A">压力和压强都相同</label>
+<label class="opt"><input type="radio" name="q45" value="B">压力相同，压强不同</label>
+<label class="opt"><input type="radio" name="q45" value="C">压力不同，压强相同</label>
+<label class="opt"><input type="radio" name="q45" value="D">压力和压强都不同</label></div><div class="feedback" id="fb45"></div></div>
+
+<div class="quiz-q" data-q="46"><span class="q-num">46</span><span class="q-title">深海潜水器需要承受巨大水压，这体现了？</span><div class="options">
+<label class="opt"><input type="radio" name="q46" value="A">液体压强随深度增加而增大</label>
+<label class="opt"><input type="radio" name="q46" value="B">液体压强与深度无关</label>
+<label class="opt"><input type="radio" name="q46" value="C">气体压强的特性</label>
+<label class="opt"><input type="radio" name="q46" value="D">浮力随深度增大</label></div><div class="feedback" id="fb46"></div></div>
+
+<div class="quiz-q" data-q="47"><span class="q-num">47</span><span class="q-title">在一杯清水中搅拌溶入食盐，原来沉底的鸡蛋慢慢上浮，这是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q47" value="A">鸡蛋重力减小了</label>
+<label class="opt"><input type="radio" name="q47" value="B">液体密度增大，浮力增大</label>
+<label class="opt"><input type="radio" name="q47" value="C">液体密度减小</label>
+<label class="opt"><input type="radio" name="q47" value="D">盐让鸡蛋变轻了</label></div><div class="feedback" id="fb47"></div></div>
+
+<div class="quiz-q" data-q="48"><span class="q-num">48</span><span class="q-title">把塑料吸盘压在光滑墙面上能挂重物，利用的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q48" value="A">液体压强</label>
+<label class="opt"><input type="radio" name="q48" value="B">大气压强</label>
+<label class="opt"><input type="radio" name="q48" value="C">摩擦力</label>
+<label class="opt"><input type="radio" name="q48" value="D">黏性</label></div><div class="feedback" id="fb48"></div></div>
+
+<div class="quiz-q" data-q="49"><span class="q-num">49</span><span class="q-title">煮饺子时，饺子刚下锅沉底，煮熟后上浮，这是因为？</span><div class="options">
+<label class="opt"><input type="radio" name="q49" value="A">饺子重力减小了</label>
+<label class="opt"><input type="radio" name="q49" value="B">饺子受热膨胀，V排增大，浮力增大</label>
+<label class="opt"><input type="radio" name="q49" value="C">水温升高浮力增大</label>
+<label class="opt"><input type="radio" name="q49" value="D">水的密度增大了</label></div><div class="feedback" id="fb49"></div></div>
+
+<div class="quiz-q" data-q="50"><span class="q-num">50</span><span class="q-title">把一支密度计分别放入水和酒精中，它在哪种液体中露出液面部分更多？</span><div class="options">
+<label class="opt"><input type="radio" name="q50" value="A">酒精中</label>
+<label class="opt"><input type="radio" name="q50" value="B">水中（水密度更大）</label>
+<label class="opt"><input type="radio" name="q50" value="C">一样多</label>
+<label class="opt"><input type="radio" name="q50" value="D">无法判断</label></div><div class="feedback" id="fb50"></div></div>
+
+</div>
+<div class="quiz-actions">
+  <button class="btn-submit" onclick="submitQuiz()">交卷看成绩</button>
+  <button class="btn-retry" id="btnRetry" onclick="retryQuiz()" style="display:none;">重新挑战</button>
+</div>
+<div class="result-card" id="resultCard">
+  <div class="score-num" id="scoreNum"></div>
+  <div class="score-message" id="scoreMsg" style="font-size:1.15rem;margin-top:8px;font-weight:600;"></div>
+</div>
+<div class="page-nav">
+  <a href="yundong-quiz.html" class="prev">← 第一章测验</a>
+  <a href="jixie-quiz.html" class="next">第三章测验 →</a>
+</div>
+</div></div>
+
+<script>
+var answers={"q1":"B","q2":"C","q3":"B","q4":"B","q5":"B","q6":"B","q7":"C","q8":"C","q9":"A","q10":"C","q11":"B","q12":"C","q13":"D","q14":"B","q15":"B","q16":"A","q17":"C","q18":"B","q19":"B","q20":"C","q21":"B","q22":"C","q23":"B","q24":"C","q25":"B","q26":"A","q27":"B","q28":"B","q29":"B","q30":"C","q31":"B","q32":"C","q33":"B","q34":"B","q35":"B","q36":"C","q37":"C","q38":"B","q39":"B","q40":"B","q41":"B","q42":"B","q43":"C","q44":"B","q45":"B","q46":"A","q47":"B","q48":"B","q49":"B","q50":"B"};
+
+document.querySelectorAll('.quiz-q .opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    var q=this.closest('.quiz-q');
+    q.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});
+    this.classList.add('selected');
+  });
+});
+
+function submitQuiz(){
+  var score=0,total=50;
+  for(var i=1;i<=total;i++){
+    var q=document.querySelector('[data-q="'+i+'"]');
+    var selected=q.querySelector('input:checked');
+    var fb=document.getElementById('fb'+i);
+    if(selected && selected.value===answers['q'+i]){
+      score++;
+      fb.textContent='✓ 正确';
+      fb.className='feedback correct';
+      q.classList.add('correct-q');
+    }else if(selected){
+      fb.textContent='✗ 正确答案：'+answers['q'+i];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }else{
+      fb.textContent='✗ 未作答，正确答案：'+answers['q'+i];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }
+  }
+  document.querySelector('.btn-submit').style.display='none';
+  document.getElementById('btnRetry').style.display='inline-block';
+  var card=document.getElementById('resultCard');
+  card.classList.add('show');
+  document.getElementById('scoreNum').textContent=score+' / 50';
+  document.getElementById('scoreNum').style.color=score>=45?'#5B8A6A':score>=35?'#C4A060':score>=25?'#C4708A':'#C4708A';
+  var msg='';
+  if(score===50)msg='满分通关！压强浮力达人！';
+  else if(score>=45)msg='非常棒！压强和浮力知识很扎实～';
+  else if(score>=35)msg='不错！把错题对应的知识点再复习一下吧～';
+  else if(score>=25)msg='还需加强，建议回头看看第二章重点～';
+  else msg='加油！从头复习一遍，压强和浮力其实很有趣！';
+  document.getElementById('scoreMsg').textContent=msg;
+}
+
+function retryQuiz(){
+  document.querySelectorAll('.quiz-q input[type=radio]').forEach(function(r){r.checked=false});
+  document.querySelectorAll('.quiz-q .opt').forEach(function(o){o.classList.remove('selected')});
+  document.querySelectorAll('.quiz-q').forEach(function(q){q.classList.remove('correct-q','wrong-q')});
+  document.querySelectorAll('.feedback').forEach(function(f){f.className='feedback';f.textContent=''});
+  document.querySelector('.btn-submit').style.display='inline-block';
+  document.getElementById('btnRetry').style.display='none';
+  document.getElementById('resultCard').classList.remove('show');
+}
+</script>
+</body>
+</html>

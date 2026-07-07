@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>简单机械和功 · 测验 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.quiz-wrap { max-width: 780px; margin: 0 auto; }
+.quiz-header { text-align: center; margin: 32px 0 24px; }
+.quiz-header h2 { font-size: 24px; color: #C4708A; }
+.quiz-header p { color: #7B758A; font-size: 15px; margin-top: 4px; }
+.q-section { margin: 32px 0 16px; }
+.q-section h3 { font-size: 18px; color: #C4708A; padding-bottom: 8px; border-bottom: 2px dashed rgba(232,160,191,0.3); margin-bottom: 14px; }
+.quiz-q { background: #FFF; border-radius: 18px; padding: 18px 22px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1.5px solid #fde8f0; }
+.quiz-q .q-num { display: inline-block; background: linear-gradient(135deg, #E8A0BF, #D485A8); color: #fff;
+  min-width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px;
+  font-weight: 700; font-size: 13px; margin-right: 8px; }
+.quiz-q .q-title { font-size: 16px; font-weight: 700; color: #4A4458; display: inline; line-height: 1.6; }
+.quiz-q .options { margin: 8px 0 0 36px; display: flex; flex-direction: column; gap: 5px; }
+.quiz-q .opt { display: flex; align-items: center; gap: 8px; padding: 7px 12px;
+  border-radius: 10px; border: 1.5px solid transparent; cursor: pointer;
+  transition: all 0.15s; font-size: 15px; background: #FFF5F8; }
+.quiz-q .opt:hover { border-color: rgba(232,160,191,0.4); background: #FFFDF9; }
+.quiz-q .opt input[type=radio] { accent-color: #C4708A; transform: scale(1.05); }
+.quiz-q .opt.selected { border-color: #E8A0BF; background: #FDE8F0; }
+.quiz-q.correct-q { border-color: #8CC4A0; background: #F4FAF6; }
+.quiz-q.wrong-q { border-color: #E8A0BF; background: #FFF5F8; }
+.feedback { font-size: 13px; margin: 4px 0 0 36px; display: none; }
+.feedback.correct { display: block; color: #5B8A6A; }
+.feedback.wrong { display: block; color: #C4708A; }
+.quiz-actions { text-align: center; margin: 32px 0 16px; }
+.btn-submit, .btn-retry { padding: 12px 40px; border-radius: 30px; border: none; font-size: 17px;
+  font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: var(--font-title); }
+.btn-submit { background: linear-gradient(135deg, #E8A0BF, #D485A8); color: #fff; }
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(212,133,168,0.4); }
+.btn-retry { background: #FDE8F0; color: #C4708A; margin-left: 12px; }
+.btn-retry:hover { background: #FAD3E0; }
+.result-card { display: none; max-width: 600px; margin: 24px auto; text-align: center;
+  background: #FFF; border-radius: 20px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.result-card.show { display: block; }
+.result-card .score-num { font-size: 3rem; font-weight: 800; }
+@media print { .top-nav, .quiz-actions, .page-nav, .result-card { display: none; } .quiz-q { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; } .quiz-q .opt { background: #fff; } }
+@media (max-width: 640px) { .quiz-q { padding: 14px 16px; } .quiz-q .options { margin-left: 0; } .quiz-q .q-title { font-size: 15px; } }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">›</span><a href="jixie.html">简单机械和功</a><span class="sep">›</span><span>章节测验</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a>
+    <a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html" class="active">简单机械和功</a>
+    <a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a>
+    <a href="re.html">热学</a>
+  </div>
+</nav>
+<div class="container"><div class="quiz-wrap">
+<div class="quiz-header"><h2>简单机械和功 · 章节测验</h2><p>共 50 题，满分 50 分。</p></div>
+<div id="quizForm">
+
+<div class="q-section"><h3>一、杠杆与杠杆平衡条件（第 1-10 题）</h3></div>
+<div class="quiz-q" data-q="1"><span class="q-num">1</span><span class="q-title">杠杆平衡条件的表达式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q1" value="A">F₁+F₂=L₁+L₂</label>
+<label class="opt"><input type="radio" name="q1" value="B">F₁/F₂=L₁/L₂</label>
+<label class="opt"><input type="radio" name="q1" value="C">F₁L₁=F₂L₂</label>
+<label class="opt"><input type="radio" name="q1" value="D">F₁L₂=F₂L₁</label></div><div class="feedback" id="fb1"></div></div>
+
+<div class="quiz-q" data-q="2"><span class="q-num">2</span><span class="q-title">杠杆绕着转动的固定点叫做？</span><div class="options">
+<label class="opt"><input type="radio" name="q2" value="A">重点</label>
+<label class="opt"><input type="radio" name="q2" value="B">力点</label>
+<label class="opt"><input type="radio" name="q2" value="C">支点</label>
+<label class="opt"><input type="radio" name="q2" value="D">端点</label></div><div class="feedback" id="fb2"></div></div>
+
+<div class="quiz-q" data-q="3"><span class="q-num">3</span><span class="q-title">动力臂是指从支点到什么的距离？</span><div class="options">
+<label class="opt"><input type="radio" name="q3" value="A">动力作用点</label>
+<label class="opt"><input type="radio" name="q3" value="B">阻力作用点</label>
+<label class="opt"><input type="radio" name="q3" value="C">动力作用线的垂直距离</label>
+<label class="opt"><input type="radio" name="q3" value="D">杠杆任意一端</label></div><div class="feedback" id="fb3"></div></div>
+
+<div class="quiz-q" data-q="4"><span class="q-num">4</span><span class="q-title">在探究杠杆平衡条件实验中，调节杠杆水平平衡的目的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q4" value="A">使杠杆更美观</label>
+<label class="opt"><input type="radio" name="q4" value="B">便于测量力臂</label>
+<label class="opt"><input type="radio" name="q4" value="C">增大摩擦力</label>
+<label class="opt"><input type="radio" name="q4" value="D">减小杠杆重力影响</label></div><div class="feedback" id="fb4"></div></div>
+
+<div class="quiz-q" data-q="5"><span class="q-num">5</span><span class="q-title">动力臂 L₁=0.3m，阻力臂 L₂=0.9m，阻力 F₂=200N，杠杆平衡时动力 F₁ 为？</span><div class="options">
+<label class="opt"><input type="radio" name="q5" value="A">200N</label>
+<label class="opt"><input type="radio" name="q5" value="B">300N</label>
+<label class="opt"><input type="radio" name="q5" value="C">600N</label>
+<label class="opt"><input type="radio" name="q5" value="D">67N</label></div><div class="feedback" id="fb5"></div></div>
+
+<div class="quiz-q" data-q="6"><span class="q-num">6</span><span class="q-title">用一根杠杆撬石头，动力臂是阻力臂的 4 倍，则动力是阻力的？</span><div class="options">
+<label class="opt"><input type="radio" name="q6" value="A">4 倍</label>
+<label class="opt"><input type="radio" name="q6" value="B">2 倍</label>
+<label class="opt"><input type="radio" name="q6" value="C">1/4 倍</label>
+<label class="opt"><input type="radio" name="q6" value="D">1/2 倍</label></div><div class="feedback" id="fb6"></div></div>
+
+<div class="quiz-q" data-q="7"><span class="q-num">7</span><span class="q-title">在杠杆平衡条件实验中，多次改变力和力臂重复实验的目的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q7" value="A">减小实验误差</label>
+<label class="opt"><input type="radio" name="q7" value="B">得出普遍规律</label>
+<label class="opt"><input type="radio" name="q7" value="C">练习操作技能</label>
+<label class="opt"><input type="radio" name="q7" value="D">验证仪器精度</label></div><div class="feedback" id="fb7"></div></div>
+
+<div class="quiz-q" data-q="8"><span class="q-num">8</span><span class="q-title">杠杆平衡时，若动力臂大于阻力臂，则动力与阻力的关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q8" value="A">动力大于阻力</label>
+<label class="opt"><input type="radio" name="q8" value="B">动力小于阻力</label>
+<label class="opt"><input type="radio" name="q8" value="C">动力等于阻力</label>
+<label class="opt"><input type="radio" name="q8" value="D">无法判断</label></div><div class="feedback" id="fb8"></div></div>
+
+<div class="quiz-q" data-q="9"><span class="q-num">9</span><span class="q-title">从支点到阻力作用线的垂直距离叫做？</span><div class="options">
+<label class="opt"><input type="radio" name="q9" value="A">动力臂</label>
+<label class="opt"><input type="radio" name="q9" value="B">阻力臂</label>
+<label class="opt"><input type="radio" name="q9" value="C">力臂</label>
+<label class="opt"><input type="radio" name="q9" value="D">力矩</label></div><div class="feedback" id="fb9"></div></div>
+
+<div class="quiz-q" data-q="10"><span class="q-num">10</span><span class="q-title">画力臂时，首先需要做的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q10" value="A">画出力的方向</label>
+<label class="opt"><input type="radio" name="q10" value="B">找出支点并画出力的作用线</label>
+<label class="opt"><input type="radio" name="q10" value="C">计算力的大小</label>
+<label class="opt"><input type="radio" name="q10" value="D">测量杠杆长度</label></div><div class="feedback" id="fb10"></div></div>
+
+<div class="q-section"><h3>二、省力、费力与等臂杠杆辨别（第 11-20 题）</h3></div>
+<div class="quiz-q" data-q="11"><span class="q-num">11</span><span class="q-title">下列工具中属于省力杠杆的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q11" value="A">镊子</label>
+<label class="opt"><input type="radio" name="q11" value="B">钓鱼竿</label>
+<label class="opt"><input type="radio" name="q11" value="C">核桃夹</label>
+<label class="opt"><input type="radio" name="q11" value="D">筷子</label></div><div class="feedback" id="fb11"></div></div>
+
+<div class="quiz-q" data-q="12"><span class="q-num">12</span><span class="q-title">下列工具中属于费力杠杆的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q12" value="A">瓶盖起子</label>
+<label class="opt"><input type="radio" name="q12" value="B">羊角锤</label>
+<label class="opt"><input type="radio" name="q12" value="C">理发剪刀</label>
+<label class="opt"><input type="radio" name="q12" value="D">撬棒</label></div><div class="feedback" id="fb12"></div></div>
+
+<div class="quiz-q" data-q="13"><span class="q-num">13</span><span class="q-title">下列工具中属于等臂杠杆的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q13" value="A">天平</label>
+<label class="opt"><input type="radio" name="q13" value="B">老虎钳</label>
+<label class="opt"><input type="radio" name="q13" value="C">扫帚</label>
+<label class="opt"><input type="radio" name="q13" value="D">手推车</label></div><div class="feedback" id="fb13"></div></div>
+
+<div class="quiz-q" data-q="14"><span class="q-num">14</span><span class="q-title">省力杠杆的特点是？</span><div class="options">
+<label class="opt"><input type="radio" name="q14" value="A">动力臂小于阻力臂，省力但费距离</label>
+<label class="opt"><input type="radio" name="q14" value="B">动力臂大于阻力臂，省力但费距离</label>
+<label class="opt"><input type="radio" name="q14" value="C">动力臂等于阻力臂，不省力也不费力</label>
+<label class="opt"><input type="radio" name="q14" value="D">动力臂大于阻力臂，省力也省距离</label></div><div class="feedback" id="fb14"></div></div>
+
+<div class="quiz-q" data-q="15"><span class="q-num">15</span><span class="q-title">费力杠杆的特点是？</span><div class="options">
+<label class="opt"><input type="radio" name="q15" value="A">动力臂大于阻力臂，费力但省距离</label>
+<label class="opt"><input type="radio" name="q15" value="B">动力臂小于阻力臂，费力但省距离</label>
+<label class="opt"><input type="radio" name="q15" value="C">动力臂等于阻力臂</label>
+<label class="opt"><input type="radio" name="q15" value="D">既不省力也不省距离</label></div><div class="feedback" id="fb15"></div></div>
+
+<div class="quiz-q" data-q="16"><span class="q-num">16</span><span class="q-title">用筷子夹菜，筷子属于？</span><div class="options">
+<label class="opt"><input type="radio" name="q16" value="A">省力杠杆</label>
+<label class="opt"><input type="radio" name="q16" value="B">费力杠杆</label>
+<label class="opt"><input type="radio" name="q16" value="C">等臂杠杆</label>
+<label class="opt"><input type="radio" name="q16" value="D">不是杠杆</label></div><div class="feedback" id="fb16"></div></div>
+
+<div class="quiz-q" data-q="17"><span class="q-num">17</span><span class="q-title">剪铁皮的剪刀与理发的剪刀相比，刀口短手柄长，说明？</span><div class="options">
+<label class="opt"><input type="radio" name="q17" value="A">都是费力杠杆</label>
+<label class="opt"><input type="radio" name="q17" value="B">剪铁皮的是省力杠杆</label>
+<label class="opt"><input type="radio" name="q17" value="C">剪铁皮的是费力杠杆</label>
+<label class="opt"><input type="radio" name="q17" value="D">没有区别</label></div><div class="feedback" id="fb17"></div></div>
+
+<div class="quiz-q" data-q="18"><span class="q-num">18</span><span class="q-title">判断杠杆类型的依据是？</span><div class="options">
+<label class="opt"><input type="radio" name="q18" value="A">杠杆的长度</label>
+<label class="opt"><input type="radio" name="q18" value="B">动力臂和阻力臂的大小关系</label>
+<label class="opt"><input type="radio" name="q18" value="C">动力和阻力的大小关系</label>
+<label class="opt"><input type="radio" name="q18" value="D">杠杆的材质</label></div><div class="feedback" id="fb18"></div></div>
+
+<div class="quiz-q" data-q="19"><span class="q-num">19</span><span class="q-title">下列生活用具中属于省力杠杆的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q19" value="A">船桨</label>
+<label class="opt"><input type="radio" name="q19" value="B">钓鱼竿</label>
+<label class="opt"><input type="radio" name="q19" value="C">手推车</label>
+<label class="opt"><input type="radio" name="q19" value="D">扫帚</label></div><div class="feedback" id="fb19"></div></div>
+
+<div class="quiz-q" data-q="20"><span class="q-num">20</span><span class="q-title">使用费力杠杆的目的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q20" value="A">省力</label>
+<label class="opt"><input type="radio" name="q20" value="B">省距离</label>
+<label class="opt"><input type="radio" name="q20" value="C">改变力的方向</label>
+<label class="opt"><input type="radio" name="q20" value="D">增大摩擦</label></div><div class="feedback" id="fb20"></div></div>
+
+<div class="q-section"><h3>三、定滑轮、动滑轮与滑轮组（第 21-30 题）</h3></div>
+<div class="quiz-q" data-q="21"><span class="q-num">21</span><span class="q-title">定滑轮实质上是？</span><div class="options">
+<label class="opt"><input type="radio" name="q21" value="A">省力杠杆</label>
+<label class="opt"><input type="radio" name="q21" value="B">费力杠杆</label>
+<label class="opt"><input type="radio" name="q21" value="C">等臂杠杆</label>
+<label class="opt"><input type="radio" name="q21" value="D">既省力又省距离的杠杆</label></div><div class="feedback" id="fb21"></div></div>
+
+<div class="quiz-q" data-q="22"><span class="q-num">22</span><span class="q-title">使用定滑轮的好处是？</span><div class="options">
+<label class="opt"><input type="radio" name="q22" value="A">省力</label>
+<label class="opt"><input type="radio" name="q22" value="B">省距离</label>
+<label class="opt"><input type="radio" name="q22" value="C">改变力的方向</label>
+<label class="opt"><input type="radio" name="q22" value="D">省功</label></div><div class="feedback" id="fb22"></div></div>
+
+<div class="quiz-q" data-q="23"><span class="q-num">23</span><span class="q-title">动滑轮实质上是？</span><div class="options">
+<label class="opt"><input type="radio" name="q23" value="A">等臂杠杆</label>
+<label class="opt"><input type="radio" name="q23" value="B">动力臂是阻力臂 2 倍的省力杠杆</label>
+<label class="opt"><input type="radio" name="q23" value="C">动力臂是阻力臂一半的费力杠杆</label>
+<label class="opt"><input type="radio" name="q23" value="D">不省力也不费力的杠杆</label></div><div class="feedback" id="fb23"></div></div>
+
+<div class="quiz-q" data-q="24"><span class="q-num">24</span><span class="q-title">用动滑轮提起重为 100N 的物体（不计动滑轮重和摩擦），拉力约为？</span><div class="options">
+<label class="opt"><input type="radio" name="q24" value="A">100N</label>
+<label class="opt"><input type="radio" name="q24" value="B">200N</label>
+<label class="opt"><input type="radio" name="q24" value="C">50N</label>
+<label class="opt"><input type="radio" name="q24" value="D">25N</label></div><div class="feedback" id="fb24"></div></div>
+
+<div class="quiz-q" data-q="25"><span class="q-num">25</span><span class="q-title">使用滑轮组既可以省力又可以？</span><div class="options">
+<label class="opt"><input type="radio" name="q25" value="A">省距离</label>
+<label class="opt"><input type="radio" name="q25" value="B">改变力的方向</label>
+<label class="opt"><input type="radio" name="q25" value="C">省功</label>
+<label class="opt"><input type="radio" name="q25" value="D">增大功率</label></div><div class="feedback" id="fb25"></div></div>
+
+<div class="quiz-q" data-q="26"><span class="q-num">26</span><span class="q-title">一个滑轮组由 3 段绳子承担物重，不计摩擦和绳重，则拉力 F 与物重 G 的关系为？</span><div class="options">
+<label class="opt"><input type="radio" name="q26" value="A">F=G</label>
+<label class="opt"><input type="radio" name="q26" value="B">F=G/3</label>
+<label class="opt"><input type="radio" name="q26" value="C">F=3G</label>
+<label class="opt"><input type="radio" name="q26" value="D">F=G/2</label></div><div class="feedback" id="fb26"></div></div>
+
+<div class="quiz-q" data-q="27"><span class="q-num">27</span><span class="q-title">使用定滑轮匀速提升重物时，拉力方向改变，拉力大小？</span><div class="options">
+<label class="opt"><input type="radio" name="q27" value="A">变大</label>
+<label class="opt"><input type="radio" name="q27" value="B">变小</label>
+<label class="opt"><input type="radio" name="q27" value="C">不变</label>
+<label class="opt"><input type="radio" name="q27" value="D">先变大后变小</label></div><div class="feedback" id="fb27"></div></div>
+
+<div class="quiz-q" data-q="28"><span class="q-num">28</span><span class="q-title">在滑轮组中，承担物重的绳子段数 n 越大，则？</span><div class="options">
+<label class="opt"><input type="radio" name="q28" value="A">越省力</label>
+<label class="opt"><input type="radio" name="q28" value="B">越费力</label>
+<label class="opt"><input type="radio" name="q28" value="C">省力情况不变</label>
+<label class="opt"><input type="radio" name="q28" value="D">省力情况与 n 无关</label></div><div class="feedback" id="fb28"></div></div>
+
+<div class="quiz-q" data-q="29"><span class="q-num">29</span><span class="q-title">使用动滑轮虽然省力，但绳端移动的距离与物体上升高度的关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q29" value="A">s=h</label>
+<label class="opt"><input type="radio" name="q29" value="B">s=2h</label>
+<label class="opt"><input type="radio" name="q29" value="C">s=h/2</label>
+<label class="opt"><input type="radio" name="q29" value="D">s=4h</label></div><div class="feedback" id="fb29"></div></div>
+
+<div class="quiz-q" data-q="30"><span class="q-num">30</span><span class="q-title">下列关于滑轮的说法正确的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q30" value="A">定滑轮能省力</label>
+<label class="opt"><input type="radio" name="q30" value="B">动滑轮能改变力的方向</label>
+<label class="opt"><input type="radio" name="q30" value="C">滑轮组既能省力又能改变力的方向</label>
+<label class="opt"><input type="radio" name="q30" value="D">使用任何滑轮都能省功</label></div><div class="feedback" id="fb30"></div></div>
+
+<div class="q-section"><h3>四、轮轴、斜面与功（第 31-40 题）</h3></div>
+<div class="quiz-q" data-q="31"><span class="q-num">31</span><span class="q-title">功的两个必要因素是？</span><div class="options">
+<label class="opt"><input type="radio" name="q31" value="A">力和速度</label>
+<label class="opt"><input type="radio" name="q31" value="B">力和物体在力的方向上移动的距离</label>
+<label class="opt"><input type="radio" name="q31" value="C">力和时间</label>
+<label class="opt"><input type="radio" name="q31" value="D">力和物体的质量</label></div><div class="feedback" id="fb31"></div></div>
+
+<div class="quiz-q" data-q="32"><span class="q-num">32</span><span class="q-title">功的计算公式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q32" value="A">W=F/s</label>
+<label class="opt"><input type="radio" name="q32" value="B">W=Ft</label>
+<label class="opt"><input type="radio" name="q32" value="C">W=Fs</label>
+<label class="opt"><input type="radio" name="q32" value="D">W=F/v</label></div><div class="feedback" id="fb32"></div></div>
+
+<div class="quiz-q" data-q="33"><span class="q-num">33</span><span class="q-title">功的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q33" value="A">牛顿（N）</label>
+<label class="opt"><input type="radio" name="q33" value="B">焦耳（J）</label>
+<label class="opt"><input type="radio" name="q33" value="C">瓦特（W）</label>
+<label class="opt"><input type="radio" name="q33" value="D">帕斯卡（Pa）</label></div><div class="feedback" id="fb33"></div></div>
+
+<div class="quiz-q" data-q="34"><span class="q-num">34</span><span class="q-title">下列情况中，人对物体做了功的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q34" value="A">举重运动员举着杠铃不动</label>
+<label class="opt"><input type="radio" name="q34" value="B">人用力推木箱，木箱未动</label>
+<label class="opt"><input type="radio" name="q34" value="C">人提着水桶沿水平路面匀速行走</label>
+<label class="opt"><input type="radio" name="q34" value="D">人用力将物体举高</label></div><div class="feedback" id="fb34"></div></div>
+
+<div class="quiz-q" data-q="35"><span class="q-num">35</span><span class="q-title">用 50N 的水平推力推物体沿水平面移动 4m，推力做功为？</span><div class="options">
+<label class="opt"><input type="radio" name="q35" value="A">12.5J</label>
+<label class="opt"><input type="radio" name="q35" value="B">50J</label>
+<label class="opt"><input type="radio" name="q35" value="C">200J</label>
+<label class="opt"><input type="radio" name="q35" value="D">400J</label></div><div class="feedback" id="fb35"></div></div>
+
+<div class="quiz-q" data-q="36"><span class="q-num">36</span><span class="q-title">使用斜面可以省力，但会？</span><div class="options">
+<label class="opt"><input type="radio" name="q36" value="A">省距离</label>
+<label class="opt"><input type="radio" name="q36" value="B">费距离</label>
+<label class="opt"><input type="radio" name="q36" value="C">省功</label>
+<label class="opt"><input type="radio" name="q36" value="D">既不省力也不费力</label></div><div class="feedback" id="fb36"></div></div>
+
+<div class="quiz-q" data-q="37"><span class="q-num">37</span><span class="q-title">轮轴的轮半径越大，轴半径不变时，使用轮轴？</span><div class="options">
+<label class="opt"><input type="radio" name="q37" value="A">越费力</label>
+<label class="opt"><input type="radio" name="q37" value="B">越省力</label>
+<label class="opt"><input type="radio" name="q37" value="C">省力情况不变</label>
+<label class="opt"><input type="radio" name="q37" value="D">与轮半径无关</label></div><div class="feedback" id="fb37"></div></div>
+
+<div class="quiz-q" data-q="38"><span class="q-num">38</span><span class="q-title">斜面高度一定时，斜面越长则？</span><div class="options">
+<label class="opt"><input type="radio" name="q38" value="A">越费力</label>
+<label class="opt"><input type="radio" name="q38" value="B">越省力</label>
+<label class="opt"><input type="radio" name="q38" value="C">省力情况不变</label>
+<label class="opt"><input type="radio" name="q38" value="D">不能确定</label></div><div class="feedback" id="fb38"></div></div>
+
+<div class="quiz-q" data-q="39"><span class="q-num">39</span><span class="q-title">盘山公路应用了什么简单机械原理？</span><div class="options">
+<label class="opt"><input type="radio" name="q39" value="A">杠杆原理</label>
+<label class="opt"><input type="radio" name="q39" value="B">斜面原理</label>
+<label class="opt"><input type="radio" name="q39" value="C">滑轮原理</label>
+<label class="opt"><input type="radio" name="q39" value="D">轮轴原理</label></div><div class="feedback" id="fb39"></div></div>
+
+<div class="quiz-q" data-q="40"><span class="q-num">40</span><span class="q-title">下列工具中，应用了轮轴原理的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q40" value="A">筷子</label>
+<label class="opt"><input type="radio" name="q40" value="B">螺丝刀</label>
+<label class="opt"><input type="radio" name="q40" value="C">羊角锤</label>
+<label class="opt"><input type="radio" name="q40" value="D">钓鱼竿</label></div><div class="feedback" id="fb40"></div></div>
+
+<div class="q-section"><h3>五、功率、机械效率与机械能（第 41-50 题）</h3></div>
+<div class="quiz-q" data-q="41"><span class="q-num">41</span><span class="q-title">功率的计算公式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q41" value="A">P=Wt</label>
+<label class="opt"><input type="radio" name="q41" value="B">P=W/t</label>
+<label class="opt"><input type="radio" name="q41" value="C">P=F/s</label>
+<label class="opt"><input type="radio" name="q41" value="D">P=Fv²</label></div><div class="feedback" id="fb41"></div></div>
+
+<div class="quiz-q" data-q="42"><span class="q-num">42</span><span class="q-title">功率的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q42" value="A">焦耳（J）</label>
+<label class="opt"><input type="radio" name="q42" value="B">瓦特（W）</label>
+<label class="opt"><input type="radio" name="q42" value="C">牛顿（N）</label>
+<label class="opt"><input type="radio" name="q42" value="D">帕斯卡（Pa）</label></div><div class="feedback" id="fb42"></div></div>
+
+<div class="quiz-q" data-q="43"><span class="q-num">43</span><span class="q-title">某机器的功率是 2kW，1 分钟做的功是？</span><div class="options">
+<label class="opt"><input type="radio" name="q43" value="A">2000J</label>
+<label class="opt"><input type="radio" name="q43" value="B">120J</label>
+<label class="opt"><input type="radio" name="q43" value="C">120000J</label>
+<label class="opt"><input type="radio" name="q43" value="D">200J</label></div><div class="feedback" id="fb43"></div></div>
+
+<div class="quiz-q" data-q="44"><span class="q-num">44</span><span class="q-title">机械效率的表达式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q44" value="A">η=W总/W有用</label>
+<label class="opt"><input type="radio" name="q44" value="B">η=W有用/W总</label>
+<label class="opt"><input type="radio" name="q44" value="C">η=W有用+W总</label>
+<label class="opt"><input type="radio" name="q44" value="D">η=W有用-W总</label></div><div class="feedback" id="fb44"></div></div>
+
+<div class="quiz-q" data-q="45"><span class="q-num">45</span><span class="q-title">下列关于机械效率的说法正确的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q45" value="A">机械效率可以大于 1</label>
+<label class="opt"><input type="radio" name="q45" value="B">机械效率等于 1</label>
+<label class="opt"><input type="radio" name="q45" value="C">机械效率总小于 1</label>
+<label class="opt"><input type="radio" name="q45" value="D">机械效率与做功多少无关</label></div><div class="feedback" id="fb45"></div></div>
+
+<div class="quiz-q" data-q="46"><span class="q-num">46</span><span class="q-title">用滑轮组将重物提升 2m，有用功为 400J，总功为 500J，机械效率为？</span><div class="options">
+<label class="opt"><input type="radio" name="q46" value="A">20%</label>
+<label class="opt"><input type="radio" name="q46" value="B">50%</label>
+<label class="opt"><input type="radio" name="q46" value="C">80%</label>
+<label class="opt"><input type="radio" name="q46" value="D">100%</label></div><div class="feedback" id="fb46"></div></div>
+
+<div class="quiz-q" data-q="47"><span class="q-num">47</span><span class="q-title">机械能包括？</span><div class="options">
+<label class="opt"><input type="radio" name="q47" value="A">动能和电能</label>
+<label class="opt"><input type="radio" name="q47" value="B">动能和势能</label>
+<label class="opt"><input type="radio" name="q47" value="C">内能和电能</label>
+<label class="opt"><input type="radio" name="q47" value="D">化学能和势能</label></div><div class="feedback" id="fb47"></div></div>
+
+<div class="quiz-q" data-q="48"><span class="q-num">48</span><span class="q-title">在只有动能和势能相互转化的过程中（不计阻力），机械能？</span><div class="options">
+<label class="opt"><input type="radio" name="q48" value="A">增大</label>
+<label class="opt"><input type="radio" name="q48" value="B">减小</label>
+<label class="opt"><input type="radio" name="q48" value="C">保持不变</label>
+<label class="opt"><input type="radio" name="q48" value="D">先增大后减小</label></div><div class="feedback" id="fb48"></div></div>
+
+<div class="quiz-q" data-q="49"><span class="q-num">49</span><span class="q-title">物体从高处下落过程中（不计空气阻力），下列说法正确的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q49" value="A">动能减少，势能增加</label>
+<label class="opt"><input type="radio" name="q49" value="B">动能增加，势能减少，机械能不变</label>
+<label class="opt"><input type="radio" name="q49" value="C">动能不变，势能减少</label>
+<label class="opt"><input type="radio" name="q49" value="D">机械能逐渐增大</label></div><div class="feedback" id="fb49"></div></div>
+
+<div class="quiz-q" data-q="50"><span class="q-num">50</span><span class="q-title">功率大的机器意味着？</span><div class="options">
+<label class="opt"><input type="radio" name="q50" value="A">做的功多</label>
+<label class="opt"><input type="radio" name="q50" value="B">机械效率高</label>
+<label class="opt"><input type="radio" name="q50" value="C">做功快</label>
+<label class="opt"><input type="radio" name="q50" value="D">省力</label></div><div class="feedback" id="fb50"></div></div>
+
+</div>
+<div class="quiz-actions">
+  <button class="btn-submit" onclick="submitQuiz()">交卷看成绩</button>
+  <button class="btn-retry" id="btnRetry" onclick="retryQuiz()" style="display:none;">重新挑战</button>
+</div>
+<div class="result-card" id="resultCard">
+  <div class="score-num" id="scoreNum"></div>
+  <div class="score-message" id="scoreMsg" style="font-size:1.15rem;margin-top:8px;font-weight:600;"></div>
+</div>
+<div class="page-nav">
+  <a href="jixie.html" class="prev">← 简单机械和功</a>
+  <a href="midu-quiz.html" class="next">密度测验 →</a>
+</div>
+</div></div>
+
+<script>
+var answers={"q1":"C","q2":"C","q3":"C","q4":"B","q5":"C","q6":"C","q7":"B","q8":"B","q9":"B","q10":"B","q11":"C","q12":"C","q13":"A","q14":"B","q15":"B","q16":"B","q17":"B","q18":"B","q19":"C","q20":"B","q21":"C","q22":"C","q23":"B","q24":"C","q25":"B","q26":"B","q27":"C","q28":"A","q29":"B","q30":"C","q31":"B","q32":"C","q33":"B","q34":"D","q35":"C","q36":"B","q37":"B","q38":"B","q39":"B","q40":"B","q41":"B","q42":"B","q43":"C","q44":"B","q45":"C","q46":"C","q47":"B","q48":"C","q49":"B","q50":"C"};
+
+document.querySelectorAll('.quiz-q .opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    var q=this.closest('.quiz-q');
+    q.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});
+    this.classList.add('selected');
+  });
+});
+
+function submitQuiz(){
+  var score=0,total=50;
+  for(var i=1;i<=total;i++){
+    var q=document.querySelector('[data-q="'+i+'"]');
+    var selected=q.querySelector('input:checked');
+    var fb=document.getElementById('fb'+i);
+    if(selected && selected.value===answers['q'+i]){
+      score++;
+      fb.textContent='✓ 正确';
+      fb.className='feedback correct';
+      q.classList.add('correct-q');
+    }else if(selected){
+      fb.textContent='✗ 正确答案：'+answers['q'+i];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }else{
+      fb.textContent='✗ 未作答，正确答案：'+answers['q'+i];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }
+  }
+  document.querySelector('.btn-submit').style.display='none';
+  document.getElementById('btnRetry').style.display='inline-block';
+  var card=document.getElementById('resultCard');
+  card.classList.add('show');
+  document.getElementById('scoreNum').textContent=score+' / 50';
+  document.getElementById('scoreNum').style.color=score>=45?'#5B8A6A':score>=35?'#C4A060':score>=25?'#C4708A':'#C4708A';
+  var msg='';
+  if(score===50)msg='满分通关！简单机械和功大师！';
+  else if(score>=45)msg='非常棒！杠杆和功的知识很扎实～';
+  else if(score>=35)msg='不错！把错题对应的知识点再复习一下吧～';
+  else if(score>=25)msg='还需加强，建议回头看看本章重点～';
+  else msg='加油！从头复习一遍，简单机械其实很有趣！';
+  document.getElementById('scoreMsg').textContent=msg;
+}
+
+function retryQuiz(){
+  document.querySelectorAll('.quiz-q input[type=radio]').forEach(function(r){r.checked=false});
+  document.querySelectorAll('.quiz-q .opt').forEach(function(o){o.classList.remove('selected')});
+  document.querySelectorAll('.quiz-q').forEach(function(q){q.classList.remove('correct-q','wrong-q')});
+  document.querySelectorAll('.feedback').forEach(function(f){f.className='feedback';f.textContent=''});
+  document.querySelector('.btn-submit').style.display='inline-block';
+  document.getElementById('btnRetry').style.display='none';
+  document.getElementById('resultCard').classList.remove('show');
+}
+</script>
+</body>
+</html>

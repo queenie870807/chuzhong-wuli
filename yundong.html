@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第一章 运动和力 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* s-t / v-t 图像对比 */
+.illus-st-vt { position:relative; width:240px; height:240px; }
+.illus-st-vt .graph-st { position:absolute; top:10px; left:10px; width:100px; height:90px; border-left:2px solid #888; border-bottom:2px solid #888; }
+.illus-st-vt .graph-st::after { content:"s-t 图像"; position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#C87878; white-space:nowrap; }
+.illus-st-vt .st-line { position:absolute; top:20px; left:20px; width:2px; height:70px; background:#C87878; transform-origin:bottom center; }
+.illus-st-vt .graph-vt { position:absolute; top:10px; right:10px; width:100px; height:90px; border-left:2px solid #888; border-bottom:2px solid #888; }
+.illus-st-vt .graph-vt::after { content:"v-t 图像"; position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#6BA0C0; white-space:nowrap; }
+.illus-st-vt .vt-line { position:absolute; top:60px; right:20px; width:80px; height:2px; background:#6BA0C0; }
+.illus-st-vt .label-s { position:absolute; top:32px; left:116px; font-size:9px; color:#888; }
+.illus-st-vt .label-v { position:absolute; top:32px; right:116px; font-size:9px; color:#888; }
+.illus-st-vt .y-label-st { position:absolute; top:28px; left:4px; font-size:8px; color:#888; writing-mode:vertical-lr; }
+.illus-st-vt .y-label-vt { position:absolute; top:28px; right:4px; font-size:8px; color:#888; writing-mode:vertical-lr; }
+.illus-st-vt .x-label { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); font-size:9px; color:#888; }
+.illus-st-vt .desc-st { position:absolute; bottom:104px; left:20px; font-size:10px; font-weight:700; color:#C87878; }
+.illus-st-vt .desc-vt { position:absolute; bottom:104px; right:12px; font-size:10px; font-weight:700; color:#6BA0C0; }
+
+/* 滚动摩擦 vs 滑动摩擦 */
+.illus-friction { position:relative; width:240px; height:160px; }
+.illus-friction .surface { position:absolute; bottom:30px; left:0; width:240px; height:4px; background:#C0B098; }
+.illus-friction .surface::after { content:"粗糙表面"; position:absolute; bottom:-16px; left:50%; transform:translateX(-50%); font-size:9px; color:#888; }
+.illus-friction .block-slide { position:absolute; bottom:38px; left:30px; width:40px; height:30px; background:#C87878; border-radius:4px; }
+.illus-friction .block-slide::after { content:"滑动"; position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:9px; font-weight:700; color:#C87878; white-space:nowrap; }
+.illus-friction .block-slide .f-arrow { position:absolute; top:50%; left:-32px; transform:translateY(-50%); width:30px; height:4px; background:rgba(200,120,120,0.7); }
+.illus-friction .block-slide .f-arrow::before { content:""; position:absolute; left:-6px; top:-3px; border-right:8px solid rgba(200,120,120,0.7); border-top:5px solid transparent; border-bottom:5px solid transparent; }
+.illus-friction .wheel-right { position:absolute; bottom:38px; right:30px; width:36px; height:36px; border:3px solid #6BA0C0; border-radius:50%; }
+.illus-friction .wheel-right::after { content:"滚动"; position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:9px; font-weight:700; color:#6BA0C0; white-space:nowrap; }
+.illus-friction .wheel-right .f-arrow-w { position:absolute; top:50%; right:-32px; transform:translateY(-50%); width:30px; height:4px; background:rgba(107,160,192,0.5); }
+.illus-friction .wheel-right .f-arrow-w::before { content:""; position:absolute; right:-6px; top:-3px; border-left:8px solid rgba(107,160,192,0.5); border-top:5px solid transparent; border-bottom:5px solid transparent; }
+.illus-friction .label-fric { position:absolute; bottom:0; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#708090; }
+</style>
+</head>
+<body class="ch1">
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><span>第一章 运动和力</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html" class="active">运动和力</a><a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a><a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a><a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a><a href="re.html">热学</a>
+  </div>
+</nav>
+
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="搜索知识点，如「牛顿」「摩擦力」..." oninput="doSearch()">
+  <span class="search-icon">&#128269;</span>
+  <div class="no-result" id="noResult">未找到匹配内容，试试其他关键词吧</div>
+</div>
+
+<div class="container">
+
+<section class="ch1">
+<div class="chapter-title"><span class="ch-num">第一章</span>&#127939; 运动和力</div>
+
+<div class="mindmap-grid">
+  <div class="mm-card"><h4>&#128099; 参照物与运动</h4><ul><li>运动是绝对的</li><li>静止是相对的</li><li>参照物的选择</li></ul></div>
+  <div class="mm-card"><h4>&#9201; 速度与运动图像</h4><ul><li>v = s / t</li><li>匀速直线运动</li><li>s-t 图像 / v-t 图像</li></ul></div>
+  <div class="mm-card"><h4>&#127744; 牛顿第一定律</h4><ul><li>惯性</li><li>力是改变运动的原因</li><li>不是维持运动的原因</li></ul></div>
+  <div class="mm-card"><h4>&#9889; 牛顿第二定律</h4><ul><li>F = ma</li><li>力越大加速度越大</li><li>质量越大加速度越小</li></ul></div>
+  <div class="mm-card"><h4>&#128170; 牛顿第三定律</h4><ul><li>作用力 = -反作用力</li><li>同时产生同时消失</li><li>作用在不同物体上</li></ul></div>
+  <div class="mm-card"><h4>&#127859; 常见的力</h4><ul><li>重力 G = mg</li><li>弹力（胡克定律）</li><li>摩擦力（静/滑动/滚动）</li></ul></div>
+  <div class="mm-card"><h4>&#128220; 二力平衡</h4><ul><li>合力为零</li><li>静止或匀速直线运动</li><li>同体、等大、反向、共线</li></ul></div>
+</div>
+
+<div class="section-label">&#128218; 核心概念</div>
+
+<!-- 参照物 -->
+<div class="concept-card" id="c1-reference">
+  <div class="card-header">
+    <div class="card-icon">&#128099;</div>
+    <div><h4>参照物 —— 「你说我动了？你站在哪？」</h4><p class="subtitle">同一个物体，选不同的参照物，运动状态可能完全不同</p></div>
+  </div>
+  <div class="card-body">
+    <p>判断一个物体是否运动、怎样运动，必须选择一个<strong>参照物</strong>。参照物不同，结论可能不同。</p>
+    <p><strong>运动与静止的相对性：</strong>在行驶的火车上，以火车为参照物，你是静止的；以窗外树木为参照物，你在高速运动。没有"绝对静止"这回事！</p>
+    <div class="example-tag"><span class="emoji">&#9992;</span>空中加油——加油机和受油机保持相同速度飞行，以彼此为参照物都是静止的，所以能精准对接。</div>
+    <div class="example-tag"><span class="emoji">&#127759;</span>地球在自转——赤道上的你以每秒 465 米的速度在旋转！但以地球为参照物，你是静止的。你感受到的"静止"只是错觉。</div>
+  </div>
+</div>
+
+<!-- 速度 -->
+<div class="concept-card" id="c1-speed">
+  <div class="card-header">
+    <div class="card-icon">&#9201;</div>
+    <div><h4>速度 —— 物体运动的快慢</h4><p class="subtitle">v = s / t —— 单位时间通过的路程</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">v = s / t</div>
+      <div class="var-list">
+        <span class="var-tag pink">v 速度 (m/s 或 km/h)</span>
+        <span class="var-tag blue">s 路程 (m)</span>
+        <span class="var-tag green">t 时间 (s)</span>
+      </div>
+    </div>
+    <p>1 m/s = 3.6 km/h（换算方法：m/s &#215; 3.6 = km/h）</p>
+    <p><strong>匀速直线运动</strong>：速度大小和方向都不变的运动——理论上最简单的运动模型。</p>
+  </div>
+</div>
+
+<!-- ===== s-t/v-t 图像（新增） ===== -->
+<div class="concept-card" id="c1-graphs">
+  <div class="card-header">
+    <div class="card-icon">&#128202;</div>
+    <div><h4>运动图像 —— s-t 与 v-t 图像</h4><p class="subtitle">一张图胜过千言万语——看懂图像，秒解运动问题</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>s-t 图像</strong>（路程-时间图像）：斜率 = 速度。匀速直线运动的 s-t 图是一条<strong>倾斜直线</strong>。斜率越大速度越快；水平线代表静止（路程不变）。</p>
+    <p><strong>v-t 图像</strong>（速度-时间图像）：匀速直线运动的 v-t 图是一条<strong>水平直线</strong>。线下面积 = 路程。斜线代表匀变速运动（速度均匀变化）。</p>
+    <div class="example-tag"><span class="emoji">&#128736;</span>一辆车从静止加速到 20 m/s 用时 10 秒——v-t 图是斜线，线下三角形面积 = 1/2 &#215; 20 &#215; 10 = 100 m，即这 10 秒内行驶了 100 米。</div>
+  </div>
+</div>
+
+<!-- s-t/v-t CSS图示 -->
+<div class="section-label">&#127912; 运动图像对比</div>
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-st-vt">
+      <div class="graph-st"></div>
+      <div class="graph-vt"></div>
+      <svg style="position:absolute;top:10px;left:10px;width:100px;height:90px;pointer-events:none;"><line x1="10" y1="80" x2="80" y2="10" stroke="#C87878" stroke-width="2.5"/></svg>
+      <svg style="position:absolute;top:10px;right:10px;width:100px;height:90px;pointer-events:none;"><line x1="10" y1="30" x2="90" y2="30" stroke="#6BA0C0" stroke-width="2.5"/></svg>
+      <div class="y-label-st">s&#8593;</div>
+      <div class="y-label-vt">v&#8593;</div>
+      <div class="x-label">t &#8594;</div>
+      <div class="desc-st">斜率 = 速度 v</div>
+      <div class="desc-vt">面积 = 路程 s</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128202; Tips 图示</span>
+    <h4>s-t 图像（左）· v-t 图像（右）</h4>
+    <p>匀速直线运动中：s-t 图是过原点的斜线——<b>斜率 = 速度</b>，越陡跑越快；v-t 图是水平线——<b>线下面积 = 路程</b>。两种图像描述的是同一种运动。</p>
+  </div>
+</div>
+
+<!-- ===== 运动和力关系总结（新增） ===== -->
+<div class="concept-card" id="c1-summary">
+  <div class="card-header">
+    <div class="card-icon">&#128221;</div>
+    <div><h4>运动和力的关系 —— 一张表搞懂所有情况</h4><p class="subtitle">力不是维持运动的原因，是改变运动的原因</p></div>
+  </div>
+  <div class="card-body">
+    <table class="quick-table">
+      <tr><th>受力情况</th><th>合力</th><th>运动状态</th><th>举例</th></tr>
+      <tr><td>不受力</td><td>F合 = 0</td><td>静止或匀速直线运动（牛顿第一定律）</td><td>太空中匀速飞行的飞船</td></tr>
+      <tr><td>受平衡力</td><td>F合 = 0</td><td>静止或匀速直线运动（状态不变）</td><td>匀速下降的降落伞</td></tr>
+      <tr><td>受非平衡力</td><td>F合 ≠ 0</td><td>运动状态改变——加速/减速/转向</td><td>汽车起步加速</td></tr>
+    </table>
+    <p><b>核心结论</b>：力与运动之间不是"有力才有运动"的因果关系，而是<strong>"合力决定运动状态的变化"</strong>。合力为零→运动状态不变；合力不为零→产生加速度→运动状态改变。F=ma 把"力"和"运动变化"用等号连起来——这不是因果关系，这是<strong>定量等价关系</strong>。</p>
+    <div class="example-tag"><span class="emoji">&#127939;</span>百米赛跑：起跑时蹬地力 > 阻力 → 加速。途中跑时蹬地力 = 阻力 → 匀速（接近）。冲刺撞线后脚不再蹬地 → 只剩阻力 → 减速停下。</div>
+  </div>
+</div>
+
+<!-- 牛顿第一定律 -->
+<div class="concept-card" id="c1-newton1">
+  <div class="card-header">
+    <div class="card-icon">&#127744;</div>
+    <div><h4>牛顿第一定律（惯性定律）</h4><p class="subtitle">一切物体在不受外力作用时，总保持匀速直线运动状态或静止状态</p></div>
+  </div>
+  <div class="card-body">
+    <p>这个定律告诉我们：<strong>力不是维持运动的原因</strong>——没有力物体也能一直运动下去！力是<strong>改变物体运动状态</strong>的原因。</p>
+    <p><strong>惯性</strong>：物体保持原来运动状态不变的性质。一切物体在任何情况下都有惯性。质量是惯性大小的唯一量度——质量越大惯性越大。</p>
+    <div class="example-tag"><span class="emoji">&#128652;</span>公交车急刹车时，站着的乘客向前倾倒——人的身体由于惯性要保持原来向前运动的状态，而脚已随车停下。</div>
+  </div>
+</div>
+
+<!-- 牛顿第一定律惯性图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div style="position:relative;width:220px;height:180px;">
+      <div style="position:absolute;bottom:20px;left:10px;width:180px;height:70px;background:linear-gradient(180deg,#FFDDA0,#F0B860);border-radius:8px;border:3px solid #D0A040;"></div>
+      <div style="position:absolute;bottom:28px;left:20px;width:14px;height:14px;background:#A06030;border-radius:50%;"></div>
+      <div style="position:absolute;bottom:34px;left:60px;width:30px;height:40px;background:#F8C4A0;border-radius:6px;"></div>
+      <div style="position:absolute;top:70px;left:90px;font-size:20px;font-weight:700;color:#C87878;">&#8594;</div>
+      <div style="position:absolute;top:50px;left:120px;width:30px;height:40px;background:#F8C4A0;border-radius:6px;transform:rotate(20deg);opacity:0.5;"></div>
+      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#A06030;">刹车 &#8594; 乘客前倾（惯性）</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128652; Tips 图示</span>
+    <h4>刹车时乘客前倾——惯性的直观展现</h4>
+    <p>车突然减速，人的上半身由于惯性要保持原来的运动速度继续向前——这就是前倾的原因。开车坐车都要系安全带，就是为了对抗惯性的伤害。</p>
+  </div>
+</div>
+
+<!-- 牛顿第二定律（新增） -->
+<div class="concept-card" id="c1-newton2">
+  <div class="card-header">
+    <div class="card-icon">&#9889;</div>
+    <div><h4>牛顿第二定律 —— 「大力出奇迹」的科学表达</h4><p class="subtitle">力、质量和加速度的精确关系</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">F = m a</div>
+      <div class="var-list">
+        <span class="var-tag pink">F 合外力 (N)</span>
+        <span class="var-tag blue">m 质量 (kg)</span>
+        <span class="var-tag green">a 加速度 (m/s&#178;)</span>
+      </div>
+    </div>
+    <p>物体加速度的大小跟作用力成正比，跟物体的质量成反比；加速度的方向跟作用力的方向相同。</p>
+    <p><b>直观理解</b>：推同样重的车，越用力加速度越大（F&#8593; &#8594; a&#8593;）。同样的力推不同的车，越重的车加速越慢（m&#8593; &#8594; a&#8595;）。</p>
+    <div class="example-tag"><span class="emoji">&#127936;</span>篮球和铅球用同样的力推——篮球质量小，加速度大，飞得远；铅球质量大，加速度小，几乎不动。</div>
+    <div class="example-tag"><span class="emoji">&#128640;</span>火箭发射——巨大的推力克服火箭的庞大质量产生加速度。随着燃料消耗质量减小，加速度越来越大——加速越来越快。</div>
+  </div>
+</div>
+
+<!-- 牛顿第三定律 -->
+<div class="concept-card" id="c1-newton3">
+  <div class="card-header">
+    <div class="card-icon">&#128170;</div>
+    <div><h4>牛顿第三定律 —— 作用力与反作用力</h4><p class="subtitle">你推墙，墙也在推你！</p></div>
+  </div>
+  <div class="card-body">
+    <p>两个物体之间的作用力和反作用力总是<strong>大小相等、方向相反</strong>，作用在<strong>同一条直线</strong>上，但作用在<strong>不同的物体上</strong>。</p>
+    <p><b>关键</b>：作用力与反作用力同时产生、同时消失——不能抵消，因为它们作用在不同物体上。</p>
+    <div class="example-tag"><span class="emoji">&#128034;</span>划船——桨向后推水，水对桨产生向前的推力，船就前进。你的手打桌子手会疼——因为你打桌子的同时桌子也在打你。</div>
+  </div>
+</div>
+
+<!-- 作用力反作用力CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div style="position:relative;width:220px;height:180px;">
+      <div style="position:absolute;top:20px;left:20px;width:60px;height:40px;background:#E8A0BF;border-radius:8px 8px 4px 4px;border:2px solid #D080A0;text-align:center;line-height:40px;font-size:12px;font-weight:700;color:#A05070;">小船</div>
+      <div style="position:absolute;top:30px;left:90px;width:80px;height:60px;background:rgba(139,184,214,0.3);border:2px solid #8BB8D6;border-radius:8px;"></div>
+      <div style="position:absolute;top:30px;left:92px;font-size:11px;font-weight:700;color:#5B8AAA;">水</div>
+      <div style="position:absolute;top:54px;left:75px;width:16px;height:3px;background:#C87878;border-radius:2px;"></div>
+      <div style="position:absolute;top:54px;left:90px;width:16px;height:3px;background:#6BA0C0;border-radius:2px;"></div>
+      <div style="position:absolute;top:40px;left:52px;font-size:9px;font-weight:700;color:#C87878;">&#8592; 桨推水</div>
+      <div style="position:absolute;top:40px;right:20px;font-size:9px;font-weight:700;color:#6BA0C0;">水推桨 &#8594;</div>
+      <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#708090;">作用力 = 反作用力（大小相等方向相反）</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128034; Tips 图示</span>
+    <h4>作用力与反作用力：小船划水前进</h4>
+    <p>桨向后推水（红色箭头）——这是<strong>作用力</strong>。水同时向前推桨（蓝色箭头）——这是<strong>反作用力</strong>。大小相等，方向相反，作用在不同物体上。船前进靠的是水对桨的反作用力！</p>
+  </div>
+</div>
+
+<!-- 力的合成 -->
+<div class="concept-card" id="c1-composition">
+  <div class="card-header">
+    <div class="card-icon">&#128220;</div>
+    <div><h4>力的合成与二力平衡</h4><p class="subtitle">多个力的效果能不能用一个力替代？</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>力的合成</strong>：同一直线上二力合成——同向相加（F = F&#8321;+F&#8322;），反向相减（F = |F&#8321;-F&#8322;|）。</p>
+    <p><strong>二力平衡条件</strong>：同一物体、大小相等、方向相反、同一直线——这四个条件缺一不可。平衡状态下合力为零，物体保持静止或匀速直线运动。</p>
+    <div class="example-tag"><span class="emoji">&#128214;</span>一本书静止在桌面上——重力向下 = 桌面支持力向上，二力平衡，合力为零，书静止不动。</div>
+  </div>
+</div>
+
+<!-- 力的合成推箱子图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div style="position:relative;width:220px;height:180px;">
+      <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:50px;height:50px;background:#D8B880;border:3px solid #B09060;border-radius:6px;text-align:center;line-height:50px;font-size:16px;">&#128230;</div>
+      <div style="position:absolute;bottom:65px;left:20px;width:50px;height:4px;background:#C87878;border-radius:2px;"></div>
+      <div style="position:absolute;bottom:67px;left:12px;font-size:8px;color:#C87878;font-weight:700;">F&#8321;</div>
+      <div style="position:absolute;bottom:65px;right:20px;width:50px;height:4px;background:#6BA0C0;border-radius:2px;"></div>
+      <div style="position:absolute;bottom:67px;right:12px;font-size:8px;color:#6BA0C0;font-weight:700;">F&#8322;</div>
+      <div style="position:absolute;bottom:52px;left:50px;font-size:10px;font-weight:700;color:#708090;">合力 = F&#8321; + F&#8322;</div>
+      <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:10px;color:#888;">同向相加、反向相减</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128230; Tips 图示</span>
+    <h4>力的合成：两个人同向推箱子</h4>
+    <p>两个人同方向推箱子，合力 = 两人推力之和——箱子加速更快。如果两人反方向推，合力 = 推力之差——箱子向力大的方向移动。</p>
+  </div>
+</div>
+
+<!-- 重力 -->
+<div class="concept-card" id="c1-gravity">
+  <div class="card-header">
+    <div class="card-icon">&#127758;</div>
+    <div><h4>重力 —— 「万有引力的地面版」</h4><p class="subtitle">G = mg —— 质量越大，重力越大</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">G = m g</div>
+      <div class="var-list">
+        <span class="var-tag pink">G 重力 (N)</span>
+        <span class="var-tag blue">m 质量 (kg)</span>
+        <span class="var-tag green">g = 9.8 N/kg &#8776; 10 N/kg</span>
+      </div>
+    </div>
+    <p>重力三要素：<strong>大小</strong> G = mg；<strong>方向</strong> 竖直向下（指向地心）；<strong>作用点</strong> 重心（质量均匀规则物体的重心在几何中心）。</p>
+    <div class="example-tag"><span class="emoji">&#127756;</span>月球上的重力只有地球的 1/6——60kg 的人到了月球只有约 10kg 体重！阿姆斯特朗的"月球漫步"——跳一步等于地球上跳六步远。</div>
+  </div>
+</div>
+
+<!-- 弹力 -->
+<div class="concept-card" id="c1-spring">
+  <div class="card-header">
+    <div class="card-icon">&#128207;</div>
+    <div><h4>弹力与胡克定律</h4><p class="subtitle">弹簧的倔强告白：「你拉我多长，我就拉你多狠」</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>弹力</strong>：物体发生弹性形变后，要恢复原状而对与它接触的物体产生的力。</p>
+    <p><strong>胡克定律</strong>：在弹性限度内，弹簧的弹力与形变量成正比：<strong>F = kx</strong>（k 为劲度系数，x 为伸长或压缩量）。</p>
+  </div>
+</div>
+
+<!-- 弹簧测力计CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div style="position:relative;width:100px;height:180px;">
+      <div style="position:absolute;top:10px;left:30px;width:40px;height:10px;background:#C8A878;border-radius:3px;"></div>
+      <div style="position:absolute;top:20px;left:48px;width:4px;height:120px;background:#B8A088;"></div>
+      <div style="position:absolute;top:40px;left:28px;width:44px;height:80px;border:3px solid #B8A088;border-radius:8px;background:rgba(200,168,120,0.1);"></div>
+      <div style="position:absolute;top:50px;left:40px;width:20px;height:70px;background:repeating-linear-gradient(to bottom, #C87878 0px, #C87878 15px, transparent 15px, transparent 20px);border-radius:3px;"></div>
+      <div style="position:absolute;bottom:40px;left:38px;width:24px;height:6px;background:#D0A060;border-radius:2px;"></div>
+      <div style="position:absolute;bottom:34px;left:44px;width:12px;height:20px;border:2px solid #B0A088;border-radius:0 0 4px 4px;"></div>
+      <div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);font-size:8px;font-weight:700;color:#A08060;">N</div>
+      <div style="position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#888;">测力计</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128207; Tips 图示</span>
+    <h4>弹簧测力计——胡克定律的实用工具</h4>
+    <p>在弹性限度内，弹簧的伸长量与所受拉力成正比。标度均匀，读数直接。使用前要调零，不能超过量程，读数时视线与指针水平。</p>
+  </div>
+</div>
+
+<!-- ===== 滚动摩擦 vs 滑动摩擦（新增） ===== -->
+<div class="concept-card" id="c1-friction">
+  <div class="card-header">
+    <div class="card-icon">&#127859;</div>
+    <div><h4>摩擦力 —— 三种类型全解析</h4><p class="subtitle">有时是帮手，有时是敌人</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>静摩擦力</strong>：物体有相对运动趋势但还没动时产生的摩擦力，方向与运动趋势相反。大小从 0 到最大静摩擦力之间变化（根据外力自动调节）。</p>
+    <p><strong>滑动摩擦力</strong>：物体在另一物体表面滑动时的摩擦力。大小 f = &#956;N（&#956; 为动摩擦因数，N 为压力），与接触面积和运动速度无关（仅取决于接触面粗糙度和压力）。</p>
+    <p><strong>滚动摩擦力</strong>：物体在另一物体表面滚动时的摩擦力（实际上是一种阻力矩）。</p>
+    <table class="quick-table" style="margin-top:12px;">
+      <tr><th>对比</th><th>滑动摩擦</th><th>滚动摩擦</th></tr>
+      <tr><td><strong>发生条件</strong></td><td>物体在表面"滑"</td><td>物体在表面"滚"（如车轮）</td></tr>
+      <tr><td><strong>大小关系</strong></td><td>较大（取决于 &#956; 和压力）</td><td>远小于滑动摩擦（通常只有滑动摩擦的 1/50 ~ 1/100）</td></tr>
+      <tr><td><strong>本质</strong></td><td>表面凹凸相互"咬合"滑动</td><td>滚动物体与地面连续"脱离"接触</td></tr>
+      <tr><td><strong>应用</strong></td><td>刹车（需要大摩擦力）</td><td>轮子、轴承（需要小摩擦力省力）</td></tr>
+    </table>
+    <div class="example-tag"><span class="emoji">&#128690;</span>为什么所有交通工具都用轮子？因为滚动摩擦远小于滑动摩擦——拉着一车重物在地上拖几乎不可能，但装上轮子一个小孩就能拉动。轮子是人类最伟大的发明之一。</div>
+    <div class="example-tag"><span class="emoji">&#127994;</span>冰壶运动——运动员使劲"擦冰"，让冰面融化形成薄水膜，减小滑动摩擦，让冰壶滑得更远更精准。</div>
+  </div>
+</div>
+
+<!-- 滚动摩擦vs滑动摩擦CSS图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-friction">
+      <div class="surface"></div>
+      <div class="block-slide"><div class="f-arrow"></div></div>
+      <div class="wheel-right"><div class="f-arrow-w"></div></div>
+      <div class="label-fric">f<sub>滚动</sub> &lt;&lt; f<sub>滑动</sub></div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#9881; Tips 图示</span>
+    <h4>滑动摩擦 vs 滚动摩擦</h4>
+    <p>左边木块在粗糙表面<strong>滑动</strong>——摩擦力大（长箭头），费力。右边轮子在粗糙表面<strong>滚动</strong>——摩擦力极小（短箭头），省力。滚动摩擦通常只有滑动摩擦的几十分之一。这就是所有车都有轮子的原因！</p>
+  </div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">如果没有摩擦力，世界会变成什么样？</div>
+  <div class="fun-a">你没法走路（脚会打滑）、没法拿东西（物体会滑出手中）、汽车无法前进或刹车、所有螺钉会自己松开、大楼会坍塌——没有摩擦力，文明不会存在！</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">牛顿真的被苹果砸中了吗？</div>
+  <div class="fun-a">历史学家考证：牛顿本人从未说过"被苹果砸中"。他只是晚年对朋友提到，看到苹果从树上落下，引发了他对万有引力的思考——"苹果为什么会往下掉而不是往天上飞？"这个故事被后人艺术加工成了"砸中头部"。不过，苹果树至今仍在牛顿故居生长。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">F=ma 告诉我们——光速为什么是宇宙极限？</div>
+  <div class="fun-a">根据狭义相对论，物体的质量随速度增加而增加。当接近光速时，质量趋向无穷大——F=ma，同样的力产生的加速度越来越小，永远达不到光速。这就是为什么有质量的物体无法达到光速。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">为什么太空中扔东西也能"掉下来"？</div>
+  <div class="fun-a">国际空间站里的宇航员看起来飘着，但空间站其实一直在"往下掉"——它以约7.7km/s的速度水平飞行，每"掉"下去的距离恰好等于地球表面弯曲的距离。这就是轨道飞行的本质：永远在自由落体，但永远落不到地面。宇航员感受到的"失重"不是因为没有重力，而是因为他们和空间站一起在做自由落体——这是牛顿大炮思想实验的现代版。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">为什么猎豹跑得比汽车快但只能坚持10秒？</div>
+  <div class="fun-a">猎豹 0-100km/h 加速只需 3 秒，比大多数跑车还快。但高速奔跑产生巨大热量——猎豹的体温会在 10 秒内从 38°C 飙升到 40.5°C 的致死临界线。根据 F=ma，猎豹的肌肉力量巨大（加速度极大），但能量消耗和散热限制让它只能做"冲刺型选手"。人类虽然跑得慢，但散热系统优秀——马拉松才是人类的"主场"。</div>
+</div>
+
+<div class="misconception">
+  <h4>&#9888; 常见误区提醒</h4>
+  <ul>
+    <li><span class="mistake">&#10060; "力是维持物体运动的原因"</span> &#8594; <span class="correct">&#9989; 亚里士多德的错误观点！牛顿第一定律已推翻——没有力物体照样能运动。力是<strong>改变</strong>运动状态的原因。</span></li>
+    <li><span class="mistake">&#10060; "作用力与反作用力可以抵消"</span> &#8594; <span class="correct">&#9989; 不能！它们作用在<strong>不同物体</strong>上——你推墙和墙推你分别作用在墙和你身上，无法抵消。</span></li>
+    <li><span class="mistake">&#10060; "速度越大惯性越大"</span> &#8594; <span class="correct">&#9989; 惯性只与<strong>质量</strong>有关。一辆停着的大卡车比一辆飞驰的自行车的惯性大得多。</span></li>
+    <li><span class="mistake">&#10060; "滑动摩擦力一定大于滚动摩擦"</span> &#8594; <span class="correct">&#9989; 在相同条件下确实滑动摩擦力 >> 滚动摩擦力，所以人类发明了轮子。但特殊情况下（如光滑冰面上滑动可能比粗糙地面滚动还省力）。</span></li>
+    <li><span class="mistake">&#10060; "重力就是万有引力"</span> &#8594; <span class="correct">&#9989; 重力是万有引力的一个分力（考虑了地球自转的离心力影响）。在赤道你的体重比在极地轻约 0.3%！</span></li>
+    <li><span class="mistake">&#10060; "s-t图像中曲线代表变速运动"</span> &#8594; <span class="correct">&#9989; 正确！s-t 图如果是曲线，说明斜率在变——速度在变，是变速运动。直线的才是匀速。</span></li>
+    <li><span class="mistake">&#10060; "v-t图像中水平线代表静止"</span> &#8594; <span class="correct">&#9989; 大错！v-t 图像的水平线代表<strong>匀速</strong>（速度不变）。只有 v=0 的水平线才代表静止。</span></li>
+  </ul>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：鸡蛋的惯性</h4>
+  <ol class="step-list">
+    <li>准备：一个生鸡蛋、一个熟鸡蛋。分别快速旋转。</li>
+    <li>用手轻轻按住鸡蛋让它停下，再立刻松手。</li>
+    <li>生鸡蛋松手后会继续微微转动——因为里面的液体由于惯性还在旋转。</li>
+    <li>熟鸡蛋停下就彻底停了——这就是区分生熟鸡蛋的物理学方法。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：滑动 vs 滚动摩擦力</h4>
+  <ol class="step-list">
+    <li>准备：一本厚书（或一个箱子）、几支圆柱形铅笔/筷子。</li>
+    <li>手推书在桌面滑动——感觉费力。</li>
+    <li>在书下面垫上几支铅笔，再推——几乎不费力就推动了！</li>
+    <li>铅笔充当了"滚轮"——这就是轮子的雏形。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：自制弹簧测力计</h4>
+  <ol class="step-list">
+    <li>准备：一根弹簧（或橡皮筋）、一个挂钩、一张标有刻度的纸板。</li>
+    <li>把弹簧上端固定在纸板上，下端挂挂钩。</li>
+    <li>挂上已知重量的物品（如500g水≈5N），标记刻度。</li>
+    <li>这就是胡克定律 F=kx 的应用——弹簧伸长量与力成正比。</li>
+  </ol>
+</div>
+
+<div class="parent-tip">
+  <h4>&#128105;&#8203;&#127891; 家长辅导小贴士</h4>
+  <ul>
+    <li>参照物选车窗外树木——坐车时让孩子观察窗外树木"向后跑"，理解相对运动</li>
+    <li>惯性实验全家互动——用一张纸盖在杯口，纸上放一枚硬币，快速抽走纸片硬币落入杯中：直观展示"硬币因惯性留在原地"</li>
+    <li>s-t/v-t 图像：用手机录一段孩子跑步的视频，逐帧分析位置和时间数据，画出真实的运动图像</li>
+    <li>作用力与反作用力：让两个体重差不多的人面对面站立互推——两人都会后退（牛顿第三定律直观体验）</li>
+    <li>F=ma：推空购物车和满购物车对比——空车加速快（m 小 a 大），满车加速慢（m 大 a 小）</li>
+    <li>滑动 vs 滚动：用带轮行李箱和不带轮行李箱对比——滚动摩擦的神奇</li>
+  </ul>
+</div>
+</section>
+
+<div class="page-nav">
+  <a href="index.html" class="prev">&#8592; 首页</a>
+  <a href="yaqiang.html" class="next">第二章 压强和浮力 &#8594;</a>
+</div>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('backTop').style.display=window.scrollY>600?'flex':'none'});
+function doSearch(){
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  var no=document.getElementById('noResult');
+  document.querySelectorAll('mark.highlight').forEach(function(m){
+    var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
+  });
+  if(!q){no.style.display='none';document.querySelectorAll('.concept-card,.mindmap-grid,.quick-table,.misconclusion,.experiment,.parent-tip,.fun-fact,.tip-card,.section-label,.chapter-title').forEach(function(e){e.style.display=''});return;}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function hl(n){
+    if(n.nodeType===3){
+      var t=n.textContent,lo=t.toLowerCase(),i=lo.indexOf(q);
+      if(i===-1)return false;
+      var s=document.createElement('span');
+      s.innerHTML=esc(t.substring(0,i))+'<mark class="highlight">'+esc(t.substring(i,i+q.length))+'</mark>'+esc(t.substring(i+q.length));
+      n.parentNode.replaceChild(s,n); return true;
+    }
+    if(n.nodeType===1&&['SCRIPT','STYLE','MARK'].indexOf(n.tagName)===-1){var f=false;for(var j=0;j<n.childNodes.length;j++)if(hl(n.childNodes[j]))f=true;return f}
+    return false;
+  }
+  var fa=false;
+  document.querySelectorAll('.concept-card,.mm-card,.quick-table,.misconception ul li,.experiment,.parent-tip,.fun-fact,.tip-card').forEach(function(e){if(hl(e)){e.style.display='';fa=true}else{e.style.display='none'}});
+  document.querySelectorAll('.chapter-title,.section-label,.mindmap-grid').forEach(function(e){e.style.display=''});
+  no.style.display=fa?'none':'block';
+}
+</script>
+</body>
+</html>

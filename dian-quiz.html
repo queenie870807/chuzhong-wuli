@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第七章 电学 · 测验 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.quiz-wrap { max-width: 780px; margin: 0 auto; }
+.quiz-header { text-align: center; margin: 32px 0 24px; }
+.quiz-header h2 { font-size: 24px; color: #E08850; }
+.quiz-header p { color: #7B758A; font-size: 15px; margin-top: 4px; }
+.q-section { margin: 32px 0 16px; }
+.q-section h3 { font-size: 18px; color: #E08850; padding-bottom: 8px; border-bottom: 2px dashed rgba(224,136,80,0.3); margin-bottom: 14px; }
+.quiz-q { background: #FFF; border-radius: 18px; padding: 18px 22px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1.5px solid #fae8d8; }
+.quiz-q .q-num { display: inline-block; background: linear-gradient(135deg, #F0A870, #E08850); color: #fff;
+  min-width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px;
+  font-weight: 700; font-size: 13px; margin-right: 8px; }
+.quiz-q .q-title { font-size: 16px; font-weight: 700; color: #4A4458; display: inline; line-height: 1.6; }
+.quiz-q .options { margin: 8px 0 0 36px; display: flex; flex-direction: column; gap: 5px; }
+.quiz-q .opt { display: flex; align-items: center; gap: 8px; padding: 7px 12px;
+  border-radius: 10px; border: 1.5px solid transparent; cursor: pointer;
+  transition: all 0.15s; font-size: 15px; background: #fae8d8; }
+.quiz-q .opt:hover { border-color: rgba(240,168,112,0.4); background: rgba(255,255,255,0.5); }
+.quiz-q .opt input[type=radio] { accent-color: #E08850; transform: scale(1.05); }
+.quiz-q .opt.selected { border-color: #F0A870; background: rgba(224,136,80,0.3); }
+.quiz-q.correct-q { border-color: #8CC4A0; background: #F4FAF6; }
+.quiz-q.wrong-q { border-color: #E8A0BF; background: #FFF5F8; }
+.feedback { font-size: 13px; margin: 4px 0 0 36px; display: none; }
+.feedback.correct { display: block; color: #5B8A6A; }
+.feedback.wrong { display: block; color: #C4708A; }
+.quiz-actions { text-align: center; margin: 32px 0 16px; }
+.btn-submit, .btn-retry { padding: 12px 40px; border-radius: 30px; border: none; font-size: 17px;
+  font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: var(--font-title); }
+.btn-submit { background: linear-gradient(135deg, #F0A870, #E08850); color: #fff; }
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(224,136,80,0.4); }
+.btn-retry { background: #FAE8D8; color: #E08850; margin-left: 12px; }
+.btn-retry:hover { background: #F4D8C0; }
+.result-card { display: none; max-width: 600px; margin: 24px auto; text-align: center;
+  background: #FFF; border-radius: 20px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.result-card.show { display: block; }
+.result-card .score-num { font-size: 3rem; font-weight: 800; }
+@media print { .top-nav, .quiz-actions, .page-nav, .result-card { display: none; } .quiz-q { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; } .quiz-q .opt { background: #fff; } }
+@media (max-width: 640px) { .quiz-q { padding: 14px 16px; } .quiz-q .options { margin-left: 0; } .quiz-q .q-title { font-size: 15px; } }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><a href="dian电学.html">第七章 电学</a><span class="sep">&#8250;</span><span>章节测验</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a>
+    <a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a>
+    <a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html">光现象</a>
+    <a href="dian.html" class="active">电学</a>
+    <a href="re.html">热学</a>
+  </div>
+</nav>
+<div class="container"><div class="quiz-wrap">
+<div class="quiz-header"><h2>第七章 电学 &#183; 章节测验</h2><p>共 50 题，满分 50 分。</p></div>
+<div id="quizForm">
+<div class="q-section"><h3>一、电荷与摩擦起电、电路（通路/断路/短路）（第 1-10 题）</h3></div>
+<div class="quiz-q" data-q="1"><span class="q-num">1</span><span class="q-title">用丝绸摩擦过的玻璃棒带什么电？</span><div class="options">
+<label class="opt"><input type="radio" name="q1" value="A">正电</label>
+<label class="opt"><input type="radio" name="q1" value="B">负电</label>
+<label class="opt"><input type="radio" name="q1" value="C">不带电</label>
+<label class="opt"><input type="radio" name="q1" value="D">有时正有时负</label>
+</div><div class="feedback" id="fb1"></div></div>
+<div class="quiz-q" data-q="2"><span class="q-num">2</span><span class="q-title">用毛皮摩擦过的橡胶棒带什么电？</span><div class="options">
+<label class="opt"><input type="radio" name="q2" value="A">正电</label>
+<label class="opt"><input type="radio" name="q2" value="B">负电</label>
+<label class="opt"><input type="radio" name="q2" value="C">不带电</label>
+<label class="opt"><input type="radio" name="q2" value="D">绝缘电</label>
+</div><div class="feedback" id="fb2"></div></div>
+<div class="quiz-q" data-q="3"><span class="q-num">3</span><span class="q-title">摩擦起电的实质是？</span><div class="options">
+<label class="opt"><input type="radio" name="q3" value="A">创造了电荷</label>
+<label class="opt"><input type="radio" name="q3" value="B">电荷从一个物体转移到另一个物体</label>
+<label class="opt"><input type="radio" name="q3" value="C">电荷消失</label>
+<label class="opt"><input type="radio" name="q3" value="D">产生了新的电子</label>
+</div><div class="feedback" id="fb3"></div></div>
+<div class="quiz-q" data-q="4"><span class="q-num">4</span><span class="q-title">同种电荷互相？异种电荷互相？</span><div class="options">
+<label class="opt"><input type="radio" name="q4" value="A">排斥；吸引</label>
+<label class="opt"><input type="radio" name="q4" value="B">吸引；排斥</label>
+<label class="opt"><input type="radio" name="q4" value="C">排斥；排斥</label>
+<label class="opt"><input type="radio" name="q4" value="D">吸引；吸引</label>
+</div><div class="feedback" id="fb4"></div></div>
+<div class="quiz-q" data-q="5"><span class="q-num">5</span><span class="q-title">验电器的工作原理是？</span><div class="options">
+<label class="opt"><input type="radio" name="q5" value="A">同种电荷相互排斥</label>
+<label class="opt"><input type="radio" name="q5" value="B">异种电荷相互吸引</label>
+<label class="opt"><input type="radio" name="q5" value="C">电流的热效应</label>
+<label class="opt"><input type="radio" name="q5" value="D">电磁感应</label>
+</div><div class="feedback" id="fb5"></div></div>
+<div class="quiz-q" data-q="6"><span class="q-num">6</span><span class="q-title">一个完整的电路必须包含哪几部分？</span><div class="options">
+<label class="opt"><input type="radio" name="q6" value="A">电源、用电器、导线</label>
+<label class="opt"><input type="radio" name="q6" value="B">电源、用电器、导线、开关</label>
+<label class="opt"><input type="radio" name="q6" value="C">电源、导线、开关</label>
+<label class="opt"><input type="radio" name="q6" value="D">用电器、导线、开关</label>
+</div><div class="feedback" id="fb6"></div></div>
+<div class="quiz-q" data-q="7"><span class="q-num">7</span><span class="q-title">电路中有持续电流的条件是？</span><div class="options">
+<label class="opt"><input type="radio" name="q7" value="A">有电源即可</label>
+<label class="opt"><input type="radio" name="q7" value="B">电路闭合即可</label>
+<label class="opt"><input type="radio" name="q7" value="C">有电源且电路是通路</label>
+<label class="opt"><input type="radio" name="q7" value="D">有导线即可</label>
+</div><div class="feedback" id="fb7"></div></div>
+<div class="quiz-q" data-q="8"><span class="q-num">8</span><span class="q-title">什么是断路？</span><div class="options">
+<label class="opt"><input type="radio" name="q8" value="A">电流不经用电器直接回电源</label>
+<label class="opt"><input type="radio" name="q8" value="B">电路中某处断开，没有电流通过</label>
+<label class="opt"><input type="radio" name="q8" value="C">用电器被短接</label>
+<label class="opt"><input type="radio" name="q8" value="D">电源正负极直接相连</label>
+</div><div class="feedback" id="fb8"></div></div>
+<div class="quiz-q" data-q="9"><span class="q-num">9</span><span class="q-title">短路是指？</span><div class="options">
+<label class="opt"><input type="radio" name="q9" value="A">开关断开</label>
+<label class="opt"><input type="radio" name="q9" value="B">导线直接将电源正负极相连（或电流绕过用电器）</label>
+<label class="opt"><input type="radio" name="q9" value="C">灯泡烧坏</label>
+<label class="opt"><input type="radio" name="q9" value="D">电路中电阻太大</label>
+</div><div class="feedback" id="fb9"></div></div>
+<div class="quiz-q" data-q="10"><span class="q-num">10</span><span class="q-title">短路时电路中电流会？可能造成什么后果？</span><div class="options">
+<label class="opt"><input type="radio" name="q10" value="A">变小；灯泡变暗</label>
+<label class="opt"><input type="radio" name="q10" value="B">几乎不变；无影响</label>
+<label class="opt"><input type="radio" name="q10" value="C">很大；烧坏电源甚至引起火灾</label>
+<label class="opt"><input type="radio" name="q10" value="D">为零；用电器不工作</label>
+</div><div class="feedback" id="fb10"></div></div>
+<div class="q-section"><h3>二、串联并联特点、电流/电压/电阻概念（第 11-20 题）</h3></div>
+<div class="quiz-q" data-q="11"><span class="q-num">11</span><span class="q-title">串联电路中，电流的特点是？</span><div class="options">
+<label class="opt"><input type="radio" name="q11" value="A">各处电流不相等</label>
+<label class="opt"><input type="radio" name="q11" value="B">各处电流相等</label>
+<label class="opt"><input type="radio" name="q11" value="C">靠近电源正极处电流最大</label>
+<label class="opt"><input type="radio" name="q11" value="D">靠近电源负极处电流最大</label>
+</div><div class="feedback" id="fb11"></div></div>
+<div class="quiz-q" data-q="12"><span class="q-num">12</span><span class="q-title">并联电路中，干路电流与各支路电流的关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q12" value="A">干路电流等于各支路电流之和</label>
+<label class="opt"><input type="radio" name="q12" value="B">干路电流等于最大的支路电流</label>
+<label class="opt"><input type="radio" name="q12" value="C">各支路电流相等</label>
+<label class="opt"><input type="radio" name="q12" value="D">干路电流等于各支路电流的平均值</label>
+</div><div class="feedback" id="fb12"></div></div>
+<div class="quiz-q" data-q="13"><span class="q-num">13</span><span class="q-title">串联电路中，总电压与各部分电压的关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q13" value="A">总电压等于各部分电压的最大值</label>
+<label class="opt"><input type="radio" name="q13" value="B">总电压等于各部分电压之和</label>
+<label class="opt"><input type="radio" name="q13" value="C">总电压等于各部分电压的平均值</label>
+<label class="opt"><input type="radio" name="q13" value="D">总电压等于各部分电压的乘积</label>
+</div><div class="feedback" id="fb13"></div></div>
+<div class="quiz-q" data-q="14"><span class="q-num">14</span><span class="q-title">并联电路中，各支路两端电压的关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q14" value="A">各支路电压不相等</label>
+<label class="opt"><input type="radio" name="q14" value="B">各支路电压相等，都等于电源电压</label>
+<label class="opt"><input type="radio" name="q14" value="C">干路电压大于支路电压</label>
+<label class="opt"><input type="radio" name="q14" value="D">支路电压大于干路电压</label>
+</div><div class="feedback" id="fb14"></div></div>
+<div class="quiz-q" data-q="15"><span class="q-num">15</span><span class="q-title">串联电路的总电阻与各分电阻的关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q15" value="A">总电阻等于各分电阻之和</label>
+<label class="opt"><input type="radio" name="q15" value="B">总电阻等于各分电阻的倒数之和</label>
+<label class="opt"><input type="radio" name="q15" value="C">总电阻小于任一个分电阻</label>
+<label class="opt"><input type="radio" name="q15" value="D">总电阻等于各分电阻的平均值</label>
+</div><div class="feedback" id="fb15"></div></div>
+<div class="quiz-q" data-q="16"><span class="q-num">16</span><span class="q-title">并联电路的总电阻与各分电阻的关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q16" value="A">总电阻等于各分电阻之和</label>
+<label class="opt"><input type="radio" name="q16" value="B">总电阻的倒数等于各分电阻倒数之和</label>
+<label class="opt"><input type="radio" name="q16" value="C">总电阻大于任一个分电阻</label>
+<label class="opt"><input type="radio" name="q16" value="D">总电阻等于最大的分电阻</label>
+</div><div class="feedback" id="fb16"></div></div>
+<div class="quiz-q" data-q="17"><span class="q-num">17</span><span class="q-title">电流的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q17" value="A">伏特（V）</label>
+<label class="opt"><input type="radio" name="q17" value="B">安培（A）</label>
+<label class="opt"><input type="radio" name="q17" value="C">欧姆（Ω）</label>
+<label class="opt"><input type="radio" name="q17" value="D">瓦特（W）</label>
+</div><div class="feedback" id="fb17"></div></div>
+<div class="quiz-q" data-q="18"><span class="q-num">18</span><span class="q-title">电压的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q18" value="A">安培（A）</label>
+<label class="opt"><input type="radio" name="q18" value="B">欧姆（Ω）</label>
+<label class="opt"><input type="radio" name="q18" value="C">伏特（V）</label>
+<label class="opt"><input type="radio" name="q18" value="D">瓦特（W）</label>
+</div><div class="feedback" id="fb18"></div></div>
+<div class="quiz-q" data-q="19"><span class="q-num">19</span><span class="q-title">电阻的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q19" value="A">安培（A）</label>
+<label class="opt"><input type="radio" name="q19" value="B">伏特（V）</label>
+<label class="opt"><input type="radio" name="q19" value="C">瓦特（W）</label>
+<label class="opt"><input type="radio" name="q19" value="D">欧姆（Ω）</label>
+</div><div class="feedback" id="fb19"></div></div>
+<div class="quiz-q" data-q="20"><span class="q-num">20</span><span class="q-title">导体的电阻大小与下列哪个因素无关？</span><div class="options">
+<label class="opt"><input type="radio" name="q20" value="A">导体的长度</label>
+<label class="opt"><input type="radio" name="q20" value="B">导体的横截面积</label>
+<label class="opt"><input type="radio" name="q20" value="C">导体两端的电压</label>
+<label class="opt"><input type="radio" name="q20" value="D">导体的材料</label>
+</div><div class="feedback" id="fb20"></div></div>
+<div class="q-section"><h3>三、欧姆定律 I=U/R 与变阻器（第 21-30 题）</h3></div>
+<div class="quiz-q" data-q="21"><span class="q-num">21</span><span class="q-title">欧姆定律的表达式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q21" value="A">I=U/R</label>
+<label class="opt"><input type="radio" name="q21" value="B">U=I·R</label>
+<label class="opt"><input type="radio" name="q21" value="C">R=U/I</label>
+<label class="opt"><input type="radio" name="q21" value="D">I=R/U</label>
+</div><div class="feedback" id="fb21"></div></div>
+<div class="quiz-q" data-q="22"><span class="q-num">22</span><span class="q-title">根据欧姆定律，当电阻一定时，电流与电压成什么关系？</span><div class="options">
+<label class="opt"><input type="radio" name="q22" value="A">反比</label>
+<label class="opt"><input type="radio" name="q22" value="B">正比</label>
+<label class="opt"><input type="radio" name="q22" value="C">无关</label>
+<label class="opt"><input type="radio" name="q22" value="D">平方关系</label>
+</div><div class="feedback" id="fb22"></div></div>
+<div class="quiz-q" data-q="23"><span class="q-num">23</span><span class="q-title">根据欧姆定律，当电压一定时，电流与电阻成什么关系？</span><div class="options">
+<label class="opt"><input type="radio" name="q23" value="A">正比</label>
+<label class="opt"><input type="radio" name="q23" value="B">反比</label>
+<label class="opt"><input type="radio" name="q23" value="C">无关</label>
+<label class="opt"><input type="radio" name="q23" value="D">平方关系</label>
+</div><div class="feedback" id="fb23"></div></div>
+<div class="quiz-q" data-q="24"><span class="q-num">24</span><span class="q-title">一个电阻两端电压为 6 V，通过电流为 0.3 A，该电阻阻值为？</span><div class="options">
+<label class="opt"><input type="radio" name="q24" value="A">2 Ω</label>
+<label class="opt"><input type="radio" name="q24" value="B">18 Ω</label>
+<label class="opt"><input type="radio" name="q24" value="C">20 Ω</label>
+<label class="opt"><input type="radio" name="q24" value="D">0.05 Ω</label>
+</div><div class="feedback" id="fb24"></div></div>
+<div class="quiz-q" data-q="25"><span class="q-num">25</span><span class="q-title">一个定值电阻两端电压从 3 V 增加到 6 V，通过的电流将？</span><div class="options">
+<label class="opt"><input type="radio" name="q25" value="A">保持不变</label>
+<label class="opt"><input type="radio" name="q25" value="B">减小一半</label>
+<label class="opt"><input type="radio" name="q25" value="C">增大为原来的 2 倍</label>
+<label class="opt"><input type="radio" name="q25" value="D">增大为原来的 4 倍</label>
+</div><div class="feedback" id="fb25"></div></div>
+<div class="quiz-q" data-q="26"><span class="q-num">26</span><span class="q-title">滑动变阻器的工作原理是？</span><div class="options">
+<label class="opt"><input type="radio" name="q26" value="A">改变电阻丝的材料</label>
+<label class="opt"><input type="radio" name="q26" value="B">改变接入电路的电阻丝长度</label>
+<label class="opt"><input type="radio" name="q26" value="C">改变电阻丝的横截面积</label>
+<label class="opt"><input type="radio" name="q26" value="D">改变电阻丝的温度</label>
+</div><div class="feedback" id="fb26"></div></div>
+<div class="quiz-q" data-q="27"><span class="q-num">27</span><span class="q-title">滑动变阻器接入电路时，正确的接线方式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q27" value="A">接任意两个接线柱都可以</label>
+<label class="opt"><input type="radio" name="q27" value="B">必须接上端和下端各一个</label>
+<label class="opt"><input type="radio" name="q27" value="C">必须接两上接线柱</label>
+<label class="opt"><input type="radio" name="q27" value="D">必须接两下接线柱</label>
+</div><div class="feedback" id="fb27"></div></div>
+<div class="quiz-q" data-q="28"><span class="q-num">28</span><span class="q-title">滑动变阻器在电路中的主要作用是什么？</span><div class="options">
+<label class="opt"><input type="radio" name="q28" value="A">储存电能</label>
+<label class="opt"><input type="radio" name="q28" value="B">改变电路中的电流和部分电路两端电压</label>
+<label class="opt"><input type="radio" name="q28" value="C">将电能转化为机械能</label>
+<label class="opt"><input type="radio" name="q28" value="D">放大电流</label>
+</div><div class="feedback" id="fb28"></div></div>
+<div class="quiz-q" data-q="29"><span class="q-num">29</span><span class="q-title">当滑动变阻器的滑片向接入电阻变小的方向移动时，电路中的电流会？</span><div class="options">
+<label class="opt"><input type="radio" name="q29" value="A">变大</label>
+<label class="opt"><input type="radio" name="q29" value="B">变小</label>
+<label class="opt"><input type="radio" name="q29" value="C">不变</label>
+<label class="opt"><input type="radio" name="q29" value="D">先变大后变小</label>
+</div><div class="feedback" id="fb29"></div></div>
+<div class="quiz-q" data-q="30"><span class="q-num">30</span><span class="q-title">一只灯泡正常发光时电阻为 12 Ω，两端电压为 6 V，正常发光时的电流为？</span><div class="options">
+<label class="opt"><input type="radio" name="q30" value="A">2 A</label>
+<label class="opt"><input type="radio" name="q30" value="B">0.5 A</label>
+<label class="opt"><input type="radio" name="q30" value="C">72 A</label>
+<label class="opt"><input type="radio" name="q30" value="D">0.2 A</label>
+</div><div class="feedback" id="fb30"></div></div>
+<div class="q-section"><h3>四、电功 W=UIt 与电功率 P=UI（第 31-40 题）</h3></div>
+<div class="quiz-q" data-q="31"><span class="q-num">31</span><span class="q-title">电功的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q31" value="A">瓦特（W）</label>
+<label class="opt"><input type="radio" name="q31" value="B">焦耳（J）</label>
+<label class="opt"><input type="radio" name="q31" value="C">伏特（V）</label>
+<label class="opt"><input type="radio" name="q31" value="D">安培（A）</label>
+</div><div class="feedback" id="fb31"></div></div>
+<div class="quiz-q" data-q="32"><span class="q-num">32</span><span class="q-title">电功率的物理意义是？</span><div class="options">
+<label class="opt"><input type="radio" name="q32" value="A">电流做功的多少</label>
+<label class="opt"><input type="radio" name="q32" value="B">电流做功的快慢</label>
+<label class="opt"><input type="radio" name="q32" value="C">电阻的大小</label>
+<label class="opt"><input type="radio" name="q32" value="D">电压的高低</label>
+</div><div class="feedback" id="fb32"></div></div>
+<div class="quiz-q" data-q="33"><span class="q-num">33</span><span class="q-title">电功率的国际单位是？</span><div class="options">
+<label class="opt"><input type="radio" name="q33" value="A">焦耳（J）</label>
+<label class="opt"><input type="radio" name="q33" value="B">瓦特（W）</label>
+<label class="opt"><input type="radio" name="q33" value="C">千瓦时（kW·h）</label>
+<label class="opt"><input type="radio" name="q33" value="D">伏安（VA）</label>
+</div><div class="feedback" id="fb33"></div></div>
+<div class="quiz-q" data-q="34"><span class="q-num">34</span><span class="q-title">电能表（电度表）测量的是什么？</span><div class="options">
+<label class="opt"><input type="radio" name="q34" value="A">电流</label>
+<label class="opt"><input type="radio" name="q34" value="B">电压</label>
+<label class="opt"><input type="radio" name="q34" value="C">电功（消耗的电能）</label>
+<label class="opt"><input type="radio" name="q34" value="D">电功率</label>
+</div><div class="feedback" id="fb34"></div></div>
+<div class="quiz-q" data-q="35"><span class="q-num">35</span><span class="q-title">1 千瓦时（1 度电）等于多少焦耳？</span><div class="options">
+<label class="opt"><input type="radio" name="q35" value="A">1000 J</label>
+<label class="opt"><input type="radio" name="q35" value="B">3600 J</label>
+<label class="opt"><input type="radio" name="q35" value="C">3.6×10⁶ J</label>
+<label class="opt"><input type="radio" name="q35" value="D">1×10⁶ J</label>
+</div><div class="feedback" id="fb35"></div></div>
+<div class="quiz-q" data-q="36"><span class="q-num">36</span><span class="q-title">一只灯泡标有“220 V 100 W”，“100 W”是指？</span><div class="options">
+<label class="opt"><input type="radio" name="q36" value="A">灯泡的实际功率</label>
+<label class="opt"><input type="radio" name="q36" value="B">灯泡的额定功率</label>
+<label class="opt"><input type="radio" name="q36" value="C">灯泡在任何情况下的功率</label>
+<label class="opt"><input type="radio" name="q36" value="D">灯泡的最小功率</label>
+</div><div class="feedback" id="fb36"></div></div>
+<div class="quiz-q" data-q="37"><span class="q-num">37</span><span class="q-title">当用电器两端的实际电压等于额定电压时，实际功率与额定功率的关系是？</span><div class="options">
+<label class="opt"><input type="radio" name="q37" value="A">实际功率 > 额定功率</label>
+<label class="opt"><input type="radio" name="q37" value="B">实际功率 < 额定功率</label>
+<label class="opt"><input type="radio" name="q37" value="C">实际功率 = 额定功率</label>
+<label class="opt"><input type="radio" name="q37" value="D">无法确定</label>
+</div><div class="feedback" id="fb37"></div></div>
+<div class="quiz-q" data-q="38"><span class="q-num">38</span><span class="q-title">将标有“220 V 60 W”的灯泡接到 110 V 电源上，其实际功率将？</span><div class="options">
+<label class="opt"><input type="radio" name="q38" value="A">等于 60 W</label>
+<label class="opt"><input type="radio" name="q38" value="B">大于 60 W</label>
+<label class="opt"><input type="radio" name="q38" value="C">小于 60 W</label>
+<label class="opt"><input type="radio" name="q38" value="D">等于 30 W</label>
+</div><div class="feedback" id="fb38"></div></div>
+<div class="quiz-q" data-q="39"><span class="q-num">39</span><span class="q-title">两个电阻串联时，哪个电阻的电功率更大？</span><div class="options">
+<label class="opt"><input type="radio" name="q39" value="A">电阻小的</label>
+<label class="opt"><input type="radio" name="q39" value="B">电阻大的</label>
+<label class="opt"><input type="radio" name="q39" value="C">一样大</label>
+<label class="opt"><input type="radio" name="q39" value="D">无法比较</label>
+</div><div class="feedback" id="fb39"></div></div>
+<div class="quiz-q" data-q="40"><span class="q-num">40</span><span class="q-title">两个电阻并联时，哪个电阻的电功率更大？</span><div class="options">
+<label class="opt"><input type="radio" name="q40" value="A">电阻小的</label>
+<label class="opt"><input type="radio" name="q40" value="B">电阻大的</label>
+<label class="opt"><input type="radio" name="q40" value="C">一样大</label>
+<label class="opt"><input type="radio" name="q40" value="D">无法比较</label>
+</div><div class="feedback" id="fb40"></div></div>
+<div class="q-section"><h3>五、焦耳定律与家庭电路安全用电（第 41-50 题）</h3></div>
+<div class="quiz-q" data-q="41"><span class="q-num">41</span><span class="q-title">焦耳定律表明，电流通过导体产生的热量与什么有关？</span><div class="options">
+<label class="opt"><input type="radio" name="q41" value="A">只与电流有关</label>
+<label class="opt"><input type="radio" name="q41" value="B">与电流的平方、电阻和通电时间成正比</label>
+<label class="opt"><input type="radio" name="q41" value="C">只与电阻有关</label>
+<label class="opt"><input type="radio" name="q41" value="D">只与通电时间有关</label>
+</div><div class="feedback" id="fb41"></div></div>
+<div class="quiz-q" data-q="42"><span class="q-num">42</span><span class="q-title">焦耳定律的表达式是？</span><div class="options">
+<label class="opt"><input type="radio" name="q42" value="A">Q=UIt</label>
+<label class="opt"><input type="radio" name="q42" value="B">Q=I²Rt</label>
+<label class="opt"><input type="radio" name="q42" value="C">Q=Pt</label>
+<label class="opt"><input type="radio" name="q42" value="D">Q=U²/R</label>
+</div><div class="feedback" id="fb42"></div></div>
+<div class="quiz-q" data-q="43"><span class="q-num">43</span><span class="q-title">下列用电器中，主要利用电流热效应工作的是？</span><div class="options">
+<label class="opt"><input type="radio" name="q43" value="A">电视机</label>
+<label class="opt"><input type="radio" name="q43" value="B">电冰箱</label>
+<label class="opt"><input type="radio" name="q43" value="C">电饭煲</label>
+<label class="opt"><input type="radio" name="q43" value="D">洗衣机</label>
+</div><div class="feedback" id="fb43"></div></div>
+<div class="quiz-q" data-q="44"><span class="q-num">44</span><span class="q-title">家庭电路中，火线与零线之间的电压为？</span><div class="options">
+<label class="opt"><input type="radio" name="q44" value="A">36 V</label>
+<label class="opt"><input type="radio" name="q44" value="B">110 V</label>
+<label class="opt"><input type="radio" name="q44" value="C">220 V</label>
+<label class="opt"><input type="radio" name="q44" value="D">380 V</label>
+</div><div class="feedback" id="fb44"></div></div>
+<div class="quiz-q" data-q="45"><span class="q-num">45</span><span class="q-title">家庭电路中的触电事故，一般都是由于人体？</span><div class="options">
+<label class="opt"><input type="radio" name="q45" value="A">接触了零线</label>
+<label class="opt"><input type="radio" name="q45" value="B">直接或间接接触了火线</label>
+<label class="opt"><input type="radio" name="q45" value="C">接触了地线</label>
+<label class="opt"><input type="radio" name="q45" value="D">同时接触了零线和地线</label>
+</div><div class="feedback" id="fb45"></div></div>
+<div class="quiz-q" data-q="46"><span class="q-num">46</span><span class="q-title">测电笔（试电笔）的正确使用方法是？</span><div class="options">
+<label class="opt"><input type="radio" name="q46" value="A">手接触笔尖金属体</label>
+<label class="opt"><input type="radio" name="q46" value="B">手接触笔尾金属体</label>
+<label class="opt"><input type="radio" name="q46" value="C">手不接触任何金属部分</label>
+<label class="opt"><input type="radio" name="q46" value="D">手同时接触笔尖和笔尾</label>
+</div><div class="feedback" id="fb46"></div></div>
+<div class="quiz-q" data-q="47"><span class="q-num">47</span><span class="q-title">保险丝（熔断器）的作用是？</span><div class="options">
+<label class="opt"><input type="radio" name="q47" value="A">节省电能</label>
+<label class="opt"><input type="radio" name="q47" value="B">当电流过大时自动切断电路，保护电路</label>
+<label class="opt"><input type="radio" name="q47" value="C">增加电流</label>
+<label class="opt"><input type="radio" name="q47" value="D">增大电阻</label>
+</div><div class="feedback" id="fb47"></div></div>
+<div class="quiz-q" data-q="48"><span class="q-num">48</span><span class="q-title">保险丝应选用什么材料制成？</span><div class="options">
+<label class="opt"><input type="radio" name="q48" value="A">铜丝</label>
+<label class="opt"><input type="radio" name="q48" value="B">铁丝</label>
+<label class="opt"><input type="radio" name="q48" value="C">电阻大、熔点低的铅锑合金</label>
+<label class="opt"><input type="radio" name="q48" value="D">铝丝</label>
+</div><div class="feedback" id="fb48"></div></div>
+<div class="quiz-q" data-q="49"><span class="q-num">49</span><span class="q-title">漏电保护器的作用是？</span><div class="options">
+<label class="opt"><input type="radio" name="q49" value="A">防止电路电流过大</label>
+<label class="opt"><input type="radio" name="q49" value="B">当发生漏电（火线电流≠零线电流）时自动切断电源</label>
+<label class="opt"><input type="radio" name="q49" value="C">防止雷击</label>
+<label class="opt"><input type="radio" name="q49" value="D">测量用电量</label>
+</div><div class="feedback" id="fb49"></div></div>
+<div class="quiz-q" data-q="50"><span class="q-num">50</span><span class="q-title">如果发现有人触电，首先应该？</span><div class="options">
+<label class="opt"><input type="radio" name="q50" value="A">用手拉开触电者</label>
+<label class="opt"><input type="radio" name="q50" value="B">立即切断电源</label>
+<label class="opt"><input type="radio" name="q50" value="C">用铁棍挑开电线</label>
+<label class="opt"><input type="radio" name="q50" value="D">泼水救人</label>
+</div><div class="feedback" id="fb50"></div></div>
+</div>
+<div class="quiz-actions">
+  <button class="btn-submit" onclick="submitQuiz()">交卷看成绩</button>
+  <button class="btn-retry" id="btnRetry" onclick="retryQuiz()" style="display:none;">重新挑战</button>
+</div>
+<div class="result-card" id="resultCard">
+  <div class="score-num" id="scoreNum"></div>
+  <div class="score-message" id="scoreMsg" style="font-size:1.15rem;margin-top:8px;font-weight:600;"></div>
+</div>
+<div class="page-nav">
+  <a href="guang-quiz.html" class="prev">&#8592; guang测验</a>
+  <a href="re-quiz.html" class="next">re测验 &#8594;</a>
+</div>
+</div></div>
+
+<script>
+var answers={"q1":"A","q2":"B","q3":"B","q4":"A","q5":"A","q6":"B","q7":"C","q8":"B","q9":"B","q10":"C","q11":"B","q12":"A","q13":"B","q14":"B","q15":"A","q16":"B","q17":"B","q18":"C","q19":"D","q20":"C","q21":"A","q22":"B","q23":"B","q24":"C","q25":"C","q26":"B","q27":"B","q28":"B","q29":"A","q30":"B","q31":"B","q32":"B","q33":"B","q34":"C","q35":"C","q36":"B","q37":"C","q38":"C","q39":"B","q40":"A","q41":"B","q42":"B","q43":"C","q44":"C","q45":"B","q46":"B","q47":"B","q48":"C","q49":"B","q50":"B"};
+
+document.querySelectorAll('.quiz-q .opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    var q=this.closest('.quiz-q');
+    q.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});
+    this.classList.add('selected');
+  });
+});
+
+function submitQuiz(){
+  var score=0,total=50;
+  for(var i=1;i<=total;i++){
+    var q=document.querySelector('[data-q="'+i+'"]');
+    var selected=q.querySelector('input:checked');
+    var fb=document.getElementById('fb'+i);
+    if(selected && selected.value===answers['q'+i]){
+      score++;
+      fb.textContent='\u2713 正确';
+      fb.className='feedback correct';
+      q.classList.add('correct-q');
+    }else if(selected){
+      fb.textContent='\u2717 正确答案：'+answers['q'+i];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }else{
+      fb.textContent='\u2717 未作答，正确答案：'+answers['q'+i];
+      fb.className='feedback wrong';
+      q.classList.add('wrong-q');
+    }
+  }
+  document.querySelector('.btn-submit').style.display='none';
+  document.getElementById('btnRetry').style.display='inline-block';
+  var card=document.getElementById('resultCard');
+  card.classList.add('show');
+  document.getElementById('scoreNum').textContent=score+' / 50';
+  document.getElementById('scoreNum').style.color=score>=45?'#5B8A6A':score>=35?'#C4A060':score>=25?'#C4708A':'#C4708A';
+  var msg='';
+  if(score===50)msg='满分通关！电学大师！';
+  else if(score>=45)msg='非常棒！电学规律掌握得很好～';
+  else if(score>=35)msg='不错！重点复习欧姆定律和电功率～';
+  else if(score>=25)msg='还需加强，建议多画电路图分析～';
+  else msg='加油！从电荷基础开始再复习一遍吧！';
+  document.getElementById('scoreMsg').textContent=msg;
+}
+
+function retryQuiz(){
+  document.querySelectorAll('.quiz-q input[type=radio]').forEach(function(r){r.checked=false});
+  document.querySelectorAll('.quiz-q .opt').forEach(function(o){o.classList.remove('selected')});
+  document.querySelectorAll('.quiz-q').forEach(function(q){q.classList.remove('correct-q','wrong-q')});
+  document.querySelectorAll('.feedback').forEach(function(f){f.className='feedback';f.textContent=''});
+  document.querySelector('.btn-submit').style.display='inline-block';
+  document.getElementById('btnRetry').style.display='none';
+  document.getElementById('resultCard').classList.remove('show');
+}
+</script>
+</body>
+</html>

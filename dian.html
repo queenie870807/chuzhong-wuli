@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第七章 电学 - 初中物理知识手册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* 家庭电路示意图 */
+.illus-home-circuit { position:relative; width:240px; height:200px; }
+.illus-home-circuit .wire-l { position:absolute; top:20px; left:40px; width:3px; height:160px; background:#C87878; }
+.illus-home-circuit .wire-l::after { content:"火线 L"; position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:9px; font-weight:700; color:#C87878; white-space:nowrap; }
+.illus-home-circuit .wire-n { position:absolute; top:20px; left:100px; width:3px; height:160px; background:#6BA0C0; }
+.illus-home-circuit .wire-n::after { content:"零线 N"; position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:9px; font-weight:700; color:#6BA0C0; white-space:nowrap; }
+.illus-home-circuit .wire-e { position:absolute; top:20px; left:160px; width:3px; height:160px; background:repeating-linear-gradient(to bottom, #60A060 0px, #60A060 4px, #F0E838 4px, #F0E838 8px); }
+.illus-home-circuit .wire-e::after { content:"地线 E"; position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:9px; font-weight:700; color:#408040; white-space:nowrap; }
+.illus-home-circuit .bulb { position:absolute; top:60px; left:30px; width:30px; height:36px; background:#FFF5D0; border:2px solid #E0C870; border-radius:18px 18px 8px 8px; }
+.illus-home-circuit .bulb::after { content:""; position:absolute; bottom:-12px; left:50%; transform:translateX(-50%); width:6px; height:10px; background:#888; border-radius:0 0 3px 3px; }
+.illus-home-circuit .l-appliance1 { position:absolute; top:60px; left:136px; font-size:9px; font-weight:700; color:#C87878; }
+.illus-home-circuit .l-appliance2 { position:absolute; top:120px; left:88px; font-size:9px; font-weight:700; color:#C87878; }
+.illus-home-circuit .socket { position:absolute; top:110px; left:60px; width:28px; height:28px; border:2px solid #999; border-radius:6px; background:#fff; }
+.illus-home-circuit .socket::before { content:""; position:absolute; top:6px; left:6px; width:6px; height:6px; background:#C87878; border-radius:50%; }
+.illus-home-circuit .socket::after { content:""; position:absolute; top:6px; right:6px; width:6px; height:6px; background:#6BA0C0; border-radius:50%; }
+.illus-home-circuit .leakage { position:absolute; top:20px; left:10px; width:24px; height:32px; border:2px solid #60A060; border-radius:4px; background:rgba(96,160,96,0.1); }
+.illus-home-circuit .leakage::after { content:"漏保"; position:absolute; top:8px; left:50%; transform:translateX(-50%); font-size:7px; font-weight:700; color:#408040; }
+.illus-home-circuit .label-ground { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); font-size:9px; color:#60A060; font-weight:700; }
+
+/* 伏安法测电阻 */
+.illus-vam { position:relative; width:240px; height:200px; }
+.illus-vam .battery { position:absolute; top:30px; left:10px; width:50px; height:30px; border:2px solid #408078; border-radius:4px; }
+.illus-vam .battery::after { content:"+"; position:absolute; left:6px; top:50%; transform:translateY(-50%); font-size:14px; font-weight:700; color:#C87878; }
+.illus-vam .battery::before { content:"-"; position:absolute; right:6px; top:50%; transform:translateY(-50%); font-size:14px; font-weight:700; color:#6BA0C0; }
+.illus-vam .wire-t { position:absolute; top:45px; left:10px; width:80px; height:2px; background:#408078; }
+.illus-vam .rx { position:absolute; top:36px; left:90px; width:30px; height:20px; border:2px solid #408078; background:rgba(128,192,184,0.1); }
+.illus-vam .rx::after { content:"Rx"; position:absolute; top:0; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#408078; }
+.illus-vam .wire-b { position:absolute; top:45px; left:120px; width:60px; height:2px; background:#408078; }
+.illus-vam .ammeter { position:absolute; top:38px; left:180px; width:40px; height:22px; border:2px solid #C87878; border-radius:4px; background:rgba(200,120,120,0.08); }
+.illus-vam .ammeter::after { content:"A"; position:absolute; top:1px; left:50%; transform:translateX(-50%); font-size:12px; font-weight:700; color:#C87878; }
+.illus-vam .wire-side { position:absolute; top:64px; left:200px; width:2px; height:80px; background:#408078; }
+.illus-vam .switch { position:absolute; top:144px; left:188px; width:26px; height:8px; background:#888; border-radius:4px; }
+.illus-vam .switch::after { content:""; position:absolute; top:-6px; left:10px; width:6px; height:12px; background:#888; border-radius:2px; transform:rotate(30deg); }
+.illus-vam .wire-bot { position:absolute; top:148px; left:12px; width:180px; height:2px; background:#408078; }
+.illus-vam .wire-to-rx { position:absolute; top:64px; left:10px; width:2px; height:84px; background:#408078; }
+.illus-vam .voltmeter { position:absolute; top:80px; left:90px; width:50px; height:28px; border:2px solid #6BA0C0; border-radius:4px; background:rgba(107,160,192,0.08); }
+.illus-vam .voltmeter::after { content:"V"; position:absolute; top:3px; left:50%; transform:translateX(-50%); font-size:14px; font-weight:700; color:#6BA0C0; }
+.illus-vam .label-vam { position:absolute; bottom:6px; left:50%; transform:translateX(-50%); font-size:11px; font-weight:700; color:#408078; }
+
+/* 电功率对比 */
+.illus-power { position:relative; width:240px; height:200px; }
+.illus-power .bulb-dim { position:absolute; top:40px; left:30px; }
+.illus-power .bulb-dim .glass { width:36px; height:44px; background:#FFF5D0; border:3px solid #D0C080; border-radius:50% 50% 10px 10px; position:relative; }
+.illus-power .bulb-dim .glass::after { content:""; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:8px; height:12px; background:#999; border-radius:0 0 4px 4px; }
+.illus-power .bulb-dim .dim-light { position:absolute; top:6px; left:50%; transform:translateX(-50%); width:20px; height:20px; border-radius:50%; background:radial-gradient(circle, rgba(240,216,56,0.6), transparent 70%); }
+.illus-power .bulb-bright { position:absolute; top:40px; right:30px; }
+.illus-power .bulb-bright .glass { width:36px; height:44px; background:#FFFCE8; border:3px solid #E0C870; border-radius:50% 50% 10px 10px; }
+.illus-power .bulb-bright .glass::after { content:""; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:8px; height:12px; background:#999; border-radius:0 0 4px 4px; }
+.illus-power .bulb-bright .bright-light { position:absolute; top:2px; left:50%; transform:translateX(-50%); width:28px; height:28px; border-radius:50%; background:radial-gradient(circle, rgba(240,216,56,1), rgba(240,184,56,0.6) 40%, transparent 70%); }
+.illus-power .label-dim { position:absolute; bottom:60px; left:30px; font-size:12px; font-weight:700; color:#A09050; text-align:center; }
+.illus-power .label-bright { position:absolute; bottom:60px; right:22px; font-size:12px; font-weight:700; color:#C07850; text-align:center; }
+.illus-power .label-compare { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); font-size:11px; font-weight:700; color:#408078; }
+</style>
+</head>
+<body class="ch7">
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><span>第七章 电学</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a><a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a><a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a><a href="guang.html">光现象</a>
+    <a href="dian.html" class="active">电学</a><a href="re.html">热学</a>
+  </div>
+</nav>
+
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="搜索知识点，如「串联」「欧姆定律」..." oninput="doSearch()">
+  <span class="search-icon">&#128269;</span>
+  <div class="no-result" id="noResult">未找到匹配内容，试试其他关键词吧</div>
+</div>
+
+<div class="container">
+
+<section class="ch7">
+<div class="chapter-title"><span class="ch-num">第七章</span>&#9889; 电学</div>
+
+<div class="mindmap-grid">
+  <div class="mm-card"><h4>&#9889; 电荷与电路</h4><ul><li>正电荷/负电荷</li><li>通路·断路·短路</li><li>电路元件符号</li></ul></div>
+  <div class="mm-card"><h4>&#128268; 串并联电路</h4><ul><li>串联分压</li><li>并联分流</li><li>特点对比表</li></ul></div>
+  <div class="mm-card"><h4>&#128259; 电流与电压</h4><ul><li>I = Q / t</li><li>电压是电流的"推力"</li><li>电流表/电压表使用</li></ul></div>
+  <div class="mm-card"><h4>&#127768; 电阻与变阻器</h4><ul><li>R = U / I</li><li>滑动变阻器</li><li>影响电阻因素</li></ul></div>
+  <div class="mm-card"><h4>&#9889; 欧姆定律</h4><ul><li>I = U / R</li><li>伏安法测电阻</li><li>串并联电阻计算</li></ul></div>
+  <div class="mm-card"><h4>&#128161; 电功与电功率</h4><ul><li>W = UIt, P = UI</li><li>额定 vs 实际功率</li><li>千瓦时（度）</li></ul></div>
+  <div class="mm-card"><h4>&#128293; 焦耳定律</h4><ul><li>Q = I&#178;Rt</li><li>电热器原理</li><li>电流热效应</li></ul></div>
+  <div class="mm-card"><h4>&#127973; 家庭电路与安全</h4><ul><li>火线/零线/地线</li><li>安全用电</li><li>漏电保护</li></ul></div>
+</div>
+
+<div class="section-label">&#128218; 核心概念</div>
+
+<!-- 电荷 -->
+<div class="concept-card" id="c7-charge">
+  <div class="card-header">
+    <div class="card-icon">&#9889;</div>
+    <div><h4>电荷与电流</h4><p class="subtitle">电的本质是电荷的定向移动</p></div>
+  </div>
+  <div class="card-body">
+    <p>自然界只有<strong>两种电荷</strong>：正电荷和负电荷。同种电荷相互排斥，异种电荷相互吸引。</p>
+    <p><strong>电流</strong>：电荷的<strong>定向移动</strong>形成电流。规定<strong>正电荷移动方向</strong>为电流方向（实际金属导体中是自由电子反向移动）。</p>
+    <p>电流强度：<strong>I = Q / t</strong>（单位时间通过导体横截面的电荷量），单位：安培(A)。</p>
+  </div>
+</div>
+
+<!-- ===== 串并联特点完整对比表（新增） ===== -->
+<div class="concept-card" id="c7-sp">
+  <div class="card-header">
+    <div class="card-icon">&#128268;</div>
+    <div><h4>串联电路与并联电路 —— 完整对比</h4><p class="subtitle">初中物理最常考的知识点，没有之一！</p></div>
+  </div>
+  <div class="card-body">
+    <table class="quick-table">
+      <tr><th>对比项</th><th>串联电路</th><th>并联电路</th></tr>
+      <tr><td><strong>连接方式</strong></td><td>首尾顺次相连（一条路）</td><td>首首相连、尾尾相连（多条路）</td></tr>
+      <tr><td><strong>电流特点</strong></td><td><strong>I = I&#8321; = I&#8322;</strong>（处处相等）</td><td><strong>I = I&#8321; + I&#8322;</strong>（干路 = 各支路和）</td></tr>
+      <tr><td><strong>电压特点</strong></td><td><strong>U = U&#8321; + U&#8322;</strong>（总电压 = 各分压和）</td><td><strong>U = U&#8321; = U&#8322;</strong>（各支路电压相等）</td></tr>
+      <tr><td><strong>电阻特点</strong></td><td><strong>R = R&#8321; + R&#8322;</strong>（总电阻 > 任一分电阻）</td><td><strong>1/R = 1/R&#8321; + 1/R&#8322;</strong>（总电阻 < 任一分电阻）</td></tr>
+      <tr><td><strong>用电器关系</strong></td><td>相互影响（一个断开，全部不工作）</td><td>互不影响（各自独立工作）</td></tr>
+      <tr><td><strong>开关控制</strong></td><td>一只开关控制所有用电器</td><td>干路开关控制所有，支路开关只控该支路</td></tr>
+      <tr><td><strong>生活应用</strong></td><td>节日装饰彩灯（老式）、手电筒</td><td>家庭电路、路灯、教室灯具</td></tr>
+      <tr><td><strong>记忆口诀</strong></td><td>"串流等、压分、阻加大"</td><td>"并压等、流分、阻减小"</td></tr>
+    </table>
+    <div class="example-tag"><span class="emoji">&#127968;</span>为什么家里所有电器都是<strong>并联</strong>的？因为并联互不影响——关掉电视不影响冰箱工作，且所有电器都获得相同的 220V 电压。如果是串联，关掉电视全家断电！</div>
+    <div class="example-tag"><span class="emoji">&#128161;</span>为什么并联电路总电阻反而变小？多一条路就是多一个"通道"，相当于导体的横截面积变大——电阻自然变小。</div>
+  </div>
+</div>
+
+<!-- 电阻与变阻器 -->
+<div class="concept-card" id="c7-resistance">
+  <div class="card-header">
+    <div class="card-icon">&#127768;</div>
+    <div><h4>电阻与变阻器</h4><p class="subtitle">阻碍电流的"路障"</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>电阻 R</strong>表示导体对电流的<strong>阻碍作用</strong>。单位：欧姆(&#937;)。</p>
+    <p><b>影响电阻的因素：</b>材料、长度（越长电阻越大）、横截面积（越细电阻越大）、温度（一般温度越高电阻越大）。</p>
+    <p><strong>滑动变阻器：</strong>通过改变接入电路的<strong>电阻丝长度</strong>来改变电阻。接线原则："一上一下"——一个接上接线柱、一个接下接线柱。</p>
+    <div class="example-tag"><span class="emoji">&#128264;</span>音量旋钮就是变阻器——旋转改变电阻 &#8594; 改变电路中的电流 &#8594; 改变喇叭音量大小。</div>
+    <div class="example-tag"><span class="emoji">&#128250;</span>台灯调光——也是变阻器原理。不过现代 LED 台灯多用电脉冲调光（更省电），原理不同。</div>
+    <div class="example-tag"><span class="emoji">&#127751;</span>光敏电阻——光照越强电阻越小。路灯自动开关就用它：天黑时电阻增大，触发电路开灯。</div>
+  </div>
+</div>
+
+<!-- 欧姆定律 -->
+<div class="concept-card" id="c7-ohm">
+  <div class="card-header">
+    <div class="card-icon">&#9889;</div>
+    <div><h4>欧姆定律</h4><p class="subtitle">I = U / R —— 电学的"牛顿定律"</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">I = U / R</div>
+      <div class="var-list">
+        <span class="var-tag pink">I 电流 (A)</span>
+        <span class="var-tag blue">U 电压 (V)</span>
+        <span class="var-tag green">R 电阻 (&#937;)</span>
+      </div>
+    </div>
+    <p>变形：U = IR，R = U / I。注意：<b>R = U/I 不是定义式</b>——只能说电阻等于电压与电流的比值，不能说"电阻与电压成正比"（电阻是导体本身的属性！）。</p>
+  </div>
+</div>
+
+<!-- 伏安法测电阻 CSS 图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-vam">
+      <div class="battery"></div>
+      <div class="wire-t"></div>
+      <div class="rx"></div>
+      <div class="wire-b"></div>
+      <div class="ammeter"></div>
+      <div class="wire-side"></div>
+      <div class="switch"></div>
+      <div class="wire-bot"></div>
+      <div class="wire-to-rx"></div>
+      <div class="voltmeter"></div>
+      <div class="label-vam">伏安法：R = &#8201;U&#8198;/&#8201;I</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128300; Tips 图示</span>
+    <h4>伏安法测电阻</h4>
+    <p>电流表（A）<strong>串联</strong>在被测电路中测电流 I；电压表（V）<strong>并联</strong>在 Rx 两端测电压 U。根据 R = U/I 算出电阻。改变滑动变阻器取多组数据求平均值减小误差。</p>
+  </div>
+</div>
+
+<!-- 电功与电功率 -->
+<div class="concept-card" id="c7-power">
+  <div class="card-header">
+    <div class="card-icon">&#128161;</div>
+    <div><h4>电功与电功率 —— 额定 vs 实际</h4><p class="subtitle">灯泡上标的"220V 40W"是什么意思？</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>电功：W = UIt</strong>（电流做功 = 电压 &#215; 电流 &#215; 时间），单位：焦耳(J)。生活中常用：<strong>千瓦时(kWh)</strong>——"度"。1 度 = 1 kWh = 3.6 &#215; 10&#8310; J。</p>
+    <p><strong>电功率：P = UI</strong>（单位时间电流做的功），单位：瓦特(W)。</p>
+    <div class="formula-spotlight">
+      <div class="formula-main">P = UI = I&#178;R = U&#178;/R</div>
+      <div class="var-list">
+        <span class="var-tag pink">P 电功率 (W)</span>
+        <span class="var-tag blue">U 电压 (V)</span>
+        <span class="var-tag green">I 电流 (A)</span>
+      </div>
+    </div>
+    <p><strong>额定功率 vs 实际功率：</strong>灯泡上写的"220V 40W"——220V 是额定电压，40W 是额定功率。如果实际电压低于 220V，实际功率就低于 40W，灯泡变暗。</p>
+    <div class="example-tag"><span class="emoji">&#128161;</span>同样 220V 电压下，100W 灯泡比 40W 灯泡亮——因为 P 更大，单位时间电流做功更多。计算公式：P实/P额 = (U实&#178;/R) / (U额&#178;/R) = U实&#178;/U额&#178;。如果电压降到 110V，功率只有额定的 1/4！</div>
+  </div>
+</div>
+
+<!-- 电功率对比 CSS 图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-power">
+      <div class="bulb-dim"><div class="glass"></div><div class="dim-light"></div></div>
+      <div class="bulb-bright"><div class="glass"></div><div class="bright-light"></div></div>
+      <div class="label-dim">40W<br>（暗）</div>
+      <div class="label-bright">100W<br>（亮）</div>
+      <div class="label-compare">相同电压下，P 越大越亮</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#128161; Tips 图示</span>
+    <h4>电功率对比：40W vs 100W</h4>
+    <p>两个灯泡接同一个 220V 电源——100W 灯泡的电阻更小（R = U&#178;/P），电流更大，单位时间消耗电能更多，因此更亮。额定功率越大灯泡越亮（同一电压下）。</p>
+  </div>
+</div>
+
+<!-- 焦耳定律 -->
+<div class="concept-card" id="c7-joule">
+  <div class="card-header">
+    <div class="card-icon">&#128293;</div>
+    <div><h4>焦耳定律 —— 「电流生热的数学」</h4><p class="subtitle">电流通过导体时为什么发热？发了多少热？</p></div>
+  </div>
+  <div class="card-body">
+    <div class="formula-spotlight">
+      <div class="formula-main">Q = I&#178; R t</div>
+      <div class="var-list">
+        <span class="var-tag pink">Q 热量 (J)</span>
+        <span class="var-tag blue">I 电流 (A)</span>
+        <span class="var-tag green">R 电阻 (&#937;)</span>
+        <span class="var-tag pink">t 时间 (s)</span>
+      </div>
+    </div>
+    <p>电流通过导体产生的热量与<strong>电流的平方</strong>成正比，与<strong>电阻</strong>成正比，与<strong>通电时间</strong>成正比。这就是为什么电流翻倍时发热量翻 4 倍！</p>
+    <p><b>电热器原理：</b>利用电流的热效应——电饭煲、电热水壶、电暖器、电烙铁。电热器的核心是<strong>电阻丝</strong>（电阻大、熔点高）。</p>
+    <div class="example-tag"><span class="emoji">&#127859;</span>电饭煲——电流通过电阻丝发热，把饭煮熟。如果焦耳定律中的 I 变为两倍，Q 变为 4 倍——所以短路时电流激增，导线瞬间烧毁！</div>
+    <div class="example-tag"><span class="emoji">&#128161;</span>白炽灯靠电流通过钨丝发热到白炽状态发光——95% 的电能变成热能，只有 5% 变成光，效率极低。LED 灯不靠发热发光，效率高得多。</div>
+  </div>
+</div>
+
+<!-- ===== 家庭电路（新增） ===== -->
+<div class="concept-card" id="c7-home">
+  <div class="card-header">
+    <div class="card-icon">&#127968;</div>
+    <div><h4>家庭电路 —— 「三根线守护全家安全」</h4><p class="subtitle">你家墙壁里的电线是怎么接的？</p></div>
+  </div>
+  <div class="card-body">
+    <p>家庭电路电压：<strong>220V 交流电</strong>。三根线：</p>
+    <p><strong>&#183; 火线（L）</strong>：红色/棕色，对地电压 220V，是"来电"的线。</p>
+    <p><strong>&#183; 零线（N）</strong>：蓝色，与火线构成回路，正常情况下对地电压为 0。</p>
+    <p><strong>&#183; 地线（E）</strong>：黄绿双色，与大地相连，电器外壳漏电时把电流导入大地——保护人的生命线！</p>
+    <p><strong>漏电保护器：</strong>检测火线和零线的电流差。正常时 I火 = I零（差值为 0）。有人触电时电流通过人体流入大地，I火 > I零——漏电保护器立即跳闸断电（0.1 秒内）。</p>
+    <div class="example-tag"><span class="emoji">&#9888;</span>为什么不能用湿手摸开关？水是导体——湿手摸开关时，电流可能通过水+人体流入大地，形成触电回路！</div>
+  </div>
+</div>
+
+<!-- 家庭电路 CSS 图示 -->
+<div class="tip-card">
+  <div class="tip-illustration">
+    <div class="illus-home-circuit">
+      <div class="wire-l"></div><div class="wire-n"></div><div class="wire-e"></div>
+      <div class="bulb"></div>
+      <div class="socket"></div>
+      <div class="leakage"></div>
+      <div class="l-appliance1">&#8592; 灯泡</div>
+      <div class="l-appliance2">&#8592; 插座</div>
+      <div class="label-ground">&#8593; 地线接地</div>
+    </div>
+  </div>
+  <div class="tip-content">
+    <span class="tip-badge">&#127968; Tips 图示</span>
+    <h4>家庭电路：火线(L) + 零线(N) + 地线(E)</h4>
+    <p>火线（红）提供 220V 电压，零线（蓝）构成回路，地线（黄绿）保护安全。漏电保护器监测火线零线电流差。所有用电器<strong>并联</strong>接入。</p>
+  </div>
+</div>
+
+<!-- 安全用电 -->
+<div class="concept-card" id="c7-safety">
+  <div class="card-header">
+    <div class="card-icon">&#9888;</div>
+    <div><h4>安全用电要点</h4><p class="subtitle">电是好朋友，但发脾气时要命！</p></div>
+  </div>
+  <div class="card-body">
+    <p><strong>安全电压</strong>：不高于 <strong>36V</strong>。人体安全电流：不超过 10mA（交流）。</p>
+    <p><strong>触电原因</strong>：人体直接或间接接触火线，电流经人体流入大地。</p>
+    <p><strong>安全用电原则</strong>：&#9312;不接触低压带电体（火线）；&#9313;不靠近高压带电体；&#9314;不用湿手摸电器；&#9315;不损坏绝缘层；&#9316;金属外壳用电器必须<strong>接地</strong>。</p>
+    <div class="example-tag"><span class="emoji">&#127753;</span>雷雨天不要在树下躲雨——雷电（高压放电）会击中高处物体，电流沿树干到地面形成跨步电压，造成触电。</div>
+  </div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">小鸟站在高压线上为什么没事？</div>
+  <div class="fun-a">小鸟两脚站在<strong>同一根</strong>高压线上，两脚间距极小，两脚间的<strong>电压差几乎为零</strong>——没有电压差就没有电流通过身体。如果小鸟一脚踩火线一脚踩零线……那一刻它就变成了一只"电烤小鸟"。所以不是小鸟不怕电，是它聪明地站对了地方！</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">爱迪生和特斯拉的"电流大战"</div>
+  <div class="fun-a">19 世纪末，爱迪生推广<strong>直流电</strong>，特斯拉推广<strong>交流电</strong>。爱迪生甚至用电死大象来证明交流电"危险"——但最终交流电赢了，因为交流电能通过变压器升压远距离传输，损耗极小。今天你家用的就是交流电，但手机充电器把交流转为直流——两人都赢了。</div>
+</div>
+
+<div class="fun-fact">
+  <div class="fun-badge">&#10024; 趣味冷知识</div>
+  <div class="fun-q">人体电阻有多大？</div>
+  <div class="fun-a">干燥皮肤电阻约为 10000~100000 &#937;，但皮肤潮湿时电阻骤降至 1000 &#937; 以下！这就是为什么游泳后摸电器特别危险——皮肤湿润时 36V 就可能致命。</div>
+</div>
+
+<div class="misconception">
+  <h4>&#9888; 常见误区提醒</h4>
+  <ul>
+    <li><span class="mistake">&#10060; "串联电路中电流处处相等，所以各用电器亮度相同"</span> &#8594; <span class="correct">&#9989; 串联电流相等，但用电器电阻不同 &#8594; 电压分配不同（U=IR）&#8594; 实际功率不同（P=UI）&#8594; 亮度不同！</span></li>
+    <li><span class="mistake">&#10060; "零线没有电，摸着没事"</span> &#8594; <span class="correct">&#9989; 零线在正常工作时对地电压为 0，但电路断开时零线可能带电！维修必须切断总闸。</span></li>
+    <li><span class="mistake">&#10060; "额定功率大的灯泡一定更费电"</span> &#8594; <span class="correct">&#9989; 不一定！A 用 100W 开 10 分钟（0.017 度）vs B 用 20W 开 2 小时（0.04 度）——B 反而更费电。</span></li>
+    <li><span class="mistake">&#10060; "焦耳定律 I&#178;R 中电流平方意味着任何时候 I 影响最大"</span> &#8594; <span class="correct">&#9989; 正确——这就是为什么电线发热的罪魁祸首是过载（电流过大），不是电压过高。</span></li>
+    <li><span class="mistake">&#10060; "测电阻时电压表串联、电流表并联"</span> &#8594; <span class="correct">&#9989; 反了！电压表并联（测两端电压），电流表串联（让电流通过）。</span></li>
+  </ul>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：水果电池</h4>
+  <ol class="step-list">
+    <li>准备：一个柠檬（或土豆）、一片铜片（硬币也行）、一片锌片（镀锌钉）。</li>
+    <li>把铜片和锌片插入柠檬（不要相碰），用导线连接 LED 小灯泡或电子表。</li>
+    <li>观察——LED 亮了！水果里的酸性汁液充当了电解质。</li>
+    <li>多串几个水果电压更高，试试能点亮几个 LED！</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：识别导体和绝缘体</h4>
+  <ol class="step-list">
+    <li>准备：一节电池、一个小灯泡、三根导线。连接成简单电路。</li>
+    <li>电路留一个"缺口"，往缺口里"塞"不同物品：铅笔芯、橡皮、硬币、塑料尺子、钥匙……</li>
+    <li>灯泡亮&#8594;导体，不亮&#8594;绝缘体。</li>
+    <li><b>惊喜：</b>铅笔芯（石墨）是导体！纯水几乎不导电，但盐水导电性很好。</li>
+  </ol>
+</div>
+
+<div class="experiment">
+  <h4>&#129514; 家庭小实验：感受焦耳定律</h4>
+  <ol class="step-list">
+    <li>准备：一节 1.5V 电池、一段细铁丝（或铅笔芯粉末）。</li>
+    <li>用导线连接电池和细铁丝——几秒后铁丝变热！</li>
+    <li>这就是焦耳定律 Q = I&#178;Rt 的直观体验——电流通过电阻产生了热量。</li>
+    <li><b>注意</b>：不要短路太长时间，以免烫伤或损坏电池。</li>
+  </ol>
+</div>
+
+<div class="parent-tip">
+  <h4>&#128105;&#8203;&#127891; 家长辅导小贴士</h4>
+  <ul>
+    <li>串并联对比表是电学核心——建议让孩子默写三句话："串流等、压分、阻加大 / 并压等、流分、阻减小"</li>
+    <li>水果电池是最受欢迎的家庭实验：用柠檬/土豆+硬币+镀锌钉，孩子能看到自己"发电"</li>
+    <li>安全用电教育要结合实际：打开家里的配电箱给孩子看火线零线地线、漏电保护器、空气开关</li>
+    <li>电费单也是好教材——让孩子算算"1 度电能干什么"：100W 灯泡亮 10 小时 / 空调开 1 小时 / 手机充 100 次</li>
+    <li>额定 vs 实际功率：把 220V 的台灯插在调压器上降电压，观察灯泡变暗——直观感受 P = U&#178;/R</li>
+  </ul>
+</div>
+</section>
+
+<div class="page-nav">
+  <a href="guang.html" class="prev">&#8592; 第六章 光现象</a>
+  <a href="re.html" class="next">第八章 热学 &#8594;</a>
+</div>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('backTop').style.display=window.scrollY>600?'flex':'none'});
+function doSearch(){
+  var q=document.getElementById('searchInput').value.trim().toLowerCase();
+  var no=document.getElementById('noResult');
+  document.querySelectorAll('mark.highlight').forEach(function(m){
+    var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
+  });
+  if(!q){no.style.display='none';document.querySelectorAll('.concept-card,.mindmap-grid,.quick-table,.misconception,.experiment,.parent-tip,.fun-fact,.tip-card,.section-label,.chapter-title').forEach(function(e){e.style.display=''});return;}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function hl(n){
+    if(n.nodeType===3){
+      var t=n.textContent,lo=t.toLowerCase(),i=lo.indexOf(q);
+      if(i===-1)return false;
+      var s=document.createElement('span');
+      s.innerHTML=esc(t.substring(0,i))+'<mark class="highlight">'+esc(t.substring(i,i+q.length))+'</mark>'+esc(t.substring(i+q.length));
+      n.parentNode.replaceChild(s,n); return true;
+    }
+    if(n.nodeType===1&&['SCRIPT','STYLE','MARK'].indexOf(n.tagName)===-1){var f=false;for(var j=0;j<n.childNodes.length;j++)if(hl(n.childNodes[j]))f=true;return f}
+    return false;
+  }
+  var fa=false;
+  document.querySelectorAll('.concept-card,.mm-card,.quick-table,.misconception ul li,.experiment,.parent-tip,.fun-fact,.tip-card').forEach(function(e){if(hl(e)){e.style.display='';fa=true}else{e.style.display='none'}});
+  document.querySelectorAll('.chapter-title,.section-label,.mindmap-grid').forEach(function(e){e.style.display=''});
+  no.style.display=fa?'none':'block';
+}
+</script>
+</body>
+</html>
