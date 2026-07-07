@@ -670,5 +670,56 @@ function doSearch(){
   no.style.display=fa?'none':'block';
 }
 </script>
+
+<script>
+// ===== 侧边目录生成 =====
+(function(){
+  var tocLinks=document.getElementById("tocLinks");
+  var ddLinks=document.getElementById("tocDropdownLinks");
+  if(!tocLinks||!ddLinks) return;
+  var labels=document.querySelectorAll(".section-label");
+  labels.forEach(function(lbl, i){
+    var id="sec-"+i;
+    lbl.id=id;
+    var text=lbl.textContent.trim();
+    // remove emoji prefix
+    text=text.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{200D}]+/u,"").trim();
+    if(text.length>18) text=text.substring(0,16)+"…";
+    if(!text) text="模块 "+(i+1);
+    var a='<a href="#'+id+'" data-sec="'+i+'">'+text+'</a>';
+    tocLinks.innerHTML+=a;
+    ddLinks.innerHTML+=a;
+  });
+
+  // scroll spy
+  window.addEventListener("scroll",function(){
+    var links=document.querySelectorAll(".side-toc a, .toc-dropdown a");
+    var scrollY=window.scrollY+140;
+    var activeIdx=-1;
+    labels.forEach(function(lbl,i){
+      if(lbl.getBoundingClientRect().top+window.scrollY<=scrollY) activeIdx=i;
+    });
+    links.forEach(function(a){a.classList.remove("active")});
+    if(activeIdx>=0){
+      var sel='a[data-sec="'+activeIdx+'"]';
+      var tla=document.querySelector(".side-toc "+sel);
+      var dla=document.querySelector(".toc-dropdown "+sel);
+      if(tla) tla.classList.add("active");
+      if(dla) dla.classList.add("active");
+    }
+  });
+})();
+
+function toggleToc(){
+  var dd=document.getElementById("tocDropdown");
+  if(dd) dd.classList.toggle("show");
+}
+document.addEventListener("click",function(e){
+  var dd=document.getElementById("tocDropdown");
+  var tb=document.getElementById("tocHamburger");
+  if(dd&&tb&&!dd.contains(e.target)&&!tb.contains(e.target)) dd.classList.remove("show");
+});
+</script>
+
 </body>
 </html>

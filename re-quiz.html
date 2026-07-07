@@ -375,6 +375,18 @@
 <div class="result-card" id="resultCard">
   <div class="score-num" id="scoreNum"></div>
   <div class="score-message" id="scoreMsg" style="font-size:1.15rem;margin-top:8px;font-weight:600;"></div>
+
+<div class="wrong-review" id="wrongReview" style="display:none; max-width:600px; margin:20px auto;">
+  <div style="background:#FFF;border-radius:18px;padding:22px;box-shadow:0 2px 16px rgba(0,0,0,0.05);border:2px solid #FDE8F0;">
+    <h4 style="font-size:18px;color:#C4708A;margin-bottom:4px;">&#128221; 错题回顾</h4>
+    <p style="font-size:13px;color:#7B758A;margin-bottom:14px;">以下是你本次答错的题目</p>
+    <div id="wrongList"></div>
+    <div style="text-align:center;margin-top:14px;">
+      <button onclick="addToWrongBook()" style="padding:10px 28px;border-radius:24px;border:2px solid #E8A0BF;background:#FDE8F0;color:#C4708A;font-weight:700;font-size:15px;cursor:pointer;transition:all 0.2s;font-family:var(--font-title);" onmouseover="this.style.background='#FAD3E0'" onmouseout="this.style.background='#FDE8F0'">&#128190; 加入错题本</button>
+      <span id="wbAddedMsg" style="display:none;margin-left:10px;color:#5B8A6A;font-weight:700;font-size:14px;">&#10003; 已加入</span>
+    </div>
+  </div>
+</div>
 </div>
 <div class="page-nav">
   <a href="dian-quiz.html" class="prev">&#8592; dian测验</a>
@@ -427,6 +439,33 @@ function submitQuiz(){
   else if(score>=25)msg='还需加强，建议多做热平衡计算练习～';
   else msg='加油！从温度和物态变化开始再复习一遍吧！';
   document.getElementById('scoreMsg').textContent=msg;
+  
+  // 收集错题
+  var wrongItems=[];
+  for(var i=1;i<=total;i++){
+    var q=document.querySelector('[data-q="'+i+'"]');
+    if(q.classList.contains('wrong-q')){
+      var stem=q.querySelector('.q-title').textContent;
+      var selected=q.querySelector('input:checked');
+      var userAns=selected?selected.value:'未作答';
+      wrongItems.push({qnum:i,stem:stem,userAnswer:userAns,correctAnswer:answers['q'+i]});
+    }
+  }
+  if(wrongItems.length>0){
+    var wl=document.getElementById('wrongList');
+    var wh='';
+    wrongItems.forEach(function(w){
+      wh+='<div style="background:#FFF5F8;border-radius:10px;padding:12px 16px;margin-bottom:8px;border-left:4px solid #E8A0BF;">';
+      wh+='<div style="font-size:12px;font-weight:700;color:#C4708A;margin-bottom:4px;">第'+w.qnum+'题</div>';
+      wh+='<div style="font-size:14px;color:#4A4458;margin-bottom:4px;">'+w.stem.replace(/</g,"&lt;").replace(/>/g,"&gt;")+'</div>';
+      wh+='<div style="font-size:13px;"><span style="color:#C4708A;">你的答案：'+w.userAnswer+' ❌</span> &nbsp; <span style="color:#5B8A6A;">正确答案：'+w.correctAnswer+' ✅</span></div>';
+      wh+='</div>';
+    });
+    wl.innerHTML=wh;
+    document.getElementById('wrongReview').style.display='block';
+  }
+  // 存临时错题数据
+  window._tmpWrongItems=wrongItems;
 }
 
 function retryQuiz(){
@@ -437,6 +476,19 @@ function retryQuiz(){
   document.querySelector('.btn-submit').style.display='inline-block';
   document.getElementById('btnRetry').style.display='none';
   document.getElementById('resultCard').classList.remove('show');
+}
+
+function addToWrongBook(){
+  if(!window._tmpWrongItems||window._tmpWrongItems.length===0) return;
+  var book=JSON.parse(localStorage.getItem("wuli_wrongbook")||"[]");
+  window._tmpWrongItems.forEach(function(w){
+    // 去重：同一章节同一题号不重复添加
+    var dup=book.some(function(b){return b.chapter==="re"&&b.qnum===w.qnum});
+    if(!dup) book.push({chapter:"re",chapterName:"热学",qnum:w.qnum,stem:w.stem,userAnswer:w.userAnswer,correctAnswer:w.correctAnswer});
+  });
+  localStorage.setItem("wuli_wrongbook",JSON.stringify(book));
+  document.getElementById("wbAddedMsg").style.display="inline";
+  setTimeout(function(){document.getElementById("wbAddedMsg").style.display="none"},2000);
 }
 </script>
 </body>

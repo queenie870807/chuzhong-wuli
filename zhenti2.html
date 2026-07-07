@@ -7,6 +7,27 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<nav class="top-nav">
+  <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><span>2023年上海中考物理真题</span></div>
+  <div class="chapter-links">
+    <a href="yundong.html">运动和力</a>
+    <a href="yaqiang.html">压强和浮力</a>
+    <a href="jixie.html">简单机械和功</a>
+    <a href="midu.html">密度</a>
+    <a href="sheng.html">声现象</a>
+    <a href="guang.html">光现象</a>
+    <a href="dian.html">电学</a>
+    <a href="re.html">热学</a>
+  </div>
+</nav>
+
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="搜索知识点，如「欧姆定律」「浮力」..." oninput="doSearch()">
+  <span class="search-icon">&#128269;</span>
+  <div class="no-result" id="noResult">未找到匹配内容，试试其他关键词吧</div>
+</div>
+
 <div class="zk-container">
 
 <div class="zk-hero">
@@ -414,5 +435,47 @@
 <a href="zhongkao.html" class="back-link" style="display:block;text-align:center;margin-top:32px;">&larr; 返回备考攻略</a>
 
 </div>
+
+<script>
+function doSearch(){
+  var q=document.getElementById("searchInput").value.trim().toLowerCase();
+  var container=document.querySelector(".zk-container");
+  var textBlocks=container.querySelectorAll("p, h2, h3, h4, td, li, .zk-score, .section-desc, .q-text, .q-opt span, .exam-meta span");
+  var found=false;
+  
+  // clear previous highlights
+  document.querySelectorAll(".search-hl").forEach(function(e){
+    e.outerHTML=e.textContent;
+  });
+  
+  if(!q){ 
+    document.getElementById("noResult").style.display="none"; 
+    return; 
+  }
+  
+  textBlocks.forEach(function(el){
+    if(el.children.length>0) return;
+    var text=el.textContent.toLowerCase();
+    if(text.indexOf(q)!==-1){
+      found=true;
+      var html=el.innerHTML;
+      var regex=new RegExp("("+q.replace(/[.*+?^${}()|[\]\]/g,"\\$&")+")","gi");
+      el.innerHTML=html.replace(regex,'<mark class="search-hl">$1</mark>');
+    }
+  });
+  
+  document.getElementById("noResult").style.display=found?"none":"block";
+  
+  // scroll to first match
+  if(found){
+    var first=document.querySelector(".search-hl");
+    if(first) first.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+</script>
+<style>
+.search-hl { background: #FFEB3B; color: #333; padding: 1px 4px; border-radius: 3px; font-weight: 700; }
+</style>
+
 </body>
 </html>

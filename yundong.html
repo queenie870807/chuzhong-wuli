@@ -38,9 +38,36 @@
 .illus-friction .wheel-right .f-arrow-w { position:absolute; top:50%; right:-32px; transform:translateY(-50%); width:30px; height:4px; background:rgba(107,160,192,0.5); }
 .illus-friction .wheel-right .f-arrow-w::before { content:""; position:absolute; right:-6px; top:-3px; border-left:8px solid rgba(107,160,192,0.5); border-top:5px solid transparent; border-bottom:5px solid transparent; }
 .illus-friction .label-fric { position:absolute; bottom:0; left:50%; transform:translateX(-50%); font-size:10px; font-weight:700; color:#708090; }
+
+/* ===== 超纲内容折叠样式 ===== */
+.concept-advanced { border: 1.5px dashed #D0B090 !important; background: #FFFDF6 !important; opacity: 0.92; }
+.concept-advanced .card-header-advanced { cursor: pointer; user-select: none; display: flex; align-items: center; }
+.concept-advanced .advanced-body { display: none; }
+.concept-advanced.advanced-expanded .advanced-body { display: block; }
+.concept-advanced.advanced-expanded .advanced-toggle { transform: rotate(90deg); display: inline-block; }
+.concept-advanced .advanced-toggle { color: var(--pink-accent, #D485A8); font-size: 0.88rem; font-weight: 700;
+  margin-left: auto; white-space: nowrap; transition: transform 0.2s; }
+.mm-advanced { opacity: 0.75; border: 1.5px dashed #D0B090; background: #FFFDF6; }
+.fqc-advanced { opacity: 0.8; }
+.fqc-advanced .advanced-mark { font-size: 0.7rem; color: #D0A060; margin-left: 6px; font-weight: 700; }
+.note-advanced { display: block; margin-top: 8px; padding: 8px 12px; background: #FFFDF6;
+  border-left: 3px solid #D0B090; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #8A7050; line-height: 1.5; }
+
 </style>
 </head>
 <body class="ch1">
+<!-- 侧边目录 -->
+<aside class="side-toc" id="sideToc">
+  <h4>&#128211; 本章目录</h4>
+  <div id="tocLinks"></div>
+</aside>
+
+<!-- 移动端目录汉堡 -->
+<button class="toc-hamburger" id="tocHamburger" onclick="toggleToc()" title="目录">&#9776;</button>
+<div class="toc-dropdown" id="tocDropdown">
+  <div id="tocDropdownLinks"></div>
+</div>
+
 
 <nav class="top-nav">
   <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">&#8250;</span><span>第一章 运动和力</span></div>
@@ -67,8 +94,8 @@
   <div class="mm-card"><h4>&#128099; 参照物与运动</h4><ul><li>运动是绝对的</li><li>静止是相对的</li><li>参照物的选择</li></ul></div>
   <div class="mm-card"><h4>&#9201; 速度与运动图像</h4><ul><li>v = s / t</li><li>匀速直线运动</li><li>s-t 图像 / v-t 图像</li></ul></div>
   <div class="mm-card"><h4>&#127744; 牛顿第一定律</h4><ul><li>惯性</li><li>力是改变运动的原因</li><li>不是维持运动的原因</li></ul></div>
-  <div class="mm-card"><h4>&#9889; 牛顿第二定律</h4><ul><li>F = ma</li><li>力越大加速度越大</li><li>质量越大加速度越小</li></ul></div>
-  <div class="mm-card"><h4>&#128170; 牛顿第三定律</h4><ul><li>作用力 = -反作用力</li><li>同时产生同时消失</li><li>作用在不同物体上</li></ul></div>
+  <div class="mm-card"><h4>&#9889; 力与运动状态变化</h4><ul><li>力是改变物体运动状态的原因（定性）</li><li>合力不为零\u2192运动状态改变</li><li>合力为零\u2192静止或匀速直线运动</li></ul></div>
+  <div class="mm-card mm-advanced"><h4>&#128170; \u26a0\ufe0f 高中延伸：牛顿第三定律</h4><ul><li>作用力 = -反作用力</li><li>同时产生同时消失</li><li>作用在不同物体上</li></ul></div>
   <div class="mm-card"><h4>&#127859; 常见的力</h4><ul><li>重力 G = mg</li><li>弹力（胡克定律）</li><li>摩擦力（静/滑动/滚动）</li></ul></div>
   <div class="mm-card"><h4>&#128220; 二力平衡</h4><ul><li>合力为零</li><li>静止或匀速直线运动</li><li>同体、等大、反向、共线</li></ul></div>
 </div>
@@ -158,7 +185,7 @@
       <tr><td>受平衡力</td><td>F合 = 0</td><td>静止或匀速直线运动（状态不变）</td><td>匀速下降的降落伞</td></tr>
       <tr><td>受非平衡力</td><td>F合 ≠ 0</td><td>运动状态改变——加速/减速/转向</td><td>汽车起步加速</td></tr>
     </table>
-    <p><b>核心结论</b>：力与运动之间不是"有力才有运动"的因果关系，而是<strong>"合力决定运动状态的变化"</strong>。合力为零→运动状态不变；合力不为零→产生加速度→运动状态改变。F=ma 把"力"和"运动变化"用等号连起来——这不是因果关系，这是<strong>定量等价关系</strong>。</p>
+    <p><b>核心结论</b>：力与运动之间不是"有力才有运动"的因果关系，而是<strong>"合力决定运动状态的变化"</strong>。合力为零→运动状态不变；合力不为零→产生加速度→运动状态改变。力越大、质量越小，运动状态改变越明显——这不是因果关系，而是<strong>定性规律</strong>。</p>
     <div class="example-tag"><span class="emoji">&#127939;</span>百米赛跑：起跑时蹬地力 > 阻力 → 加速。途中跑时蹬地力 = 阻力 → 匀速（接近）。冲刺撞线后脚不再蹬地 → 只剩阻力 → 减速停下。</div>
   </div>
 </div>
@@ -173,6 +200,7 @@
     <p>这个定律告诉我们：<strong>力不是维持运动的原因</strong>——没有力物体也能一直运动下去！力是<strong>改变物体运动状态</strong>的原因。</p>
     <p><strong>惯性</strong>：物体保持原来运动状态不变的性质。一切物体在任何情况下都有惯性。质量是惯性大小的唯一量度——质量越大惯性越大。</p>
     <div class="example-tag"><span class="emoji">&#128652;</span>公交车急刹车时，站着的乘客向前倾倒——人的身体由于惯性要保持原来向前运动的状态，而脚已随车停下。</div>
+    <div class="example-tag"><span class="emoji">&#128296;</span>锤头松了——把锤柄在地上撞几下，锤头就套紧了。锤柄撞击地面突然停止，锤头由于惯性继续向下运动从而套紧锤柄。<br><span class="note-advanced">💡 严格来说：锤头因锤柄撞击地面突然停止，而锤头由于惯性继续向下运动从而套紧锤柄。更精确的物理描述涉及动量定理，初中阶段只需理解"锤头因惯性保持原运动状态"即可。</span></div>
   </div>
 </div>
 
@@ -195,40 +223,43 @@
   </div>
 </div>
 
-<!-- 牛顿第二定律（新增） -->
-<div class="concept-card" id="c1-newton2">
-  <div class="card-header">
+<!-- ⚠️ 高中延伸：牛顿第二定律（折叠收起） -->
+<div class="concept-card concept-advanced" id="c1-newton2">
+  <div class="card-header card-header-advanced" onclick="this.parentElement.classList.toggle('advanced-expanded')">
     <div class="card-icon">&#9889;</div>
-    <div><h4>牛顿第二定律 —— 「大力出奇迹」的科学表达</h4><p class="subtitle">力、质量和加速度的精确关系</p></div>
+    <div><h4>⚠️ 高中延伸：牛顿第二定律 —— 「大力出奇迹」的科学表达</h4><p class="subtitle">力、质量和加速度的精确关系（初中阶段仅需定性了解）</p></div>
+    <span class="advanced-toggle">▶ 展开</span>
   </div>
-  <div class="card-body">
+  <div class="card-body advanced-body">
     <div class="formula-spotlight">
       <div class="formula-main">F = m a</div>
       <div class="var-list">
         <span class="var-tag pink">F 合外力 (N)</span>
         <span class="var-tag blue">m 质量 (kg)</span>
-        <span class="var-tag green">a 加速度 (m/s&#178;)</span>
+        <span class="var-tag green">a 加速度 (m/s²)</span>
       </div>
     </div>
     <p>物体加速度的大小跟作用力成正比，跟物体的质量成反比；加速度的方向跟作用力的方向相同。</p>
-    <p><b>直观理解</b>：推同样重的车，越用力加速度越大（F&#8593; &#8594; a&#8593;）。同样的力推不同的车，越重的车加速越慢（m&#8593; &#8594; a&#8595;）。</p>
+    <p><b>直观理解</b>：推同样重的车，越用力加速度越大（F↑ → a↑）。同样的力推不同的车，越重的车加速越慢（m↑ → a↓）。</p>
     <div class="example-tag"><span class="emoji">&#127936;</span>篮球和铅球用同样的力推——篮球质量小，加速度大，飞得远；铅球质量大，加速度小，几乎不动。</div>
     <div class="example-tag"><span class="emoji">&#128640;</span>火箭发射——巨大的推力克服火箭的庞大质量产生加速度。随着燃料消耗质量减小，加速度越来越大——加速越来越快。</div>
   </div>
 </div>
 
-<!-- 牛顿第三定律 -->
-<div class="concept-card" id="c1-newton3">
-  <div class="card-header">
+<!-- ⚠️ 高中延伸：牛顿第三定律（折叠收起） -->
+<div class="concept-card concept-advanced" id="c1-newton3">
+  <div class="card-header card-header-advanced" onclick="this.parentElement.classList.toggle('advanced-expanded')">
     <div class="card-icon">&#128170;</div>
-    <div><h4>牛顿第三定律 —— 作用力与反作用力</h4><p class="subtitle">你推墙，墙也在推你！</p></div>
+    <div><h4>⚠️ 高中延伸：牛顿第三定律 —— 作用力与反作用力</h4><p class="subtitle">你推墙，墙也在推你！（初中阶段仅作拓展了解）</p></div>
+    <span class="advanced-toggle">▶ 展开</span>
   </div>
-  <div class="card-body">
+  <div class="card-body advanced-body">
     <p>两个物体之间的作用力和反作用力总是<strong>大小相等、方向相反</strong>，作用在<strong>同一条直线</strong>上，但作用在<strong>不同的物体上</strong>。</p>
     <p><b>关键</b>：作用力与反作用力同时产生、同时消失——不能抵消，因为它们作用在不同物体上。</p>
     <div class="example-tag"><span class="emoji">&#128034;</span>划船——桨向后推水，水对桨产生向前的推力，船就前进。你的手打桌子手会疼——因为你打桌子的同时桌子也在打你。</div>
   </div>
 </div>
+
 
 <!-- 作用力反作用力CSS图示 -->
 <div class="tip-card">
@@ -390,8 +421,8 @@
 
 <div class="fun-fact">
   <div class="fun-badge">&#10024; 趣味冷知识</div>
-  <div class="fun-q">F=ma 告诉我们——光速为什么是宇宙极限？</div>
-  <div class="fun-a">根据狭义相对论，物体的质量随速度增加而增加。当接近光速时，质量趋向无穷大——F=ma，同样的力产生的加速度越来越小，永远达不到光速。这就是为什么有质量的物体无法达到光速。</div>
+  <div class="fun-q">光速为什么是宇宙极限？</div>
+  <div class="fun-a">根据狭义相对论，物体的质量随速度增加而增加。当接近光速时，质量趋向无穷大——要使有质量的物体继续加速需要无限大的能量，永远达不到光速。这就是为什么有质量的物体无法达到光速。</div>
 </div>
 
 <div class="fun-fact">
@@ -403,323 +434,151 @@
 <div class="fun-fact">
   <div class="fun-badge">&#10024; 趣味冷知识</div>
   <div class="fun-q">为什么猎豹跑得比汽车快但只能坚持10秒？</div>
-  <div class="fun-a">猎豹 0-100km/h 加速只需 3 秒，比大多数跑车还快。但高速奔跑产生巨大热量——猎豹的体温会在 10 秒内从 38°C 飙升到 40.5°C 的致死临界线。根据 F=ma，猎豹的肌肉力量巨大（加速度极大），但能量消耗和散热限制让它只能做"冲刺型选手"。人类虽然跑得慢，但散热系统优秀——马拉松才是人类的"主场"。</div>
+  <div class="fun-a">猎豹 0-100km/h 加速只需 3 秒，比大多数跑车还快。但高速奔跑产生巨大热量——猎豹的体温会在 10 秒内从 38°C 飙升到 40.5°C 的致死临界线。猎豹的肌肉力量巨大（加速度极大），但能量消耗和散热限制让它只能做"冲刺型选手"。人类虽然跑得慢，但散热系统优秀——马拉松才是人类的"主场"。</div>
 </div>
 
 
-<div class="section-label exam-section-label"><span class="exam-badge">&#127891; 中考备战</span> 上海中考专项突破</div>
-
-<!-- 中考命题方向 -->
-<div class="exam-direction">
-<h4>&#127919; 中考命题方向</h4>
-<p class="dir-subtitle">近3年上海中考"运动和力"考点频率与分值统计</p>
-<table class="freq-table">
-<tr><th>考点</th><th>2024年</th><th>2023年</th><th>2022年</th><th>常见题型</th><th>难度</th></tr>
-<tr><td>惯性现象解释</td><td><span class="star">&#9733;&#9733;&#9733;</span> 3分</td><td><span class="star">&#9733;&#9733;</span> 2分</td><td><span class="star">&#9733;&#9733;&#9733;</span> 3分</td><td>选择/填空</td><td>&#9733;&#9733;</td></tr>
-<tr><td>s-t / v-t 图像分析</td><td><span class="star">&#9733;&#9733;&#9733;</span> 3分</td><td><span class="star">&#9733;&#9733;&#9733;</span> 3分</td><td><span class="star">&#9733;&#9733;</span> 2分</td><td>选择/实验</td><td>&#9733;&#9733;&#9733;</td></tr>
-<tr><td>二力平衡条件</td><td><span class="star">&#9733;&#9733;</span> 2分</td><td><span class="star">&#9733;&#9733;&#9733;</span> 4分</td><td><span class="star">&#9733;&#9733;</span> 2分</td><td>选择/计算</td><td>&#9733;&#9733;</td></tr>
-<tr><td>滑动摩擦力</td><td><span class="star">&#9733;&#9733;&#9733;</span> 4分</td><td><span class="star">&#9733;&#9733;</span> 2分</td><td><span class="star">&#9733;&#9733;&#9733;</span> 4分</td><td>实验/计算</td><td>&#9733;&#9733;&#9733;</td></tr>
-<tr><td>牛顿第一定律</td><td><span class="star">&#9733;&#9733;</span> 2分</td><td><span class="star">&#9733;&#9733;</span> 2分</td><td><span class="star">&#9733;</span> 1分</td><td>选择</td><td>&#9733;&#9733;</td></tr>
-<tr><td>力的合成</td><td><span class="star">&#9733;</span> 1分</td><td><span class="star">&#9733;&#9733;</span> 3分</td><td><span class="star">&#9733;&#9733;</span> 2分</td><td>填空/计算</td><td>&#9733;&#9733;</td></tr>
-</table>
-<div class="dir-insight"><strong>&#128161; 命题趋势：</strong>s-t/v-t图像分析连续三年必考，且常与实验题结合；摩擦力实验探究分值逐年上升，2024年已占4分；惯性现象多出现在选择题中，侧重生活场景应用。建议重点突破图像分析+摩擦力实验两大块。</div>
+<!-- ===== 公式速查卡（新增） ===== -->
+<div class="section-label">&#128290; 公式速查卡</div>
+<div class="formula-quick-cards" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+  <div class="fqc-item"><div class="fqc-formula">v = s / t</div><div class="fqc-desc">速度 = 路程 / 时间</div></div>
+  <div class="fqc-item"><div class="fqc-formula">G = m g</div><div class="fqc-desc">重力 = 质量 x 重力加速度</div></div>
+  <div class="fqc-item fqc-advanced"><div class="fqc-formula">F = m a <span class="advanced-mark">&#9888;&#65039;高中</span></div><div class="fqc-desc">合外力 = 质量 x 加速度<br>&#9888;&#65039; 高中内容，初中仅定性了解</div></div>
+  <div class="fqc-item"><div class="fqc-formula">f = &#181; N</div><div class="fqc-desc">滑动摩擦 = 动摩擦因数 x 压力</div></div>
+  <div class="fqc-item"><div class="fqc-formula">F = k x</div><div class="fqc-desc">弹簧弹力 = 劲度系数 x 形变量<br>弹性限度内</div></div>
 </div>
 
-<!-- 经典真题精讲 -->
-<div class="section-label exam-section-label"><span class="exam-badge">&#128214; 真题精讲</span> 上海中考真题逐题拆解</div>
-
-<div class="exam-problem">
-<div class="prob-header"><div class="prob-num">1</div><div class="prob-meta">2023年上海中考 · 选择题 · 2分</div></div>
-<div class="prob-question">一辆汽车在平直公路上匀速行驶，下列说法正确的是（ ）<br>A. 汽车不受力的作用<br>B. 汽车受到的牵引力大于阻力<br>C. 汽车受到平衡力的作用<br>D. 汽车的运动状态在不断改变</div>
-<div class="prob-analysis">
-<h5>&#128270; 解题思路</h5>
-<ol>
-<li><b>审题关键</b>："匀速直线行驶"——这是二力平衡的标志性表述。</li>
-<li><b>知识定位</b>：牛顿第一定律 + 二力平衡。物体保持匀速直线运动，合力为零。</li>
-<li><b>逐一排除</b>：A错——汽车受重力、支持力、牵引力、阻力；B错——匀速时牵引力=阻力；D错——匀速直线运动 = 运动状态不变。C正确——合力为零即受平衡力。</li>
-</ol>
-</div>
-<div class="prob-answer">&#9989; 正确答案：C</div>
-<div class="prob-trap"><strong>&#9888; 易错陷阱：</strong>很多同学选B，认为"车要前进，牵引力肯定大于阻力"。但匀速行驶时合力为零，牵引力恰好等于阻力。只有加速时牵引力才大于阻力。</div>
-</div>
-
-<div class="exam-problem">
-<div class="prob-header"><div class="prob-num">2</div><div class="prob-meta">2024年上海中考 · 实验题 · 4分</div></div>
-<div class="prob-question">在"探究滑动摩擦力大小的影响因素"实验中，小明用弹簧测力计水平拉着木块在木板上做匀速直线运动，读数为2.0N。然后在木板上铺一层棉布，重复实验，读数变为2.8N。请回答：<br>（1）实验依据的原理是什么？<br>（2）对比两次实验，可以得出什么结论？</div>
-<div class="prob-analysis">
-<h5>&#128270; 解题思路</h5>
-<ol>
-<li><b>原理</b>：木块做匀速直线运动 → 受力平衡 → 弹簧测力计的拉力 = 滑动摩擦力（二力平衡）。</li>
-<li><b>对比分析</b>：两次实验唯一改变的是接触面粗糙程度（棉布比木板粗糙），压力相同。拉力从2.0N变为2.8N → 摩擦力变大 → 说明粗糙程度越大，滑动摩擦力越大。</li>
-<li><b>答题规范</b>：结论必须有控制变量的前提——"在压力相同时，接触面越粗糙，滑动摩擦力越大"。</li>
-</ol>
-</div>
-<div class="prob-answer">&#9989; 答案：（1）二力平衡原理；（2）在压力相同时，接触面越粗糙，滑动摩擦力越大。</div>
-<div class="prob-trap"><strong>&#9888; 易错陷阱：</strong>写结论时漏掉"在压力相同时"这个前提条件——中考阅卷中漏掉控制变量前提至少扣一半分。</div>
-</div>
-
-<div class="exam-problem">
-<div class="prob-header"><div class="prob-num">3</div><div class="prob-meta">2022年上海中考 · 选择题 · 3分</div></div>
-<div class="illus-st-graph">
-<svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
-  <!-- bg grid -->
-  <defs><pattern id="stgrid" width="40" height="40" patternUnits="userSpaceOnUse">
-    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#eee" stroke-width="0.5"/>
-  </pattern></defs>
-  <rect x="40" y="10" width="260" height="210" fill="url(#stgrid)"/>
-  <!-- axes -->
-  <line x1="40" y1="220" x2="300" y2="220" stroke="#555" stroke-width="1.5" marker-end="url(#arrow-st)"/>
-  <defs><marker id="arrow-st" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-    <path d="M 0 0 L 10 5 L 0 10 Z" fill="#555"/></marker></defs>
-  <line x1="40" y1="220" x2="40" y2="10" stroke="#555" stroke-width="1.5" marker-end="url(#arrow-st-u)"/>
-  <defs><marker id="arrow-st-u" viewBox="0 0 10 10" refX="5" refY="8" markerWidth="6" markerHeight="6" orient="auto">
-    <path d="M 0 10 L 5 0 L 10 10 Z" fill="#555"/></marker></defs>
-  <!-- the s-t line: slope = ~1 (45 degrees) -->
-  <line x1="40" y1="220" x2="280" y2="40" stroke="#C0392B" stroke-width="2.5"/>
-  <!-- O label -->
-  <text x="32" y="235" font-size="10" fill="#555" font-weight="600">O</text>
-  <!-- axis labels -->
-  <text x="155" y="238" font-size="11" fill="#555" font-weight="600">时间 t/s</text>
-  <text x="8" y="120" font-size="11" fill="#555" font-weight="600" transform="rotate(-90,8,120)">路程 s/m</text>
-  <!-- slope indicator -->
-  <text x="150" y="110" font-size="11" fill="#C0392B" font-weight="600">v = k (斜率=速度)</text>
-  <text x="150" y="130" font-size="10" fill="#888">匀速直线运动 (s/t = 常数)</text>
-</svg>
-</div>
-
-<div class="prob-question">如图是某物体运动的 s-t 图像（一条倾斜直线经过原点）。以下说法正确的是（ ）<br>A. 物体做变速运动<br>B. 物体的速度越来越快<br>C. 物体做匀速直线运动，速度为图像的斜率<br>D. 物体静止不动</div>
-<div class="prob-analysis">
-<h5>&#128270; 解题思路</h5>
-<ol>
-<li><b>图像识别</b>：s-t 图像中，倾斜直线 = 匀速直线运动（斜率不变 = 速度不变）。</li>
-<li><b>选项判断</b>：A错——直线不是变速；B错——速度不变不是越来越快；C正确——过原点的倾斜直线代表匀速直线运动，斜率=速度；D错——水平线才代表静止。</li>
-<li><b>口诀</b>：s-t 图看斜率（陡=快，平=停，弯=变速）；v-t 图看面积（面=路程，线=速度变化）。</li>
-</ol>
-</div>
-<div class="prob-answer">&#9989; 正确答案：C</div>
-<div class="prob-trap"><strong>&#9888; 易错陷阱：</strong>s-t 图像的水平线才是静止，很多同学混淆 s-t 和 v-t 图像。v-t 的水平线是匀速运动，不是静止。两张图的水平线含义完全不同！</div>
-</div>
-
-<!-- 易错题集 -->
-<div class="section-label exam-section-label"><span class="exam-badge">&#128204; 易错题集</span> 5道高频易错选择题</div>
-
-<div class="exam-mistake-list">
-
-<div class="exam-mistake-item">
-<div class="mi-num">易错题 1 — 惯性概念</div>
-<div class="mi-question">下列关于惯性的说法，正确的是（ ）</div>
-<div class="mi-options">
-<span>A. 物体运动速度越大，惯性越大</span>
-<span class="wrong-opt">B. 物体静止时没有惯性</span>
-<span>C. 惯性是物体保持原来运动状态不变的性质</span>
-<span>D. 太空中物体没有惯性</span>
-</div>
-<div class="mi-answer"><strong>&#9989; 正确答案：C</strong><br><strong>错误选项分析：</strong>A——惯性只与质量有关，与速度无关。B——一切物体在任何状态下都有惯性。D——惯性是物体的固有属性，太空中也有惯性。惯性大小的唯一决定因素是<b>质量</b>。</div>
-</div>
-
-<div class="exam-mistake-item">
-<div class="mi-num">易错题 2 — 二力平衡 vs 相互作用力</div>
-<div class="mi-question">一本书静止在水平桌面上，以下哪对力是平衡力？（ ）</div>
-<div class="mi-options">
-<span class="wrong-opt">A. 书对桌面的压力和桌面对书的支持力</span>
-<span>B. 书受到的重力和书对桌面的压力</span>
-<span>C. 书受到的重力和桌面对书的支持力</span>
-<span class="wrong-opt">D. 桌面对书的支持力和地面给桌子的支持力</span>
-</div>
-<div class="mi-answer"><strong>&#9989; 正确答案：C</strong><br><strong>错误选项分析：</strong>A——这是相互作用力（作用在不同物体上），不能抵消。B——都作用在书上？不，重力在书上，压力在桌面上——不同物体。C正确——都作用在书上：重力向下、支持力向上，等大反向共线。D——涉及三个物体太混乱。关键是：平衡力必须<b>作用在同一物体</b>上。</div>
-</div>
-
-<div class="exam-mistake-item">
-<div class="mi-num">易错题 3 — s-t图像判断</div>
-<div class="mi-question">某物体运动的 s-t 图像是一条水平直线（平行于时间轴），该物体（ ）</div>
-<div class="mi-options">
-<span>A. 做匀速直线运动</span>
-<span class="wrong-opt">B. 做变速直线运动</span>
-<span>C. 静止不动</span>
-<span class="wrong-opt">D. 无法判断</span>
-</div>
-<div class="mi-answer"><strong>&#9989; 正确答案：C</strong><br><strong>错误选项分析：</strong>A——这是一道典型的"s-t vs v-t 混淆题"。在<b>s-t 图</b>中水平线 = 路程不变 = 静止。在 v-t 图中水平线才是匀速。B和D没有依据。记住：s-t 水平 = 停，v-t 水平 = 匀速。</div>
-</div>
-
-<div class="exam-mistake-item">
-<div class="mi-num">易错题 4 — 摩擦力方向</div>
-<div class="mi-question">人走路时，鞋底受到地面的摩擦力方向是（ ）</div>
-<div class="mi-options">
-<span class="wrong-opt">A. 与人运动方向相反</span>
-<span>B. 与人运动方向相同</span>
-<span>C. 竖直向上</span>
-<span>D. 没有摩擦力</span>
-</div>
-<div class="mi-answer"><strong>&#9989; 正确答案：B</strong><br><strong>错误选项分析：</strong>这是"摩擦力方向"的经典易错题。很多人认为摩擦力一定阻碍运动，方向总是与运动方向相反。但人走路时，鞋底向后蹬地 → 地面给鞋底向前的摩擦力 → 这个摩擦力正是人前进的<b>动力</b>。摩擦力不一定是阻力！</div>
-</div>
-
-<div class="exam-mistake-item">
-<div class="mi-num">易错题 5 — 力和运动关系</div>
-<div class="mi-question">关于力和运动，下列说法正确的是（ ）</div>
-<div class="mi-options">
-<span class="wrong-opt">A. 有力作用在物体上，物体一定运动</span>
-<span>B. 物体运动一定受到力的作用</span>
-<span>C. 力是改变物体运动状态的原因</span>
-<span class="wrong-opt">D. 物体不受力就会慢慢停下来</span>
-</div>
-<div class="mi-answer"><strong>&#9989; 正确答案：C</strong><br><strong>错误选项分析：</strong>A——有力但可能推不动（静摩擦力平衡），物体可以静止。B——牛顿第一定律：不受力可以匀速直线运动。D——亚里士多德错误观点，不受力物体保持匀速不会停。C是牛顿第一定律的核心。</div>
-</div>
-
-</div>
-
-<!-- 公式速查卡 -->
-<div class="section-label exam-section-label"><span class="exam-badge">&#128290; 公式速查</span> 本章公式一卡打尽</div>
-
-<div class="formula-quick-card">
-<h4>&#128204; 运动和力 · 公式速查卡</h4>
-<div class="fqc-grid">
-<div class="fqc-item"><div class="fqc-formula">v = s / t</div><div class="fqc-desc">速度 = 路程 ÷ 时间<br>1 m/s = 3.6 km/h</div></div>
-<div class="fqc-item"><div class="fqc-formula">G = m g</div><div class="fqc-desc">重力 = 质量 × g<br>g &#8776; 9.8 N/kg（地面附近）</div></div>
-<div class="fqc-item"><div class="fqc-formula">F = m a</div><div class="fqc-desc">合外力 = 质量 × 加速度<br>牛顿第二定律</div></div>
-<div class="fqc-item"><div class="fqc-formula">f = &#956; N</div><div class="fqc-desc">滑动摩擦力 = 动摩擦因数 × 压力<br>与接触面积无关</div></div>
-<div class="fqc-item"><div class="fqc-formula">F<sub>合</sub> = 0</div><div class="fqc-desc">二力平衡条件<br>同体·等大·反向·共线</div></div>
-<div class="fqc-item"><div class="fqc-formula">F = k x</div><div class="fqc-desc">胡克定律（弹性限度内）<br>弹力 = 劲度系数 × 形变量</div></div>
-</div>
-</div>
-
-<!-- 实验探究 -->
-<div class="section-label exam-section-label"><span class="exam-badge">&#129514; 实验探究</span> 中考必考实验</div>
-
-<div class="exam-experiment">
-<h4>&#129514; 探究滑动摩擦力大小的影响因素</h4>
-<p class="exp-subtitle">上海中考高频实验——近3年出现2次，分值3~4分</p>
-
-<div class="exp-section">
-<h5>&#128736; 实验器材</h5>
-<ul>
-<li>弹簧测力计（量程0~5N，分度值0.1N）</li>
-<li>木块（带挂钩）</li>
-<li>长木板、棉布、毛巾（改变粗糙程度）</li>
-<li>钩码若干（改变压力大小）</li>
-</ul>
-</div>
-
-<div class="exp-section">
-<h5>&#128221; 实验步骤</h5>
-<ul>
-<li><b>步骤1</b>：将木块放在水平长木板上，用弹簧测力计沿水平方向匀速拉动木块，记录读数F₁。</li>
-<li><b>步骤2</b>：在木块上加一个钩码（增大压力），重复步骤1，记录读数F₂。</li>
-<li><b>步骤3</b>：在木板上铺棉布（改变粗糙程度），用原木块（不加钩码），重复步骤1，记录读数F₃。</li>
-<li><b>步骤4</b>：换上毛巾，重复步骤1，记录读数F₄。</li>
-</ul>
-</div>
-
-<div class="exp-section">
-<h5>&#128300; 实验原理与结论</h5>
-<ul>
-<li><b>原理</b>：木块匀速直线运动 → 二力平衡 → 弹簧测力计的拉力 = 滑动摩擦力。</li>
-<li><b>结论1</b>：接触面粗糙程度相同时，压力越大，滑动摩擦力越大。</li>
-<li><b>结论2</b>：压力相同时，接触面越粗糙，滑动摩擦力越大。</li>
-<li><b>结论3</b>：滑动摩擦力大小与接触面积大小无关、与运动速度大小无关（补充结论，常考）。</li>
-</ul>
-</div>
-
-<div class="exp-questions">
-<h5>&#128270; 考试常见设问</h5>
-<ol>
-<li><b>"为什么必须匀速拉动木块？"</b>——只有匀速运动时，木块受力平衡，拉力=摩擦力。加速或减速时拉力≠摩擦力。</li>
-<li><b>"实验中弹簧测力计示数不稳定怎么办？"</b>——改进方案：固定弹簧测力计，拉动下面的木板。这样不管木板是否匀速，木块始终静止→受力始终平衡→测力计示数始终等于摩擦力。</li>
-<li><b>"为什么不研究滑动摩擦力与接触面积的关系？"</b>——控制变量法。要研究面积，需保持压力和粗糙程度不变，改变木块放置方向（侧面接触 vs 底面接触）。</li>
-<li><b>"如果木块开始运动后做加速运动，测得的摩擦力比真实值偏大还是偏小？"</b>——加速时拉力>摩擦力，示数偏大。只有匀速时示数才等于摩擦力。</li>
-</ol>
-</div>
-</div>
-
+<!-- ===== 易错辨析（新增） ===== -->
+<div class="section-label">&#9888;&#65039; 易错辨析</div>
 <div class="misconception">
-  <h4>&#9888; 常见误区提醒</h4>
-  <ul>
-    <li><span class="mistake">&#10060; "力是维持物体运动的原因"</span> &#8594; <span class="correct">&#9989; 亚里士多德的错误观点！牛顿第一定律已推翻——没有力物体照样能运动。力是<strong>改变</strong>运动状态的原因。</span></li>
-    <li><span class="mistake">&#10060; "作用力与反作用力可以抵消"</span> &#8594; <span class="correct">&#9989; 不能！它们作用在<strong>不同物体</strong>上——你推墙和墙推你分别作用在墙和你身上，无法抵消。</span></li>
-    <li><span class="mistake">&#10060; "速度越大惯性越大"</span> &#8594; <span class="correct">&#9989; 惯性只与<strong>质量</strong>有关。一辆停着的大卡车比一辆飞驰的自行车的惯性大得多。</span></li>
-    <li><span class="mistake">&#10060; "滑动摩擦力一定大于滚动摩擦"</span> &#8594; <span class="correct">&#9989; 在相同条件下确实滑动摩擦力 >> 滚动摩擦力，所以人类发明了轮子。但特殊情况下（如光滑冰面上滑动可能比粗糙地面滚动还省力）。</span></li>
-    <li><span class="mistake">&#10060; "重力就是万有引力"</span> &#8594; <span class="correct">&#9989; 重力是万有引力的一个分力（考虑了地球自转的离心力影响）。在赤道你的体重比在极地轻约 0.3%！</span></li>
-    <li><span class="mistake">&#10060; "s-t图像中曲线代表变速运动"</span> &#8594; <span class="correct">&#9989; 正确！s-t 图如果是曲线，说明斜率在变——速度在变，是变速运动。直线的才是匀速。</span></li>
-    <li><span class="mistake">&#10060; "v-t图像中水平线代表静止"</span> &#8594; <span class="correct">&#9989; 大错！v-t 图像的水平线代表<strong>匀速</strong>（速度不变）。只有 v=0 的水平线才代表静止。</span></li>
-  </ul>
+  <div class="mis-head"><span class="mis-icon">&#10060;</span><span class="mis-label">常见误区</span></div>
+  <div class="mis-items">
+    <p><strong>误区 1：物体运动一定受到力的作用</strong><br><span class="correct">纠正：运动不需要力来维持——牛顿第一定律。不受力的物体可以保持匀速直线运动。</span></p>
+    <p><strong>误区 2：速度大的物体惯性大</strong><br><span class="correct">纠正：惯性大小只与质量有关，与速度无关。大卡车即使慢慢开，惯性也比飞驰的自行车大得多。</span></p>
+    <p><strong>误区 3：静止的物体没有惯性</strong><br><span class="correct">纠正：一切物体在任何状态下都有惯性，静止物体也有保持静止的惯性。</span></p>
+    <p><strong>误区 4：滑动摩擦力大小与接触面积有关</strong><br><span class="correct">纠正：滑动摩擦力大小仅取决于压力大小和接触面粗糙程度，与接触面积无关。一块砖无论平放还是侧放，滑动摩擦力一样大。</span></p>
+    <p><strong>误区 5：重力就是万有引力</strong><br><span class="correct">纠正：重力是万有引力的一个分力（在地球表面，万有引力的一部分提供物体随地球自转所需的向心力，剩下的才是重力）。初中阶段可近似认为重力=地球对物体的引力。</span></p>
+  </div>
 </div>
 
-<div class="experiment">
-  <h4>&#129514; 家庭小实验：鸡蛋的惯性</h4>
-  <ol class="step-list">
-    <li>准备：一个生鸡蛋、一个熟鸡蛋。分别快速旋转。</li>
-    <li>用手轻轻按住鸡蛋让它停下，再立刻松手。</li>
-    <li>生鸡蛋松手后会继续微微转动——因为里面的液体由于惯性还在旋转。</li>
-    <li>熟鸡蛋停下就彻底停了——这就是区分生熟鸡蛋的物理学方法。</li>
-  </ol>
+<!-- 家长辅导贴士 -->
+<div class="section-label">&#128105;&#8205;&#127891; 家长辅导贴士</div>
+<div class="tip-card">
+  <div class="tip-content" style="flex:1;">
+    <span class="tip-badge">&#128105;&#8205;&#127891; 辅导建议</span>
+    <h4>运动和力——帮孩子建立"反常识"的正确物理直觉</h4>
+    <p>本章是物理学习的"分水岭"——亚里士多德"力是维持运动的原因"的观念根深蒂固（生活经验也是如此——推车才走、不推就停），而牛顿说"力是改变运动的原因"。建议辅导策略：</p>
+    <ul>
+      <li><strong>伽利略理想实验</strong>：想象一个光滑斜面——小球滚下去又滚上另一个斜面，几乎到达同样高度。如果第二个斜面无限长且完全光滑，小球永远停不下来。用这个思想实验帮孩子理解"没有力物体也能一直运动"。</li>
+      <li>坐公交/地铁时体验惯性——启动时人往后仰、刹车时人往前倾。问孩子：你感觉到的是什么力？为什么身体不听使唤？</li>
+      <li>力与运动：推空购物车和满购物车对比——空车容易加速（质量小），满车难加速（质量大）。力相同时，质量越小越容易改变运动状态</li>
+      <li><strong>力的作用效果</strong>：观察弹簧被拉长（形变效果）和足球被踢飞（运动状态改变效果）——力有两种效果。</li>
+      <li><strong>区分"日常用语"和"物理术语"</strong>：日常说的"惯性"常乱用（"惯性大"不等于速度大）。物理中的惯性只由质量决定。</li>
+    </ul>
+  </div>
 </div>
 
-<div class="experiment">
-  <h4>&#129514; 家庭小实验：滑动 vs 滚动摩擦力</h4>
-  <ol class="step-list">
-    <li>准备：一本厚书（或一个箱子）、几支圆柱形铅笔/筷子。</li>
-    <li>手推书在桌面滑动——感觉费力。</li>
-    <li>在书下面垫上几支铅笔，再推——几乎不费力就推动了！</li>
-    <li>铅笔充当了"滚轮"——这就是轮子的雏形。</li>
-  </ol>
+<!-- ===== 考试锦囊（新增） ===== -->
+<div class="section-label">&#127891; 考试锦囊</div>
+<div class="tip-card">
+  <div class="tip-content" style="flex:1;">
+    <span class="tip-badge">&#128220; 提分技巧</span>
+    <h4>运动和力高频考点速记</h4>
+    <ul>
+      <li><strong>参照物选择</strong>：默认选地面，但题目常问"以XX为参照物"——读清题干再判断。空中加油、地球同步卫星、两列并排火车都是经典题型。</li>
+      <li><strong>惯性应用题</strong>：锤头套紧、跳远助跑、抖落灰尘、子弹飞出——本质都是"物体要保持原来运动状态"。</li>
+      <li><strong>二力平衡 vs 相互作用力</strong>：前者作用在同一物体上（如书受的重力和支持力），后者作用在不同物体上（如书对桌面的压力和桌面对书的支持力）。这是考试最易混淆的点。</li>
+      <li><strong>s-t 和 v-t 图像</strong>：看清楚坐标轴标的是 s 还是 v——s-t 水平线 = 静止，v-t 水平线 = 匀速直线运动。混淆二者是经典失分点。</li>
+      <li><strong>摩擦力方向</strong>：与相对运动（或趋势）方向相反，不一定与物体运动方向相反。人走路时地面给人向前的摩擦力——这个方向与人的运动方向相同！</li>
+    </ul>
+  </div>
 </div>
 
-<div class="experiment">
-  <h4>&#129514; 家庭小实验：自制弹簧测力计</h4>
-  <ol class="step-list">
-    <li>准备：一根弹簧（或橡皮筋）、一个挂钩、一张标有刻度的纸板。</li>
-    <li>把弹簧上端固定在纸板上，下端挂挂钩。</li>
-    <li>挂上已知重量的物品（如500g水≈5N），标记刻度。</li>
-    <li>这就是胡克定律 F=kx 的应用——弹簧伸长量与力成正比。</li>
-  </ol>
-</div>
-
-<div class="parent-tip">
-  <h4>&#128105;&#8203;&#127891; 家长辅导小贴士</h4>
-  <ul>
-    <li>参照物选车窗外树木——坐车时让孩子观察窗外树木"向后跑"，理解相对运动</li>
-    <li>惯性实验全家互动——用一张纸盖在杯口，纸上放一枚硬币，快速抽走纸片硬币落入杯中：直观展示"硬币因惯性留在原地"</li>
-    <li>s-t/v-t 图像：用手机录一段孩子跑步的视频，逐帧分析位置和时间数据，画出真实的运动图像</li>
-    <li>作用力与反作用力：让两个体重差不多的人面对面站立互推——两人都会后退（牛顿第三定律直观体验）</li>
-    <li>F=ma：推空购物车和满购物车对比——空车加速快（m 小 a 大），满车加速慢（m 大 a 小）</li>
-    <li>滑动 vs 滚动：用带轮行李箱和不带轮行李箱对比——滚动摩擦的神奇</li>
-  </ul>
+<div class="page-nav">
+  <a href="index.html" class="pn-prev">&#8592; 返回首页</a>
+  <a href="yundong-quiz.html" class="pn-quiz">&#9998; 章节测验（50题）</a>
+  <a href="yaqiang.html" class="pn-next">第二章 压强和浮力 &#8594;</a>
 </div>
 </section>
 
-<div class="page-nav">
-  <a href="index.html" class="prev">&#8592; 首页</a>
-  <a href="yaqiang.html" class="next">第二章 压强和浮力 &#8594;</a>
 </div>
 
-</div>
-
-<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 <script>
-window.addEventListener('scroll',function(){document.getElementById('backTop').style.display=window.scrollY>600?'flex':'none'});
-function doSearch(){
-  var q=document.getElementById('searchInput').value.trim().toLowerCase();
-  var no=document.getElementById('noResult');
-  document.querySelectorAll('mark.highlight').forEach(function(m){
-    var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
-  });
-  if(!q){no.style.display='none';document.querySelectorAll('.concept-card,.mindmap-grid,.quick-table,.misconclusion,.experiment,.parent-tip,.fun-fact,.tip-card,.section-label,.chapter-title').forEach(function(e){e.style.display=''});return;}
-  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
-  function hl(n){
-    if(n.nodeType===3){
-      var t=n.textContent,lo=t.toLowerCase(),i=lo.indexOf(q);
-      if(i===-1)return false;
-      var s=document.createElement('span');
-      s.innerHTML=esc(t.substring(0,i))+'<mark class="highlight">'+esc(t.substring(i,i+q.length))+'</mark>'+esc(t.substring(i+q.length));
-      n.parentNode.replaceChild(s,n); return true;
+function doSearch() {
+  var q = document.getElementById('searchInput').value.trim().toLowerCase();
+  var cards = document.querySelectorAll('.concept-card, .tip-card, .fun-fact, .misconception, .mindmap-grid');
+  var found = false;
+  cards.forEach(function(card) {
+    var text = card.textContent.toLowerCase();
+    if (!q || text.indexOf(q) !== -1) {
+      card.style.display = '';
+      if (q) found = true;
+    } else {
+      card.style.display = 'none';
     }
-    if(n.nodeType===1&&['SCRIPT','STYLE','MARK'].indexOf(n.tagName)===-1){var f=false;for(var j=0;j<n.childNodes.length;j++)if(hl(n.childNodes[j]))f=true;return f}
-    return false;
+  });
+  // also hide section labels when searching
+  var labels = document.querySelectorAll('.section-label, .formula-quick-cards, .page-nav');
+  labels.forEach(function(l) {
+    l.style.display = q ? 'none' : '';
+  });
+  document.getElementById('noResult').style.display = (q && !found) ? 'block' : 'none';
+  if (!q) {
+    labels.forEach(function(l) { l.style.display = ''; });
   }
-  var fa=false;
-  document.querySelectorAll('.concept-card,.mm-card,.quick-table,.misconception ul li,.experiment,.parent-tip,.fun-fact,.tip-card').forEach(function(e){if(hl(e)){e.style.display='';fa=true}else{e.style.display='none'}});
-  document.querySelectorAll('.chapter-title,.section-label,.mindmap-grid').forEach(function(e){e.style.display=''});
-  no.style.display=fa?'none':'block';
 }
 </script>
+
+
+<script>
+// ===== 侧边目录生成 =====
+(function(){
+  var tocLinks=document.getElementById("tocLinks");
+  var ddLinks=document.getElementById("tocDropdownLinks");
+  if(!tocLinks||!ddLinks) return;
+  var labels=document.querySelectorAll(".section-label");
+  labels.forEach(function(lbl, i){
+    var id="sec-"+i;
+    lbl.id=id;
+    var text=lbl.textContent.trim();
+    // remove emoji prefix
+    text=text.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{200D}]+/u,"").trim();
+    if(text.length>18) text=text.substring(0,16)+"…";
+    if(!text) text="模块 "+(i+1);
+    var a='<a href="#'+id+'" data-sec="'+i+'">'+text+'</a>';
+    tocLinks.innerHTML+=a;
+    ddLinks.innerHTML+=a;
+  });
+
+  // scroll spy
+  window.addEventListener("scroll",function(){
+    var links=document.querySelectorAll(".side-toc a, .toc-dropdown a");
+    var scrollY=window.scrollY+140;
+    var activeIdx=-1;
+    labels.forEach(function(lbl,i){
+      if(lbl.getBoundingClientRect().top+window.scrollY<=scrollY) activeIdx=i;
+    });
+    links.forEach(function(a){a.classList.remove("active")});
+    if(activeIdx>=0){
+      var sel='a[data-sec="'+activeIdx+'"]';
+      var tla=document.querySelector(".side-toc "+sel);
+      var dla=document.querySelector(".toc-dropdown "+sel);
+      if(tla) tla.classList.add("active");
+      if(dla) dla.classList.add("active");
+    }
+  });
+})();
+
+function toggleToc(){
+  var dd=document.getElementById("tocDropdown");
+  if(dd) dd.classList.toggle("show");
+}
+document.addEventListener("click",function(e){
+  var dd=document.getElementById("tocDropdown");
+  var tb=document.getElementById("tocHamburger");
+  if(dd&&tb&&!dd.contains(e.target)&&!tb.contains(e.target)) dd.classList.remove("show");
+});
+</script>
+
 </body>
 </html>

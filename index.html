@@ -17,6 +17,10 @@
 </head>
 <body>
 <div class="container">
+
+  <div class="search-inline">
+    <input type="text" id="indexSearch" placeholder="搜索知识点..." oninput="indexSearch()">
+  </div>
   <div class="hero">
     <div class="hero-icon">&#9881;</div>
     <h1>初中物理 · 知识手册</h1>
@@ -24,6 +28,7 @@
     <div class="chapter-cards">
       <a href="yundong.html" class="chapter-card-link">
         <div class="chapter-card-entry">
+          <span class="cc-check" data-ch="yundong">&#10003;</span>
           <div class="cc-icon">&#128640;</div>
           <h3>第一章 运动和力</h3>
           <p class="cc-desc">机械运动 · 速度 · 力<br>惯性 · 二力平衡 · 摩擦力</p>
@@ -31,6 +36,7 @@
       </a>
       <a href="yaqiang.html" class="chapter-card-link">
         <div class="chapter-card-entry c2">
+          <span class="cc-check" data-ch="yaqiang">&#10003;</span>
           <div class="cc-icon">&#127754;</div>
           <h3>第二章 压强和浮力</h3>
           <p class="cc-desc">压力与压强 · 液体压强<br>大气压强 · 浮力 · 浮沉条件</p>
@@ -38,6 +44,7 @@
       </a>
       <a href="jixie.html" class="chapter-card-link">
         <div class="chapter-card-entry c3">
+          <span class="cc-check" data-ch="jixie">&#10003;</span>
           <div class="cc-icon">&#128295;</div>
           <h3>第三章 简单机械和功</h3>
           <p class="cc-desc">杠杆 · 滑轮 · 功与功率<br>机械效率 · 机械能</p>
@@ -45,6 +52,7 @@
       </a>
       <a href="midu.html" class="chapter-card-link">
         <div class="chapter-card-entry c4">
+          <span class="cc-check" data-ch="midu">&#10003;</span>
           <div class="cc-icon">&#9878;</div>
           <h3>第四章 密度</h3>
           <p class="cc-desc">质量 · 密度公式<br>密度测量 · 应用</p>
@@ -52,6 +60,7 @@
       </a>
       <a href="sheng.html" class="chapter-card-link">
         <div class="chapter-card-entry c5">
+          <span class="cc-check" data-ch="sheng">&#10003;</span>
           <div class="cc-icon">&#128266;</div>
           <h3>第五章 声现象</h3>
           <p class="cc-desc">声音的产生与传播<br>三要素 · 噪声控制</p>
@@ -59,6 +68,7 @@
       </a>
       <a href="guang.html" class="chapter-card-link">
         <div class="chapter-card-entry c6">
+          <span class="cc-check" data-ch="guang">&#10003;</span>
           <div class="cc-icon">&#128161;</div>
           <h3>第六章 光现象</h3>
           <p class="cc-desc">反射 · 折射 · 透镜<br>凸透镜成像规律</p>
@@ -66,6 +76,7 @@
       </a>
       <a href="dian.html" class="chapter-card-link">
         <div class="chapter-card-entry c7">
+          <span class="cc-check" data-ch="dian">&#10003;</span>
           <div class="cc-icon">&#9889;</div>
           <h3>第七章 电学</h3>
           <p class="cc-desc">电路 · 欧姆定律<br>电功率 · 焦耳定律</p>
@@ -73,11 +84,20 @@
       </a>
       <a href="re.html" class="chapter-card-link">
         <div class="chapter-card-entry c8">
+          <span class="cc-check" data-ch="re">&#10003;</span>
           <div class="cc-icon">&#128293;</div>
           <h3>第八章 热学</h3>
           <p class="cc-desc">物态变化 · 比热容<br>内能 · 热传递</p>
         </div>
       </a>
+    </div>
+  </div>
+  
+  <div class="progress-section">
+    <div class="progress-bar-wrap">
+      <span class="progress-label">&#128218; 学习进度</span>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <span class="progress-pct" id="progressPct">0/8</span>
     </div>
   </div>
   <div class="hero-footer">
@@ -100,6 +120,114 @@
   .quiz-link-btn { display:inline-block; padding:10px 20px; background:#F8E8EE; border:2px solid #E8C8D8; border-radius:30px; color:#6B5B7B; text-decoration:none; font-size:15px; font-weight:600; transition:all 0.2s; }
   .quiz-link-btn:hover { background:#E8C8D8; transform:translateY(-2px); box-shadow:0 4px 12px rgba(107,91,123,0.2); }
   </style>
+
+  <div class="wrongbook-section">
+    <div class="wrongbook-entry" onclick="openWrongBook()">
+      &#128221; 错题本 <span class="wb-count" id="wbTotalCount">0</span>
+    </div>
+  </div>
+  <div class="wb-overlay" id="wbOverlay" onclick="if(event.target===this)closeWrongBook()">
+    <div class="wb-modal">
+      <button class="wb-close" onclick="closeWrongBook()">&times;</button>
+      <h3>&#128221; 错题本</h3>
+      <p class="wb-subtitle">收集自各章节测验的错误题目</p>
+      <div class="wb-filters">
+        <button class="wb-filter-btn active" onclick="filterWrongBook('all',this)">全部</button>
+        <button class="wb-filter-btn" onclick="filterWrongBook('yundong',this)">&#128640; 运动和力</button>
+        <button class="wb-filter-btn" onclick="filterWrongBook('yaqiang',this)">&#127754; 压强浮力</button>
+        <button class="wb-filter-btn" onclick="filterWrongBook('jixie',this)">&#128295; 简单机械和功</button>
+        <button class="wb-filter-btn" onclick="filterWrongBook('midu',this)">&#9878; 密度</button>
+        <button class="wb-filter-btn" onclick="filterWrongBook('sheng',this)">&#128266; 声现象</button>
+        <button class="wb-filter-btn" onclick="filterWrongBook('guang',this)">&#128161; 光现象</button>
+        <button class="wb-filter-btn" onclick="filterWrongBook('dian',this)">&#9889; 电学</button>
+        <button class="wb-filter-btn" onclick="filterWrongBook('re',this)">&#128293; 热学</button>
+        <button class="wb-clear-btn" onclick="clearWrongBook()">&#128465; 清空</button>
+      </div>
+      <div id="wbList"><div class="wb-empty">还没有错题，去做测验吧～</div></div>
+    </div>
+  </div>
 </div>
+
+<script>
+// ===== 学习进度 =====
+(function(){
+  var chs=["yundong","yaqiang","jixie","midu","sheng","guang","dian","re"];
+  var visited=JSON.parse(localStorage.getItem("wuli_visited")||"[]");
+  visited.forEach(function(ch){
+    var el=document.querySelector('.cc-check[data-ch="'+ch+'"]');
+    if(el) el.classList.add("done");
+  });
+  var done=visited.length;
+  document.getElementById("progressFill").style.width=(done/8*100)+"%";
+  document.getElementById("progressPct").textContent=done+"/8";
+})();
+
+// 点击章节跳转时标记
+document.querySelectorAll(".chapter-card-link").forEach(function(a){
+  a.addEventListener("click",function(){
+    var ch=this.querySelector(".cc-check").getAttribute("data-ch");
+    var visited=JSON.parse(localStorage.getItem("wuli_visited")||"[]");
+    if(visited.indexOf(ch)===-1) visited.push(ch);
+    localStorage.setItem("wuli_visited",JSON.stringify(visited));
+  });
+});
+
+// ===== 错题本 =====
+function openWrongBook(){
+  document.getElementById("wbOverlay").classList.add("show");
+  renderWrongBook("all");
+  document.querySelectorAll(".wb-filter-btn").forEach(function(b){b.classList.remove("active")});
+  document.querySelector('.wb-filter-btn[onclick*="all"]').classList.add("active");
+}
+function closeWrongBook(){ document.getElementById("wbOverlay").classList.remove("show"); }
+function updateWBcount(){
+  var all=JSON.parse(localStorage.getItem("wuli_wrongbook")||"[]");
+  document.getElementById("wbTotalCount").textContent=all.length;
+}
+function filterWrongBook(ch,btn){
+  document.querySelectorAll(".wb-filter-btn").forEach(function(b){b.classList.remove("active")});
+  btn.classList.add("active");
+  renderWrongBook(ch);
+}
+function renderWrongBook(filter){
+  var all=JSON.parse(localStorage.getItem("wuli_wrongbook")||"[]");
+  if(filter!=="all") all=all.filter(function(w){return w.chapter===filter});
+  var html="";
+  if(all.length===0){
+    html='<div class="wb-empty">还没有错题，去做测验吧～</div>';
+  }else{
+    all.forEach(function(w,i){
+      html+='<div class="wb-item"><div class="wb-q-num">'+w.chapterName+' · 第'+w.qnum+'题</div>';
+      html+='<div class="wb-stem">'+w.stem.replace(/</g,"&lt;").replace(/>/g,"&gt;")+'</div>';
+      html+='<div class="wb-wrong">你的答案：'+w.userAnswer+' ❌</div>';
+      html+='<div class="wb-right">正确答案：'+w.correctAnswer+' ✅</div></div>';
+    });
+  }
+  document.getElementById("wbList").innerHTML=html;
+}
+function clearWrongBook(){
+  if(confirm("确定清空所有错题？")){
+    localStorage.removeItem("wuli_wrongbook");
+    renderWrongBook("all");
+    updateWBcount();
+  }
+}
+updateWBcount();
+
+// ===== 首页搜索 =====
+function indexSearch(){
+  var q=document.getElementById("indexSearch").value.trim().toLowerCase();
+  var cards=document.querySelectorAll(".chapter-card-link");
+  if(!q){
+    cards.forEach(function(c){c.style.display="";c.style.opacity="1"});
+    return;
+  }
+  cards.forEach(function(c){
+    var text=c.textContent.toLowerCase();
+    if(text.indexOf(q)!==-1){c.style.display="";c.style.opacity="1";c.style.transform="scale(1.02)";}
+    else {c.style.opacity="0.35";c.style.transform="scale(1)";}
+  });
+}
+</script>
 </body>
 </html>
