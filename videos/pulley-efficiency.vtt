@@ -1,0 +1,141 @@
+WEBVTT
+
+1
+00:00:02,200 --> 00:00:06,332
+来看这道滑轮组题：工人用滑轮组提起货物。
+Here's a pulley problem: a worker lifts a load with a pulley system.
+
+2
+00:00:06,532 --> 00:00:08,051
+货物重 G = 600 N。
+The load weighs G = 600 N.
+
+3
+00:00:08,251 --> 00:00:09,855
+匀速提升 h = 4 m。
+It is lifted at constant speed through h = 4 m.
+
+4
+00:00:10,055 --> 00:00:13,122
+绳端拉力 F = 250 N。
+The pull at the free end is F = 250 N.
+
+5
+00:00:13,322 --> 00:00:15,038
+不计绳重和摩擦。
+Rope weight and friction are negligible.
+
+6
+00:00:15,238 --> 00:00:19,891
+求：有用功、总功、机械效率和动滑轮的重力。
+Find the useful work, total work, efficiency, and the moving pulley's weight.
+
+7
+00:00:21,541 --> 00:00:26,577
+先认识这个滑轮组：上面是定滑轮，下面是动滑轮。
+First, the setup: a fixed pulley on top, a moving pulley below.
+
+8
+00:00:26,777 --> 00:00:30,860
+数一数：直接拉着动滑轮的绳子有几段？
+Count the rope segments that pull the moving pulley.
+
+9
+00:00:31,060 --> 00:00:36,219
+一共 3 段，n = 3：三段绳共同承担货物和动滑轮。
+Three in total, so n = 3: they share the load and the pulley.
+
+10
+00:00:36,419 --> 00:00:41,945
+匀速提升时货物升高 h，绳端就要移动 s = nh。
+Lift the load by h, and the free end moves s = nh.
+
+11
+00:00:42,145 --> 00:00:47,221
+演示：货物升 4 m，绳端同步移动 12 m——整整 3 倍。
+Watch: the load rises 4 m while the free end moves 12 m — exactly 3x.
+
+12
+00:00:48,871 --> 00:00:52,318
+第一问：有用功——我们真正需要的功。
+Part 1: useful work — the work we actually need.
+
+13
+00:00:52,518 --> 00:00:56,954
+把 600 N 的货物提升 4 m：W有 = Gh。
+Lifting 600 N through 4 m: W = Gh.
+
+14
+00:00:57,154 --> 00:01:01,107
+W有 = 600 × 4 = 2400 J。
+W = 600 x 4 = 2400 J.
+
+15
+00:01:02,757 --> 00:01:06,471
+第二问：总功——拉力 F 实际做的功。
+Part 2: total work — what the pull F actually does.
+
+16
+00:01:06,671 --> 00:01:10,689
+绳端沿 F 的方向移动了 s = 12 m。
+The free end moves s = 12 m along F.
+
+17
+00:01:10,889 --> 00:01:18,038
+W总 = Fs = 250 × 12 = 3000 J，比有用功多 600 J。
+W = 250 x 12 = 3000 J — 600 J more than the useful work.
+
+18
+00:01:19,688 --> 00:01:23,763
+第三问：有用功占总功的比例，就是机械效率 η。
+Part 3: the useful share of the total work is the efficiency.
+
+19
+00:01:23,963 --> 00:01:29,715
+η = W有 / W总 = 2400 / 3000 = 80%。
+Efficiency = 2400 / 3000 = 80%.
+
+20
+00:01:29,915 --> 00:01:36,047
+能量柱：有用功 2400 J，额外功 600 J，合计 3000 J。
+The bars: useful 2400 J, wasted 600 J, total 3000 J.
+
+21
+00:01:36,247 --> 00:01:41,282
+额外功花在提动滑轮上——效率永远小于 100%。
+The extra work lifts the pulley itself — efficiency stays below 100%.
+
+22
+00:01:42,932 --> 00:01:45,238
+第四问：动滑轮有多重？
+Part 4: how heavy is the moving pulley?
+
+23
+00:01:45,438 --> 00:01:51,974
+不计绳重和摩擦，额外功全是提动滑轮做的：W额 = G动h。
+With no rope weight or friction, all extra work lifts the pulley.
+
+24
+00:01:52,174 --> 00:01:57,273
+G动 = W额 / h = 600 / 4 = 150 N。
+G = 600 / 4 = 150 N.
+
+25
+00:01:57,473 --> 00:02:06,613
+验证：3F = G + G动，即 3 × 250 − 600 = 150 N，一致。
+Check: 3F = G + G gives 750 - 600 = 150 N. Consistent.
+
+26
+00:02:08,263 --> 00:02:14,309
+回顾：先数绳段定 n，再用 s = nh，最后分清三种功。
+Recap: count the segments for n, then s = nh, then sort the three works.
+
+27
+00:02:14,509 --> 00:02:22,136
+答案：W有 = 2400 J，W总 = 3000 J，η = 80%，G动 = 150 N。
+Answers: 2400 J, 3000 J, 80%, 150 N.
+
+28
+00:02:22,336 --> 00:02:28,914
+效率 80%：永远小于 100%，多出的功都花在动滑轮上。下道题见！
+80% — always below 100%; the surplus lifts the pulley. See you next problem!
