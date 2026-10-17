@@ -1,0 +1,91 @@
+WEBVTT
+
+1
+00:00:02,200 --> 00:00:08,288
+来看这道运动学计算题：汽车从甲地到乙地，s-t 图像分两段。
+A car travels from A to B; its s-t graph has two segments.
+
+2
+00:00:08,488 --> 00:00:14,118
+前 0.5 h 通过 30 km，之后 1.5 h 又通过 60 km。
+30 km in the first 0.5 h, then 60 km in 1.5 h.
+
+3
+00:00:14,318 --> 00:00:18,768
+三问：两段速度各多少，全程平均速度是多少？
+Find both speeds and the average speed.
+
+4
+00:00:20,418 --> 00:00:24,461
+先画 s-t 图像：横轴时间，纵轴路程。
+Draw the axes: time across, distance up.
+
+5
+00:00:24,661 --> 00:00:29,554
+第一段从原点出发，0.5 h 到达 30 km——很陡。
+First segment: 30 km in 0.5 h, steep.
+
+6
+00:00:29,754 --> 00:00:35,081
+斜率就是速度：30÷0.5，前段速度 60 km/h。
+Slope is speed: 30 over 0.5 = 60 km/h.
+
+7
+00:00:36,731 --> 00:00:40,944
+第二段接着往上爬：1.5 h 又走了 60 km。
+Second segment climbs on: 60 km in 1.5 h.
+
+8
+00:00:41,144 --> 00:00:44,548
+这段平缓多了——同样的时间，路程短。
+Much flatter: less distance in the same time.
+
+9
+00:00:44,748 --> 00:00:49,727
+斜率变小：60÷1.5，后段速度 40 km/h。
+Slower slope: 60 over 1.5 = 40 km/h.
+
+10
+00:00:51,377 --> 00:00:55,078
+全程平均速度怎么算？总路程除以总时间。
+Average speed: total distance over total time.
+
+11
+00:00:55,278 --> 00:01:01,668
+总路程 30+60=90 km，总时间 0.5+1.5=2 h。
+Total 90 km in 2 hours.
+
+12
+00:01:01,868 --> 00:01:06,830
+90÷2=45，全程平均速度 45 km/h。
+90 over 2 = 45 km/h.
+
+13
+00:01:08,480 --> 00:01:12,276
+易错点：把 60 和 40 平均一下当答案。
+Trap: averaging 60 and 40.
+
+14
+00:01:12,476 --> 00:01:17,888
+(60+40)÷2=50——错了！平均速度不是速度的平均。
+50 is wrong: average speed is not the average of speeds.
+
+15
+00:01:18,088 --> 00:01:22,347
+平均速度只认总路程÷总时间：答案是 45。
+Only total over total counts: 45 km/h.
+
+16
+00:01:23,997 --> 00:01:28,664
+两道步骤收好：斜率读每段速度，总除总算平均。
+Two steps: slope per segment, then total over total.
+
+17
+00:01:28,864 --> 00:01:34,879
+答案：60 km/h、40 km/h、全程 45 km/h。
+Answers: 60, 40, and 45 km/h.
+
+18
+00:01:35,079 --> 00:01:41,062
+s-t 图像先问自己：是每段斜率还是全程平均？下道题见！
+Always ask: segment slope or whole average? See you!
