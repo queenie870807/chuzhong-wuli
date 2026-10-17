@@ -1,0 +1,91 @@
+WEBVTT
+
+1
+00:00:02,200 --> 00:00:07,563
+来看这道声学计算题：对着山崖大喊，1.2s后听到回声。
+Shout at a cliff; the echo comes back after 1.2 seconds.
+
+2
+00:00:07,763 --> 00:00:11,876
+已知声速340 m/s，求人到山崖的距离。
+Sound speed 340 m/s. Find the distance to the cliff.
+
+3
+00:00:12,076 --> 00:00:15,280
+声音跑了一个来回——这是全题的题眼。
+The sound makes a round trip. That is the key.
+
+4
+00:00:16,930 --> 00:00:20,814
+声音从人出发，传到山崖，再反射回耳朵。
+Sound travels from person to cliff, then reflects back.
+
+5
+00:00:21,014 --> 00:00:24,848
+听到回声用时1.2s，这是往返的总时间。
+The 1.2 s is the total time for the round trip.
+
+6
+00:00:25,048 --> 00:00:28,943
+所以总路程分两段：去程，再加回程。
+So the total path has two legs: there and back.
+
+7
+00:00:30,593 --> 00:00:34,495
+先算声音走过的总路程：s = v × t。
+First the total path: s = v times t.
+
+8
+00:00:34,695 --> 00:00:38,401
+340 × 1.2，总路程408 m。
+340 times 1.2 gives 408 meters in total.
+
+9
+00:00:38,601 --> 00:00:42,846
+注意：408 m是全程，不是人到山崖的距离。
+408 m is the whole path, not the distance.
+
+10
+00:00:44,496 --> 00:00:47,693
+往返一样长，距离就是总路程的一半。
+Both legs are equal: the distance is half the total.
+
+11
+00:00:47,893 --> 00:00:51,378
+d = 408 ÷ 2 = 204 m。
+d = 408 over 2 = 204 meters.
+
+12
+00:00:51,578 --> 00:00:55,617
+口诀：回声距离，速度乘时间，再除以二。
+Echo distance: v times t, then halve it.
+
+13
+00:00:57,267 --> 00:01:00,696
+易错点：把1.2s当成单程时间。
+Trap: treating 1.2 s as one-way time.
+
+14
+00:01:00,896 --> 00:01:05,762
+直接340 × 1.2 = 408 m当答案，就错了。
+Answering 408 m directly is wrong.
+
+15
+00:01:05,962 --> 00:01:10,044
+408 m是往返总路程，距离必须除以2。
+408 m is the round trip; halve it for distance.
+
+16
+00:01:11,694 --> 00:01:15,988
+两道步骤收好：s = vt，d = vt/2。
+Two steps: s = v t, then d = v t over 2.
+
+17
+00:01:16,188 --> 00:01:20,304
+答案：总路程408 m，距离204 m。
+Answers: 408 m total, 204 m distance.
+
+18
+00:01:20,504 --> 00:01:25,526
+回声问题先问自己：时间是单程还是往返？下道题见！
+Always ask: one-way or round trip? See you!
