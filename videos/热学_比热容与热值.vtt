@@ -1,0 +1,91 @@
+WEBVTT
+
+1
+00:00:02,200 --> 00:00:09,090
+来看这道热学计算题：水从20℃加热到100℃，再问需要多少酒精。
+Heat water from 20C to 100C; how much alcohol is needed?
+
+2
+00:00:09,290 --> 00:00:17,802
+三个已知要抓牢：质量2千克，水的比热容4.2×10³，酒精热值3.0×10⁷。
+m = 2 kg, c = 4.2e3, q = 3.0e7 J/kg.
+
+3
+00:00:18,002 --> 00:00:22,224
+两问两条公式链：吸热用比热容，燃料用热值。
+Two chains: specific heat, then calorific value.
+
+4
+00:00:23,874 --> 00:00:28,560
+第一问，吸热公式：Q = c·m·Δt。
+Part 1: Q = c times m times delta t.
+
+5
+00:00:28,760 --> 00:00:35,219
+代入c和m，关键是Δt：末温100减初温20，等于80℃。
+The key is delta t = 100 minus 20 = 80 degrees.
+
+6
+00:00:35,419 --> 00:00:42,515
+4.2×10³ × 2 × 80，算出 Q = 6.72×10⁵ J。
+4.2e3 times 2 times 80 gives 6.72e5 joules.
+
+7
+00:00:44,165 --> 00:00:48,738
+第二问，这些热量全由酒精提供：Q放 = Q吸。
+Part 2: the alcohol releases exactly Q = 6.72e5 J.
+
+8
+00:00:48,938 --> 00:00:54,546
+热值公式 q = Q放/m，变形得 m = Q放/q。
+From q = Q over m, solve m = Q over q.
+
+9
+00:00:54,746 --> 00:01:04,333
+6.72×10⁵ ÷ 3.0×10⁷ = 2.24×10⁻² kg，也就是22.4克。
+6.72e5 over 3.0e7 equals 2.24e-2 kg, that is 22.4 grams.
+
+10
+00:01:05,983 --> 00:01:12,315
+比热容的物理意义：1千克水升高1℃，吸热4.2×10³焦。
+c means 1 kg of water needs 4.2e3 J per degree.
+
+11
+00:01:12,515 --> 00:01:17,142
+对比沙子：比热容小得多，同样加热，温度升得快。
+Sand's c is much smaller; it heats up faster.
+
+12
+00:01:17,342 --> 00:01:21,957
+所以水吸热强、升温慢，海边昼夜温差才小。
+Water absorbs a lot and warms slowly: small day-night swing.
+
+13
+00:01:23,607 --> 00:01:29,378
+易错点一：Δt是变化量，不能直接填100℃。
+Trap 1: delta t is a difference, not 100 degrees.
+
+14
+00:01:29,578 --> 00:01:36,198
+若Δt填100，Q会算成8.4×10⁵焦，这问分全丢。
+Using 100 gives 8.4e5 J, all marks lost.
+
+15
+00:01:36,398 --> 00:01:40,977
+易错点二：热值算出来是千克，问克要再乘一千。
+Trap 2: q gives kg; the question asks grams.
+
+16
+00:01:42,627 --> 00:01:47,882
+两道公式收好：Q = cmΔt，m = Q/q。
+Keep both: Q = cm delta t, and m = Q over q.
+
+17
+00:01:48,082 --> 00:01:53,909
+答案：水吸热6.72×10⁵焦，需酒精22.4克。
+Answers: 6.72e5 J and 22.4 g of alcohol.
+
+18
+00:01:54,109 --> 00:01:58,256
+变化量看差值，单位问啥答啥，下道题见！
+Mind the difference and the units!
