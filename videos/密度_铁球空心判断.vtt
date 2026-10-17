@@ -1,0 +1,81 @@
+WEBVTT
+
+1
+00:00:02,200 --> 00:00:06,575
+来看这道密度计算题：一个铁球，是实心还是空心？
+Is this iron ball solid or hollow?
+
+2
+00:00:06,775 --> 00:00:13,370
+铁球质量 158 克，体积 30 立方厘米，铁的密度 7.9 克每立方厘米。
+158 g, 30 cm3, iron is 7.9 g/cm3.
+
+3
+00:00:13,570 --> 00:00:18,096
+两问：判断空心还是实心；空心部分体积是多少？
+Judge it, then find the hollow volume.
+
+4
+00:00:19,746 --> 00:00:24,567
+第一问做判断。千万不能凭眼看，一定要用数据说话。
+Part 1: judge with data, not with your eyes.
+
+5
+00:00:24,767 --> 00:00:29,398
+比体积法：假设铁球是实心的，算出铁应有的体积。
+Volume method: assume solid, find the iron's volume.
+
+6
+00:00:29,598 --> 00:00:34,901
+质量除以铁的密度，158 除以 7.9，等于 20 立方厘米。
+158 over 7.9 is 20 cm3.
+
+7
+00:00:35,101 --> 00:00:38,780
+20 比 30 小，所以这个铁球是空心的。
+20 is less than 30: the ball is hollow.
+
+8
+00:00:40,430 --> 00:00:45,731
+第二问求空心部分体积。总体积减去铁的实心部分体积。
+Part 2: total volume minus the iron's volume.
+
+9
+00:00:45,931 --> 00:00:50,225
+30 减 20，等于 10 立方厘米，这就是空心部分。
+30 minus 20 is 10 cm3 of hollow space.
+
+10
+00:00:50,425 --> 00:00:58,521
+换个方法验证：比密度法。158 除以 30 约 5.27，小于 7.9，同样是空心。
+Density method: 158 over 30 is about 5.27, still hollow.
+
+11
+00:01:00,171 --> 00:01:06,552
+再换比质量法：实心时应有的质量是 7.9 乘 30，等于 237 克。
+Mass method: solid would need 7.9 times 30, that is 237 g.
+
+12
+00:01:06,752 --> 00:01:13,535
+实际只有 158 克，比 237 小，还是空心。三种方法结论一致。
+158 g is less than 237 g: hollow again, all three agree.
+
+13
+00:01:13,735 --> 00:01:19,697
+方法没有对错，比体积最直接：先算 V 理，和 V 总比大小。
+Any method works; the volume one is the most direct.
+
+14
+00:01:21,347 --> 00:01:25,489
+方法收好：判断空心实心，用数据不用眼睛。
+Recap: judge with data, not with your eyes.
+
+15
+00:01:25,689 --> 00:01:29,868
+答案：铁球空心，空心部分体积 10 立方厘米。
+Answers: hollow, with 10 cm3 of empty space.
+
+16
+00:01:30,068 --> 00:01:34,350
+三种比值法，选你最顺手的。下道题见！
+Pick whichever ratio you like best. See you!

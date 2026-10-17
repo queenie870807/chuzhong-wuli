@@ -1,0 +1,91 @@
+WEBVTT
+
+1
+00:00:02,200 --> 00:00:06,731
+来看这道密度填空题：一瓶矿泉水，藏着三个小问。
+A density fill-in problem about a bottle of water.
+
+2
+00:00:06,931 --> 00:00:13,125
+满瓶容积 550 毫升，瓶和水总质量 620 克，空瓶质量 70 克。
+550 mL full; 620 g with bottle; the empty bottle is 70 g.
+
+3
+00:00:13,325 --> 00:00:17,597
+还问：水结成冰以后，体积会变大还是变小？
+Also: when the water freezes, does the volume grow or shrink?
+
+4
+00:00:19,247 --> 00:00:24,488
+第一问求水的质量。总质量减去空瓶质量，就是水的质量。
+Part 1: water mass equals total minus the empty bottle.
+
+5
+00:00:24,688 --> 00:00:28,089
+620 克减 70 克，等于 550 克。
+620 g minus 70 g gives 550 g.
+
+6
+00:00:28,289 --> 00:00:33,847
+正好装满：容积 550 毫升，质量 550 克，数量级对上了。
+Exactly full: 550 mL and 550 g line up nicely.
+
+7
+00:00:35,497 --> 00:00:39,635
+第二问算水的密度。密度等于质量除以体积。
+Part 2: density is mass over volume.
+
+8
+00:00:39,835 --> 00:00:45,007
+550 克除以 550 立方厘米，等于 1.0 克每立方厘米。
+550 g over 550 cubic centimetres gives 1.0 g per cubic centimetre.
+
+9
+00:00:45,207 --> 00:00:50,926
+记住这个数：水的密度是 1.0 克每立方厘米，是最常用的密度值。
+Remember: water is 1.0 g/cm3, the most-used density.
+
+10
+00:00:51,126 --> 00:00:56,248
+毫升和立方厘米是一对一换算的，1 毫升等于 1 立方厘米。
+One millilitre is exactly one cubic centimetre.
+
+11
+00:00:57,898 --> 00:01:01,707
+第三问最有意思：水结成冰，质量变不变？
+Part 3: when water freezes, does mass change?
+
+12
+00:01:01,907 --> 00:01:07,014
+质量是物体的属性，物态变化不改变质量，还是 550 克。
+Mass is conserved in a phase change: still 550 g.
+
+13
+00:01:07,214 --> 00:01:11,329
+但冰的密度是 0.9 克每立方厘米，比水小。
+Ice is 0.9 g/cm3, less dense than water.
+
+14
+00:01:11,529 --> 00:01:17,909
+体积等于质量除以密度，550 除以 0.9，约等于 611 立方厘米。
+Volume is mass over density: 550 over 0.9 is about 611 cm3.
+
+15
+00:01:18,109 --> 00:01:24,750
+比原来的 550 大了 60 多立方厘米，所以冰的体积变大，瓶子会被撑破。
+Over 60 cm3 larger than before: the bottle can burst.
+
+16
+00:01:26,400 --> 00:01:31,940
+方法收好：总质量减空瓶得液体质量，密度等于质量除以体积。
+Recap: subtract the bottle, then mass over volume.
+
+17
+00:01:32,140 --> 00:01:39,491
+答案：550 克，1.0 克每立方厘米，冰的体积约 611 立方厘米、变大。
+Answers: 550 g, 1.0 g/cm3, ice about 611 cm3, bigger.
+
+18
+00:01:39,691 --> 00:01:44,720
+同质量比体积，密度小的反而体积大。下道题见！
+Same mass, less density means more volume. See you!

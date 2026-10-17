@@ -1,0 +1,76 @@
+WEBVTT
+
+1
+00:00:02,200 --> 00:00:06,427
+来看这道密度实验题：测一块不规则石块的密度。
+Measure the density of an irregular stone.
+
+2
+00:00:06,627 --> 00:00:11,743
+天平称得石块质量 52 克，量筒里水的体积是 40 毫升。
+The balance reads 52 g; the cylinder holds 40 mL of water.
+
+3
+00:00:11,943 --> 00:00:18,584
+石块浸没后，水面升到 60 毫升。三问：体积、密度、误差分析。
+The level rises to 60 mL. Find volume, density, and error analysis.
+
+4
+00:00:20,234 --> 00:00:26,149
+第一问求体积。不规则固体没有规则形状，体积没法用公式算。
+Part 1: the volume. An irregular solid has no formula.
+
+5
+00:00:26,349 --> 00:00:30,963
+用排水法：石块排开水的体积，就是它自身的体积。
+Displacement: the water pushed aside equals the stone's volume.
+
+6
+00:00:31,163 --> 00:00:37,457
+水面从 40 毫升升到 60 毫升，升高了 20 毫升，也就是 20 立方厘米。
+From 40 to 60 mL: a rise of 20 mL, that is 20 cubic centimetres.
+
+7
+00:00:39,107 --> 00:00:42,940
+第二问算密度。密度等于质量除以体积。
+Part 2: density. Density is mass over volume.
+
+8
+00:00:43,140 --> 00:00:48,875
+质量 52 克，体积 20 立方厘米，相除得到 2.6 克每立方厘米。
+52 g over 20 cubic centimetres gives 2.6 g per cubic centimetre.
+
+9
+00:00:49,075 --> 00:00:56,339
+换算成国际单位：2.6 克每立方厘米，等于 2.6×10³ 千克每立方米。
+In SI units, 2.6 g/cm3 equals 2.6 times ten cubed kg/m3.
+
+10
+00:00:57,989 --> 00:01:03,409
+第三问是误差分析：如果先测体积，再测质量，结果会怎样？
+Part 3: what if you measure volume before mass?
+
+11
+00:01:03,609 --> 00:01:08,554
+石块从水里拿出来，表面沾了水，再测质量就会偏大。
+The wet stone carries water out, so the mass reads high.
+
+12
+00:01:08,754 --> 00:01:16,168
+质量偏大、体积不变，密度就偏大。所以正确顺序是先测质量，后测体积。
+Mass high, volume unchanged: density reads high. Always mass first.
+
+13
+00:01:17,818 --> 00:01:22,452
+方法收好：排水法测体积，密度等于质量除以体积。
+Recap: displacement for volume, mass over volume.
+
+14
+00:01:22,652 --> 00:01:29,861
+答案：体积 20 立方厘米，密度 2.6 克每立方厘米，先测体积会导致密度偏大。
+Answers: 20 cm3, 2.6 g/cm3, and volume-first reads high.
+
+15
+00:01:30,061 --> 00:01:34,749
+测密度类实验，先想顺序再动手。下道题见！
+Think about order before you start. See you!
