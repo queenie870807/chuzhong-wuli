@@ -1,0 +1,91 @@
+WEBVTT
+
+1
+00:00:02,200 --> 00:00:09,341
+来看这道凸透镜实验题：焦距10厘米，蜡烛从25厘米处靠近到15厘米处。
+A convex lens, f = 10 cm: the candle moves from 25 cm to 15 cm.
+
+2
+00:00:09,541 --> 00:00:14,123
+抓住关键：焦距不变，变的是物距，看像怎么变。
+f stays fixed; only the object distance changes.
+
+3
+00:00:14,323 --> 00:00:17,942
+先记住结论：物近，像远，像变大。
+Object closer, image farther, image bigger.
+
+4
+00:00:19,592 --> 00:00:25,733
+第一问：物距25厘米，焦距10厘米，25大于两倍焦距20。
+Part 1: u = 25 cm > 2f = 20 cm.
+
+5
+00:00:25,933 --> 00:00:32,714
+此时成倒立、缩小的实像，像距在一倍焦距和两倍焦距之间，约17厘米。
+Inverted, reduced real image; v between f and 2f (about 17 cm).
+
+6
+00:00:32,914 --> 00:00:36,774
+照相机就是这样：物体远，成缩小的实像。
+That is how a camera works.
+
+7
+00:00:38,424 --> 00:00:44,170
+第二问：蜡烛靠近到15厘米，落在一倍焦距和两倍焦距之间。
+Part 2: u = 15 cm, between f and 2f.
+
+8
+00:00:44,370 --> 00:00:49,596
+此时成倒立、放大的实像，像距30厘米，大于两倍焦距。
+Inverted, magnified real image; v = 30 cm > 2f.
+
+9
+00:00:49,796 --> 00:00:54,833
+所以光屏要远离透镜，像从缩小变成放大，像变大了。
+Move the screen away; the image grows.
+
+10
+00:00:56,483 --> 00:01:00,980
+对比两次：物距从25厘米减小到15厘米。
+Compare: u drops from 25 cm to 15 cm.
+
+11
+00:01:01,180 --> 00:01:06,298
+像距从17厘米增大到30厘米，像从缩小变成放大。
+v rises from 17 cm to 30 cm; the image grows.
+
+12
+00:01:06,498 --> 00:01:11,770
+口诀：物近，像远，像变大。成实像时一定成立。
+Closer object, farther image, bigger image.
+
+13
+00:01:13,420 --> 00:01:18,093
+易错点：靠近透镜，是不是就成虚像了？不是。
+Trap: closer does not mean virtual.
+
+14
+00:01:18,293 --> 00:01:23,748
+一倍焦距是分界线：大于焦距成实像，小于焦距才成虚像。
+The focal length is the boundary.
+
+15
+00:01:23,948 --> 00:01:29,274
+15厘米大于10厘米，成的还是放大的实像，光屏接得到。
+15 cm > f: still a real image on the screen.
+
+16
+00:01:30,924 --> 00:01:37,013
+回顾：25厘米时，倒立缩小的实像，光屏在约17厘米处。
+Recap: at 25 cm, small inverted real image at about 17 cm.
+
+17
+00:01:37,213 --> 00:01:42,826
+15厘米时，倒立放大的实像，光屏远离到30厘米，像变大。
+At 15 cm, big inverted real image at 30 cm.
+
+18
+00:01:43,026 --> 00:01:48,030
+记住口诀：物近，像远，像变大。下道题见！
+Closer object, farther image, bigger image!
