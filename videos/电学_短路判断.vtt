@@ -1,0 +1,91 @@
+WEBVTT
+
+1
+00:00:02,200 --> 00:00:08,797
+来看这道易错题：开关S闭合后，灯泡L₁亮、L₂不亮，可能的原因是什么？
+S closed: L1 lights, L2 stays dark. Why?
+
+2
+00:00:08,997 --> 00:00:14,594
+四个选项逐个排除，先抓住关键区别：短路和断路。
+Eliminate one by one: short vs open.
+
+3
+00:00:14,794 --> 00:00:19,816
+先记住现象：一个亮、一个不亮——不亮的那个被短路了。
+One lights, one dark: the dark one is shorted.
+
+4
+00:00:21,466 --> 00:00:24,727
+选项 A：L₂的灯丝断了——错误。
+A: L2's filament is broken — wrong.
+
+5
+00:00:24,927 --> 00:00:29,743
+灯丝断了，串联电路就出现断路，整个电路没有电流。
+A broken filament opens the series circuit.
+
+6
+00:00:29,943 --> 00:00:33,750
+没有电流，两个灯泡都不会亮，和题意不符。
+No current: both lamps stay dark.
+
+7
+00:00:35,400 --> 00:00:38,719
+选项 B：L₂被短路——正确。
+B: L2 is shorted — correct.
+
+8
+00:00:38,919 --> 00:00:43,621
+一根导线直接连在L₂两端，电流会从导线绕过L₂。
+A wire across L2: current bypasses it.
+
+9
+00:00:43,821 --> 00:00:48,974
+所以L₁亮、L₂不亮，正好符合题意。选B。
+L1 lights, L2 dark — matches. Answer B.
+
+10
+00:00:50,624 --> 00:00:54,171
+选项 C：电源电压太小——错误。
+C: Supply voltage too low — wrong.
+
+11
+00:00:54,371 --> 00:00:57,366
+电压太小的话，两个灯泡都会变暗。
+Low voltage dims BOTH lamps.
+
+12
+00:00:57,566 --> 00:01:01,397
+不会一个亮一个不亮，而且L₁现在很亮。
+Not one bright and one dark.
+
+13
+00:01:03,047 --> 00:01:06,511
+选项 D：L₂的功率太小——错误。
+D: L2's power is too small — wrong.
+
+14
+00:01:06,711 --> 00:01:10,226
+功率小只会让灯暗一些，不会完全不亮。
+Low power means dimmer, not dark.
+
+15
+00:01:10,426 --> 00:01:14,721
+L₁亮说明电流足够，L₂不亮是因为电流绕过了它。
+Current flows; L2 is bypassed.
+
+16
+00:01:16,371 --> 00:01:19,753
+回顾：这道题选B，L₂被短路。
+Recap: the answer is B.
+
+17
+00:01:19,953 --> 00:01:26,577
+核心区别：短路是有电流但不经过灯泡；断路是没有电流，全部不亮。
+Short = bypassed; open = no current.
+
+18
+00:01:26,777 --> 00:01:28,133
+下道题见！
+See you next problem!
